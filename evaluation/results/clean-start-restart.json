@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "project": "quarry-clean-release",
+  "seconds": 139.29,
+  "method": "New isolated project volumes, shared read-only verified model cache; clean startup followed by stop/start with volumes preserved. No source data restored over the primary project.",
+  "first_services": [
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "mailpit",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "object-gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "objectstore",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "qdrant",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "searxng",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "web",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "worker",
+      "state": "running",
+      "health": ""
+    }
+  ],
+  "restarted_services": [
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "mailpit",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "object-gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "objectstore",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "qdrant",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "searxng",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "web",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "worker",
+      "state": "running",
+      "health": ""
+    }
+  ],
+  "paid_calls": 0
+}

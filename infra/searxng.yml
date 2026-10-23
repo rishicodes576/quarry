@@ -1,0 +1,13 @@
+use_default_settings: true
+general:
+  instance_name: Quarry Search
+search:
+  formats: [html, json]
+  safe_search: 1
+server:
+  secret_key: replace-by-environment
+  limiter: false
+  image_proxy: false
+outgoing:
+  request_timeout: 5.0
+  max_request_timeout: 10.0

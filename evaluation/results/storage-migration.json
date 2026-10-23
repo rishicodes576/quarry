@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "method": "Quiesced backup, immutable object copy, SHA-256 verification before cutover",
+  "evidence": {
+    "source_hashes_verified": 69,
+    "status": "passed"
+  },
+  "legacy_volume_preserved": true,
+  "paid_calls": 0
+}

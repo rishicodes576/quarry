@@ -1,0 +1,288 @@
+name: quarry
+x-backend-env: &backend-env
+  QUARRY_ENV: "${QUARRY_ENV:-development}"
+  QUARRY_DATABASE_URL: "${QUARRY_DATABASE_URL}"
+  QUARRY_SESSION_SECRET: "${QUARRY_SESSION_SECRET}"
+  QUARRY_PROXY_SECRET: "${QUARRY_PROXY_SECRET}"
+  QUARRY_QDRANT_URL: "http://qdrant:6333"
+  QUARRY_QDRANT_API_KEY: "${QUARRY_QDRANT_API_KEY}"
+  QUARRY_SEARXNG_URL: "http://searxng:8080"
+  QUARRY_S3_ENDPOINT: "http://objectstore:8334"
+  QUARRY_S3_ACCESS_KEY: "${QUARRY_S3_ACCESS_KEY}"
+  QUARRY_S3_SECRET_KEY: "${QUARRY_S3_SECRET_KEY}"
+  QUARRY_S3_BUCKET: "${QUARRY_S3_BUCKET:-quarry}"
+  QUARRY_DEMO_SEED: "${QUARRY_DEMO_SEED:-false}"
+  QUARRY_COOKIE_SECURE: "${QUARRY_COOKIE_SECURE:-false}"
+  QUARRY_APP_ORIGIN: "${QUARRY_APP_ORIGIN:-http://localhost:3000}"
+  QUARRY_SIGNUP_MODE: "${QUARRY_SIGNUP_MODE:-public}"
+  QUARRY_SMTP_HOST: "${QUARRY_SMTP_HOST:-}"
+  QUARRY_SMTP_PORT: "${QUARRY_SMTP_PORT:-587}"
+  QUARRY_SMTP_STARTTLS: "${QUARRY_SMTP_STARTTLS:-true}"
+  QUARRY_SMTP_USER: "${QUARRY_SMTP_USER:-}"
+  QUARRY_SMTP_PASSWORD: "${QUARRY_SMTP_PASSWORD:-}"
+  QUARRY_MAIL_FROM: "${QUARRY_MAIL_FROM:-accounts@quarry.local}"
+  QUARRY_GROQ_FREE_PLAN_CONFIRMED: "${QUARRY_GROQ_FREE_PLAN_CONFIRMED:-false}"
+  GROQ_API_KEY: "${GROQ_API_KEY:-}"
+  QUARRY_GROQ_MODEL: "${QUARRY_GROQ_MODEL:-openai/gpt-oss-120b}"
+  QUARRY_ALLOW_PAID_PROVIDERS: "${QUARRY_ALLOW_PAID_PROVIDERS:-false}"
+  OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+  QUARRY_OPENAI_MODEL: "${QUARRY_OPENAI_MODEL:-gpt-4.1-mini}"
+  QUARRY_LEASE_SECONDS: "${QUARRY_LEASE_SECONDS:-90}"
+  QUARRY_MAX_ATTEMPTS: "${QUARRY_MAX_ATTEMPTS:-3}"
+  QUARRY_MAX_PENDING_JOBS: "${QUARRY_MAX_PENDING_JOBS:-50}"
+  QUARRY_MAX_CONCURRENT_RUNS: "${QUARRY_MAX_CONCURRENT_RUNS:-4}"
+  QUARRY_MAX_DAILY_TOKENS: "${QUARRY_MAX_DAILY_TOKENS:-30000}"
+  QUARRY_MAX_GLOBAL_DAILY_TOKENS: "${QUARRY_MAX_GLOBAL_DAILY_TOKENS:-100000}"
+  QUARRY_MAX_GLOBAL_RUNS: "${QUARRY_MAX_GLOBAL_RUNS:-8}"
+  QUARRY_MAX_GLOBAL_PENDING_JOBS: "${QUARRY_MAX_GLOBAL_PENDING_JOBS:-1000}"
+  QUARRY_MAX_WORKSPACE_STORAGE_BYTES: "${QUARRY_MAX_WORKSPACE_STORAGE_BYTES:-104857600}"
+  QUARRY_MAX_GLOBAL_STORAGE_BYTES: "${QUARRY_MAX_GLOBAL_STORAGE_BYTES:-5368709120}"
+  QUARRY_MAX_WORKSPACES: "${QUARRY_MAX_WORKSPACES:-1000}"
+x-backend: &backend
+  image: quarry-backend:local
+  build:
+    context: .
+    dockerfile: backend/Dockerfile
+    target: base
+  environment: *backend-env
+  networks: [default, storage]
+  volumes:
+    - models:/models:ro
+    - ./evaluation/results:/app/evaluation/results
+  init: true
+  stop_grace_period: 60s
+  restart: unless-stopped
+services:
+  permissions:
+    image: python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
+    user: "0:0"
+    command: ["python", "-c", "import os; [os.chown(p,10001,10001) for p in ['/models','/objects','/vectors','/seaweed']]"]
+    volumes: [models:/models, objects:/objects, vectors:/vectors, seaweed:/seaweed]
+    restart: "no"
+  postgres:
+    image: quarry-postgres:local
+    build: {context: ., dockerfile: infra/postgres.Dockerfile}
+    environment:
+      POSTGRES_USER: quarry
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run python scripts/manage.py up first}
+      POSTGRES_DB: quarry
+    volumes: [postgres:/var/lib/postgresql]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quarry -d quarry"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  qdrant:
+    image: quarry-qdrant:local
+    build: {context: ., dockerfile: infra/qdrant.Dockerfile}
+    user: "10001:10001"
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QUARRY_QDRANT_API_KEY}
+      QDRANT__TELEMETRY_DISABLED: "true"
+      QDRANT__STORAGE__SNAPSHOTS_PATH: /qdrant/storage/snapshots
+    volumes: [vectors:/qdrant/storage]
+    depends_on:
+      permissions: {condition: service_completed_successfully}
+    restart: unless-stopped
+  minio:
+    profiles: [legacy-storage]
+    image: quarry-minio:local
+    build:
+      context: .
+      dockerfile: infra/minio.Dockerfile
+    user: "10001:10001"
+    command: ["server", "/data"]
+    environment:
+      MINIO_ROOT_USER: ${QUARRY_S3_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${QUARRY_S3_SECRET_KEY}
+    volumes: [objects:/data]
+    depends_on:
+      permissions: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  objectstore:
+    image: quarry-objectstore:local
+    build:
+      context: .
+      dockerfile: infra/seaweedfs.Dockerfile
+    user: "10001:10001"
+    environment:
+      AWS_ACCESS_KEY_ID: ${QUARRY_S3_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${QUARRY_S3_SECRET_KEY}
+      S3_BUCKET: ${QUARRY_S3_BUCKET:-quarry}
+    volumes: [seaweed:/data]
+    networks: [storage]
+    depends_on:
+      permissions: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -S -O /dev/null http://127.0.0.1:8333/ 2>&1 | grep -q '403 Forbidden'"]
+      interval: 5s
+      timeout: 4s
+      start_period: 30s
+      retries: 24
+    stop_grace_period: 60s
+    restart: unless-stopped
+  object-gateway:
+    image: quarry-gateway:local
+    build: {context: ., dockerfile: infra/caddy.Dockerfile}
+    user: "10001:10001"
+    network_mode: service:objectstore
+    environment: {XDG_CONFIG_HOME: /tmp/caddy-config, XDG_DATA_HOME: /tmp/caddy-data}
+    volumes: [./infra/S3.Caddyfile:/etc/caddy/Caddyfile:ro]
+    depends_on:
+      objectstore: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -S -O /dev/null http://127.0.0.1:8334/ 2>&1 | grep -q '403 Forbidden'"]
+      interval: 5s
+      timeout: 4s
+      retries: 12
+    restart: unless-stopped
+  searxng:
+    image: quarry-searxng:local
+    build: {context: ., dockerfile: infra/searxng.Dockerfile}
+    environment:
+      SEARXNG_SECRET: ${SEARXNG_SECRET}
+    volumes: [./infra/searxng.yml:/etc/searxng/settings.yml:ro]
+    restart: unless-stopped
+  mailpit:
+    image: quarry-mailpit:local
+    build: {context: ., dockerfile: infra/mailpit.Dockerfile}
+    user: "10001:10001"
+    environment:
+      MP_DATABASE: /tmp/mailpit.db
+      MP_MAX_MESSAGES: "100"
+    ports: ["127.0.0.1:8025:8025"]
+    restart: unless-stopped
+  initialize:
+    <<: *backend
+    environment:
+      <<: *backend-env
+      QUARRY_MIGRATION_DATABASE_URL: postgresql+psycopg://quarry:${POSTGRES_PASSWORD}@postgres:5432/quarry
+    command: ["python", "-m", "quarry.bootstrap"]
+    volumes:
+      - models:/models
+      - ./evaluation/results:/app/evaluation/results
+    depends_on:
+      postgres: {condition: service_healthy}
+      qdrant: {condition: service_started}
+      object-gateway: {condition: service_healthy}
+    restart: "no"
+  api:
+    <<: *backend
+    depends_on:
+      initialize: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready',timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      start_period: 90s
+      retries: 12
+    deploy:
+      resources:
+        limits: {cpus: "2", memory: 1536M}
+  worker:
+    <<: *backend
+    command: ["python", "-m", "quarry.worker"]
+    depends_on:
+      initialize: {condition: service_completed_successfully}
+    deploy:
+      resources:
+        limits: {cpus: "2", memory: 1536M}
+  web:
+    image: quarry-web:local
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      target: runtime
+    environment:
+      API_URL: http://api:8000
+      APP_ORIGIN: ${QUARRY_APP_ORIGIN:-http://localhost:3000}
+      DEMO_MODE: ${QUARRY_DEMO_SEED:-false}
+      PROXY_SECRET: ${QUARRY_PROXY_SECRET}
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    init: true
+    restart: unless-stopped
+  gateway:
+    image: quarry-gateway:local
+    build: {context: ., dockerfile: infra/caddy.Dockerfile}
+    user: "10001:10001"
+    ports: ["127.0.0.1:3000:3000"]
+    volumes: [./infra/Caddyfile:/etc/caddy/Caddyfile:ro]
+    environment: {XDG_CONFIG_HOME: /tmp/caddy-config, XDG_DATA_HOME: /tmp/caddy-data}
+    depends_on:
+      web: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  tests:
+    <<: *backend
+    image: quarry-tests:local
+    profiles: [test]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: test
+    environment:
+      <<: *backend-env
+      QUARRY_QDRANT_URL: http://qdrant:6333
+      QUARRY_DATABASE_URL: postgresql+psycopg://quarry:${POSTGRES_PASSWORD}@postgres:5432/quarry_test
+      QUARRY_S3_ENDPOINT: http://objectstore:8334
+      QUARRY_ALLOW_PAID_PROVIDERS: "false"
+      GROQ_API_KEY: ""
+      OPENAI_API_KEY: ""
+      QUARRY_SMTP_HOST: ""
+      QUARRY_SIGNUP_MODE: invite
+    command: ["pytest", "--cov=quarry", "--cov-branch", "--cov-report=term-missing", "--cov-report=json:/app/evaluation/results/coverage.json"]
+    depends_on:
+      initialize: {condition: service_completed_successfully}
+    restart: "no"
+  browser-tests:
+    image: quarry-browser-tests:local
+    profiles: [test]
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      target: browser-tests
+    network_mode: service:gateway
+    environment:
+      BASE_URL: http://localhost:3000
+    volumes: [./docs/assets:/app/test-results]
+    depends_on:
+      gateway: {condition: service_healthy}
+    init: true
+    restart: "no"
+  evaluate:
+    <<: *backend
+    image: quarry-evaluation:local
+    profiles: [evaluation]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: evaluation
+    command: ["python", "-m", "quarry.benchmark"]
+    depends_on:
+      initialize: {condition: service_completed_successfully}
+    restart: "no"
+volumes:
+  postgres:
+  vectors:
+  objects:
+  models:
+  seaweed:
+networks:
+  storage:
+    internal: true

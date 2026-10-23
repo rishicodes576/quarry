@@ -1,0 +1,16 @@
+.git
+.env
+**/node_modules
+**/.next
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.coverage
+evaluation/results/*
+!evaluation/results/.gitkeep
+docs/assets
+
+.runtime
+**/.ruff_cache
+**/*.egg-info
+**/*.tsbuildinfo

@@ -1,0 +1,96 @@
+{
+  "created_at": 1792671409.8646445,
+  "status": "passed",
+  "images": [
+    {
+      "service": "api",
+      "configured_image": "quarry-backend:local",
+      "running_image_id": "sha256:4ecca270cd18c6e016a604c79e5f2c81e7b5531eefafbb66009cf289544590be",
+      "tag_image_id": "sha256:4ecca270cd18c6e016a604c79e5f2c81e7b5531eefafbb66009cf289544590be",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "gateway",
+      "configured_image": "quarry-gateway:local",
+      "running_image_id": "sha256:dc8fcbee84af1b704e1f371dc4618b20b5ca52fd6f95989c8dccf42da25fc545",
+      "tag_image_id": "sha256:dc8fcbee84af1b704e1f371dc4618b20b5ca52fd6f95989c8dccf42da25fc545",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "mailpit",
+      "configured_image": "quarry-mailpit:local",
+      "running_image_id": "sha256:ee99d5d9204434cff412bc4ae0af2668d0c5d56d41ce36eaa1b68807c16fa06d",
+      "tag_image_id": "sha256:ee99d5d9204434cff412bc4ae0af2668d0c5d56d41ce36eaa1b68807c16fa06d",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "object-gateway",
+      "configured_image": "quarry-gateway:local",
+      "running_image_id": "sha256:dc8fcbee84af1b704e1f371dc4618b20b5ca52fd6f95989c8dccf42da25fc545",
+      "tag_image_id": "sha256:dc8fcbee84af1b704e1f371dc4618b20b5ca52fd6f95989c8dccf42da25fc545",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "objectstore",
+      "configured_image": "quarry-objectstore:local",
+      "running_image_id": "sha256:576bb4e07ea98156beb65c434188e2113e51010debf7762468f88f4057ba3752",
+      "tag_image_id": "sha256:576bb4e07ea98156beb65c434188e2113e51010debf7762468f88f4057ba3752",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "configured_image": "quarry-postgres:local",
+      "running_image_id": "sha256:c702d110a00b4298ba6a54cceb2da2b7c29fac6810e7e527d9d7a65414f49440",
+      "tag_image_id": "sha256:c702d110a00b4298ba6a54cceb2da2b7c29fac6810e7e527d9d7a65414f49440",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "qdrant",
+      "configured_image": "quarry-qdrant:local",
+      "running_image_id": "sha256:435baede84379df83ffb814264a4a5bb72ac88081dfaca1fa9017343f324f690",
+      "tag_image_id": "sha256:435baede84379df83ffb814264a4a5bb72ac88081dfaca1fa9017343f324f690",
+      "matches": true,
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "searxng",
+      "configured_image": "quarry-searxng:local",
+      "running_image_id": "sha256:fc73fa7743fd8884fd2a08b4e8fb693e1d80c3bb5310fe2e289e60addcaa7a6d",
+      "tag_image_id": "sha256:fc73fa7743fd8884fd2a08b4e8fb693e1d80c3bb5310fe2e289e60addcaa7a6d",
+      "matches": true,
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "web",
+      "configured_image": "quarry-web:local",
+      "running_image_id": "sha256:e655a06197d921a7b9d7f147f157e9bc1116655db650712c7bb71c44ceb2fcf4",
+      "tag_image_id": "sha256:e655a06197d921a7b9d7f147f157e9bc1116655db650712c7bb71c44ceb2fcf4",
+      "matches": true,
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "worker",
+      "configured_image": "quarry-backend:local",
+      "running_image_id": "sha256:4ecca270cd18c6e016a604c79e5f2c81e7b5531eefafbb66009cf289544590be",
+      "tag_image_id": "sha256:4ecca270cd18c6e016a604c79e5f2c81e7b5531eefafbb66009cf289544590be",
+      "matches": true,
+      "state": "running",
+      "health": ""
+    }
+  ]
+}

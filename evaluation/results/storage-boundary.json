@@ -1,0 +1,1 @@
+{"unauthenticated_s3": 403, "control_port_connect_codes": {"9333": 111, "8888": 111, "9340": 111, "12535": 111, "19333": 111, "18888": 111}, "invalid_signature": 403, "runtime_db_role": "quarry_runtime", "runtime_ddl": "denied"}

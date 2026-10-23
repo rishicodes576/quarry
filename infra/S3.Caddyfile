@@ -1,0 +1,12 @@
+{
+    admin off
+    auto_https off
+}
+:8334 {
+    request_body {
+        max_size 11MB
+    }
+    reverse_proxy 127.0.0.1:8333 {
+        flush_interval -1
+    }
+}

@@ -1,0 +1,170 @@
+{
+  "status": "passed",
+  "api_replicas": 2,
+  "workers": 1,
+  "requested": 25,
+  "completed": 25,
+  "free_progress_before_enterprise_backlog_drained": true,
+  "plan_weights": {
+    "enterprise": 4,
+    "free": 1
+  },
+  "tenant_queue_p95_ms": {
+    "enterprise": 9007.736051082611,
+    "free": 9319.995307922363
+  },
+  "dispatch_order": [
+    {
+      "run_id": "7ebc269d65c742c19a674337162d70ae",
+      "tenant": "enterprise",
+      "created_at": 1792671734.0728972,
+      "started_at": 1792671734.3238559
+    },
+    {
+      "run_id": "8422104c5d6a4672900de15a680d90ae",
+      "tenant": "enterprise",
+      "created_at": 1792671734.1258974,
+      "started_at": 1792671734.8798664
+    },
+    {
+      "run_id": "b0e1d55e31c1451c877c15fb435bf728",
+      "tenant": "enterprise",
+      "created_at": 1792671734.1645417,
+      "started_at": 1792671735.4358377
+    },
+    {
+      "run_id": "284dc58afe5d492cb77d0756da41d8c6",
+      "tenant": "enterprise",
+      "created_at": 1792671734.2035902,
+      "started_at": 1792671735.852103
+    },
+    {
+      "run_id": "3f5402a2c7784185b7fa4196d1e5d927",
+      "tenant": "enterprise",
+      "created_at": 1792671734.239018,
+      "started_at": 1792671736.2597263
+    },
+    {
+      "run_id": "639bed044a30408bbe583647347275b7",
+      "tenant": "enterprise",
+      "created_at": 1792671734.2910955,
+      "started_at": 1792671736.7373745
+    },
+    {
+      "run_id": "7bf84f767a7b4363bc77940df2a4738a",
+      "tenant": "free",
+      "created_at": 1792671734.963522,
+      "started_at": 1792671737.1699305
+    },
+    {
+      "run_id": "a754c2bf13314198baba6e72f2ef50c2",
+      "tenant": "enterprise",
+      "created_at": 1792671734.3549633,
+      "started_at": 1792671737.5792248
+    },
+    {
+      "run_id": "23a44023149c4c0ebe2aad3462712060",
+      "tenant": "enterprise",
+      "created_at": 1792671734.414849,
+      "started_at": 1792671738.033789
+    },
+    {
+      "run_id": "303369a9b5d34de9ae44c5990f27deb9",
+      "tenant": "enterprise",
+      "created_at": 1792671734.462317,
+      "started_at": 1792671738.4288278
+    },
+    {
+      "run_id": "3641ddcce91048bc8cd11251d5c7f951",
+      "tenant": "enterprise",
+      "created_at": 1792671734.5265956,
+      "started_at": 1792671738.821618
+    },
+    {
+      "run_id": "4c4fc4bd0c5e46e3bf3d9bff5bf1ad8c",
+      "tenant": "free",
+      "created_at": 1792671735.0532887,
+      "started_at": 1792671739.2325644
+    },
+    {
+      "run_id": "4edcb8cc5833497d97754b658e71e194",
+      "tenant": "enterprise",
+      "created_at": 1792671734.5692382,
+      "started_at": 1792671739.6177218
+    },
+    {
+      "run_id": "662f3b271dec40cfa74c785d21602f56",
+      "tenant": "enterprise",
+      "created_at": 1792671734.639151,
+      "started_at": 1792671740.0505648
+    },
+    {
+      "run_id": "9ce741516f2441aea581dc1213194180",
+      "tenant": "enterprise",
+      "created_at": 1792671734.6782024,
+      "started_at": 1792671740.474097
+    },
+    {
+      "run_id": "7e0b19dec3434e3a83b2593ac43fb9ad",
+      "tenant": "enterprise",
+      "created_at": 1792671734.7054722,
+      "started_at": 1792671740.8954175
+    },
+    {
+      "run_id": "3495946ce1204260b55ad05a15724ddd",
+      "tenant": "free",
+      "created_at": 1792671735.0868363,
+      "started_at": 1792671741.2913144
+    },
+    {
+      "run_id": "99b31d16099b44f68a67df803e16cc70",
+      "tenant": "enterprise",
+      "created_at": 1792671734.7292106,
+      "started_at": 1792671741.715581
+    },
+    {
+      "run_id": "fc7591c85c1841d3ac84731887277706",
+      "tenant": "enterprise",
+      "created_at": 1792671734.7525477,
+      "started_at": 1792671742.1506846
+    },
+    {
+      "run_id": "caea6136e7fc4e2d8a3b5d84054ba80f",
+      "tenant": "enterprise",
+      "created_at": 1792671734.7764902,
+      "started_at": 1792671742.6173768
+    },
+    {
+      "run_id": "517b15daaba747b4baa21c40c9022d42",
+      "tenant": "enterprise",
+      "created_at": 1792671734.8014824,
+      "started_at": 1792671743.0214293
+    },
+    {
+      "run_id": "0ec4868a8e2c4ac28b9b48d267c362ca",
+      "tenant": "free",
+      "created_at": 1792671735.1281607,
+      "started_at": 1792671743.424513
+    },
+    {
+      "run_id": "3483c7f272ca49f290e1ac3ac9a57748",
+      "tenant": "enterprise",
+      "created_at": 1792671734.827169,
+      "started_at": 1792671743.8166304
+    },
+    {
+      "run_id": "ff0ee474fbb640c1adbb260ee62a65d9",
+      "tenant": "enterprise",
+      "created_at": 1792671734.852458,
+      "started_at": 1792671744.207412
+    },
+    {
+      "run_id": "e2f6c1488f0240d3a4369f727e59e688",
+      "tenant": "free",
+      "created_at": 1792671735.1645389,
+      "started_at": 1792671744.740445
+    }
+  ],
+  "method": "20 enterprise requests followed by five free requests while one actual worker drains the queue. Both accounts remain within the normal 20/min admission rate. Verifies finite progress, not a latency SLA or weighted CPU-time guarantee.",
+  "generation_api_calls": 0
+}

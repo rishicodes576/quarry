@@ -1,0 +1,4870 @@
+{
+  "status": "passed",
+  "started_at": 1792671659.3321562,
+  "finished_at": 1792671818.2205012,
+  "method": "Concurrent docker stats --no-stream --format {{json .}} snapshots, with two seconds between commands. Grouped by observed running worker count, including startup, idle and measurement intervals. Docker CPU 100% means one logical CPU. These are sampled maxima, not true instantaneous peaks or per-request attribution. No concurrent verification, scan or restoration workload.",
+  "groups_by_worker_count": {
+    "1": {
+      "samples": 21,
+      "peak_sampled_total_cpu_percent": 353.92,
+      "peak_sampled_total_memory_bytes": 2000452321.28
+    },
+    "2": {
+      "samples": 8,
+      "peak_sampled_total_cpu_percent": 482.89,
+      "peak_sampled_total_memory_bytes": 2379994890.24
+    },
+    "4": {
+      "samples": 7,
+      "peak_sampled_total_cpu_percent": 703.14,
+      "peak_sampled_total_memory_bytes": 3136427130.88
+    }
+  },
+  "observer_errors": [],
+  "samples": [
+    {
+      "at": 1792671662.8197043,
+      "containers": [
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.03%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.22%",
+          "MemUsage": "15.95MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 874kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.01%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "102.1MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.25MB / 3.04MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "2.63MB / 0B",
+          "CPUPerc": "0.25%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.25%",
+          "MemUsage": "341.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "42.3kB / 34.6kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.94%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "22.65%",
+          "MemUsage": "347.9MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "516kB / 471kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.58MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "401kB / 215kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.2kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "62.7MB / 80.7MB",
+          "CPUPerc": "1.20%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.08%",
+          "MemUsage": "79.08MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "14.2MB / 13.5MB",
+          "PIDs": "11"
+        },
+        {
+          "BlockIO": "38.9MB / 2.83MB",
+          "CPUPerc": "13.95%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.88%",
+          "MemUsage": "138MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "401kB / 215kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.2MB / 5.39MB",
+          "CPUPerc": "0.31%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.77%",
+          "MemUsage": "129.9MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "943kB / 241kB",
+          "PIDs": "47"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "19.9kB / 31.6kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "160kB / 0B",
+          "CPUPerc": "98.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "1.94%",
+          "MemUsage": "29.75MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "1.22kB / 168B",
+          "PIDs": "2"
+        }
+      ]
+    },
+    {
+      "at": 1792671666.699128,
+      "containers": [
+        {
+          "BlockIO": "12.4MB / 0B",
+          "CPUPerc": "119.42%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "17.88%",
+          "MemUsage": "274.7MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "1.74kB / 252B",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.20%",
+          "MemUsage": "15.06MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 874kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.38%",
+          "MemUsage": "101.5MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.25MB / 3.04MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "2.63MB / 0B",
+          "CPUPerc": "0.24%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.25%",
+          "MemUsage": "341.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "42.6kB / 34.7kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.99%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "22.62%",
+          "MemUsage": "347.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "534kB / 487kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "15MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "401kB / 215kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.4kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "62.7MB / 80.9MB",
+          "CPUPerc": "8.11%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.08%",
+          "MemUsage": "79.63MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "14.2MB / 13.5MB",
+          "PIDs": "11"
+        },
+        {
+          "BlockIO": "38.9MB / 2.83MB",
+          "CPUPerc": "12.75%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.6MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "401kB / 215kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.2MB / 5.39MB",
+          "CPUPerc": "0.25%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.76%",
+          "MemUsage": "129.4MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "943kB / 241kB",
+          "PIDs": "47"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "7.72%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.31%",
+          "MemUsage": "22.68MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671671.171376,
+      "containers": [
+        {
+          "BlockIO": "13.9MB / 0B",
+          "CPUPerc": "0.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "20.98%",
+          "MemUsage": "322.2MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "1.74kB / 252B",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "6.04%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.22%",
+          "MemUsage": "16.38MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 875kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "30.30%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.40%",
+          "MemUsage": "102.9MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.05MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "2.63MB / 0B",
+          "CPUPerc": "0.22%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.24%",
+          "MemUsage": "341.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "44.3kB / 36.7kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.31%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "22.62%",
+          "MemUsage": "347.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "549kB / 500kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "6.24%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.65MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "402kB / 215kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.4kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "62.7MB / 81MB",
+          "CPUPerc": "2.46%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.08%",
+          "MemUsage": "79.32MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "14.2MB / 13.5MB",
+          "PIDs": "11"
+        },
+        {
+          "BlockIO": "38.9MB / 2.83MB",
+          "CPUPerc": "15.06%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.7MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "402kB / 215kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.2MB / 5.39MB",
+          "CPUPerc": "0.39%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.77%",
+          "MemUsage": "130.1MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "943kB / 242kB",
+          "PIDs": "47"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.30%",
+          "MemUsage": "22.2MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671675.610256,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "1.59%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.11%",
+          "MemUsage": "354.9MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "6.89kB / 5.35kB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.06%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.32MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 875kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.06%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "101.9MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.05MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "2.85MB / 0B",
+          "CPUPerc": "100.87%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "24.19%",
+          "MemUsage": "371.6MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "44.6kB / 36.7kB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.97%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "22.62%",
+          "MemUsage": "347.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "564kB / 513kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "6.31%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.22%",
+          "MemUsage": "16.29MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "403kB / 216kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "62.7MB / 81.1MB",
+          "CPUPerc": "9.15%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.10%",
+          "MemUsage": "81.18MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "14.2MB / 13.5MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "38.9MB / 2.83MB",
+          "CPUPerc": "21.17%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.9MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "403kB / 216kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.2MB / 5.39MB",
+          "CPUPerc": "0.39%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.79%",
+          "MemUsage": "131.6MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "945kB / 244kB",
+          "PIDs": "48"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671680.0401697,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.09%",
+          "MemUsage": "354.7MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "15.5kB / 8.17kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "6.43%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.23%",
+          "MemUsage": "16.66MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 876kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "1.93%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.40%",
+          "MemUsage": "102.6MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.05MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "2.99MB / 0B",
+          "CPUPerc": "96.88%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "33.01%",
+          "MemUsage": "507MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "48.9kB / 41.7kB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.26%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "22.62%",
+          "MemUsage": "347.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "579kB / 527kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.02%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.07MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "404kB / 216kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "62.7MB / 81.3MB",
+          "CPUPerc": "2.98%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.13%",
+          "MemUsage": "83.24MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "14.2MB / 13.5MB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "38.9MB / 2.83MB",
+          "CPUPerc": "16.70%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.6MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "404kB / 216kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.2MB / 5.39MB",
+          "CPUPerc": "0.25%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.79%",
+          "MemUsage": "131.7MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "946kB / 245kB",
+          "PIDs": "48"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671684.5383558,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "7.56%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.39%",
+          "MemUsage": "359.3MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "15.6kB / 8.21kB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.07MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 876kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.38%",
+          "MemUsage": "101.7MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.05MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "163.91%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.13%",
+          "MemUsage": "539.5MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "485kB / 597kB",
+          "PIDs": "50"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "98.21%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.07%",
+          "MemUsage": "354.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "1.34MB / 1.3MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.21%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.58MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "412kB / 219kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "63.4MB / 87.1MB",
+          "CPUPerc": "61.75%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.55%",
+          "MemUsage": "114.3MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "15.4MB / 14.7MB",
+          "PIDs": "23"
+        },
+        {
+          "BlockIO": "39MB / 2.83MB",
+          "CPUPerc": "21.19%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.9MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "412kB / 219kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.6MB / 5.42MB",
+          "CPUPerc": "1.09%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.93%",
+          "MemUsage": "141.5MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.05MB / 253kB",
+          "PIDs": "57"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.31%",
+          "MemUsage": "22.63MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671688.756605,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.20%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.06%",
+          "MemUsage": "354.3MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "17.4kB / 10.2kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.20%",
+          "MemUsage": "15.06MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 876kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.38%",
+          "MemUsage": "101.7MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.05MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "18.81%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.70%",
+          "MemUsage": "548.3MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "1e+03kB / 713kB",
+          "PIDs": "42"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "104.16%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.14%",
+          "MemUsage": "355.5MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "2.49MB / 2.37MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.92MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "412kB / 219kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "64MB / 93MB",
+          "CPUPerc": "30.84%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.42%",
+          "MemUsage": "104.5MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "16.5MB / 16.4MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.83MB",
+          "CPUPerc": "15.83%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.88%",
+          "MemUsage": "138.5MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "412kB / 219kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.35%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.92%",
+          "MemUsage": "141.2MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.15MB / 259kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671693.2111974,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.23%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.06%",
+          "MemUsage": "354.3MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "17.4kB / 10.2kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.48MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 877kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.41%",
+          "MemUsage": "103.4MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.06MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "17.06%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.01%",
+          "MemUsage": "537.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "1.71MB / 780kB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "110.03%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.17%",
+          "MemUsage": "355.9MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "3.77MB / 3.59MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.32MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "413kB / 219kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "64.3MB / 98.2MB",
+          "CPUPerc": "30.54%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.42%",
+          "MemUsage": "104.4MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "17.7MB / 18.4MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.83MB",
+          "CPUPerc": "15.84%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.88%",
+          "MemUsage": "138.2MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "413kB / 219kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.21%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.90%",
+          "MemUsage": "139.6MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.24MB / 267kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671696.7558203,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.6MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "19.2kB / 12.2kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.20%",
+          "MemUsage": "15.06MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 877kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.38%",
+          "MemUsage": "101.6MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.06MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "2.40%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.02%",
+          "MemUsage": "537.9MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "2.28MB / 823kB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "114.86%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.15%",
+          "MemUsage": "355.6MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "4.8MB / 4.56MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "6.08%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.18MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "414kB / 220kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "64.4MB / 102MB",
+          "CPUPerc": "30.74%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.42%",
+          "MemUsage": "104.6MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "18.7MB / 20.1MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.83MB",
+          "CPUPerc": "14.47%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.88%",
+          "MemUsage": "138.4MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "414kB / 220kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.29%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.90%",
+          "MemUsage": "139.7MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.32MB / 273kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "7.61%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.31%",
+          "MemUsage": "22.87MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671701.196447,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.20%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.07%",
+          "MemUsage": "354.3MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "19.3kB / 12.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.27MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 878kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "3.74%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.44%",
+          "MemUsage": "106.1MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.06MB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "1.92%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "34.97%",
+          "MemUsage": "537.2MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "3.29MB / 892kB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "112.08%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.18%",
+          "MemUsage": "356MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "6.11MB / 5.82MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "5.84%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.3MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "415kB / 220kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "64.7MB / 107MB",
+          "CPUPerc": "31.17%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.6MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "19.9MB / 22.3MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.84MB",
+          "CPUPerc": "16.03%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.6MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "415kB / 220kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.47%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.91%",
+          "MemUsage": "140.1MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.42MB / 281kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671705.6431317,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.07%",
+          "MemUsage": "354.3MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "19.3kB / 12.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.07MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 878kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.01%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "101.9MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.06MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "2.50%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.00%",
+          "MemUsage": "537.6MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "4.2MB / 945kB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "104.62%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.22%",
+          "MemUsage": "356.6MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "7.32MB / 6.96MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.14%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.67MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "416kB / 220kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "64.7MB / 113MB",
+          "CPUPerc": "26.42%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.43%",
+          "MemUsage": "105.3MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "21MB / 24.7MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.84MB",
+          "CPUPerc": "16.51%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.88%",
+          "MemUsage": "138MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "416kB / 220kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.42%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.91%",
+          "MemUsage": "140.4MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.51MB / 288kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671710.0767229,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.20%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.11%",
+          "MemUsage": "354.9MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "21.1kB / 14.2kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "6.32%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.22%",
+          "MemUsage": "16.22MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 879kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "2.28%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.40%",
+          "MemUsage": "103MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.06MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "21.95%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.67%",
+          "MemUsage": "547.9MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "5.67MB / 1.02MB",
+          "PIDs": "32"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "119.16%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.22%",
+          "MemUsage": "356.6MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "8.64MB / 8.22MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.33MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "416kB / 220kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "64.9MB / 118MB",
+          "CPUPerc": "37.75%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.46%",
+          "MemUsage": "107MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "22.2MB / 27.2MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.84MB",
+          "CPUPerc": "22.98%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.87%",
+          "MemUsage": "137.6MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "416kB / 220kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.24%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.89%",
+          "MemUsage": "139MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.61MB / 294kB",
+          "PIDs": "54"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671714.5297225,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.19%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.07%",
+          "MemUsage": "354.4MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "21.1kB / 14.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.07MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 879kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.40%",
+          "MemUsage": "102.7MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.06MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "2.20%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.01%",
+          "MemUsage": "537.8MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "7.19MB / 1.1MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "112.80%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.21%",
+          "MemUsage": "356.5MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "9.66MB / 9.19MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.06%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.36MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "417kB / 220kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65MB / 124MB",
+          "CPUPerc": "32.95%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.46%",
+          "MemUsage": "107.1MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "23.5MB / 30MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "15.12%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.88%",
+          "MemUsage": "138MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "417kB / 220kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "0.95%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.91%",
+          "MemUsage": "140.2MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.72MB / 301kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.31%",
+          "MemUsage": "22.52MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671718.7519867,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.20%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.4MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "22.9kB / 16.2kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.32MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 879kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.38%",
+          "MemUsage": "101.8MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.07MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "2.60%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.06%",
+          "MemUsage": "538.5MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "8.69MB / 1.16MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "110.87%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.19%",
+          "MemUsage": "356.1MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "11.1MB / 10.6MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.32MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "418kB / 221kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.2MB / 128MB",
+          "CPUPerc": "36.79%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.46%",
+          "MemUsage": "107.4MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "24.6MB / 32.7MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "13.67%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.87%",
+          "MemUsage": "137.7MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "418kB / 221kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "1.30%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.91%",
+          "MemUsage": "140.3MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.8MB / 308kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671723.1873264,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.20%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.4MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "23kB / 16.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 880kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "2.52%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.40%",
+          "MemUsage": "102.6MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.07MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "4.07%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.08%",
+          "MemUsage": "538.8MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "10.5MB / 1.23MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "101.76%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.22%",
+          "MemUsage": "356.7MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "12.4MB / 11.8MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.82MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "418kB / 221kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.3MB / 133MB",
+          "CPUPerc": "27.23%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.46%",
+          "MemUsage": "107.2MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "25.7MB / 35.8MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "13.11%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.87%",
+          "MemUsage": "137.7MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "418kB / 221kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "0.93%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.90%",
+          "MemUsage": "139.7MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.9MB / 315kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671726.7627835,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "54.73%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.16%",
+          "MemUsage": "355.7MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "24.8kB / 18.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.05%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.08MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 880kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.07%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "101.8MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.07MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.24MB / 0B",
+          "CPUPerc": "81.10%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.58%",
+          "MemUsage": "346.8MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "11.6MB / 1.28MB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.41%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.17%",
+          "MemUsage": "355.9MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "13MB / 12.4MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "7.77%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "420kB / 221kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.4MB / 135MB",
+          "CPUPerc": "3.12%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.40%",
+          "MemUsage": "103MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "26.3MB / 37.5MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "12.98%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.9MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "420kB / 221kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "0.53%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.91%",
+          "MemUsage": "140.3MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.94MB / 319kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671731.2002215,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.22%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "24.8kB / 18.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.22%",
+          "MemUsage": "15.96MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 881kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.02%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.40%",
+          "MemUsage": "102.6MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.07MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "110.49%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "29.30%",
+          "MemUsage": "450MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "11.6MB / 1.28MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.83%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.16%",
+          "MemUsage": "355.7MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "13.1MB / 12.4MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.08MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "420kB / 221kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.4MB / 136MB",
+          "CPUPerc": "10.01%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.40%",
+          "MemUsage": "102.6MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "26.4MB / 37.5MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "15.16%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.89%",
+          "MemUsage": "138.6MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "420kB / 221kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "28.9MB / 5.97MB",
+          "CPUPerc": "0.45%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.88%",
+          "MemUsage": "138.1MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "1.94MB / 319kB",
+          "PIDs": "54"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.12%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.30%",
+          "MemUsage": "22.01MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671735.6474814,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.23%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "24.8kB / 18.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.08MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 881kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.01%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "102.1MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.07MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "90.00%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "34.71%",
+          "MemUsage": "533.1MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "11.8MB / 1.51MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "111.71%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.31%",
+          "MemUsage": "358MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "13.4MB / 12.8MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "13.84MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "428kB / 224kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.4MB / 137MB",
+          "CPUPerc": "53.68%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.47%",
+          "MemUsage": "108.3MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "26.9MB / 38MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "26.63%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.2MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "428kB / 224kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 6.57MB",
+          "CPUPerc": "5.23%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.95%",
+          "MemUsage": "143.4MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.01MB / 324kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671740.0867434,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.18%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.15%",
+          "MemUsage": "355.6MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "26.6kB / 20.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "5.97%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.27%",
+          "MemUsage": "19.98MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 881kB",
+          "PIDs": "14"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "102MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.07MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "2.56%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "34.69%",
+          "MemUsage": "532.8MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "12.3MB / 1.57MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "113.84%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.29%",
+          "MemUsage": "357.7MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "14.7MB / 14MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "13.85MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "429kB / 225kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.5MB / 143MB",
+          "CPUPerc": "30.64%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.48%",
+          "MemUsage": "109.1MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "28.1MB / 39.9MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "16.13%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "429kB / 225kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 6.57MB",
+          "CPUPerc": "1.24%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.94%",
+          "MemUsage": "142.8MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.12MB / 332kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671744.5304234,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.20%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.09%",
+          "MemUsage": "354.7MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "26.7kB / 20.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 881kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.39%",
+          "MemUsage": "102MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.08MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "2.72%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "34.70%",
+          "MemUsage": "533MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "13.3MB / 1.63MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "102.60%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.27%",
+          "MemUsage": "357.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "16MB / 15.3MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.04%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.43MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "430kB / 225kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "65.6MB / 148MB",
+          "CPUPerc": "32.50%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.48%",
+          "MemUsage": "108.8MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "29.3MB / 42.1MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.86MB",
+          "CPUPerc": "13.26%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.1MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "430kB / 225kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 6.57MB",
+          "CPUPerc": "1.32%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.95%",
+          "MemUsage": "143.3MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.22MB / 340kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.30%",
+          "MemUsage": "22.14MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671748.7721877,
+      "containers": [
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "16.07%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.18%",
+          "MemUsage": "356.1MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "28.5kB / 22.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.08MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 881kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "16.01%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.12%",
+          "MemUsage": "82.1MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.08MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "0.24%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.63%",
+          "MemUsage": "347.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "13.5MB / 1.64MB",
+          "PIDs": "27"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.95%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.23%",
+          "MemUsage": "356.8MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "16.2MB / 15.5MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.15%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.85MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "431kB / 225kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.5kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.1MB / 155MB",
+          "CPUPerc": "1.58%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.42%",
+          "MemUsage": "104.5MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "29.5MB / 42.5MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "39MB / 2.9MB",
+          "CPUPerc": "15.80%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.98%",
+          "MemUsage": "145.8MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "431kB / 225kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 6.57MB",
+          "CPUPerc": "0.56%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.96%",
+          "MemUsage": "143.8MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.23MB / 342kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.1kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671753.262755,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "98.56%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "5.34%",
+          "MemUsage": "82.06MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "1.74kB / 252B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.09%",
+          "MemUsage": "354.7MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "28.8kB / 22.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.2MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 882kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "36.65%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.13%",
+          "MemUsage": "82.82MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.08MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "97.22%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "25.14%",
+          "MemUsage": "386.1MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "13.5MB / 1.64MB",
+          "PIDs": "28"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "3.62%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.20%",
+          "MemUsage": "356.3MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "16.2MB / 15.5MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.13%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.57MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "432kB / 226kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.7kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.1MB / 155MB",
+          "CPUPerc": "9.51%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.43%",
+          "MemUsage": "104.8MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "29.5MB / 42.5MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "39MB / 2.9MB",
+          "CPUPerc": "12.57%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.6MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "432kB / 226kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 6.57MB",
+          "CPUPerc": "0.52%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.95%",
+          "MemUsage": "143.1MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.23MB / 343kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.3kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671756.8295596,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "125.97%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.43%",
+          "MemUsage": "344.5MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "4.63kB / 2.89kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.22%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "28.8kB / 22.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.05%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.33MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 882kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.06%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.11%",
+          "MemUsage": "81.66MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.08MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "95.10%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "33.54%",
+          "MemUsage": "515.2MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "13.5MB / 1.66MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "4.91%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.21%",
+          "MemUsage": "356.5MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "16.2MB / 15.5MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.47%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.1MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "435kB / 227kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.7kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.1MB / 155MB",
+          "CPUPerc": "8.26%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.49%",
+          "MemUsage": "109.3MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "29.5MB / 42.6MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.9MB",
+          "CPUPerc": "16.48%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.4MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "436kB / 227kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 6.57MB",
+          "CPUPerc": "0.44%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.94%",
+          "MemUsage": "142.6MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.24MB / 344kB",
+          "PIDs": "48"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.3kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671761.3472302,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "105.00%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.85%",
+          "MemUsage": "351MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "631kB / 601kB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.28%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "30.6kB / 24.3kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.73%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.23%",
+          "MemUsage": "16.82MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 882kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "3.79%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.11%",
+          "MemUsage": "81.7MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.09MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "163.12%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.14%",
+          "MemUsage": "539.8MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "14MB / 2.17MB",
+          "PIDs": "50"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "105.74%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.27%",
+          "MemUsage": "357.5MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "16.9MB / 16.2MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "13.84MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "440kB / 229kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.7kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.2MB / 162MB",
+          "CPUPerc": "74.19%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.81%",
+          "MemUsage": "133.2MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "31.2MB / 44.3MB",
+          "PIDs": "27"
+        },
+        {
+          "BlockIO": "39MB / 2.91MB",
+          "CPUPerc": "24.45%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "2.00%",
+          "MemUsage": "146.9MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "440kB / 229kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.19MB",
+          "CPUPerc": "5.59%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "2.00%",
+          "MemUsage": "147MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.39MB / 355kB",
+          "PIDs": "55"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.4kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671765.8540452,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "99.24%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.91%",
+          "MemUsage": "351.9MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "1.88MB / 1.77MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.32%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "30.8kB / 24.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 883kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.11%",
+          "MemUsage": "81.79MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.09MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "3.48%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.07%",
+          "MemUsage": "538.6MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "14.7MB / 2.3MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "97.28%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.29%",
+          "MemUsage": "357.7MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "18.1MB / 17.4MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "13.84MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "441kB / 229kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.8kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.2MB / 171MB",
+          "CPUPerc": "68.31%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.61%",
+          "MemUsage": "118.5MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "33.4MB / 47.4MB",
+          "PIDs": "21"
+        },
+        {
+          "BlockIO": "39MB / 2.91MB",
+          "CPUPerc": "23.00%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.5MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "441kB / 229kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "1.79%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.99%",
+          "MemUsage": "145.9MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.57MB / 368kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.4kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671770.3726277,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "103.20%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.96%",
+          "MemUsage": "352.7MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "3.05MB / 2.9MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "62.83%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.15%",
+          "MemUsage": "355.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "32.5kB / 26.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.04%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 883kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.11%",
+          "MemUsage": "81.53MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.09MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "17.38%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.07%",
+          "MemUsage": "538.6MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "15.6MB / 2.35MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "91.24%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.24%",
+          "MemUsage": "356.9MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "19.3MB / 18.5MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.13MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "442kB / 229kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.8kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.8MB / 197MB",
+          "CPUPerc": "59.34%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.66%",
+          "MemUsage": "121.7MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "35.6MB / 50.7MB",
+          "PIDs": "22"
+        },
+        {
+          "BlockIO": "39MB / 2.91MB",
+          "CPUPerc": "17.02%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "2.00%",
+          "MemUsage": "146.7MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "442kB / 229kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "1.61%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.3MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.75MB / 382kB",
+          "PIDs": "57"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.4kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671774.8788624,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "99.95%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.98%",
+          "MemUsage": "353MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "3.98MB / 3.79MB",
+          "PIDs": "17"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.26%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "32.6kB / 26.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 884kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "20.32%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.30%",
+          "MemUsage": "95.23MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.09MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "44.39%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.06%",
+          "MemUsage": "538.5MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "16.9MB / 2.43MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "101.07%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.28%",
+          "MemUsage": "357.5MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "20.5MB / 19.6MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.22%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.09MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "443kB / 230kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.8kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 206MB",
+          "CPUPerc": "63.63%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.67%",
+          "MemUsage": "122.6MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "37.7MB / 54.4MB",
+          "PIDs": "22"
+        },
+        {
+          "BlockIO": "39MB / 2.91MB",
+          "CPUPerc": "18.24%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "443kB / 230kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "1.92%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.98%",
+          "MemUsage": "145.7MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "2.92MB / 395kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.4kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671779.1061919,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "101.36%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.95%",
+          "MemUsage": "352.5MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "5.35MB / 5.09MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.22%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "32.6kB / 26.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 884kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.11%",
+          "MemUsage": "81.73MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.26MB / 3.09MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "2.66%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.08%",
+          "MemUsage": "538.8MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "18.4MB / 2.49MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "103.69%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.27%",
+          "MemUsage": "357.4MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "21.7MB / 20.7MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.77MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "443kB / 230kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.8kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 215MB",
+          "CPUPerc": "57.92%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.65%",
+          "MemUsage": "121.4MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "39.8MB / 58.1MB",
+          "PIDs": "21"
+        },
+        {
+          "BlockIO": "39MB / 2.91MB",
+          "CPUPerc": "15.93%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "443kB / 230kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "2.00%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.98%",
+          "MemUsage": "145.6MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.1MB / 407kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.4kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671783.601833,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "2.86%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.97%",
+          "MemUsage": "352.9MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "6.23MB / 5.93MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.26%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "34.4kB / 28.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 885kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.12%",
+          "MemUsage": "82.24MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.09MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "71.65%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.65%",
+          "MemUsage": "347.9MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "19.8MB / 2.55MB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "3.24%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.26%",
+          "MemUsage": "357.3MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "22.5MB / 21.5MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.18MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "444kB / 230kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.8kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 221MB",
+          "CPUPerc": "4.05%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.58%",
+          "MemUsage": "116MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "41.3MB / 61.3MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.91MB",
+          "CPUPerc": "15.86%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146.3MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "444kB / 230kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "0.26%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.97%",
+          "MemUsage": "144.4MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.23MB / 415kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.4kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671789.8947294,
+      "containers": [
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "4.43%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.91%",
+          "MemUsage": "351.9MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "6.24MB / 5.96MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.39%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "34.6kB / 28.5kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 885kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.01%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.11%",
+          "MemUsage": "81.89MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.09MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.26MB / 0B",
+          "CPUPerc": "0.40%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "22.60%",
+          "MemUsage": "347.2MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "19.8MB / 2.55MB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "4.00%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.20%",
+          "MemUsage": "356.3MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "22.5MB / 21.5MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "8.01%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.39MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "445kB / 230kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "23.9kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 225MB",
+          "CPUPerc": "16.18%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.58%",
+          "MemUsage": "115.9MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "41.4MB / 61.3MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39MB / 2.94MB",
+          "CPUPerc": "17.69%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.99%",
+          "MemUsage": "146MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "445kB / 230kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "0.41%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.97%",
+          "MemUsage": "144.8MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.23MB / 417kB",
+          "PIDs": "56"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "9.14%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.31%",
+          "MemUsage": "22.64MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.5kB / 31.6kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "28.7kB / 0B",
+          "CPUPerc": "98.96%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "2.15%",
+          "MemUsage": "32.98MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "1.3kB / 168B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "97.82%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "3.09%",
+          "MemUsage": "47.53MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "1.56kB / 252B",
+          "PIDs": "2"
+        }
+      ]
+    },
+    {
+      "at": 1792671794.3984182,
+      "containers": [
+        {
+          "BlockIO": "414kB / 0B",
+          "CPUPerc": "104.52%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "16.40%",
+          "MemUsage": "251.9MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "2kB / 252B",
+          "PIDs": "15"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "103.99%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "16.15%",
+          "MemUsage": "248.1MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "1.91kB / 252B",
+          "PIDs": "15"
+        },
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "2.80%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.94%",
+          "MemUsage": "352.4MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "6.27MB / 5.98MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.21%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.5MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "36.7kB / 30.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.09MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 886kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.4MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.12%",
+          "MemUsage": "81.95MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.1MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.34MB / 0B",
+          "CPUPerc": "97.53%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "31.03%",
+          "MemUsage": "476.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "19.8MB / 2.55MB",
+          "PIDs": "31"
+        },
+        {
+          "BlockIO": "4.24MB / 0B",
+          "CPUPerc": "2.42%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.22%",
+          "MemUsage": "356.6MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "22.5MB / 21.5MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.03%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.20%",
+          "MemUsage": "14.63MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "446kB / 230kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "24kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 226MB",
+          "CPUPerc": "2.26%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.59%",
+          "MemUsage": "116.9MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "41.4MB / 61.3MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "39.9MB / 2.95MB",
+          "CPUPerc": "15.17%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.95%",
+          "MemUsage": "142.9MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "446kB / 230kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.3MB / 7.2MB",
+          "CPUPerc": "0.23%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.94%",
+          "MemUsage": "142.7MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.23MB / 418kB",
+          "PIDs": "48"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.58MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.7kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671798.7267108,
+      "containers": [
+        {
+          "BlockIO": "758kB / 0B",
+          "CPUPerc": "100.92%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "22.92%",
+          "MemUsage": "352MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "357kB / 358kB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "266kB / 0B",
+          "CPUPerc": "97.66%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "22.85%",
+          "MemUsage": "350.9MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "318kB / 328kB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "91.09%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.99%",
+          "MemUsage": "353.1MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "6.57MB / 6.28MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.24%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.07%",
+          "MemUsage": "354.4MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "37kB / 30.5kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.07MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 886kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "49.6MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.12%",
+          "MemUsage": "82.03MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.1MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.92MB / 0B",
+          "CPUPerc": "154.56%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.12%",
+          "MemUsage": "539.5MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "20.1MB / 2.89MB",
+          "PIDs": "50"
+        },
+        {
+          "BlockIO": "5.18MB / 0B",
+          "CPUPerc": "102.58%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.37%",
+          "MemUsage": "359MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "22.9MB / 21.9MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "7.51%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "13.93MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "454kB / 234kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "24.2kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 232MB",
+          "CPUPerc": "131.18%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "2.08%",
+          "MemUsage": "152.8MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "42.9MB / 62.9MB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "39.9MB / 2.96MB",
+          "CPUPerc": "14.25%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.93%",
+          "MemUsage": "142.1MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "454kB / 234kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "29.9MB / 7.23MB",
+          "CPUPerc": "3.15%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "2.03%",
+          "MemUsage": "148.9MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.39MB / 431kB",
+          "PIDs": "57"
+        },
+        {
+          "BlockIO": "14.8MB / 885kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.5MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.8kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671803.3540924,
+      "containers": [
+        {
+          "BlockIO": "758kB / 0B",
+          "CPUPerc": "93.65%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "23.00%",
+          "MemUsage": "353.2MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "1.3MB / 1.26MB",
+          "PIDs": "21"
+        },
+        {
+          "BlockIO": "266kB / 0B",
+          "CPUPerc": "98.59%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "22.94%",
+          "MemUsage": "352.4MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "1.29MB / 1.24MB",
+          "PIDs": "21"
+        },
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "104.37%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "23.01%",
+          "MemUsage": "353.5MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "7.54MB / 7.19MB",
+          "PIDs": "19"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "22.47%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.08%",
+          "MemUsage": "354.6MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "38.8kB / 32.4kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.08MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 887kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "50.6MB / 41kB",
+          "CPUPerc": "0.00%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.13%",
+          "MemUsage": "82.89MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.1MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "3.92MB / 0B",
+          "CPUPerc": "4.07%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.17%",
+          "MemUsage": "540.2MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "20.8MB / 3.18MB",
+          "PIDs": "41"
+        },
+        {
+          "BlockIO": "5.18MB / 0B",
+          "CPUPerc": "96.56%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.33%",
+          "MemUsage": "358.3MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "23.8MB / 22.8MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "7.01%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.23MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "455kB / 234kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "24.3kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "66.9MB / 246MB",
+          "CPUPerc": "121.73%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.94%",
+          "MemUsage": "142.3MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "46.6MB / 67.4MB",
+          "PIDs": "28"
+        },
+        {
+          "BlockIO": "39.9MB / 2.96MB",
+          "CPUPerc": "14.32%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.93%",
+          "MemUsage": "142MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "455kB / 234kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "30.1MB / 7.82MB",
+          "CPUPerc": "2.93%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "2.01%",
+          "MemUsage": "148MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.68MB / 451kB",
+          "PIDs": "58"
+        },
+        {
+          "BlockIO": "14.8MB / 893kB",
+          "CPUPerc": "11.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.48MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.9kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671808.091279,
+      "containers": [
+        {
+          "BlockIO": "758kB / 0B",
+          "CPUPerc": "106.38%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "22.95%",
+          "MemUsage": "352.5MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "2.05MB / 1.97MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "266kB / 0B",
+          "CPUPerc": "101.06%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "22.93%",
+          "MemUsage": "352.3MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "2.03MB / 1.94MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "99.21%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.98%",
+          "MemUsage": "353MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "8.25MB / 7.88MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "0.22%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.07%",
+          "MemUsage": "354.4MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "38.9kB / 32.5kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.05%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.33MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 887kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "51.3MB / 41kB",
+          "CPUPerc": "0.07%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.14%",
+          "MemUsage": "84.08MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.1MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "4.29MB / 0B",
+          "CPUPerc": "2.59%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "35.20%",
+          "MemUsage": "540.7MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "22.1MB / 3.25MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "5.18MB / 0B",
+          "CPUPerc": "99.13%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.32%",
+          "MemUsage": "358.3MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "24.6MB / 23.5MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.16%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.21MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "456kB / 234kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "24.3kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "67MB / 257MB",
+          "CPUPerc": "119.00%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.96%",
+          "MemUsage": "143.7MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "49.2MB / 71.3MB",
+          "PIDs": "28"
+        },
+        {
+          "BlockIO": "39.9MB / 2.96MB",
+          "CPUPerc": "22.14%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.94%",
+          "MemUsage": "142.5MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "456kB / 234kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "30.2MB / 7.82MB",
+          "CPUPerc": "3.28%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "2.03%",
+          "MemUsage": "149.2MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "3.9MB / 467kB",
+          "PIDs": "59"
+        },
+        {
+          "BlockIO": "14.8MB / 893kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.47MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.9kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671812.627289,
+      "containers": [
+        {
+          "BlockIO": "758kB / 0B",
+          "CPUPerc": "103.72%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "23.00%",
+          "MemUsage": "353.3MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "3.09MB / 2.97MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "266kB / 0B",
+          "CPUPerc": "101.87%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "22.99%",
+          "MemUsage": "353.1MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "3.09MB / 2.96MB",
+          "PIDs": "20"
+        },
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "8.08%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "22.99%",
+          "MemUsage": "353.1MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "9.27MB / 8.86MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "14.4MB / 0B",
+          "CPUPerc": "51.90%",
+          "Container": "8dc20fe3b773bbafcfb3c4066b69e327cc3db19538799036d994d7b1284caf7e",
+          "ID": "8dc20fe3b773",
+          "MemPerc": "23.11%",
+          "MemUsage": "355MiB / 1.5GiB",
+          "Name": "quarry-api-2",
+          "NetIO": "40.7kB / 34.5kB",
+          "PIDs": "18"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.08MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 888kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "51.3MB / 41kB",
+          "CPUPerc": "0.01%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.14%",
+          "MemUsage": "83.91MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.11MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "4.29MB / 0B",
+          "CPUPerc": "44.96%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "34.97%",
+          "MemUsage": "537.1MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "23.7MB / 3.32MB",
+          "PIDs": "40"
+        },
+        {
+          "BlockIO": "5.18MB / 0B",
+          "CPUPerc": "47.59%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.29%",
+          "MemUsage": "357.7MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "25.8MB / 24.7MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.06MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "456kB / 234kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "24.3kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "67MB / 273MB",
+          "CPUPerc": "41.61%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.81%",
+          "MemUsage": "133MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "53.2MB / 77.6MB",
+          "PIDs": "23"
+        },
+        {
+          "BlockIO": "39.9MB / 2.96MB",
+          "CPUPerc": "16.37%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.95%",
+          "MemUsage": "143.2MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "457kB / 234kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "30.2MB / 7.82MB",
+          "CPUPerc": "0.98%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.98%",
+          "MemUsage": "145.5MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "4.22MB / 490kB",
+          "PIDs": "58"
+        },
+        {
+          "BlockIO": "14.8MB / 893kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.47MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.9kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    },
+    {
+      "at": 1792671816.951264,
+      "containers": [
+        {
+          "BlockIO": "758kB / 0B",
+          "CPUPerc": "101.11%",
+          "Container": "23ebb716f87dc6aa12b3a6c7c1b51f60f2e9cf9f5347e21609abbeadd4fec343",
+          "ID": "23ebb716f87d",
+          "MemPerc": "14.13%",
+          "MemUsage": "217MiB / 1.5GiB",
+          "Name": "quarry-worker-4",
+          "NetIO": "3.14MB / 3.03MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "266kB / 0B",
+          "CPUPerc": "101.09%",
+          "Container": "26ff93d3efb47efe167ee70c870f71ef738593982fe8038ac737d2b5960b6aee",
+          "ID": "26ff93d3efb4",
+          "MemPerc": "6.20%",
+          "MemUsage": "95.16MiB / 1.5GiB",
+          "Name": "quarry-worker-3",
+          "NetIO": "3.15MB / 3.03MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "520kB / 0B",
+          "CPUPerc": "100.97%",
+          "Container": "421ef5a34878053d74242b9649c5203c89ab1009d8cb87ee0a646d93aee03d60",
+          "ID": "421ef5a34878",
+          "MemPerc": "4.18%",
+          "MemUsage": "64.14MiB / 1.5GiB",
+          "Name": "quarry-worker-2",
+          "NetIO": "9.28MB / 8.88MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "4.28MB / 16.4kB",
+          "CPUPerc": "0.00%",
+          "Container": "aa69f7a8d816b15acf85deeff25f574f5c5dc8ca906622667aca78b4b5ba1366",
+          "ID": "aa69f7a8d816",
+          "MemPerc": "0.21%",
+          "MemUsage": "15.08MiB / 7.177GiB",
+          "Name": "quarry-gateway-1",
+          "NetIO": "28.8MB / 888kB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "51.4MB / 41kB",
+          "CPUPerc": "8.19%",
+          "Container": "6cc1d6f44477f86303adcb26b7e4bf419432dbe2923e5244b1d3b198fb31ca7e",
+          "ID": "6cc1d6f44477",
+          "MemPerc": "1.15%",
+          "MemUsage": "84.32MiB / 7.177GiB",
+          "Name": "quarry-web-1",
+          "NetIO": "1.27MB / 3.11MB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "4.29MB / 0B",
+          "CPUPerc": "27.27%",
+          "Container": "d749d570179756f5f0db02193bbe51d794088ba88faee04d2e1628cdd4a596cb",
+          "ID": "d749d5701797",
+          "MemPerc": "23.43%",
+          "MemUsage": "359.9MiB / 1.5GiB",
+          "Name": "quarry-api-1",
+          "NetIO": "23.7MB / 3.32MB",
+          "PIDs": "28"
+        },
+        {
+          "BlockIO": "5.18MB / 0B",
+          "CPUPerc": "4.84%",
+          "Container": "3bbc00598e96cf271104d740278fd9a3aa1cf404c058298dd71b36062b44f945",
+          "ID": "3bbc00598e96",
+          "MemPerc": "23.27%",
+          "MemUsage": "357.5MiB / 1.5GiB",
+          "Name": "quarry-worker-1",
+          "NetIO": "25.8MB / 24.7MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "2.95MB / 16.4kB",
+          "CPUPerc": "0.04%",
+          "Container": "7a9368d60f4d038800cc0615f2780296f44d557343ee612a5f27768382006027",
+          "ID": "7a9368d60f4d",
+          "MemPerc": "0.19%",
+          "MemUsage": "14.06MiB / 7.177GiB",
+          "Name": "quarry-object-gateway-1",
+          "NetIO": "457kB / 235kB",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "41.2MB / 397kB",
+          "CPUPerc": "0.00%",
+          "Container": "46bbfba4bdaeb4788f7766af2d8c98e3d31f123a414a4d3254ce20971238a70b",
+          "ID": "46bbfba4bdae",
+          "MemPerc": "1.44%",
+          "MemUsage": "105.9MiB / 7.177GiB",
+          "Name": "quarry-searxng-1",
+          "NetIO": "24.3kB / 3.9kB",
+          "PIDs": "8"
+        },
+        {
+          "BlockIO": "67MB / 278MB",
+          "CPUPerc": "12.11%",
+          "Container": "486e9b0abe39d30f7dce427955879400f7ab6e0c9c5e57430937e242db56af49",
+          "ID": "486e9b0abe39",
+          "MemPerc": "1.53%",
+          "MemUsage": "112.1MiB / 7.177GiB",
+          "Name": "quarry-postgres-1",
+          "NetIO": "53.3MB / 77.6MB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "39.9MB / 2.99MB",
+          "CPUPerc": "22.80%",
+          "Container": "a2d623ff9967bc6dc65d9754e7639871d1eae8501c1a55138f48474b65736854",
+          "ID": "a2d623ff9967",
+          "MemPerc": "1.94%",
+          "MemUsage": "142.9MiB / 7.177GiB",
+          "Name": "quarry-objectstore-1",
+          "NetIO": "457kB / 235kB",
+          "PIDs": "16"
+        },
+        {
+          "BlockIO": "30.2MB / 7.82MB",
+          "CPUPerc": "0.47%",
+          "Container": "60615ec472a3f57cf104ad48fd3832ca1dea7938e74859dc7bffc94f98d1afc4",
+          "ID": "60615ec472a3",
+          "MemPerc": "1.97%",
+          "MemUsage": "144.5MiB / 7.177GiB",
+          "Name": "quarry-qdrant-1",
+          "NetIO": "4.23MB / 490kB",
+          "PIDs": "57"
+        },
+        {
+          "BlockIO": "14.8MB / 893kB",
+          "CPUPerc": "0.00%",
+          "Container": "e99bb8c0e11b5bac53f2dbc2d1da15060d392e337470f41a4e691f4ae82a38d0",
+          "ID": "e99bb8c0e11b",
+          "MemPerc": "0.29%",
+          "MemUsage": "21.47MiB / 7.177GiB",
+          "Name": "quarry-mailpit-1",
+          "NetIO": "20.9kB / 31.6kB",
+          "PIDs": "13"
+        }
+      ]
+    }
+  ]
+}

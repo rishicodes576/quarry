@@ -1,0 +1,16 @@
+{
+  "cpu": "AMD Ryzen 5 7430U with Radeon Graphics",
+  "physical_cores": 6,
+  "logical_processors": 12,
+  "host_memory_bytes": 15919865856,
+  "docker_memory_bytes": 7705776128,
+  "docker_logical_processors": 12,
+  "architecture": "linux/amd64",
+  "onnx_intra_op_threads": 2,
+  "onnx_inter_op_threads": 1,
+  "api_worker_container_limits": {
+    "cpu_cores_each": 2,
+    "memory_mib_each": 1536
+  },
+  "conditions": "Laptop Docker Desktop; other application services running. Individual report methods describe sequential, burst or concurrent verification conditions."
+}

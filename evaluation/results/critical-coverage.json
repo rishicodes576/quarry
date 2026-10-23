@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "scope": "Aggregate branches across explicitly listed request, authorization, queue, agent, retrieval and provider modules; operator/evaluation CLIs excluded. This is not per-file coverage.",
+  "covered": 459,
+  "total": 502,
+  "percent": 91.434,
+  "modules": [
+    {
+      "module": "accounts",
+      "covered": 50,
+      "total": 56
+    },
+    {
+      "module": "agent",
+      "covered": 34,
+      "total": 34
+    },
+    {
+      "module": "api",
+      "covered": 69,
+      "total": 78
+    },
+    {
+      "module": "capacity",
+      "covered": 0,
+      "total": 0
+    },
+    {
+      "module": "config",
+      "covered": 18,
+      "total": 22
+    },
+    {
+      "module": "encoders",
+      "covered": 6,
+      "total": 6
+    },
+    {
+      "module": "ingest",
+      "covered": 32,
+      "total": 34
+    },
+    {
+      "module": "metrics",
+      "covered": 6,
+      "total": 6
+    },
+    {
+      "module": "network",
+      "covered": 21,
+      "total": 22
+    },
+    {
+      "module": "providers",
+      "covered": 53,
+      "total": 56
+    },
+    {
+      "module": "queue",
+      "covered": 25,
+      "total": 30
+    },
+    {
+      "module": "retrieval",
+      "covered": 17,
+      "total": 20
+    },
+    {
+      "module": "schemas",
+      "covered": 2,
+      "total": 2
+    },
+    {
+      "module": "security",
+      "covered": 56,
+      "total": 56
+    },
+    {
+      "module": "storage",
+      "covered": 2,
+      "total": 2
+    },
+    {
+      "module": "tools",
+      "covered": 29,
+      "total": 30
+    },
+    {
+      "module": "worker",
+      "covered": 39,
+      "total": 48
+    }
+  ]
+}

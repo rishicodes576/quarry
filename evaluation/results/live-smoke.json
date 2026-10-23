@@ -1,0 +1,18 @@
+{
+  "run_id": "6743411985724c42aadc8973ce1ab726",
+  "status": "completed",
+  "provider": "groq",
+  "paid_consent": false,
+  "model_calls": 2,
+  "token_usage": 2067,
+  "seconds": 6.598,
+  "citation_validation": {
+    "references_valid": true,
+    "unknown_references": [],
+    "cited_count": 1,
+    "evidence_count": 5,
+    "factual_support": "not independently verified"
+  },
+  "error": "",
+  "paid_provider_calls": 0
+}

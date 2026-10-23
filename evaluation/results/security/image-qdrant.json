@@ -1,0 +1,134 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a1638d-445b-7db0-9e69-6d99c2e5cb21",
+  "CreatedAt": "2026-10-22T12:19:24.891900081Z",
+  "ArtifactID": "sha256:b5880f7b93afc00e0536e42799df94aa0f0575f93ce6d5039945002574055fc9",
+  "ArtifactName": "/images/qdrant.tar",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 98245120,
+    "OS": {
+      "Family": "none",
+      "Name": ""
+    },
+    "ImageID": "sha256:67cd67c1f86757355097f76d640738b9c6eca05430aff70afe4f95211fd394eb",
+    "DiffIDs": [
+      "sha256:14ba9da7e00088bc72123543d49356f1f29de0ea4df4b47b1b9d7bd98d2aede3",
+      "sha256:72157ea720bca8b04a7938a3932e7ec70dfea206a166701949a0cf806e8feca4",
+      "sha256:c6285fefd615491be8429bfc0120e3e6e1e480f7038c4a8f6e7cde1d1b3853ab",
+      "sha256:97e5c3be487ac93b15b0190ab43ca8e67a46797a70b8d9527b98b12d0977ce8e",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+    ],
+    "RepoTags": [
+      "quarry-qdrant:local"
+    ],
+    "Reference": "quarry-qdrant:local",
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2026-10-22T11:53:00.31249021Z",
+      "history": [
+        {
+          "created": "2026-10-22T11:48:55.000319684Z",
+          "created_by": "COPY /runtime / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:48:55.784448101Z",
+          "created_by": "COPY /qdrant/qdrant /qdrant/qdrant # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:48:55.902202029Z",
+          "created_by": "COPY /qdrant/config /qdrant/config # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:52:59.942229537Z",
+          "created_by": "COPY docs/licenses/qdrant.LICENSE /usr/share/licenses/qdrant/LICENSE # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:53:00.31249021Z",
+          "created_by": "WORKDIR /qdrant",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:53:00.31249021Z",
+          "created_by": "USER 10001:10001",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:53:00.31249021Z",
+          "created_by": "ENV RUN_MODE=production QDRANT__SERVICE__ENABLE_STATIC_CONTENT=false",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:53:00.31249021Z",
+          "created_by": "ENTRYPOINT [\"/qdrant/qdrant\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:14ba9da7e00088bc72123543d49356f1f29de0ea4df4b47b1b9d7bd98d2aede3",
+          "sha256:72157ea720bca8b04a7938a3932e7ec70dfea206a166701949a0cf806e8feca4",
+          "sha256:c6285fefd615491be8429bfc0120e3e6e1e480f7038c4a8f6e7cde1d1b3853ab",
+          "sha256:97e5c3be487ac93b15b0190ab43ca8e67a46797a70b8d9527b98b12d0977ce8e",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+        ]
+      },
+      "config": {
+        "Entrypoint": [
+          "/qdrant/qdrant"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "RUN_MODE=production",
+          "QDRANT__SERVICE__ENABLE_STATIC_CONTENT=false"
+        ],
+        "Labels": {
+          "com.docker.compose.project": "quarry",
+          "com.docker.compose.service": "qdrant",
+          "com.docker.compose.version": "5.6.1"
+        },
+        "User": "10001:10001",
+        "WorkingDir": "/qdrant"
+      }
+    },
+    "Layers": [
+      {
+        "Size": 4089856,
+        "Digest": "sha256:677df31767d43c5285307f8908962dd829d138d9e56977269ed6e5bd127821ae",
+        "DiffID": "sha256:14ba9da7e00088bc72123543d49356f1f29de0ea4df4b47b1b9d7bd98d2aede3"
+      },
+      {
+        "Size": 94109184,
+        "Digest": "sha256:7875ca7efc26068d5e22844e2ed7d4b7cee015352a190cae5b28d133d2029556",
+        "DiffID": "sha256:72157ea720bca8b04a7938a3932e7ec70dfea206a166701949a0cf806e8feca4"
+      },
+      {
+        "Size": 29696,
+        "Digest": "sha256:58a84c3ce172800d613d9edb3b65d7dc0284843b503f19f8e5305368be1c7e38",
+        "DiffID": "sha256:c6285fefd615491be8429bfc0120e3e6e1e480f7038c4a8f6e7cde1d1b3853ab"
+      },
+      {
+        "Size": 15360,
+        "Digest": "sha256:8fce8b6fd2b80733ea5f195200978897bacc093fb9c5927e64011c5d05857e27",
+        "DiffID": "sha256:97e5c3be487ac93b15b0190ab43ca8e67a46797a70b8d9527b98b12d0977ce8e"
+      },
+      {
+        "Size": 1024,
+        "Digest": "sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1",
+        "DiffID": "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+      }
+    ]
+  }
+}

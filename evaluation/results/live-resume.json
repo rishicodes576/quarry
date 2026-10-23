@@ -1,0 +1,13 @@
+{
+  "status": "partial",
+  "checked_at": 1792736588.6154597,
+  "completed_judged_cases": 1,
+  "requested_case_count": 37,
+  "quota_gate_http_status": 429,
+  "sdk_total_attempts_for_rejected_call": 1,
+  "provider": "groq",
+  "automatic_provider_switch": false,
+  "paid_calls": 0,
+  "note": "The configured quota gate rejected further judging. This report does not attribute the gate specifically to an external provider allowance versus local reservation budgets. The adapter exposes a generic free-quota response. Existing completed metrics were retained.",
+  "redacted_log_sha256": "198e9c337947a8287b123b39bbc59ec378f9cbf0ae46177fb5c4a316bcc9baf5"
+}

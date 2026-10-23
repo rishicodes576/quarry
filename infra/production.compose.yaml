@@ -1,0 +1,44 @@
+# Prepared deployment configuration; never selected by the default local command.
+# Real DNS, private infrastructure, supported email and operational review are prerequisites.
+services:
+  permissions:
+    command: ["python", "-c", "import os; [os.chown(p,10001,10001) for p in ['/models','/objects','/vectors','/seaweed','/certificates']]"]
+    volumes: [certificates:/certificates]
+  initialize:
+    environment:
+      QUARRY_ENV: production
+      QUARRY_COOKIE_SECURE: "true"
+      QUARRY_DEMO_SEED: "false"
+      QUARRY_SMTP_STARTTLS: "true"
+  api:
+    environment:
+      QUARRY_ENV: production
+      QUARRY_COOKIE_SECURE: "true"
+      QUARRY_DEMO_SEED: "false"
+      QUARRY_SMTP_STARTTLS: "true"
+  worker:
+    environment:
+      QUARRY_ENV: production
+      QUARRY_COOKIE_SECURE: "true"
+      QUARRY_DEMO_SEED: "false"
+      QUARRY_SMTP_STARTTLS: "true"
+  web:
+    environment:
+      DEMO_MODE: "false"
+  mailpit:
+    profiles: [development-mail]
+  gateway:
+    ports: !override ["80:80", "443:443"]
+    volumes:
+      - ./infra/Production.Caddyfile:/etc/caddy/Caddyfile:ro
+      - certificates:/certificates
+    environment:
+      QUARRY_PUBLIC_HOST: ${QUARRY_PUBLIC_HOST:?Set a real hostname before production deployment}
+      QUARRY_ACME_EMAIL: ${QUARRY_ACME_EMAIL:?Set the operator certificate email}
+      XDG_DATA_HOME: /certificates
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://web:3000"]
+volumes:
+  certificates:

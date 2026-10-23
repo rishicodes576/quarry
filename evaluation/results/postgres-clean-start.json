@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "empty_volume_initialization": true,
+  "network": "none",
+  "runtime_uid": "70",
+  "image_id": "sha256:c702d110a00b4298ba6a54cceb2da2b7c29fac6810e7e527d9d7a65414f49440"
+}

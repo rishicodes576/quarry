@@ -1,0 +1,6 @@
+# Preserve frozen evaluation bytes: their published hashes must survive every checkout.
+* text=auto eol=lf
+evaluation/cases.json -text
+evaluation/corpus.json -text
+*.png binary
+*.zip binary

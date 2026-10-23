@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "restoration_seconds": 130.48,
+  "evidence": {
+    "status": "passed",
+    "source_hashes_verified": 69,
+    "research_run": "07f69e4a5fac4e59863cebb7997c5698",
+    "cited_passages": 5
+  },
+  "backup_checksums": {
+    "database.dump": "4eba6731a434bf4047ee00e53837b7c5bb8f61548d539d456d745a4dc36fdfa6",
+    "objects.zip": "7fc5bf4a8400c9171bd36d6ed870b184f3664829a9a3054f207b89a9c1be96cf"
+  },
+  "isolated_project": "quarry-restore",
+  "paid_calls": 0
+}

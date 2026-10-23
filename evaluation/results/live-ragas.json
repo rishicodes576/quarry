@@ -1,0 +1,77 @@
+{
+  "status": "partial",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "judge_independence": "Same free model family; scores require manual corroboration",
+  "automatic_paid_switch": false,
+  "requested_case_count": 37,
+  "rows": [
+    {
+      "case_id": "q001",
+      "run_id": "5667a4bd0c1b456f97e0bdb1ff5c9d3d",
+      "response": "**Engineering Decision Brief \u2013 Preventing Expired Workers from Publishing Results**\n\n**Question**  \nWhat mechanism stops a worker whose lease has expired from committing a research result?\n\n**Answer (based on supplied evidence)**  \nThe system enforces a *lease\u2011and\u2011token* check at the moment a result is written. Each worker claims a job with a 90\u2011second lease and a random fencing token; it must send a heartbeat every 30\u202fseconds to keep the lease alive. When a worker attempts to publish a result, the result transaction **locks the job row and verifies both the current fencing token and that the lease is still unexpired**. If the lease has expired, the transaction aborts and the worker is **forbidden from publishing the result**, even if the network operation that produced the result completed successfully\u202f[E1].\n\n**Key Controls**\n\n| Control | How it works | Evidence |\n|---------|--------------|----------|\n| Lease duration (90\u202fs) + heartbeat (30\u202fs) | Worker must periodically renew lease; lack of heartbeat leads to expiration. | E1 |\n| Fencing token | Random token ties the worker to the lease; stale tokens are rejected. | E1 |\n| Transactional check on commit | Result transaction locks the job row and validates token\u202f+\u202flease before persisting. | E1 |\n| Post\u2011commit job claim | Workers only claim jobs after the run and job rows are committed, preventing \u201cphantom\u201d work. | E2 |\n\n**Alternatives & Trade\u2011offs**\n\n| Alternative | Benefit | Drawback / Trade\u2011off |\n|-------------|---------|----------------------|\n| **Longer lease** (e.g., >90\u202fs) | Reduces chance of legitimate workers being timed\u2011out on slow tasks. | Increases window where a crashed worker could still publish stale results. |\n| **External broker with transactional outbox** | Decouples result publishing from lease check; can provide at\u2011least\u2011once delivery guarantees. | Adds complexity; risk of exposing rolled\u2011back work if messages are sent before DB commit, or losing work after a crash if sent after commit\u202f[E5]. |\n| **No fencing token** (rely only on lease) | Simpler implementation. | Vulnerable to race conditions where a new worker claims the same job after lease expiry but before the old worker\u2019s commit, potentially overwriting results. |\n\n**Uncertainties**\n\n* **Clock skew** between workers and the database could cause premature lease expiration or allow a worker to appear valid when it is not.  \n* **Heartbeat loss** due to transient network issues might incorrectly expire a healthy worker, causing unnecessary retries.  \n* The exact behavior when a worker\u2019s network operation finishes *just* before lease expiry is not detailed beyond \u201cforbidden from publishing\u201d \u2013 it is unclear whether the system retries automatically or surfaces an error to the client.\n\n**Contradictions**\n\nNo contradictions were found among the supplied passages regarding the lease\u2011based prevention mechanism.\n\n**Recommendation**\n\nMaintain the current lease\u2011and\u2011token validation at commit time (E1) as the primary guard against expired workers publishing results. If latency or false\u2011positive expirations become a problem, consider adjusting lease duration or heartbeat interval, weighing the increased risk of stale commits against reduced false expirations. Introducing an external broker with a transactional outbox (E5) could provide more robust delivery semantics but adds operational complexity and new failure modes.",
+      "contexts": [
+        "Workers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully.",
+        "A research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "Quota exhaustion pauses research without changing providers. A user may retry later or explicitly select an owner-configured paid adapter. Every paid run requires a separate consent flag. A key does not reveal whether its organization has billing enabled; free-plan status must be confirmed during deployment.",
+        "If an external broker is added later, use a transactional outbox and an idempotent consumer. Sending a message before commit can expose rolled-back work; sending after commit can lose work after a crash. Shared database queues trade broker features for a simpler consistency boundary."
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 0.7083333333333334
+      },
+      "latency_ms": 8757.27,
+      "tokens": 1929,
+      "metric_configuration": {
+        "faithfulness": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "context_precision": {
+          "reasoning_effort": "provider default (medium)",
+          "max_completion_tokens": 1000,
+          "historical_configuration": true
+        },
+        "context_recall": {
+          "reasoning_effort": "provider default (medium)",
+          "max_completion_tokens": 1000,
+          "historical_configuration": true
+        }
+      }
+    },
+    {
+      "case_id": "q002",
+      "run_id": "6c70d39e7e58467bb693d445f3622d13",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Leased workers and fencing tokens\n\nWorkers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully.\n\n[E2] Leased workers and fencing tokens\n\n# Leased workers and fencing tokens\n\n[E3] Retention, deletion and source lifecycles\n\nThe sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.\n\n[E4] PostgreSQL queue claiming\n\nKeep claim transactions short and perform network work outside them. Index status, available_at and lease_until. A saturated workspace is postponed briefly so another workspace can make progress. Polling introduces bounded pickup delay; PostgreSQL remains the durable source of truth.\n\n[E5] Timeouts, bounded retries and circuit breaking\n\nThe sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Workers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully.",
+        "# Leased workers and fencing tokens",
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+        "Keep claim transactions short and perform network work outside them. Index status, available_at and lease_until. A saturated workspace is postponed briefly so another workspace can make progress. Polling introduces bounded pickup delay; PostgreSQL remains the durable source of truth.",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely."
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0
+      },
+      "latency_ms": 5087.27,
+      "tokens": 1390,
+      "metric_configuration": {
+        "context_precision": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "context_recall": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        }
+      }
+    }
+  ],
+  "stopped_reason": "InstructorRetryException"
+}

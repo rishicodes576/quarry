@@ -1,0 +1,3979 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a1638b-55e2-70f1-95c4-1299f6372485",
+  "CreatedAt": "2026-10-22T12:17:18.306068083Z",
+  "ArtifactID": "sha256:a2694fb3eebb524d61d25ded1d8509adb35989b4ea27f4a130b20a2bca2cbc34",
+  "ArtifactName": "/images/backend.tar",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 452973568,
+    "OS": {
+      "Family": "debian",
+      "Name": "13.7"
+    },
+    "ImageID": "sha256:daf1fef439d0da8380b69b2baca7c7ce05f3a29eed1f828a4c816931dc3043ef",
+    "DiffIDs": [
+      "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de",
+      "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda",
+      "sha256:763a77745f27b86cf26b97887b6842d83720e63b1c48848c0ba9ee54e351d63a",
+      "sha256:f0d0eff4c2312a7bd6e21797bdfea5eb35f60e76b555ce2b22794424af2cad36",
+      "sha256:275a30dd8ce958b21daa9ad962c6fbc09f98306ee2f486b65c9075dc257b1412",
+      "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+      "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+      "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+      "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+      "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+      "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+      "sha256:187cfc6d1e3e8a40a5e64653bcd3239c140807dcf1c09e48021178705a5a6139",
+      "sha256:0762a1f6557d1e88a761ab05aa7f65a10dc0e559913ea13befb873d907e1a396",
+      "sha256:8a3b315d45080ecb38e39d42d28e951303c67c2ce7482bcdbbc3b5424be19013",
+      "sha256:2cef49adb7d7902c61ecdd385036e3c7fb7c9f0ada96a41901797c77b7daedd7",
+      "sha256:c0e409312adc366898967307565f692bb33d43a439d3de48e27d14b742389725",
+      "sha256:e4ba966d7f0527dfe0fcb559e4e18d4da42c4e6beae924719255e0dedb554ed0",
+      "sha256:373ffdec518e0162795a935861601d2979a876a1a90adca69ad483e5ea611e12",
+      "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18",
+      "sha256:6654106e9b7522270c402f06215169fc562b8b2cf32864917fd130c42fbcbedb",
+      "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a",
+      "sha256:bdde383a07e47fde23ab0e4e46aef175660201df6f616417380659e6dc1308b2",
+      "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6",
+      "sha256:e8500fadc78b74cae950636bfc7a2f4913385534895e5df5149e3f873fc65958",
+      "sha256:a37a684cc600e87eac9fe8ff553afe58eed600eb03eba5c7700ee0bb03faf588"
+    ],
+    "RepoTags": [
+      "quarry-backend:local"
+    ],
+    "Reference": "quarry-backend:local",
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2026-10-22T11:26:40.047439807Z",
+      "history": [
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//base-files/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//netbase/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//tzdata/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//tzdata-legacy/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//media-types/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:rootfs"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:passwd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:home"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:group"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:tmp"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //static:nsswitch"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:os_release_debian13"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build //common:cacerts_debian13_amd64_tar"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//libc6/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//libssl3t64/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//libzstd1/amd64:data_statusd"
+        },
+        {
+          "created": "1970-01-01T00:00:00Z",
+          "created_by": "bazel build @trixie//zlib1g/amd64:data_statusd"
+        },
+        {
+          "created": "2026-10-22T08:53:19.796510885Z",
+          "created_by": "ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false HF_HUB_DISABLE_TELEMETRY=1 LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false QUARRY_DATA_DIR=/data QUARRY_MODEL_CACHE=/models LD_LIBRARY_PATH=/usr/local/lib:/usr/lib/x86_64-linux-gnu PATH=/usr/local/bin",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T08:53:19.796510885Z",
+          "created_by": "WORKDIR /app",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T08:53:31.766789322Z",
+          "created_by": "COPY /usr/local /usr/local # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T08:53:32.186327679Z",
+          "created_by": "COPY /runtime-libs/ /usr/lib/x86_64-linux-gnu/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T08:53:32.269710851Z",
+          "created_by": "COPY /runtime-status/ /var/lib/dpkg/status.d/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T08:53:32.484632689Z",
+          "created_by": "COPY /usr/share/doc/ /usr/share/doc/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T08:53:32.552678232Z",
+          "created_by": "COPY --chown=10001:10001 /data /data # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:26:39.967728628Z",
+          "created_by": "COPY --chown=10001:10001 backend /app # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:26:40.047439807Z",
+          "created_by": "COPY --chown=10001:10001 evaluation /app/evaluation # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:26:40.047439807Z",
+          "created_by": "USER 10001:10001",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:26:40.047439807Z",
+          "created_by": "EXPOSE [8000/tcp]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:26:40.047439807Z",
+          "created_by": "ENTRYPOINT []",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:26:40.047439807Z",
+          "created_by": "CMD [\"/usr/local/bin/python\" \"-m\" \"uvicorn\" \"quarry.api:app\" \"--host\" \"0.0.0.0\" \"--port\" \"8000\" \"--no-proxy-headers\" \"--limit-concurrency\" \"100\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de",
+          "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda",
+          "sha256:763a77745f27b86cf26b97887b6842d83720e63b1c48848c0ba9ee54e351d63a",
+          "sha256:f0d0eff4c2312a7bd6e21797bdfea5eb35f60e76b555ce2b22794424af2cad36",
+          "sha256:275a30dd8ce958b21daa9ad962c6fbc09f98306ee2f486b65c9075dc257b1412",
+          "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+          "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+          "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+          "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+          "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+          "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+          "sha256:187cfc6d1e3e8a40a5e64653bcd3239c140807dcf1c09e48021178705a5a6139",
+          "sha256:0762a1f6557d1e88a761ab05aa7f65a10dc0e559913ea13befb873d907e1a396",
+          "sha256:8a3b315d45080ecb38e39d42d28e951303c67c2ce7482bcdbbc3b5424be19013",
+          "sha256:2cef49adb7d7902c61ecdd385036e3c7fb7c9f0ada96a41901797c77b7daedd7",
+          "sha256:c0e409312adc366898967307565f692bb33d43a439d3de48e27d14b742389725",
+          "sha256:e4ba966d7f0527dfe0fcb559e4e18d4da42c4e6beae924719255e0dedb554ed0",
+          "sha256:373ffdec518e0162795a935861601d2979a876a1a90adca69ad483e5ea611e12",
+          "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18",
+          "sha256:6654106e9b7522270c402f06215169fc562b8b2cf32864917fd130c42fbcbedb",
+          "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a",
+          "sha256:bdde383a07e47fde23ab0e4e46aef175660201df6f616417380659e6dc1308b2",
+          "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6",
+          "sha256:e8500fadc78b74cae950636bfc7a2f4913385534895e5df5149e3f873fc65958",
+          "sha256:a37a684cc600e87eac9fe8ff553afe58eed600eb03eba5c7700ee0bb03faf588"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "/usr/local/bin/python",
+          "-m",
+          "uvicorn",
+          "quarry.api:app",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000",
+          "--no-proxy-headers",
+          "--limit-concurrency",
+          "100"
+        ],
+        "Env": [
+          "PATH=/usr/local/bin",
+          "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt",
+          "PYTHONUNBUFFERED=1",
+          "PYTHONDONTWRITEBYTECODE=1",
+          "TOKENIZERS_PARALLELISM=false",
+          "HF_HUB_DISABLE_TELEMETRY=1",
+          "LANGSMITH_TRACING=false",
+          "LANGCHAIN_TRACING_V2=false",
+          "QUARRY_DATA_DIR=/data",
+          "QUARRY_MODEL_CACHE=/models",
+          "LD_LIBRARY_PATH=/usr/local/lib:/usr/lib/x86_64-linux-gnu"
+        ],
+        "Labels": {
+          "com.docker.compose.project": "quarry",
+          "com.docker.compose.service": "worker",
+          "com.docker.compose.version": "5.6.1"
+        },
+        "User": "10001:10001",
+        "WorkingDir": "/app",
+        "ExposedPorts": {
+          "8000/tcp": {}
+        },
+        "ArgsEscaped": true
+      }
+    },
+    "Layers": [
+      {
+        "Size": 491520,
+        "Digest": "sha256:2cc7ee286bf3a9e6af5f71756d7fc8e22e23ce65fec9047d774511ffcef79fa8",
+        "DiffID": "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de"
+      },
+      {
+        "Size": 40960,
+        "Digest": "sha256:c172f21841dff4c8cf45cde46589c1c2616cefe7e819965e92e6d3475c428aa0",
+        "DiffID": "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda"
+      },
+      {
+        "Size": 1157120,
+        "Digest": "sha256:218cf840d0d95a86231eb9d33d26ac8a520a4299c6096cb70a0c2fb2a87c9e0a",
+        "DiffID": "sha256:763a77745f27b86cf26b97887b6842d83720e63b1c48848c0ba9ee54e351d63a"
+      },
+      {
+        "Size": 1331200,
+        "Digest": "sha256:f6069939f718601b38d25ec5ed5631ed047e4da24acec2e252f8f29d251be718",
+        "DiffID": "sha256:f0d0eff4c2312a7bd6e21797bdfea5eb35f60e76b555ce2b22794424af2cad36"
+      },
+      {
+        "Size": 102400,
+        "Digest": "sha256:d6b1b89eccacc15c2420b2776d72c1dae334a00805ed9af54bf2f71e4d536f28",
+        "DiffID": "sha256:275a30dd8ce958b21daa9ad962c6fbc09f98306ee2f486b65c9075dc257b1412"
+      },
+      {
+        "Size": 1536,
+        "Digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+        "DiffID": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368"
+      },
+      {
+        "Size": 2560,
+        "Digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+        "DiffID": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc"
+      },
+      {
+        "Size": 2560,
+        "Digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+        "DiffID": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4"
+      },
+      {
+        "Size": 2560,
+        "Digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+        "DiffID": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38"
+      },
+      {
+        "Size": 1536,
+        "Digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+        "DiffID": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b"
+      },
+      {
+        "Size": 2048,
+        "Digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+        "DiffID": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a"
+      },
+      {
+        "Size": 3072,
+        "Digest": "sha256:ebddc55facdc6b1f7e0f30816a5fc7cc62f38abdf76c0a8b0a0ce52085754795",
+        "DiffID": "sha256:187cfc6d1e3e8a40a5e64653bcd3239c140807dcf1c09e48021178705a5a6139"
+      },
+      {
+        "Size": 276480,
+        "Digest": "sha256:ec1b04bf2eb2122e86781f791b03ea0cf6588694e0f4a88245250224c186cdf0",
+        "DiffID": "sha256:0762a1f6557d1e88a761ab05aa7f65a10dc0e559913ea13befb873d907e1a396"
+      },
+      {
+        "Size": 13291520,
+        "Digest": "sha256:b96fe2995f90d0ef0bf14f9b4a67b5f4e77d478e6108166e0565adc9efd6e4a3",
+        "DiffID": "sha256:8a3b315d45080ecb38e39d42d28e951303c67c2ce7482bcdbbc3b5424be19013"
+      },
+      {
+        "Size": 8038400,
+        "Digest": "sha256:810e2b405a0884835290e120ef380aa14dd1f53198a0cfa2260147e736d82cd5",
+        "DiffID": "sha256:2cef49adb7d7902c61ecdd385036e3c7fb7c9f0ada96a41901797c77b7daedd7"
+      },
+      {
+        "Size": 870400,
+        "Digest": "sha256:bd8962e292918c50c90edebd9684c053bc386b9c5503acd8fec75d0c6f93a0b7",
+        "DiffID": "sha256:c0e409312adc366898967307565f692bb33d43a439d3de48e27d14b742389725"
+      },
+      {
+        "Size": 174080,
+        "Digest": "sha256:cac2ae0193cb073e7492050b05fc342a888651b4bbc966908c8793f889c299ba",
+        "DiffID": "sha256:e4ba966d7f0527dfe0fcb559e4e18d4da42c4e6beae924719255e0dedb554ed0"
+      },
+      {
+        "Size": 1536,
+        "Digest": "sha256:e54fcc5af0c3cdd00dc04c544dce1b5da9b154ff3fe400a3801840bdb687a953",
+        "DiffID": "sha256:373ffdec518e0162795a935861601d2979a876a1a90adca69ad483e5ea611e12"
+      },
+      {
+        "Size": 417136640,
+        "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+        "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+      },
+      {
+        "Size": 7691776,
+        "Digest": "sha256:5ca25b841013de3ac87f7c53083583f9eda9d33eca3aed245524199a64e9009e",
+        "DiffID": "sha256:6654106e9b7522270c402f06215169fc562b8b2cf32864917fd130c42fbcbedb"
+      },
+      {
+        "Size": 19968,
+        "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+        "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+      },
+      {
+        "Size": 1076736,
+        "Digest": "sha256:6da203229f5860aa09aef77e5cdabc51e3d5f7303a870b58f1846d060731b47b",
+        "DiffID": "sha256:bdde383a07e47fde23ab0e4e46aef175660201df6f616417380659e6dc1308b2"
+      },
+      {
+        "Size": 1536,
+        "Digest": "sha256:c31907ce79a6f96ccffa4bb3dee0ca763650552b5dffc5445c11a90c8a90f2b4",
+        "DiffID": "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6"
+      },
+      {
+        "Size": 1156608,
+        "Digest": "sha256:0721266ad872e62eed48e53810566b8022f61adff91f2e18a3dffce32d2b8267",
+        "DiffID": "sha256:e8500fadc78b74cae950636bfc7a2f4913385534895e5df5149e3f873fc65958"
+      },
+      {
+        "Size": 98816,
+        "Digest": "sha256:861ebfbdfa855052da3735b9b1c8063cd3b02852d0f15690b65980a3076f63b1",
+        "DiffID": "sha256:a37a684cc600e87eac9fe8ff553afe58eed600eb03eba5c7700ee0bb03faf588"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "/images/backend.tar (debian 13.7)",
+      "Class": "os-pkgs",
+      "Type": "debian",
+      "Packages": [
+        {
+          "ID": "base-files@13.8+deb13u7",
+          "Name": "base-files",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/base-files@13.8%2Bdeb13u7?arch=amd64\u0026distro=debian-13.7",
+            "UID": "94433b6f299d4cc7"
+          },
+          "Version": "13.8+deb13u7",
+          "Arch": "amd64",
+          "SrcName": "base-files",
+          "SrcVersion": "13.8+deb13u7",
+          "Licenses": [
+            "GPL-2.0-or-later",
+            "GPL-2.0-only",
+            "verbatim"
+          ],
+          "Maintainer": "Santiago Vila \u003csanvila@debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:2cc7ee286bf3a9e6af5f71756d7fc8e22e23ce65fec9047d774511ffcef79fa8",
+            "DiffID": "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de"
+          },
+          "InstalledFiles": [
+            "/usr/lib/os-release",
+            "/usr/share/base-files/dot.bashrc",
+            "/usr/share/base-files/dot.profile",
+            "/usr/share/base-files/dot.profile.md5sums",
+            "/usr/share/base-files/info.dir",
+            "/usr/share/base-files/motd",
+            "/usr/share/base-files/profile",
+            "/usr/share/base-files/profile.md5sums",
+            "/usr/share/base-files/staff-group-for-usr-local",
+            "/usr/share/common-licenses/AGPL-3.0",
+            "/usr/share/common-licenses/Apache-2.0",
+            "/usr/share/common-licenses/Artistic",
+            "/usr/share/common-licenses/Artistic-2.0",
+            "/usr/share/common-licenses/BSD",
+            "/usr/share/common-licenses/BSL-1.0",
+            "/usr/share/common-licenses/CC-BY-3.0",
+            "/usr/share/common-licenses/CC-BY-4.0",
+            "/usr/share/common-licenses/CC-BY-SA-3.0",
+            "/usr/share/common-licenses/CC-BY-SA-4.0",
+            "/usr/share/common-licenses/CC0-1.0",
+            "/usr/share/common-licenses/GFDL-1.1",
+            "/usr/share/common-licenses/GFDL-1.2",
+            "/usr/share/common-licenses/GFDL-1.3",
+            "/usr/share/common-licenses/GPL-1",
+            "/usr/share/common-licenses/GPL-2",
+            "/usr/share/common-licenses/GPL-3",
+            "/usr/share/common-licenses/LGPL-2",
+            "/usr/share/common-licenses/LGPL-2.1",
+            "/usr/share/common-licenses/LGPL-3",
+            "/usr/share/common-licenses/MPL-1.1",
+            "/usr/share/common-licenses/MPL-2.0",
+            "/usr/share/common-licenses/OFL-1.1",
+            "/usr/share/doc/base-files/NEWS.Debian.gz",
+            "/usr/share/doc/base-files/README",
+            "/usr/share/doc/base-files/README.FHS",
+            "/usr/share/doc/base-files/changelog.gz",
+            "/usr/share/doc/base-files/copyright",
+            "/usr/share/lintian/overrides/base-files"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "ca-certificates@20250419+deb13u1",
+          "Name": "ca-certificates",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/ca-certificates@20250419%2Bdeb13u1?arch=all\u0026distro=debian-13.7",
+            "UID": "53ced6e3b4732cf5"
+          },
+          "Version": "20250419+deb13u1",
+          "Arch": "all",
+          "SrcName": "ca-certificates",
+          "SrcVersion": "20250419+deb13u1",
+          "Licenses": [
+            "GPL-2.0-or-later",
+            "GPL-2.0-only",
+            "MPL-2.0"
+          ],
+          "Maintainer": "Julien Cristau \u003cjcristau@debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:ec1b04bf2eb2122e86781f791b03ea0cf6588694e0f4a88245250224c186cdf0",
+            "DiffID": "sha256:0762a1f6557d1e88a761ab05aa7f65a10dc0e559913ea13befb873d907e1a396"
+          },
+          "InstalledFiles": [
+            "/usr/sbin/update-ca-certificates",
+            "/usr/share/ca-certificates/mozilla/ACCVRAIZ1.crt",
+            "/usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM.crt",
+            "/usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.crt",
+            "/usr/share/ca-certificates/mozilla/ANF_Secure_Server_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Actalis_Authentication_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/AffirmTrust_Commercial.crt",
+            "/usr/share/ca-certificates/mozilla/AffirmTrust_Networking.crt",
+            "/usr/share/ca-certificates/mozilla/AffirmTrust_Premium.crt",
+            "/usr/share/ca-certificates/mozilla/AffirmTrust_Premium_ECC.crt",
+            "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_1.crt",
+            "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_2.crt",
+            "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_3.crt",
+            "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_4.crt",
+            "/usr/share/ca-certificates/mozilla/Atos_TrustedRoot_2011.crt",
+            "/usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_ECC_TLS_2021.crt",
+            "/usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_RSA_TLS_2021.crt",
+            "/usr/share/ca-certificates/mozilla/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.crt",
+            "/usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA1.crt",
+            "/usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA2.crt",
+            "/usr/share/ca-certificates/mozilla/Baltimore_CyberTrust_Root.crt",
+            "/usr/share/ca-certificates/mozilla/Buypass_Class_2_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Buypass_Class_3_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/CA_Disig_Root_R2.crt",
+            "/usr/share/ca-certificates/mozilla/CFCA_EV_ROOT.crt",
+            "/usr/share/ca-certificates/mozilla/COMODO_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/COMODO_ECC_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/COMODO_RSA_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/Certainly_Root_E1.crt",
+            "/usr/share/ca-certificates/mozilla/Certainly_Root_R1.crt",
+            "/usr/share/ca-certificates/mozilla/Certigna.crt",
+            "/usr/share/ca-certificates/mozilla/Certigna_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Certum_EC-384_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA_2.crt",
+            "/usr/share/ca-certificates/mozilla/Certum_Trusted_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/CommScope_Public_Trust_ECC_Root-01.crt",
+            "/usr/share/ca-certificates/mozilla/CommScope_Public_Trust_ECC_Root-02.crt",
+            "/usr/share/ca-certificates/mozilla/CommScope_Public_Trust_RSA_Root-01.crt",
+            "/usr/share/ca-certificates/mozilla/CommScope_Public_Trust_RSA_Root-02.crt",
+            "/usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_1_2020.crt",
+            "/usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_2_2023.crt",
+            "/usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_1_2020.crt",
+            "/usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_2_2023.crt",
+            "/usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_2009.crt",
+            "/usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_EV_2009.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G2.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G3.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Global_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G2.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G3.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_High_Assurance_EV_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_TLS_ECC_P384_Root_G5.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_TLS_RSA4096_Root_G5.crt",
+            "/usr/share/ca-certificates/mozilla/DigiCert_Trusted_Root_G4.crt",
+            "/usr/share/ca-certificates/mozilla/Entrust.net_Premium_2048_Secure_Server_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_EC1.crt",
+            "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_G2.crt",
+            "/usr/share/ca-certificates/mozilla/FIRMAPROFESIONAL_CA_ROOT-A_WEB.crt",
+            "/usr/share/ca-certificates/mozilla/GDCA_TrustAUTH_R5_ROOT.crt",
+            "/usr/share/ca-certificates/mozilla/GLOBALTRUST_2020.crt",
+            "/usr/share/ca-certificates/mozilla/GTS_Root_R1.crt",
+            "/usr/share/ca-certificates/mozilla/GTS_Root_R2.crt",
+            "/usr/share/ca-certificates/mozilla/GTS_Root_R3.crt",
+            "/usr/share/ca-certificates/mozilla/GTS_Root_R4.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R4.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R5.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R3.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R6.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_Root_E46.crt",
+            "/usr/share/ca-certificates/mozilla/GlobalSign_Root_R46.crt",
+            "/usr/share/ca-certificates/mozilla/Go_Daddy_Class_2_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Go_Daddy_Root_Certificate_Authority_-_G2.crt",
+            "/usr/share/ca-certificates/mozilla/HARICA_TLS_ECC_Root_CA_2021.crt",
+            "/usr/share/ca-certificates/mozilla/HARICA_TLS_RSA_Root_CA_2021.crt",
+            "/usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.crt",
+            "/usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_RootCA_2015.crt",
+            "/usr/share/ca-certificates/mozilla/HiPKI_Root_CA_-_G1.crt",
+            "/usr/share/ca-certificates/mozilla/Hongkong_Post_Root_CA_3.crt",
+            "/usr/share/ca-certificates/mozilla/ISRG_Root_X1.crt",
+            "/usr/share/ca-certificates/mozilla/ISRG_Root_X2.crt",
+            "/usr/share/ca-certificates/mozilla/IdenTrust_Commercial_Root_CA_1.crt",
+            "/usr/share/ca-certificates/mozilla/IdenTrust_Public_Sector_Root_CA_1.crt",
+            "/usr/share/ca-certificates/mozilla/Izenpe.com.crt",
+            "/usr/share/ca-certificates/mozilla/Microsec_e-Szigno_Root_CA_2009.crt",
+            "/usr/share/ca-certificates/mozilla/Microsoft_ECC_Root_Certificate_Authority_2017.crt",
+            "/usr/share/ca-certificates/mozilla/Microsoft_RSA_Root_Certificate_Authority_2017.crt",
+            "/usr/share/ca-certificates/mozilla/NAVER_Global_Root_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/NetLock_Arany_=Class_Gold=_Főtanúsítvány.crt",
+            "/usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GB_CA.crt",
+            "/usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GC_CA.crt",
+            "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_1_G3.crt",
+            "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2.crt",
+            "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2_G3.crt",
+            "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3.crt",
+            "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3_G3.crt",
+            "/usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_ECC.crt",
+            "/usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_RSA_R2.crt",
+            "/usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_ECC.crt",
+            "/usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_RSA.crt",
+            "/usr/share/ca-certificates/mozilla/SSL.com_TLS_ECC_Root_CA_2022.crt",
+            "/usr/share/ca-certificates/mozilla/SSL.com_TLS_RSA_Root_CA_2022.crt",
+            "/usr/share/ca-certificates/mozilla/SZAFIR_ROOT_CA2.crt",
+            "/usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_E46.crt",
+            "/usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_R46.crt",
+            "/usr/share/ca-certificates/mozilla/SecureSign_Root_CA12.crt",
+            "/usr/share/ca-certificates/mozilla/SecureSign_Root_CA14.crt",
+            "/usr/share/ca-certificates/mozilla/SecureSign_Root_CA15.crt",
+            "/usr/share/ca-certificates/mozilla/SecureTrust_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Secure_Global_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Security_Communication_ECC_RootCA1.crt",
+            "/usr/share/ca-certificates/mozilla/Security_Communication_RootCA2.crt",
+            "/usr/share/ca-certificates/mozilla/Starfield_Class_2_CA.crt",
+            "/usr/share/ca-certificates/mozilla/Starfield_Root_Certificate_Authority_-_G2.crt",
+            "/usr/share/ca-certificates/mozilla/Starfield_Services_Root_Certificate_Authority_-_G2.crt",
+            "/usr/share/ca-certificates/mozilla/SwissSign_Gold_CA_-_G2.crt",
+            "/usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_2.crt",
+            "/usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_3.crt",
+            "/usr/share/ca-certificates/mozilla/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.crt",
+            "/usr/share/ca-certificates/mozilla/TWCA_CYBER_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/TWCA_Global_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/TWCA_Root_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/Telekom_Security_TLS_ECC_Root_2020.crt",
+            "/usr/share/ca-certificates/mozilla/Telekom_Security_TLS_RSA_Root_2023.crt",
+            "/usr/share/ca-certificates/mozilla/TeliaSonera_Root_CA_v1.crt",
+            "/usr/share/ca-certificates/mozilla/Telia_Root_CA_v2.crt",
+            "/usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G3.crt",
+            "/usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G4.crt",
+            "/usr/share/ca-certificates/mozilla/Trustwave_Global_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/Trustwave_Global_ECC_P256_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/Trustwave_Global_ECC_P384_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/TunTrust_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/UCA_Extended_Validation_Root.crt",
+            "/usr/share/ca-certificates/mozilla/UCA_Global_G2_Root.crt",
+            "/usr/share/ca-certificates/mozilla/USERTrust_ECC_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/USERTrust_RSA_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/XRamp_Global_CA_Root.crt",
+            "/usr/share/ca-certificates/mozilla/certSIGN_ROOT_CA.crt",
+            "/usr/share/ca-certificates/mozilla/certSIGN_Root_CA_G2.crt",
+            "/usr/share/ca-certificates/mozilla/e-Szigno_Root_CA_2017.crt",
+            "/usr/share/ca-certificates/mozilla/ePKI_Root_Certification_Authority.crt",
+            "/usr/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_C3.crt",
+            "/usr/share/ca-certificates/mozilla/emSign_Root_CA_-_C1.crt",
+            "/usr/share/ca-certificates/mozilla/emSign_Root_CA_-_G1.crt",
+            "/usr/share/ca-certificates/mozilla/vTrus_ECC_Root_CA.crt",
+            "/usr/share/ca-certificates/mozilla/vTrus_Root_CA.crt",
+            "/usr/share/doc/ca-certificates/README.Debian",
+            "/usr/share/doc/ca-certificates/changelog.gz",
+            "/usr/share/doc/ca-certificates/copyright",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/Makefile",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/README",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/ca-certificates-local.triggers",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/changelog",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/compat",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/control",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/copyright",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/postrm",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/rules",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/debian/source/format",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/local/Local_Root_CA.crt",
+            "/usr/share/doc/ca-certificates/examples/ca-certificates-local/local/Makefile",
+            "/usr/share/man/man8/update-ca-certificates.8.gz"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libbz2-1.0@1.0.8-6",
+          "Name": "libbz2-1.0",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libbz2-1.0@1.0.8-6?arch=amd64\u0026distro=debian-13.7",
+            "UID": "84cb72d457fc3031"
+          },
+          "Version": "1.0.8",
+          "Release": "6",
+          "Arch": "amd64",
+          "SrcName": "bzip2",
+          "SrcVersion": "1.0.8",
+          "SrcRelease": "6",
+          "Licenses": [
+            "BSD-3-Clause",
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Anibal Monsalve Salazar \u003canibal@debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libc6@2.41-12+deb13u4",
+          "Name": "libc6",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u4?arch=amd64\u0026distro=debian-13.7",
+            "UID": "3ca032b3dd7124c6"
+          },
+          "Version": "2.41",
+          "Release": "12+deb13u4",
+          "Arch": "amd64",
+          "SrcName": "glibc",
+          "SrcVersion": "2.41",
+          "SrcRelease": "12+deb13u4",
+          "Licenses": [
+            "LGPL-2.1-or-later",
+            "LGPL-2.0-or-later",
+            "LGPL-2.1+-with-link-exception",
+            "LGPL-3.0-or-later",
+            "GPL-2.0-or-later",
+            "GPL-2+-with-link-exception",
+            "GPL-2.0-only",
+            "GPL-3.0-or-later",
+            "FSFAP",
+            "Carnegie",
+            "Inner-Net",
+            "MIT-like-Lord",
+            "BSD-like-Spencer",
+            "PCRE",
+            "BSD-3-clause-Carnegie",
+            "Unicode-DFS-2016",
+            "BSL-1.0",
+            "SunPro",
+            "CORE-MATH",
+            "BSD-3-clause-Berkeley",
+            "BSD-3-clause-WIDE",
+            "BSD-2-Clause",
+            "BSD-3-clause-Oracle",
+            "DEC",
+            "IBM",
+            "ISC",
+            "Univ-Coimbra",
+            "public-domain",
+            "GPL-3.0-only",
+            "LGPL-2.0-only",
+            "LGPL-2.1-only",
+            "LGPL-3.0-only"
+          ],
+          "Maintainer": "GNU Libc Maintainers \u003cdebian-glibc@lists.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:b96fe2995f90d0ef0bf14f9b4a67b5f4e77d478e6108166e0565adc9efd6e4a3",
+            "DiffID": "sha256:8a3b315d45080ecb38e39d42d28e951303c67c2ce7482bcdbbc3b5424be19013"
+          },
+          "InstalledFiles": [
+            "/usr/lib/x86_64-linux-gnu/gconv/ANSI_X3.110.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ARMSCII-8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ASMO_449.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/BIG5.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/BIG5HKSCS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/BRF.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP10007.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1125.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1250.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1251.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1252.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1253.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1254.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1255.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1256.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1257.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP1258.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP737.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP770.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP771.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP772.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP773.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP774.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP775.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CP932.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CSN_369103.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/CWI.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/DEC-MCS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-AT-DE-A.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-AT-DE.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-CA-FR.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-DK-NO-A.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-DK-NO.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-ES-A.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-ES-S.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-ES.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-FI-SE-A.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-FI-SE.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-FR.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-IS-FRISS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-IT.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-PT.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-UK.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EBCDIC-US.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ECMA-CYRILLIC.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EUC-CN.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EUC-JISX0213.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EUC-JP-MS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EUC-JP.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EUC-KR.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/EUC-TW.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GB18030.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GBBIG5.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GBGBK.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GBK.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GEORGIAN-ACADEMY.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GEORGIAN-PS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GOST_19768-74.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GREEK-CCITT.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GREEK7-OLD.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/GREEK7.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/HP-GREEK8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/HP-ROMAN8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/HP-ROMAN9.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/HP-THAI8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/HP-TURKISH8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM037.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM038.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1004.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1008.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1008_420.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1025.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1026.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1046.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1047.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1097.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1112.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1122.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1123.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1124.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1129.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1130.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1132.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1133.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1137.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1140.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1141.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1142.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1143.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1144.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1145.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1146.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1147.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1148.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1149.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1153.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1154.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1155.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1156.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1157.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1158.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1160.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1161.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1162.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1163.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1164.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1166.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1167.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM12712.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1364.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1371.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1388.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1390.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM1399.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM16804.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM256.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM273.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM274.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM275.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM277.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM278.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM280.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM281.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM284.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM285.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM290.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM297.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM420.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM423.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM424.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM437.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM4517.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM4899.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM4909.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM4971.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM500.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM5347.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM803.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM850.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM851.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM852.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM855.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM856.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM857.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM858.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM860.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM861.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM862.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM863.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM864.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM865.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM866.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM866NAV.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM868.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM869.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM870.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM871.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM874.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM875.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM880.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM891.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM901.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM902.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM903.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM9030.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM904.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM905.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM9066.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM918.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM921.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM922.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM930.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM932.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM933.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM935.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM937.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM939.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM943.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IBM9448.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/IEC_P27-1.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/INIS-8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/INIS-CYRILLIC.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/INIS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISIRI-3342.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-CN-EXT.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-CN.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-JP-3.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-JP.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-2022-KR.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-IR-197.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO-IR-209.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO646.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-1.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-10.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-11.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-13.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-14.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-15.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-16.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-2.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-3.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-4.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-5.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-6.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-7.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-9.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO8859-9E.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_10367-BOX.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_11548-1.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_2033.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_5427-EXT.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_5427.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_5428.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_6937-2.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/ISO_6937.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/JOHAB.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/KOI-8.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/KOI8-R.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/KOI8-RU.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/KOI8-T.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/KOI8-U.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/LATIN-GREEK-1.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/LATIN-GREEK.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/MAC-CENTRALEUROPE.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/MAC-IS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/MAC-SAMI.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/MAC-UK.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/MACINTOSH.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/MIK.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/NATS-DANO.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/NATS-SEFI.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/PT154.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/RK1048.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/SAMI-WS2.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/SHIFT_JISX0213.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/SJIS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/T.61.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/TCVN5712-1.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/TIS-620.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/TSCII.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/UHC.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/UNICODE.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/UTF-16.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/UTF-32.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/UTF-7.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/VISCII.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules",
+            "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache",
+            "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.d/gconv-modules-extra.conf",
+            "/usr/lib/x86_64-linux-gnu/gconv/libCNS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/libGB.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/libISOIR165.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/libJIS.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/libJISX0213.so",
+            "/usr/lib/x86_64-linux-gnu/gconv/libKSC.so",
+            "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+            "/usr/lib/x86_64-linux-gnu/libBrokenLocale.so.1",
+            "/usr/lib/x86_64-linux-gnu/libanl.so.1",
+            "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "/usr/lib/x86_64-linux-gnu/libc_malloc_debug.so.0",
+            "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+            "/usr/lib/x86_64-linux-gnu/libm.so.6",
+            "/usr/lib/x86_64-linux-gnu/libmemusage.so",
+            "/usr/lib/x86_64-linux-gnu/libmvec.so.1",
+            "/usr/lib/x86_64-linux-gnu/libnsl.so.1",
+            "/usr/lib/x86_64-linux-gnu/libnss_compat.so.2",
+            "/usr/lib/x86_64-linux-gnu/libnss_dns.so.2",
+            "/usr/lib/x86_64-linux-gnu/libnss_files.so.2",
+            "/usr/lib/x86_64-linux-gnu/libnss_hesiod.so.2",
+            "/usr/lib/x86_64-linux-gnu/libpcprofile.so",
+            "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+            "/usr/lib/x86_64-linux-gnu/libresolv.so.2",
+            "/usr/lib/x86_64-linux-gnu/librt.so.1",
+            "/usr/lib/x86_64-linux-gnu/libthread_db.so.1",
+            "/usr/lib/x86_64-linux-gnu/libutil.so.1",
+            "/usr/share/doc/libc6/NEWS.Debian.gz",
+            "/usr/share/doc/libc6/NEWS.gz",
+            "/usr/share/doc/libc6/README.Debian.gz",
+            "/usr/share/doc/libc6/README.hesiod.gz",
+            "/usr/share/doc/libc6/changelog.Debian.gz",
+            "/usr/share/doc/libc6/changelog.gz",
+            "/usr/share/doc/libc6/copyright",
+            "/usr/share/lintian/overrides/libc6"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libcrypt1@1:4.4.38-1",
+          "Name": "libcrypt1",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libcrypt1@4.4.38-1?arch=amd64\u0026distro=debian-13.7\u0026epoch=1",
+            "UID": "4eed5ecb466a9409"
+          },
+          "Version": "4.4.38",
+          "Release": "1",
+          "Epoch": 1,
+          "Arch": "amd64",
+          "SrcName": "libxcrypt",
+          "SrcVersion": "4.4.38",
+          "SrcRelease": "1",
+          "SrcEpoch": 1,
+          "Maintainer": "Marco d'Itri \u003cmd@linux.it\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libdb5.3t64@5.3.28+dfsg2-9",
+          "Name": "libdb5.3t64",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libdb5.3t64@5.3.28%2Bdfsg2-9?arch=amd64\u0026distro=debian-13.7",
+            "UID": "7a919809ec6e5630"
+          },
+          "Version": "5.3.28+dfsg2",
+          "Release": "9",
+          "Arch": "amd64",
+          "SrcName": "db5.3",
+          "SrcVersion": "5.3.28+dfsg2",
+          "SrcRelease": "9",
+          "Licenses": [
+            "Sleepycat",
+            "BSD-3-Clause",
+            "MS-PL",
+            "GPL-2.0-or-later",
+            "Artistic-2.0",
+            "X11",
+            "MIT-old",
+            "TCL-like",
+            "BSD-3-clause-fjord",
+            "GPL-3.0-only",
+            "Zlib"
+          ],
+          "Maintainer": "Debian QA Group \u003cpackages@qa.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libffi8@3.4.8-2",
+          "Name": "libffi8",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libffi8@3.4.8-2?arch=amd64\u0026distro=debian-13.7",
+            "UID": "cda6e492159fbc33"
+          },
+          "Version": "3.4.8",
+          "Release": "2",
+          "Arch": "amd64",
+          "SrcName": "libffi",
+          "SrcVersion": "3.4.8",
+          "SrcRelease": "2",
+          "Licenses": [
+            "MIT",
+            "X11",
+            "GPL-2.0-or-later",
+            "GPL-3.0-or-later",
+            "MPL-1.1",
+            "LGPL-2.1-or-later",
+            "public-domain"
+          ],
+          "Maintainer": "Debian GCC Maintainers \u003cdebian-gcc@lists.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libgcc-s1@14.2.0-19",
+          "Name": "libgcc-s1",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libgcc-s1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "c957ed49bc518942"
+          },
+          "Version": "14.2.0",
+          "Release": "19",
+          "Arch": "amd64",
+          "SrcName": "gcc-14",
+          "SrcVersion": "14.2.0",
+          "SrcRelease": "19",
+          "Maintainer": "Debian GCC Maintainers \u003cdebian-gcc@lists.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libgdbm6t64@1.24-2",
+          "Name": "libgdbm6t64",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libgdbm6t64@1.24-2?arch=amd64\u0026distro=debian-13.7",
+            "UID": "1cb78be745c398ae"
+          },
+          "Version": "1.24",
+          "Release": "2",
+          "Arch": "amd64",
+          "SrcName": "gdbm",
+          "SrcVersion": "1.24",
+          "SrcRelease": "2",
+          "Licenses": [
+            "GPL-3.0-or-later",
+            "GPL-2.0-or-later",
+            "GFDL-1.3-no-invariants-or-later",
+            "GPL-3.0-only",
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Nicolas Mora \u003cbabelouest@debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "liblzma5@5.8.1-1+deb13u2",
+          "Name": "liblzma5",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/liblzma5@5.8.1-1%2Bdeb13u2?arch=amd64\u0026distro=debian-13.7",
+            "UID": "804d65dbffd0f6ea"
+          },
+          "Version": "5.8.1",
+          "Release": "1+deb13u2",
+          "Arch": "amd64",
+          "SrcName": "xz-utils",
+          "SrcVersion": "5.8.1",
+          "SrcRelease": "1+deb13u2",
+          "Licenses": [
+            "0BSD",
+            "GPL-2.0-or-later",
+            "LGPL-2.1-or-later",
+            "FSFULLR",
+            "GPL-3.0-or-later-WITH-Autoconf-exception-macro",
+            "none",
+            "PD",
+            "permissive-nowarranty",
+            "FSFUL",
+            "noderivs",
+            "PD-debian",
+            "LGPL-2.1-only",
+            "GPL-2.0-only",
+            "GPL-3.0-only"
+          ],
+          "Maintainer": "Sebastian Andrzej Siewior \u003csebastian@breakpoint.cc\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libsqlite3-0@3.46.1-7+deb13u2",
+          "Name": "libsqlite3-0",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libsqlite3-0@3.46.1-7%2Bdeb13u2?arch=amd64\u0026distro=debian-13.7",
+            "UID": "76be385653abbad0"
+          },
+          "Version": "3.46.1",
+          "Release": "7+deb13u2",
+          "Arch": "amd64",
+          "SrcName": "sqlite3",
+          "SrcVersion": "3.46.1",
+          "SrcRelease": "7+deb13u2",
+          "Licenses": [
+            "public-domain",
+            "GPL-2.0-or-later",
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Laszlo Boszormenyi (GCS) \u003cgcs@debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libssl3t64@3.5.7-1~deb13u3",
+          "Name": "libssl3t64",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libssl3t64@3.5.7-1~deb13u3?arch=amd64\u0026distro=debian-13.7",
+            "UID": "e2b70cc67e03ceb6"
+          },
+          "Version": "3.5.7",
+          "Release": "1~deb13u3",
+          "Arch": "amd64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.7",
+          "SrcRelease": "1~deb13u3",
+          "Licenses": [
+            "Apache-2.0",
+            "Artistic-2.0",
+            "GPL-1.0-or-later",
+            "GPL-1.0-only"
+          ],
+          "Maintainer": "Debian OpenSSL Team \u003cpkg-openssl-devel@alioth-lists.debian.net\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:810e2b405a0884835290e120ef380aa14dd1f53198a0cfa2260147e736d82cd5",
+            "DiffID": "sha256:2cef49adb7d7902c61ecdd385036e3c7fb7c9f0ada96a41901797c77b7daedd7"
+          },
+          "InstalledFiles": [
+            "/usr/lib/x86_64-linux-gnu/engines-3/afalg.so",
+            "/usr/lib/x86_64-linux-gnu/engines-3/loader_attic.so",
+            "/usr/lib/x86_64-linux-gnu/engines-3/padlock.so",
+            "/usr/lib/x86_64-linux-gnu/libcrypto.so.3",
+            "/usr/lib/x86_64-linux-gnu/libssl.so.3",
+            "/usr/share/doc/libssl3t64/NEWS.Debian.gz",
+            "/usr/share/doc/libssl3t64/changelog.Debian.gz",
+            "/usr/share/doc/libssl3t64/changelog.gz",
+            "/usr/share/doc/libssl3t64/copyright",
+            "/usr/share/lintian/overrides/libssl3t64"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libstdc++6@14.2.0-19",
+          "Name": "libstdc++6",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libstdc%2B%2B6@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "d990d6f635f1c83b"
+          },
+          "Version": "14.2.0",
+          "Release": "19",
+          "Arch": "amd64",
+          "SrcName": "gcc-14",
+          "SrcVersion": "14.2.0",
+          "SrcRelease": "19",
+          "Maintainer": "Debian GCC Maintainers \u003cdebian-gcc@lists.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:581b9dc15b53f843382c4390b3123dcd09521323ba2df547f09dc20948a993f2",
+            "DiffID": "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a"
+          },
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "libzstd1@1.5.7+dfsg-1",
+          "Name": "libzstd1",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/libzstd1@1.5.7%2Bdfsg-1?arch=amd64\u0026distro=debian-13.7",
+            "UID": "6fbc13fb7d2a8697"
+          },
+          "Version": "1.5.7+dfsg",
+          "Release": "1",
+          "Arch": "amd64",
+          "SrcName": "libzstd",
+          "SrcVersion": "1.5.7+dfsg",
+          "SrcRelease": "1",
+          "Licenses": [
+            "BSD-3-Clause",
+            "GPL-2.0-only",
+            "Zlib",
+            "MIT"
+          ],
+          "Maintainer": "RPM packaging team \u003cteam+pkg-rpm@tracker.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:bd8962e292918c50c90edebd9684c053bc386b9c5503acd8fec75d0c6f93a0b7",
+            "DiffID": "sha256:c0e409312adc366898967307565f692bb33d43a439d3de48e27d14b742389725"
+          },
+          "InstalledFiles": [
+            "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7",
+            "/usr/share/doc/libzstd1/changelog.Debian.gz",
+            "/usr/share/doc/libzstd1/changelog.gz",
+            "/usr/share/doc/libzstd1/copyright"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "media-types@13.0.0",
+          "Name": "media-types",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/media-types@13.0.0?arch=all\u0026distro=debian-13.7",
+            "UID": "228e3dc215dfe5fa"
+          },
+          "Version": "13.0.0",
+          "Arch": "all",
+          "SrcName": "media-types",
+          "SrcVersion": "13.0.0",
+          "Licenses": [
+            "ad-hoc"
+          ],
+          "Maintainer": "Mime-Support Packagers \u003cteam+debian-mimesupport-packagers@tracker.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:d6b1b89eccacc15c2420b2776d72c1dae334a00805ed9af54bf2f71e4d536f28",
+            "DiffID": "sha256:275a30dd8ce958b21daa9ad962c6fbc09f98306ee2f486b65c9075dc257b1412"
+          },
+          "InstalledFiles": [
+            "/usr/share/bug/media-types/presubj",
+            "/usr/share/doc/media-types/changelog.gz",
+            "/usr/share/doc/media-types/copyright"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "netbase@6.5",
+          "Name": "netbase",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/netbase@6.5?arch=all\u0026distro=debian-13.7",
+            "UID": "e2b4fdea75f64595"
+          },
+          "Version": "6.5",
+          "Arch": "all",
+          "SrcName": "netbase",
+          "SrcVersion": "6.5",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Marco d'Itri \u003cmd@linux.it\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:c172f21841dff4c8cf45cde46589c1c2616cefe7e819965e92e6d3475c428aa0",
+            "DiffID": "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda"
+          },
+          "InstalledFiles": [
+            "/usr/share/doc/netbase/changelog.gz",
+            "/usr/share/doc/netbase/copyright"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "tzdata@2026c-0+deb13u1",
+          "Name": "tzdata",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/tzdata@2026c-0%2Bdeb13u1?arch=all\u0026distro=debian-13.7",
+            "UID": "d5dc15885c324143"
+          },
+          "Version": "2026c",
+          "Release": "0+deb13u1",
+          "Arch": "all",
+          "SrcName": "tzdata",
+          "SrcVersion": "2026c",
+          "SrcRelease": "0+deb13u1",
+          "Licenses": [
+            "public-domain"
+          ],
+          "Maintainer": "GNU Libc Maintainers \u003cdebian-glibc@lists.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:218cf840d0d95a86231eb9d33d26ac8a520a4299c6096cb70a0c2fb2a87c9e0a",
+            "DiffID": "sha256:763a77745f27b86cf26b97887b6842d83720e63b1c48848c0ba9ee54e351d63a"
+          },
+          "InstalledFiles": [
+            "/usr/share/doc/tzdata/NEWS.Debian.gz",
+            "/usr/share/doc/tzdata/README.Debian",
+            "/usr/share/doc/tzdata/changelog.Debian.gz",
+            "/usr/share/doc/tzdata/changelog.gz",
+            "/usr/share/doc/tzdata/copyright",
+            "/usr/share/lintian/overrides/tzdata",
+            "/usr/share/zoneinfo/Africa/Abidjan",
+            "/usr/share/zoneinfo/Africa/Accra",
+            "/usr/share/zoneinfo/Africa/Addis_Ababa",
+            "/usr/share/zoneinfo/Africa/Algiers",
+            "/usr/share/zoneinfo/Africa/Asmara",
+            "/usr/share/zoneinfo/Africa/Bamako",
+            "/usr/share/zoneinfo/Africa/Bangui",
+            "/usr/share/zoneinfo/Africa/Banjul",
+            "/usr/share/zoneinfo/Africa/Bissau",
+            "/usr/share/zoneinfo/Africa/Blantyre",
+            "/usr/share/zoneinfo/Africa/Brazzaville",
+            "/usr/share/zoneinfo/Africa/Bujumbura",
+            "/usr/share/zoneinfo/Africa/Cairo",
+            "/usr/share/zoneinfo/Africa/Casablanca",
+            "/usr/share/zoneinfo/Africa/Ceuta",
+            "/usr/share/zoneinfo/Africa/Conakry",
+            "/usr/share/zoneinfo/Africa/Dakar",
+            "/usr/share/zoneinfo/Africa/Dar_es_Salaam",
+            "/usr/share/zoneinfo/Africa/Djibouti",
+            "/usr/share/zoneinfo/Africa/Douala",
+            "/usr/share/zoneinfo/Africa/El_Aaiun",
+            "/usr/share/zoneinfo/Africa/Freetown",
+            "/usr/share/zoneinfo/Africa/Gaborone",
+            "/usr/share/zoneinfo/Africa/Harare",
+            "/usr/share/zoneinfo/Africa/Johannesburg",
+            "/usr/share/zoneinfo/Africa/Juba",
+            "/usr/share/zoneinfo/Africa/Kampala",
+            "/usr/share/zoneinfo/Africa/Khartoum",
+            "/usr/share/zoneinfo/Africa/Kigali",
+            "/usr/share/zoneinfo/Africa/Kinshasa",
+            "/usr/share/zoneinfo/Africa/Lagos",
+            "/usr/share/zoneinfo/Africa/Libreville",
+            "/usr/share/zoneinfo/Africa/Lome",
+            "/usr/share/zoneinfo/Africa/Luanda",
+            "/usr/share/zoneinfo/Africa/Lubumbashi",
+            "/usr/share/zoneinfo/Africa/Lusaka",
+            "/usr/share/zoneinfo/Africa/Malabo",
+            "/usr/share/zoneinfo/Africa/Maputo",
+            "/usr/share/zoneinfo/Africa/Maseru",
+            "/usr/share/zoneinfo/Africa/Mbabane",
+            "/usr/share/zoneinfo/Africa/Mogadishu",
+            "/usr/share/zoneinfo/Africa/Monrovia",
+            "/usr/share/zoneinfo/Africa/Nairobi",
+            "/usr/share/zoneinfo/Africa/Ndjamena",
+            "/usr/share/zoneinfo/Africa/Niamey",
+            "/usr/share/zoneinfo/Africa/Nouakchott",
+            "/usr/share/zoneinfo/Africa/Ouagadougou",
+            "/usr/share/zoneinfo/Africa/Porto-Novo",
+            "/usr/share/zoneinfo/Africa/Sao_Tome",
+            "/usr/share/zoneinfo/Africa/Tripoli",
+            "/usr/share/zoneinfo/Africa/Tunis",
+            "/usr/share/zoneinfo/Africa/Windhoek",
+            "/usr/share/zoneinfo/America/Adak",
+            "/usr/share/zoneinfo/America/Anchorage",
+            "/usr/share/zoneinfo/America/Anguilla",
+            "/usr/share/zoneinfo/America/Antigua",
+            "/usr/share/zoneinfo/America/Araguaina",
+            "/usr/share/zoneinfo/America/Argentina/Buenos_Aires",
+            "/usr/share/zoneinfo/America/Argentina/Catamarca",
+            "/usr/share/zoneinfo/America/Argentina/Cordoba",
+            "/usr/share/zoneinfo/America/Argentina/Jujuy",
+            "/usr/share/zoneinfo/America/Argentina/La_Rioja",
+            "/usr/share/zoneinfo/America/Argentina/Mendoza",
+            "/usr/share/zoneinfo/America/Argentina/Rio_Gallegos",
+            "/usr/share/zoneinfo/America/Argentina/Salta",
+            "/usr/share/zoneinfo/America/Argentina/San_Juan",
+            "/usr/share/zoneinfo/America/Argentina/San_Luis",
+            "/usr/share/zoneinfo/America/Argentina/Tucuman",
+            "/usr/share/zoneinfo/America/Argentina/Ushuaia",
+            "/usr/share/zoneinfo/America/Aruba",
+            "/usr/share/zoneinfo/America/Asuncion",
+            "/usr/share/zoneinfo/America/Atikokan",
+            "/usr/share/zoneinfo/America/Bahia",
+            "/usr/share/zoneinfo/America/Bahia_Banderas",
+            "/usr/share/zoneinfo/America/Barbados",
+            "/usr/share/zoneinfo/America/Belem",
+            "/usr/share/zoneinfo/America/Belize",
+            "/usr/share/zoneinfo/America/Blanc-Sablon",
+            "/usr/share/zoneinfo/America/Boa_Vista",
+            "/usr/share/zoneinfo/America/Bogota",
+            "/usr/share/zoneinfo/America/Boise",
+            "/usr/share/zoneinfo/America/Cambridge_Bay",
+            "/usr/share/zoneinfo/America/Campo_Grande",
+            "/usr/share/zoneinfo/America/Cancun",
+            "/usr/share/zoneinfo/America/Caracas",
+            "/usr/share/zoneinfo/America/Cayenne",
+            "/usr/share/zoneinfo/America/Cayman",
+            "/usr/share/zoneinfo/America/Chicago",
+            "/usr/share/zoneinfo/America/Chihuahua",
+            "/usr/share/zoneinfo/America/Ciudad_Juarez",
+            "/usr/share/zoneinfo/America/Costa_Rica",
+            "/usr/share/zoneinfo/America/Coyhaique",
+            "/usr/share/zoneinfo/America/Creston",
+            "/usr/share/zoneinfo/America/Cuiaba",
+            "/usr/share/zoneinfo/America/Curacao",
+            "/usr/share/zoneinfo/America/Danmarkshavn",
+            "/usr/share/zoneinfo/America/Dawson",
+            "/usr/share/zoneinfo/America/Dawson_Creek",
+            "/usr/share/zoneinfo/America/Denver",
+            "/usr/share/zoneinfo/America/Detroit",
+            "/usr/share/zoneinfo/America/Dominica",
+            "/usr/share/zoneinfo/America/Edmonton",
+            "/usr/share/zoneinfo/America/Eirunepe",
+            "/usr/share/zoneinfo/America/El_Salvador",
+            "/usr/share/zoneinfo/America/Fort_Nelson",
+            "/usr/share/zoneinfo/America/Fortaleza",
+            "/usr/share/zoneinfo/America/Glace_Bay",
+            "/usr/share/zoneinfo/America/Goose_Bay",
+            "/usr/share/zoneinfo/America/Grand_Turk",
+            "/usr/share/zoneinfo/America/Grenada",
+            "/usr/share/zoneinfo/America/Guadeloupe",
+            "/usr/share/zoneinfo/America/Guatemala",
+            "/usr/share/zoneinfo/America/Guayaquil",
+            "/usr/share/zoneinfo/America/Guyana",
+            "/usr/share/zoneinfo/America/Halifax",
+            "/usr/share/zoneinfo/America/Havana",
+            "/usr/share/zoneinfo/America/Hermosillo",
+            "/usr/share/zoneinfo/America/Indiana/Indianapolis",
+            "/usr/share/zoneinfo/America/Indiana/Knox",
+            "/usr/share/zoneinfo/America/Indiana/Marengo",
+            "/usr/share/zoneinfo/America/Indiana/Petersburg",
+            "/usr/share/zoneinfo/America/Indiana/Tell_City",
+            "/usr/share/zoneinfo/America/Indiana/Vevay",
+            "/usr/share/zoneinfo/America/Indiana/Vincennes",
+            "/usr/share/zoneinfo/America/Indiana/Winamac",
+            "/usr/share/zoneinfo/America/Inuvik",
+            "/usr/share/zoneinfo/America/Iqaluit",
+            "/usr/share/zoneinfo/America/Jamaica",
+            "/usr/share/zoneinfo/America/Juneau",
+            "/usr/share/zoneinfo/America/Kentucky/Louisville",
+            "/usr/share/zoneinfo/America/Kentucky/Monticello",
+            "/usr/share/zoneinfo/America/La_Paz",
+            "/usr/share/zoneinfo/America/Lima",
+            "/usr/share/zoneinfo/America/Los_Angeles",
+            "/usr/share/zoneinfo/America/Maceio",
+            "/usr/share/zoneinfo/America/Managua",
+            "/usr/share/zoneinfo/America/Manaus",
+            "/usr/share/zoneinfo/America/Martinique",
+            "/usr/share/zoneinfo/America/Matamoros",
+            "/usr/share/zoneinfo/America/Mazatlan",
+            "/usr/share/zoneinfo/America/Menominee",
+            "/usr/share/zoneinfo/America/Merida",
+            "/usr/share/zoneinfo/America/Metlakatla",
+            "/usr/share/zoneinfo/America/Mexico_City",
+            "/usr/share/zoneinfo/America/Miquelon",
+            "/usr/share/zoneinfo/America/Moncton",
+            "/usr/share/zoneinfo/America/Monterrey",
+            "/usr/share/zoneinfo/America/Montevideo",
+            "/usr/share/zoneinfo/America/Montserrat",
+            "/usr/share/zoneinfo/America/Nassau",
+            "/usr/share/zoneinfo/America/New_York",
+            "/usr/share/zoneinfo/America/Nome",
+            "/usr/share/zoneinfo/America/Noronha",
+            "/usr/share/zoneinfo/America/North_Dakota/Beulah",
+            "/usr/share/zoneinfo/America/North_Dakota/Center",
+            "/usr/share/zoneinfo/America/North_Dakota/New_Salem",
+            "/usr/share/zoneinfo/America/Nuuk",
+            "/usr/share/zoneinfo/America/Ojinaga",
+            "/usr/share/zoneinfo/America/Panama",
+            "/usr/share/zoneinfo/America/Paramaribo",
+            "/usr/share/zoneinfo/America/Phoenix",
+            "/usr/share/zoneinfo/America/Port-au-Prince",
+            "/usr/share/zoneinfo/America/Port_of_Spain",
+            "/usr/share/zoneinfo/America/Porto_Velho",
+            "/usr/share/zoneinfo/America/Puerto_Rico",
+            "/usr/share/zoneinfo/America/Punta_Arenas",
+            "/usr/share/zoneinfo/America/Rankin_Inlet",
+            "/usr/share/zoneinfo/America/Recife",
+            "/usr/share/zoneinfo/America/Regina",
+            "/usr/share/zoneinfo/America/Resolute",
+            "/usr/share/zoneinfo/America/Rio_Branco",
+            "/usr/share/zoneinfo/America/Santarem",
+            "/usr/share/zoneinfo/America/Santiago",
+            "/usr/share/zoneinfo/America/Santo_Domingo",
+            "/usr/share/zoneinfo/America/Sao_Paulo",
+            "/usr/share/zoneinfo/America/Scoresbysund",
+            "/usr/share/zoneinfo/America/Sitka",
+            "/usr/share/zoneinfo/America/St_Johns",
+            "/usr/share/zoneinfo/America/St_Kitts",
+            "/usr/share/zoneinfo/America/St_Lucia",
+            "/usr/share/zoneinfo/America/St_Thomas",
+            "/usr/share/zoneinfo/America/St_Vincent",
+            "/usr/share/zoneinfo/America/Swift_Current",
+            "/usr/share/zoneinfo/America/Tegucigalpa",
+            "/usr/share/zoneinfo/America/Thule",
+            "/usr/share/zoneinfo/America/Tijuana",
+            "/usr/share/zoneinfo/America/Toronto",
+            "/usr/share/zoneinfo/America/Tortola",
+            "/usr/share/zoneinfo/America/Vancouver",
+            "/usr/share/zoneinfo/America/Whitehorse",
+            "/usr/share/zoneinfo/America/Winnipeg",
+            "/usr/share/zoneinfo/America/Yakutat",
+            "/usr/share/zoneinfo/Antarctica/Casey",
+            "/usr/share/zoneinfo/Antarctica/Davis",
+            "/usr/share/zoneinfo/Antarctica/DumontDUrville",
+            "/usr/share/zoneinfo/Antarctica/Macquarie",
+            "/usr/share/zoneinfo/Antarctica/Mawson",
+            "/usr/share/zoneinfo/Antarctica/McMurdo",
+            "/usr/share/zoneinfo/Antarctica/Palmer",
+            "/usr/share/zoneinfo/Antarctica/Rothera",
+            "/usr/share/zoneinfo/Antarctica/Syowa",
+            "/usr/share/zoneinfo/Antarctica/Troll",
+            "/usr/share/zoneinfo/Antarctica/Vostok",
+            "/usr/share/zoneinfo/Asia/Aden",
+            "/usr/share/zoneinfo/Asia/Almaty",
+            "/usr/share/zoneinfo/Asia/Amman",
+            "/usr/share/zoneinfo/Asia/Anadyr",
+            "/usr/share/zoneinfo/Asia/Aqtau",
+            "/usr/share/zoneinfo/Asia/Aqtobe",
+            "/usr/share/zoneinfo/Asia/Ashgabat",
+            "/usr/share/zoneinfo/Asia/Atyrau",
+            "/usr/share/zoneinfo/Asia/Baghdad",
+            "/usr/share/zoneinfo/Asia/Bahrain",
+            "/usr/share/zoneinfo/Asia/Baku",
+            "/usr/share/zoneinfo/Asia/Bangkok",
+            "/usr/share/zoneinfo/Asia/Barnaul",
+            "/usr/share/zoneinfo/Asia/Beirut",
+            "/usr/share/zoneinfo/Asia/Bishkek",
+            "/usr/share/zoneinfo/Asia/Brunei",
+            "/usr/share/zoneinfo/Asia/Chita",
+            "/usr/share/zoneinfo/Asia/Colombo",
+            "/usr/share/zoneinfo/Asia/Damascus",
+            "/usr/share/zoneinfo/Asia/Dhaka",
+            "/usr/share/zoneinfo/Asia/Dili",
+            "/usr/share/zoneinfo/Asia/Dubai",
+            "/usr/share/zoneinfo/Asia/Dushanbe",
+            "/usr/share/zoneinfo/Asia/Famagusta",
+            "/usr/share/zoneinfo/Asia/Gaza",
+            "/usr/share/zoneinfo/Asia/Hebron",
+            "/usr/share/zoneinfo/Asia/Ho_Chi_Minh",
+            "/usr/share/zoneinfo/Asia/Hong_Kong",
+            "/usr/share/zoneinfo/Asia/Hovd",
+            "/usr/share/zoneinfo/Asia/Irkutsk",
+            "/usr/share/zoneinfo/Asia/Jakarta",
+            "/usr/share/zoneinfo/Asia/Jayapura",
+            "/usr/share/zoneinfo/Asia/Jerusalem",
+            "/usr/share/zoneinfo/Asia/Kabul",
+            "/usr/share/zoneinfo/Asia/Kamchatka",
+            "/usr/share/zoneinfo/Asia/Karachi",
+            "/usr/share/zoneinfo/Asia/Kathmandu",
+            "/usr/share/zoneinfo/Asia/Khandyga",
+            "/usr/share/zoneinfo/Asia/Kolkata",
+            "/usr/share/zoneinfo/Asia/Krasnoyarsk",
+            "/usr/share/zoneinfo/Asia/Kuala_Lumpur",
+            "/usr/share/zoneinfo/Asia/Kuching",
+            "/usr/share/zoneinfo/Asia/Kuwait",
+            "/usr/share/zoneinfo/Asia/Macau",
+            "/usr/share/zoneinfo/Asia/Magadan",
+            "/usr/share/zoneinfo/Asia/Makassar",
+            "/usr/share/zoneinfo/Asia/Manila",
+            "/usr/share/zoneinfo/Asia/Muscat",
+            "/usr/share/zoneinfo/Asia/Nicosia",
+            "/usr/share/zoneinfo/Asia/Novokuznetsk",
+            "/usr/share/zoneinfo/Asia/Novosibirsk",
+            "/usr/share/zoneinfo/Asia/Omsk",
+            "/usr/share/zoneinfo/Asia/Oral",
+            "/usr/share/zoneinfo/Asia/Phnom_Penh",
+            "/usr/share/zoneinfo/Asia/Pontianak",
+            "/usr/share/zoneinfo/Asia/Pyongyang",
+            "/usr/share/zoneinfo/Asia/Qatar",
+            "/usr/share/zoneinfo/Asia/Qostanay",
+            "/usr/share/zoneinfo/Asia/Qyzylorda",
+            "/usr/share/zoneinfo/Asia/Riyadh",
+            "/usr/share/zoneinfo/Asia/Sakhalin",
+            "/usr/share/zoneinfo/Asia/Samarkand",
+            "/usr/share/zoneinfo/Asia/Seoul",
+            "/usr/share/zoneinfo/Asia/Shanghai",
+            "/usr/share/zoneinfo/Asia/Singapore",
+            "/usr/share/zoneinfo/Asia/Srednekolymsk",
+            "/usr/share/zoneinfo/Asia/Taipei",
+            "/usr/share/zoneinfo/Asia/Tashkent",
+            "/usr/share/zoneinfo/Asia/Tbilisi",
+            "/usr/share/zoneinfo/Asia/Tehran",
+            "/usr/share/zoneinfo/Asia/Thimphu",
+            "/usr/share/zoneinfo/Asia/Tokyo",
+            "/usr/share/zoneinfo/Asia/Tomsk",
+            "/usr/share/zoneinfo/Asia/Ulaanbaatar",
+            "/usr/share/zoneinfo/Asia/Urumqi",
+            "/usr/share/zoneinfo/Asia/Ust-Nera",
+            "/usr/share/zoneinfo/Asia/Vientiane",
+            "/usr/share/zoneinfo/Asia/Vladivostok",
+            "/usr/share/zoneinfo/Asia/Yakutsk",
+            "/usr/share/zoneinfo/Asia/Yangon",
+            "/usr/share/zoneinfo/Asia/Yekaterinburg",
+            "/usr/share/zoneinfo/Asia/Yerevan",
+            "/usr/share/zoneinfo/Atlantic/Azores",
+            "/usr/share/zoneinfo/Atlantic/Bermuda",
+            "/usr/share/zoneinfo/Atlantic/Canary",
+            "/usr/share/zoneinfo/Atlantic/Cape_Verde",
+            "/usr/share/zoneinfo/Atlantic/Faroe",
+            "/usr/share/zoneinfo/Atlantic/Madeira",
+            "/usr/share/zoneinfo/Atlantic/Reykjavik",
+            "/usr/share/zoneinfo/Atlantic/South_Georgia",
+            "/usr/share/zoneinfo/Atlantic/St_Helena",
+            "/usr/share/zoneinfo/Atlantic/Stanley",
+            "/usr/share/zoneinfo/Australia/Adelaide",
+            "/usr/share/zoneinfo/Australia/Brisbane",
+            "/usr/share/zoneinfo/Australia/Broken_Hill",
+            "/usr/share/zoneinfo/Australia/Darwin",
+            "/usr/share/zoneinfo/Australia/Eucla",
+            "/usr/share/zoneinfo/Australia/Hobart",
+            "/usr/share/zoneinfo/Australia/Lindeman",
+            "/usr/share/zoneinfo/Australia/Lord_Howe",
+            "/usr/share/zoneinfo/Australia/Melbourne",
+            "/usr/share/zoneinfo/Australia/Perth",
+            "/usr/share/zoneinfo/Australia/Sydney",
+            "/usr/share/zoneinfo/Etc/GMT",
+            "/usr/share/zoneinfo/Etc/GMT+1",
+            "/usr/share/zoneinfo/Etc/GMT+10",
+            "/usr/share/zoneinfo/Etc/GMT+11",
+            "/usr/share/zoneinfo/Etc/GMT+12",
+            "/usr/share/zoneinfo/Etc/GMT+2",
+            "/usr/share/zoneinfo/Etc/GMT+3",
+            "/usr/share/zoneinfo/Etc/GMT+4",
+            "/usr/share/zoneinfo/Etc/GMT+5",
+            "/usr/share/zoneinfo/Etc/GMT+6",
+            "/usr/share/zoneinfo/Etc/GMT+7",
+            "/usr/share/zoneinfo/Etc/GMT+8",
+            "/usr/share/zoneinfo/Etc/GMT+9",
+            "/usr/share/zoneinfo/Etc/GMT-1",
+            "/usr/share/zoneinfo/Etc/GMT-10",
+            "/usr/share/zoneinfo/Etc/GMT-11",
+            "/usr/share/zoneinfo/Etc/GMT-12",
+            "/usr/share/zoneinfo/Etc/GMT-13",
+            "/usr/share/zoneinfo/Etc/GMT-14",
+            "/usr/share/zoneinfo/Etc/GMT-2",
+            "/usr/share/zoneinfo/Etc/GMT-3",
+            "/usr/share/zoneinfo/Etc/GMT-4",
+            "/usr/share/zoneinfo/Etc/GMT-5",
+            "/usr/share/zoneinfo/Etc/GMT-6",
+            "/usr/share/zoneinfo/Etc/GMT-7",
+            "/usr/share/zoneinfo/Etc/GMT-8",
+            "/usr/share/zoneinfo/Etc/GMT-9",
+            "/usr/share/zoneinfo/Etc/UTC",
+            "/usr/share/zoneinfo/Europe/Amsterdam",
+            "/usr/share/zoneinfo/Europe/Andorra",
+            "/usr/share/zoneinfo/Europe/Astrakhan",
+            "/usr/share/zoneinfo/Europe/Athens",
+            "/usr/share/zoneinfo/Europe/Belgrade",
+            "/usr/share/zoneinfo/Europe/Berlin",
+            "/usr/share/zoneinfo/Europe/Brussels",
+            "/usr/share/zoneinfo/Europe/Bucharest",
+            "/usr/share/zoneinfo/Europe/Budapest",
+            "/usr/share/zoneinfo/Europe/Chisinau",
+            "/usr/share/zoneinfo/Europe/Copenhagen",
+            "/usr/share/zoneinfo/Europe/Dublin",
+            "/usr/share/zoneinfo/Europe/Gibraltar",
+            "/usr/share/zoneinfo/Europe/Guernsey",
+            "/usr/share/zoneinfo/Europe/Helsinki",
+            "/usr/share/zoneinfo/Europe/Isle_of_Man",
+            "/usr/share/zoneinfo/Europe/Istanbul",
+            "/usr/share/zoneinfo/Europe/Jersey",
+            "/usr/share/zoneinfo/Europe/Kaliningrad",
+            "/usr/share/zoneinfo/Europe/Kirov",
+            "/usr/share/zoneinfo/Europe/Kyiv",
+            "/usr/share/zoneinfo/Europe/Lisbon",
+            "/usr/share/zoneinfo/Europe/Ljubljana",
+            "/usr/share/zoneinfo/Europe/London",
+            "/usr/share/zoneinfo/Europe/Luxembourg",
+            "/usr/share/zoneinfo/Europe/Madrid",
+            "/usr/share/zoneinfo/Europe/Malta",
+            "/usr/share/zoneinfo/Europe/Minsk",
+            "/usr/share/zoneinfo/Europe/Monaco",
+            "/usr/share/zoneinfo/Europe/Moscow",
+            "/usr/share/zoneinfo/Europe/Oslo",
+            "/usr/share/zoneinfo/Europe/Paris",
+            "/usr/share/zoneinfo/Europe/Prague",
+            "/usr/share/zoneinfo/Europe/Riga",
+            "/usr/share/zoneinfo/Europe/Rome",
+            "/usr/share/zoneinfo/Europe/Samara",
+            "/usr/share/zoneinfo/Europe/Sarajevo",
+            "/usr/share/zoneinfo/Europe/Saratov",
+            "/usr/share/zoneinfo/Europe/Simferopol",
+            "/usr/share/zoneinfo/Europe/Skopje",
+            "/usr/share/zoneinfo/Europe/Sofia",
+            "/usr/share/zoneinfo/Europe/Stockholm",
+            "/usr/share/zoneinfo/Europe/Tallinn",
+            "/usr/share/zoneinfo/Europe/Tirane",
+            "/usr/share/zoneinfo/Europe/Ulyanovsk",
+            "/usr/share/zoneinfo/Europe/Vaduz",
+            "/usr/share/zoneinfo/Europe/Vienna",
+            "/usr/share/zoneinfo/Europe/Vilnius",
+            "/usr/share/zoneinfo/Europe/Volgograd",
+            "/usr/share/zoneinfo/Europe/Warsaw",
+            "/usr/share/zoneinfo/Europe/Zagreb",
+            "/usr/share/zoneinfo/Europe/Zurich",
+            "/usr/share/zoneinfo/Factory",
+            "/usr/share/zoneinfo/Indian/Antananarivo",
+            "/usr/share/zoneinfo/Indian/Chagos",
+            "/usr/share/zoneinfo/Indian/Christmas",
+            "/usr/share/zoneinfo/Indian/Cocos",
+            "/usr/share/zoneinfo/Indian/Comoro",
+            "/usr/share/zoneinfo/Indian/Kerguelen",
+            "/usr/share/zoneinfo/Indian/Mahe",
+            "/usr/share/zoneinfo/Indian/Maldives",
+            "/usr/share/zoneinfo/Indian/Mauritius",
+            "/usr/share/zoneinfo/Indian/Mayotte",
+            "/usr/share/zoneinfo/Indian/Reunion",
+            "/usr/share/zoneinfo/Pacific/Apia",
+            "/usr/share/zoneinfo/Pacific/Auckland",
+            "/usr/share/zoneinfo/Pacific/Bougainville",
+            "/usr/share/zoneinfo/Pacific/Chatham",
+            "/usr/share/zoneinfo/Pacific/Chuuk",
+            "/usr/share/zoneinfo/Pacific/Easter",
+            "/usr/share/zoneinfo/Pacific/Efate",
+            "/usr/share/zoneinfo/Pacific/Fakaofo",
+            "/usr/share/zoneinfo/Pacific/Fiji",
+            "/usr/share/zoneinfo/Pacific/Funafuti",
+            "/usr/share/zoneinfo/Pacific/Galapagos",
+            "/usr/share/zoneinfo/Pacific/Gambier",
+            "/usr/share/zoneinfo/Pacific/Guadalcanal",
+            "/usr/share/zoneinfo/Pacific/Guam",
+            "/usr/share/zoneinfo/Pacific/Honolulu",
+            "/usr/share/zoneinfo/Pacific/Kanton",
+            "/usr/share/zoneinfo/Pacific/Kiritimati",
+            "/usr/share/zoneinfo/Pacific/Kosrae",
+            "/usr/share/zoneinfo/Pacific/Kwajalein",
+            "/usr/share/zoneinfo/Pacific/Majuro",
+            "/usr/share/zoneinfo/Pacific/Marquesas",
+            "/usr/share/zoneinfo/Pacific/Midway",
+            "/usr/share/zoneinfo/Pacific/Nauru",
+            "/usr/share/zoneinfo/Pacific/Niue",
+            "/usr/share/zoneinfo/Pacific/Norfolk",
+            "/usr/share/zoneinfo/Pacific/Noumea",
+            "/usr/share/zoneinfo/Pacific/Pago_Pago",
+            "/usr/share/zoneinfo/Pacific/Palau",
+            "/usr/share/zoneinfo/Pacific/Pitcairn",
+            "/usr/share/zoneinfo/Pacific/Pohnpei",
+            "/usr/share/zoneinfo/Pacific/Port_Moresby",
+            "/usr/share/zoneinfo/Pacific/Rarotonga",
+            "/usr/share/zoneinfo/Pacific/Saipan",
+            "/usr/share/zoneinfo/Pacific/Tahiti",
+            "/usr/share/zoneinfo/Pacific/Tarawa",
+            "/usr/share/zoneinfo/Pacific/Tongatapu",
+            "/usr/share/zoneinfo/Pacific/Wake",
+            "/usr/share/zoneinfo/Pacific/Wallis",
+            "/usr/share/zoneinfo/iso3166.tab",
+            "/usr/share/zoneinfo/leap-seconds.list",
+            "/usr/share/zoneinfo/leapseconds",
+            "/usr/share/zoneinfo/tzdata.zi",
+            "/usr/share/zoneinfo/zone.tab",
+            "/usr/share/zoneinfo/zone1970.tab",
+            "/usr/share/zoneinfo/zonenow.tab"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "tzdata-legacy@2026c-0+deb13u1",
+          "Name": "tzdata-legacy",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/tzdata-legacy@2026c-0%2Bdeb13u1?arch=all\u0026distro=debian-13.7",
+            "UID": "35a94b21dbe939ff"
+          },
+          "Version": "2026c",
+          "Release": "0+deb13u1",
+          "Arch": "all",
+          "SrcName": "tzdata",
+          "SrcVersion": "2026c",
+          "SrcRelease": "0+deb13u1",
+          "Licenses": [
+            "public-domain"
+          ],
+          "Maintainer": "GNU Libc Maintainers \u003cdebian-glibc@lists.debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:f6069939f718601b38d25ec5ed5631ed047e4da24acec2e252f8f29d251be718",
+            "DiffID": "sha256:f0d0eff4c2312a7bd6e21797bdfea5eb35f60e76b555ce2b22794424af2cad36"
+          },
+          "InstalledFiles": [
+            "/usr/share/doc/tzdata-legacy/NEWS.Debian.gz",
+            "/usr/share/doc/tzdata-legacy/changelog.Debian.gz",
+            "/usr/share/doc/tzdata-legacy/changelog.gz",
+            "/usr/share/doc/tzdata-legacy/copyright",
+            "/usr/share/zoneinfo/right/Africa/Abidjan",
+            "/usr/share/zoneinfo/right/Africa/Accra",
+            "/usr/share/zoneinfo/right/Africa/Addis_Ababa",
+            "/usr/share/zoneinfo/right/Africa/Algiers",
+            "/usr/share/zoneinfo/right/Africa/Asmara",
+            "/usr/share/zoneinfo/right/Africa/Bamako",
+            "/usr/share/zoneinfo/right/Africa/Bangui",
+            "/usr/share/zoneinfo/right/Africa/Banjul",
+            "/usr/share/zoneinfo/right/Africa/Bissau",
+            "/usr/share/zoneinfo/right/Africa/Blantyre",
+            "/usr/share/zoneinfo/right/Africa/Brazzaville",
+            "/usr/share/zoneinfo/right/Africa/Bujumbura",
+            "/usr/share/zoneinfo/right/Africa/Cairo",
+            "/usr/share/zoneinfo/right/Africa/Casablanca",
+            "/usr/share/zoneinfo/right/Africa/Ceuta",
+            "/usr/share/zoneinfo/right/Africa/Conakry",
+            "/usr/share/zoneinfo/right/Africa/Dakar",
+            "/usr/share/zoneinfo/right/Africa/Dar_es_Salaam",
+            "/usr/share/zoneinfo/right/Africa/Djibouti",
+            "/usr/share/zoneinfo/right/Africa/Douala",
+            "/usr/share/zoneinfo/right/Africa/El_Aaiun",
+            "/usr/share/zoneinfo/right/Africa/Freetown",
+            "/usr/share/zoneinfo/right/Africa/Gaborone",
+            "/usr/share/zoneinfo/right/Africa/Harare",
+            "/usr/share/zoneinfo/right/Africa/Johannesburg",
+            "/usr/share/zoneinfo/right/Africa/Juba",
+            "/usr/share/zoneinfo/right/Africa/Kampala",
+            "/usr/share/zoneinfo/right/Africa/Khartoum",
+            "/usr/share/zoneinfo/right/Africa/Kigali",
+            "/usr/share/zoneinfo/right/Africa/Kinshasa",
+            "/usr/share/zoneinfo/right/Africa/Lagos",
+            "/usr/share/zoneinfo/right/Africa/Libreville",
+            "/usr/share/zoneinfo/right/Africa/Lome",
+            "/usr/share/zoneinfo/right/Africa/Luanda",
+            "/usr/share/zoneinfo/right/Africa/Lubumbashi",
+            "/usr/share/zoneinfo/right/Africa/Lusaka",
+            "/usr/share/zoneinfo/right/Africa/Malabo",
+            "/usr/share/zoneinfo/right/Africa/Maputo",
+            "/usr/share/zoneinfo/right/Africa/Maseru",
+            "/usr/share/zoneinfo/right/Africa/Mbabane",
+            "/usr/share/zoneinfo/right/Africa/Mogadishu",
+            "/usr/share/zoneinfo/right/Africa/Monrovia",
+            "/usr/share/zoneinfo/right/Africa/Nairobi",
+            "/usr/share/zoneinfo/right/Africa/Ndjamena",
+            "/usr/share/zoneinfo/right/Africa/Niamey",
+            "/usr/share/zoneinfo/right/Africa/Nouakchott",
+            "/usr/share/zoneinfo/right/Africa/Ouagadougou",
+            "/usr/share/zoneinfo/right/Africa/Porto-Novo",
+            "/usr/share/zoneinfo/right/Africa/Sao_Tome",
+            "/usr/share/zoneinfo/right/Africa/Tripoli",
+            "/usr/share/zoneinfo/right/Africa/Tunis",
+            "/usr/share/zoneinfo/right/Africa/Windhoek",
+            "/usr/share/zoneinfo/right/America/Adak",
+            "/usr/share/zoneinfo/right/America/Anchorage",
+            "/usr/share/zoneinfo/right/America/Anguilla",
+            "/usr/share/zoneinfo/right/America/Antigua",
+            "/usr/share/zoneinfo/right/America/Araguaina",
+            "/usr/share/zoneinfo/right/America/Argentina/Buenos_Aires",
+            "/usr/share/zoneinfo/right/America/Argentina/Catamarca",
+            "/usr/share/zoneinfo/right/America/Argentina/Cordoba",
+            "/usr/share/zoneinfo/right/America/Argentina/Jujuy",
+            "/usr/share/zoneinfo/right/America/Argentina/La_Rioja",
+            "/usr/share/zoneinfo/right/America/Argentina/Mendoza",
+            "/usr/share/zoneinfo/right/America/Argentina/Rio_Gallegos",
+            "/usr/share/zoneinfo/right/America/Argentina/Salta",
+            "/usr/share/zoneinfo/right/America/Argentina/San_Juan",
+            "/usr/share/zoneinfo/right/America/Argentina/San_Luis",
+            "/usr/share/zoneinfo/right/America/Argentina/Tucuman",
+            "/usr/share/zoneinfo/right/America/Argentina/Ushuaia",
+            "/usr/share/zoneinfo/right/America/Aruba",
+            "/usr/share/zoneinfo/right/America/Asuncion",
+            "/usr/share/zoneinfo/right/America/Atikokan",
+            "/usr/share/zoneinfo/right/America/Bahia",
+            "/usr/share/zoneinfo/right/America/Bahia_Banderas",
+            "/usr/share/zoneinfo/right/America/Barbados",
+            "/usr/share/zoneinfo/right/America/Belem",
+            "/usr/share/zoneinfo/right/America/Belize",
+            "/usr/share/zoneinfo/right/America/Blanc-Sablon",
+            "/usr/share/zoneinfo/right/America/Boa_Vista",
+            "/usr/share/zoneinfo/right/America/Bogota",
+            "/usr/share/zoneinfo/right/America/Boise",
+            "/usr/share/zoneinfo/right/America/Cambridge_Bay",
+            "/usr/share/zoneinfo/right/America/Campo_Grande",
+            "/usr/share/zoneinfo/right/America/Cancun",
+            "/usr/share/zoneinfo/right/America/Caracas",
+            "/usr/share/zoneinfo/right/America/Cayenne",
+            "/usr/share/zoneinfo/right/America/Cayman",
+            "/usr/share/zoneinfo/right/America/Chicago",
+            "/usr/share/zoneinfo/right/America/Chihuahua",
+            "/usr/share/zoneinfo/right/America/Ciudad_Juarez",
+            "/usr/share/zoneinfo/right/America/Costa_Rica",
+            "/usr/share/zoneinfo/right/America/Coyhaique",
+            "/usr/share/zoneinfo/right/America/Creston",
+            "/usr/share/zoneinfo/right/America/Cuiaba",
+            "/usr/share/zoneinfo/right/America/Curacao",
+            "/usr/share/zoneinfo/right/America/Danmarkshavn",
+            "/usr/share/zoneinfo/right/America/Dawson",
+            "/usr/share/zoneinfo/right/America/Dawson_Creek",
+            "/usr/share/zoneinfo/right/America/Denver",
+            "/usr/share/zoneinfo/right/America/Detroit",
+            "/usr/share/zoneinfo/right/America/Dominica",
+            "/usr/share/zoneinfo/right/America/Edmonton",
+            "/usr/share/zoneinfo/right/America/Eirunepe",
+            "/usr/share/zoneinfo/right/America/El_Salvador",
+            "/usr/share/zoneinfo/right/America/Fort_Nelson",
+            "/usr/share/zoneinfo/right/America/Fortaleza",
+            "/usr/share/zoneinfo/right/America/Glace_Bay",
+            "/usr/share/zoneinfo/right/America/Goose_Bay",
+            "/usr/share/zoneinfo/right/America/Grand_Turk",
+            "/usr/share/zoneinfo/right/America/Grenada",
+            "/usr/share/zoneinfo/right/America/Guadeloupe",
+            "/usr/share/zoneinfo/right/America/Guatemala",
+            "/usr/share/zoneinfo/right/America/Guayaquil",
+            "/usr/share/zoneinfo/right/America/Guyana",
+            "/usr/share/zoneinfo/right/America/Halifax",
+            "/usr/share/zoneinfo/right/America/Havana",
+            "/usr/share/zoneinfo/right/America/Hermosillo",
+            "/usr/share/zoneinfo/right/America/Indiana/Indianapolis",
+            "/usr/share/zoneinfo/right/America/Indiana/Knox",
+            "/usr/share/zoneinfo/right/America/Indiana/Marengo",
+            "/usr/share/zoneinfo/right/America/Indiana/Petersburg",
+            "/usr/share/zoneinfo/right/America/Indiana/Tell_City",
+            "/usr/share/zoneinfo/right/America/Indiana/Vevay",
+            "/usr/share/zoneinfo/right/America/Indiana/Vincennes",
+            "/usr/share/zoneinfo/right/America/Indiana/Winamac",
+            "/usr/share/zoneinfo/right/America/Inuvik",
+            "/usr/share/zoneinfo/right/America/Iqaluit",
+            "/usr/share/zoneinfo/right/America/Jamaica",
+            "/usr/share/zoneinfo/right/America/Juneau",
+            "/usr/share/zoneinfo/right/America/Kentucky/Louisville",
+            "/usr/share/zoneinfo/right/America/Kentucky/Monticello",
+            "/usr/share/zoneinfo/right/America/La_Paz",
+            "/usr/share/zoneinfo/right/America/Lima",
+            "/usr/share/zoneinfo/right/America/Los_Angeles",
+            "/usr/share/zoneinfo/right/America/Maceio",
+            "/usr/share/zoneinfo/right/America/Managua",
+            "/usr/share/zoneinfo/right/America/Manaus",
+            "/usr/share/zoneinfo/right/America/Martinique",
+            "/usr/share/zoneinfo/right/America/Matamoros",
+            "/usr/share/zoneinfo/right/America/Mazatlan",
+            "/usr/share/zoneinfo/right/America/Menominee",
+            "/usr/share/zoneinfo/right/America/Merida",
+            "/usr/share/zoneinfo/right/America/Metlakatla",
+            "/usr/share/zoneinfo/right/America/Mexico_City",
+            "/usr/share/zoneinfo/right/America/Miquelon",
+            "/usr/share/zoneinfo/right/America/Moncton",
+            "/usr/share/zoneinfo/right/America/Monterrey",
+            "/usr/share/zoneinfo/right/America/Montevideo",
+            "/usr/share/zoneinfo/right/America/Montserrat",
+            "/usr/share/zoneinfo/right/America/Nassau",
+            "/usr/share/zoneinfo/right/America/New_York",
+            "/usr/share/zoneinfo/right/America/Nome",
+            "/usr/share/zoneinfo/right/America/Noronha",
+            "/usr/share/zoneinfo/right/America/North_Dakota/Beulah",
+            "/usr/share/zoneinfo/right/America/North_Dakota/Center",
+            "/usr/share/zoneinfo/right/America/North_Dakota/New_Salem",
+            "/usr/share/zoneinfo/right/America/Nuuk",
+            "/usr/share/zoneinfo/right/America/Ojinaga",
+            "/usr/share/zoneinfo/right/America/Panama",
+            "/usr/share/zoneinfo/right/America/Paramaribo",
+            "/usr/share/zoneinfo/right/America/Phoenix",
+            "/usr/share/zoneinfo/right/America/Port-au-Prince",
+            "/usr/share/zoneinfo/right/America/Port_of_Spain",
+            "/usr/share/zoneinfo/right/America/Porto_Velho",
+            "/usr/share/zoneinfo/right/America/Puerto_Rico",
+            "/usr/share/zoneinfo/right/America/Punta_Arenas",
+            "/usr/share/zoneinfo/right/America/Rankin_Inlet",
+            "/usr/share/zoneinfo/right/America/Recife",
+            "/usr/share/zoneinfo/right/America/Regina",
+            "/usr/share/zoneinfo/right/America/Resolute",
+            "/usr/share/zoneinfo/right/America/Rio_Branco",
+            "/usr/share/zoneinfo/right/America/Santarem",
+            "/usr/share/zoneinfo/right/America/Santiago",
+            "/usr/share/zoneinfo/right/America/Santo_Domingo",
+            "/usr/share/zoneinfo/right/America/Sao_Paulo",
+            "/usr/share/zoneinfo/right/America/Scoresbysund",
+            "/usr/share/zoneinfo/right/America/Sitka",
+            "/usr/share/zoneinfo/right/America/St_Johns",
+            "/usr/share/zoneinfo/right/America/St_Kitts",
+            "/usr/share/zoneinfo/right/America/St_Lucia",
+            "/usr/share/zoneinfo/right/America/St_Thomas",
+            "/usr/share/zoneinfo/right/America/St_Vincent",
+            "/usr/share/zoneinfo/right/America/Swift_Current",
+            "/usr/share/zoneinfo/right/America/Tegucigalpa",
+            "/usr/share/zoneinfo/right/America/Thule",
+            "/usr/share/zoneinfo/right/America/Tijuana",
+            "/usr/share/zoneinfo/right/America/Toronto",
+            "/usr/share/zoneinfo/right/America/Tortola",
+            "/usr/share/zoneinfo/right/America/Vancouver",
+            "/usr/share/zoneinfo/right/America/Whitehorse",
+            "/usr/share/zoneinfo/right/America/Winnipeg",
+            "/usr/share/zoneinfo/right/America/Yakutat",
+            "/usr/share/zoneinfo/right/Antarctica/Casey",
+            "/usr/share/zoneinfo/right/Antarctica/Davis",
+            "/usr/share/zoneinfo/right/Antarctica/DumontDUrville",
+            "/usr/share/zoneinfo/right/Antarctica/Macquarie",
+            "/usr/share/zoneinfo/right/Antarctica/Mawson",
+            "/usr/share/zoneinfo/right/Antarctica/McMurdo",
+            "/usr/share/zoneinfo/right/Antarctica/Palmer",
+            "/usr/share/zoneinfo/right/Antarctica/Rothera",
+            "/usr/share/zoneinfo/right/Antarctica/Syowa",
+            "/usr/share/zoneinfo/right/Antarctica/Troll",
+            "/usr/share/zoneinfo/right/Antarctica/Vostok",
+            "/usr/share/zoneinfo/right/Asia/Aden",
+            "/usr/share/zoneinfo/right/Asia/Almaty",
+            "/usr/share/zoneinfo/right/Asia/Amman",
+            "/usr/share/zoneinfo/right/Asia/Anadyr",
+            "/usr/share/zoneinfo/right/Asia/Aqtau",
+            "/usr/share/zoneinfo/right/Asia/Aqtobe",
+            "/usr/share/zoneinfo/right/Asia/Ashgabat",
+            "/usr/share/zoneinfo/right/Asia/Atyrau",
+            "/usr/share/zoneinfo/right/Asia/Baghdad",
+            "/usr/share/zoneinfo/right/Asia/Bahrain",
+            "/usr/share/zoneinfo/right/Asia/Baku",
+            "/usr/share/zoneinfo/right/Asia/Bangkok",
+            "/usr/share/zoneinfo/right/Asia/Barnaul",
+            "/usr/share/zoneinfo/right/Asia/Beirut",
+            "/usr/share/zoneinfo/right/Asia/Bishkek",
+            "/usr/share/zoneinfo/right/Asia/Brunei",
+            "/usr/share/zoneinfo/right/Asia/Chita",
+            "/usr/share/zoneinfo/right/Asia/Colombo",
+            "/usr/share/zoneinfo/right/Asia/Damascus",
+            "/usr/share/zoneinfo/right/Asia/Dhaka",
+            "/usr/share/zoneinfo/right/Asia/Dili",
+            "/usr/share/zoneinfo/right/Asia/Dubai",
+            "/usr/share/zoneinfo/right/Asia/Dushanbe",
+            "/usr/share/zoneinfo/right/Asia/Famagusta",
+            "/usr/share/zoneinfo/right/Asia/Gaza",
+            "/usr/share/zoneinfo/right/Asia/Hebron",
+            "/usr/share/zoneinfo/right/Asia/Ho_Chi_Minh",
+            "/usr/share/zoneinfo/right/Asia/Hong_Kong",
+            "/usr/share/zoneinfo/right/Asia/Hovd",
+            "/usr/share/zoneinfo/right/Asia/Irkutsk",
+            "/usr/share/zoneinfo/right/Asia/Jakarta",
+            "/usr/share/zoneinfo/right/Asia/Jayapura",
+            "/usr/share/zoneinfo/right/Asia/Jerusalem",
+            "/usr/share/zoneinfo/right/Asia/Kabul",
+            "/usr/share/zoneinfo/right/Asia/Kamchatka",
+            "/usr/share/zoneinfo/right/Asia/Karachi",
+            "/usr/share/zoneinfo/right/Asia/Kathmandu",
+            "/usr/share/zoneinfo/right/Asia/Khandyga",
+            "/usr/share/zoneinfo/right/Asia/Kolkata",
+            "/usr/share/zoneinfo/right/Asia/Krasnoyarsk",
+            "/usr/share/zoneinfo/right/Asia/Kuala_Lumpur",
+            "/usr/share/zoneinfo/right/Asia/Kuching",
+            "/usr/share/zoneinfo/right/Asia/Kuwait",
+            "/usr/share/zoneinfo/right/Asia/Macau",
+            "/usr/share/zoneinfo/right/Asia/Magadan",
+            "/usr/share/zoneinfo/right/Asia/Makassar",
+            "/usr/share/zoneinfo/right/Asia/Manila",
+            "/usr/share/zoneinfo/right/Asia/Muscat",
+            "/usr/share/zoneinfo/right/Asia/Nicosia",
+            "/usr/share/zoneinfo/right/Asia/Novokuznetsk",
+            "/usr/share/zoneinfo/right/Asia/Novosibirsk",
+            "/usr/share/zoneinfo/right/Asia/Omsk",
+            "/usr/share/zoneinfo/right/Asia/Oral",
+            "/usr/share/zoneinfo/right/Asia/Phnom_Penh",
+            "/usr/share/zoneinfo/right/Asia/Pontianak",
+            "/usr/share/zoneinfo/right/Asia/Pyongyang",
+            "/usr/share/zoneinfo/right/Asia/Qatar",
+            "/usr/share/zoneinfo/right/Asia/Qostanay",
+            "/usr/share/zoneinfo/right/Asia/Qyzylorda",
+            "/usr/share/zoneinfo/right/Asia/Riyadh",
+            "/usr/share/zoneinfo/right/Asia/Sakhalin",
+            "/usr/share/zoneinfo/right/Asia/Samarkand",
+            "/usr/share/zoneinfo/right/Asia/Seoul",
+            "/usr/share/zoneinfo/right/Asia/Shanghai",
+            "/usr/share/zoneinfo/right/Asia/Singapore",
+            "/usr/share/zoneinfo/right/Asia/Srednekolymsk",
+            "/usr/share/zoneinfo/right/Asia/Taipei",
+            "/usr/share/zoneinfo/right/Asia/Tashkent",
+            "/usr/share/zoneinfo/right/Asia/Tbilisi",
+            "/usr/share/zoneinfo/right/Asia/Tehran",
+            "/usr/share/zoneinfo/right/Asia/Thimphu",
+            "/usr/share/zoneinfo/right/Asia/Tokyo",
+            "/usr/share/zoneinfo/right/Asia/Tomsk",
+            "/usr/share/zoneinfo/right/Asia/Ulaanbaatar",
+            "/usr/share/zoneinfo/right/Asia/Urumqi",
+            "/usr/share/zoneinfo/right/Asia/Ust-Nera",
+            "/usr/share/zoneinfo/right/Asia/Vientiane",
+            "/usr/share/zoneinfo/right/Asia/Vladivostok",
+            "/usr/share/zoneinfo/right/Asia/Yakutsk",
+            "/usr/share/zoneinfo/right/Asia/Yangon",
+            "/usr/share/zoneinfo/right/Asia/Yekaterinburg",
+            "/usr/share/zoneinfo/right/Asia/Yerevan",
+            "/usr/share/zoneinfo/right/Atlantic/Azores",
+            "/usr/share/zoneinfo/right/Atlantic/Bermuda",
+            "/usr/share/zoneinfo/right/Atlantic/Canary",
+            "/usr/share/zoneinfo/right/Atlantic/Cape_Verde",
+            "/usr/share/zoneinfo/right/Atlantic/Faroe",
+            "/usr/share/zoneinfo/right/Atlantic/Madeira",
+            "/usr/share/zoneinfo/right/Atlantic/Reykjavik",
+            "/usr/share/zoneinfo/right/Atlantic/South_Georgia",
+            "/usr/share/zoneinfo/right/Atlantic/St_Helena",
+            "/usr/share/zoneinfo/right/Atlantic/Stanley",
+            "/usr/share/zoneinfo/right/Australia/Adelaide",
+            "/usr/share/zoneinfo/right/Australia/Brisbane",
+            "/usr/share/zoneinfo/right/Australia/Broken_Hill",
+            "/usr/share/zoneinfo/right/Australia/Darwin",
+            "/usr/share/zoneinfo/right/Australia/Eucla",
+            "/usr/share/zoneinfo/right/Australia/Hobart",
+            "/usr/share/zoneinfo/right/Australia/Lindeman",
+            "/usr/share/zoneinfo/right/Australia/Lord_Howe",
+            "/usr/share/zoneinfo/right/Australia/Melbourne",
+            "/usr/share/zoneinfo/right/Australia/Perth",
+            "/usr/share/zoneinfo/right/Australia/Sydney",
+            "/usr/share/zoneinfo/right/Etc/GMT",
+            "/usr/share/zoneinfo/right/Etc/GMT+1",
+            "/usr/share/zoneinfo/right/Etc/GMT+10",
+            "/usr/share/zoneinfo/right/Etc/GMT+11",
+            "/usr/share/zoneinfo/right/Etc/GMT+12",
+            "/usr/share/zoneinfo/right/Etc/GMT+2",
+            "/usr/share/zoneinfo/right/Etc/GMT+3",
+            "/usr/share/zoneinfo/right/Etc/GMT+4",
+            "/usr/share/zoneinfo/right/Etc/GMT+5",
+            "/usr/share/zoneinfo/right/Etc/GMT+6",
+            "/usr/share/zoneinfo/right/Etc/GMT+7",
+            "/usr/share/zoneinfo/right/Etc/GMT+8",
+            "/usr/share/zoneinfo/right/Etc/GMT+9",
+            "/usr/share/zoneinfo/right/Etc/GMT-1",
+            "/usr/share/zoneinfo/right/Etc/GMT-10",
+            "/usr/share/zoneinfo/right/Etc/GMT-11",
+            "/usr/share/zoneinfo/right/Etc/GMT-12",
+            "/usr/share/zoneinfo/right/Etc/GMT-13",
+            "/usr/share/zoneinfo/right/Etc/GMT-14",
+            "/usr/share/zoneinfo/right/Etc/GMT-2",
+            "/usr/share/zoneinfo/right/Etc/GMT-3",
+            "/usr/share/zoneinfo/right/Etc/GMT-4",
+            "/usr/share/zoneinfo/right/Etc/GMT-5",
+            "/usr/share/zoneinfo/right/Etc/GMT-6",
+            "/usr/share/zoneinfo/right/Etc/GMT-7",
+            "/usr/share/zoneinfo/right/Etc/GMT-8",
+            "/usr/share/zoneinfo/right/Etc/GMT-9",
+            "/usr/share/zoneinfo/right/Etc/UTC",
+            "/usr/share/zoneinfo/right/Europe/Amsterdam",
+            "/usr/share/zoneinfo/right/Europe/Andorra",
+            "/usr/share/zoneinfo/right/Europe/Astrakhan",
+            "/usr/share/zoneinfo/right/Europe/Athens",
+            "/usr/share/zoneinfo/right/Europe/Belgrade",
+            "/usr/share/zoneinfo/right/Europe/Berlin",
+            "/usr/share/zoneinfo/right/Europe/Brussels",
+            "/usr/share/zoneinfo/right/Europe/Bucharest",
+            "/usr/share/zoneinfo/right/Europe/Budapest",
+            "/usr/share/zoneinfo/right/Europe/Chisinau",
+            "/usr/share/zoneinfo/right/Europe/Copenhagen",
+            "/usr/share/zoneinfo/right/Europe/Dublin",
+            "/usr/share/zoneinfo/right/Europe/Gibraltar",
+            "/usr/share/zoneinfo/right/Europe/Guernsey",
+            "/usr/share/zoneinfo/right/Europe/Helsinki",
+            "/usr/share/zoneinfo/right/Europe/Isle_of_Man",
+            "/usr/share/zoneinfo/right/Europe/Istanbul",
+            "/usr/share/zoneinfo/right/Europe/Jersey",
+            "/usr/share/zoneinfo/right/Europe/Kaliningrad",
+            "/usr/share/zoneinfo/right/Europe/Kirov",
+            "/usr/share/zoneinfo/right/Europe/Kyiv",
+            "/usr/share/zoneinfo/right/Europe/Lisbon",
+            "/usr/share/zoneinfo/right/Europe/Ljubljana",
+            "/usr/share/zoneinfo/right/Europe/London",
+            "/usr/share/zoneinfo/right/Europe/Luxembourg",
+            "/usr/share/zoneinfo/right/Europe/Madrid",
+            "/usr/share/zoneinfo/right/Europe/Malta",
+            "/usr/share/zoneinfo/right/Europe/Minsk",
+            "/usr/share/zoneinfo/right/Europe/Monaco",
+            "/usr/share/zoneinfo/right/Europe/Moscow",
+            "/usr/share/zoneinfo/right/Europe/Oslo",
+            "/usr/share/zoneinfo/right/Europe/Paris",
+            "/usr/share/zoneinfo/right/Europe/Prague",
+            "/usr/share/zoneinfo/right/Europe/Riga",
+            "/usr/share/zoneinfo/right/Europe/Rome",
+            "/usr/share/zoneinfo/right/Europe/Samara",
+            "/usr/share/zoneinfo/right/Europe/Sarajevo",
+            "/usr/share/zoneinfo/right/Europe/Saratov",
+            "/usr/share/zoneinfo/right/Europe/Simferopol",
+            "/usr/share/zoneinfo/right/Europe/Skopje",
+            "/usr/share/zoneinfo/right/Europe/Sofia",
+            "/usr/share/zoneinfo/right/Europe/Stockholm",
+            "/usr/share/zoneinfo/right/Europe/Tallinn",
+            "/usr/share/zoneinfo/right/Europe/Tirane",
+            "/usr/share/zoneinfo/right/Europe/Ulyanovsk",
+            "/usr/share/zoneinfo/right/Europe/Vaduz",
+            "/usr/share/zoneinfo/right/Europe/Vienna",
+            "/usr/share/zoneinfo/right/Europe/Vilnius",
+            "/usr/share/zoneinfo/right/Europe/Volgograd",
+            "/usr/share/zoneinfo/right/Europe/Warsaw",
+            "/usr/share/zoneinfo/right/Europe/Zagreb",
+            "/usr/share/zoneinfo/right/Europe/Zurich",
+            "/usr/share/zoneinfo/right/Factory",
+            "/usr/share/zoneinfo/right/Indian/Antananarivo",
+            "/usr/share/zoneinfo/right/Indian/Chagos",
+            "/usr/share/zoneinfo/right/Indian/Christmas",
+            "/usr/share/zoneinfo/right/Indian/Cocos",
+            "/usr/share/zoneinfo/right/Indian/Comoro",
+            "/usr/share/zoneinfo/right/Indian/Kerguelen",
+            "/usr/share/zoneinfo/right/Indian/Mahe",
+            "/usr/share/zoneinfo/right/Indian/Maldives",
+            "/usr/share/zoneinfo/right/Indian/Mauritius",
+            "/usr/share/zoneinfo/right/Indian/Mayotte",
+            "/usr/share/zoneinfo/right/Indian/Reunion",
+            "/usr/share/zoneinfo/right/Pacific/Apia",
+            "/usr/share/zoneinfo/right/Pacific/Auckland",
+            "/usr/share/zoneinfo/right/Pacific/Bougainville",
+            "/usr/share/zoneinfo/right/Pacific/Chatham",
+            "/usr/share/zoneinfo/right/Pacific/Chuuk",
+            "/usr/share/zoneinfo/right/Pacific/Easter",
+            "/usr/share/zoneinfo/right/Pacific/Efate",
+            "/usr/share/zoneinfo/right/Pacific/Fakaofo",
+            "/usr/share/zoneinfo/right/Pacific/Fiji",
+            "/usr/share/zoneinfo/right/Pacific/Funafuti",
+            "/usr/share/zoneinfo/right/Pacific/Galapagos",
+            "/usr/share/zoneinfo/right/Pacific/Gambier",
+            "/usr/share/zoneinfo/right/Pacific/Guadalcanal",
+            "/usr/share/zoneinfo/right/Pacific/Guam",
+            "/usr/share/zoneinfo/right/Pacific/Honolulu",
+            "/usr/share/zoneinfo/right/Pacific/Kanton",
+            "/usr/share/zoneinfo/right/Pacific/Kiritimati",
+            "/usr/share/zoneinfo/right/Pacific/Kosrae",
+            "/usr/share/zoneinfo/right/Pacific/Kwajalein",
+            "/usr/share/zoneinfo/right/Pacific/Majuro",
+            "/usr/share/zoneinfo/right/Pacific/Marquesas",
+            "/usr/share/zoneinfo/right/Pacific/Midway",
+            "/usr/share/zoneinfo/right/Pacific/Nauru",
+            "/usr/share/zoneinfo/right/Pacific/Niue",
+            "/usr/share/zoneinfo/right/Pacific/Norfolk",
+            "/usr/share/zoneinfo/right/Pacific/Noumea",
+            "/usr/share/zoneinfo/right/Pacific/Pago_Pago",
+            "/usr/share/zoneinfo/right/Pacific/Palau",
+            "/usr/share/zoneinfo/right/Pacific/Pitcairn",
+            "/usr/share/zoneinfo/right/Pacific/Pohnpei",
+            "/usr/share/zoneinfo/right/Pacific/Port_Moresby",
+            "/usr/share/zoneinfo/right/Pacific/Rarotonga",
+            "/usr/share/zoneinfo/right/Pacific/Saipan",
+            "/usr/share/zoneinfo/right/Pacific/Tahiti",
+            "/usr/share/zoneinfo/right/Pacific/Tarawa",
+            "/usr/share/zoneinfo/right/Pacific/Tongatapu",
+            "/usr/share/zoneinfo/right/Pacific/Wake",
+            "/usr/share/zoneinfo/right/Pacific/Wallis"
+          ],
+          "AnalyzedBy": "dpkg"
+        },
+        {
+          "ID": "zlib1g@1:1.3.dfsg+really1.3.1-1+b1",
+          "Name": "zlib1g",
+          "Identifier": {
+            "PURL": "pkg:deb/debian/zlib1g@1.3.dfsg%2Breally1.3.1-1%2Bb1?arch=amd64\u0026distro=debian-13.7\u0026epoch=1",
+            "UID": "68e79f13cf3512ab"
+          },
+          "Version": "1.3.dfsg+really1.3.1",
+          "Release": "1+b1",
+          "Epoch": 1,
+          "Arch": "amd64",
+          "SrcName": "zlib",
+          "SrcVersion": "1.3.dfsg+really1.3.1",
+          "SrcRelease": "1",
+          "SrcEpoch": 1,
+          "Licenses": [
+            "Zlib"
+          ],
+          "Maintainer": "Mark Brown \u003cbroonie@debian.org\u003e",
+          "Repository": {
+            "Class": "official"
+          },
+          "Layer": {
+            "Digest": "sha256:cac2ae0193cb073e7492050b05fc342a888651b4bbc966908c8793f889c299ba",
+            "DiffID": "sha256:e4ba966d7f0527dfe0fcb559e4e18d4da42c4e6beae924719255e0dedb554ed0"
+          },
+          "InstalledFiles": [
+            "/usr/lib/x86_64-linux-gnu/libz.so.1.3.1",
+            "/usr/share/doc/zlib1g/changelog.Debian.amd64.gz",
+            "/usr/share/doc/zlib1g/changelog.Debian.gz",
+            "/usr/share/doc/zlib1g/changelog.gz",
+            "/usr/share/doc/zlib1g/copyright"
+          ],
+          "AnalyzedBy": "dpkg"
+        }
+      ]
+    },
+    {
+      "Target": "Python",
+      "Class": "lang-pkgs",
+      "Type": "python-pkg",
+      "Packages": [
+        {
+          "Name": "Mako",
+          "Identifier": {
+            "PURL": "pkg:pypi/mako@1.4.3",
+            "UID": "da3acbfc0cc1a3aa"
+          },
+          "Version": "1.4.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/mako-1.4.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "MarkupSafe",
+          "Identifier": {
+            "PURL": "pkg:pypi/markupsafe@3.0.4",
+            "UID": "a45c39b5307973e8"
+          },
+          "Version": "3.0.4",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/markupsafe-3.0.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "PyOTP",
+          "Identifier": {
+            "PURL": "pkg:pypi/pyotp@2.10.0",
+            "UID": "b66cb24e5c5ac21b"
+          },
+          "Version": "2.10.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pyotp-2.10.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "PyYAML",
+          "Identifier": {
+            "PURL": "pkg:pypi/pyyaml@6.0.3",
+            "UID": "9782e4c80eb0a60c"
+          },
+          "Version": "6.0.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pyyaml-6.0.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "SQLAlchemy",
+          "Identifier": {
+            "PURL": "pkg:pypi/sqlalchemy@2.0.55",
+            "UID": "db44d41e0b5e56be"
+          },
+          "Version": "2.0.55",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/sqlalchemy-2.0.55.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "alembic",
+          "Identifier": {
+            "PURL": "pkg:pypi/alembic@1.20.1",
+            "UID": "5467d4981a5db7e1"
+          },
+          "Version": "1.20.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/alembic-1.20.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "annotated-doc",
+          "Identifier": {
+            "PURL": "pkg:pypi/annotated-doc@0.0.5",
+            "UID": "fb6ac2c1f334acc0"
+          },
+          "Version": "0.0.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/annotated_doc-0.0.5.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "annotated-types",
+          "Identifier": {
+            "PURL": "pkg:pypi/annotated-types@0.8.0",
+            "UID": "1847359b2b3688a4"
+          },
+          "Version": "0.8.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/annotated_types-0.8.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "anyio",
+          "Identifier": {
+            "PURL": "pkg:pypi/anyio@4.15.1",
+            "UID": "f568878f56f7e387"
+          },
+          "Version": "4.15.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/anyio-4.15.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "argon2-cffi",
+          "Identifier": {
+            "PURL": "pkg:pypi/argon2-cffi@25.1.0",
+            "UID": "848a964b9814e3ba"
+          },
+          "Version": "25.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/argon2_cffi-25.1.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "argon2-cffi-bindings",
+          "Identifier": {
+            "PURL": "pkg:pypi/argon2-cffi-bindings@26.1.0",
+            "UID": "28fa64061a0622d4"
+          },
+          "Version": "26.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/argon2_cffi_bindings-26.1.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "beautifulsoup4",
+          "Identifier": {
+            "PURL": "pkg:pypi/beautifulsoup4@4.15.0",
+            "UID": "5b387eee8a41182c"
+          },
+          "Version": "4.15.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/beautifulsoup4-4.15.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "boto3",
+          "Identifier": {
+            "PURL": "pkg:pypi/boto3@1.43.117",
+            "UID": "4a4494af3c5d8a16"
+          },
+          "Version": "1.43.117",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/boto3-1.43.117.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "botocore",
+          "Identifier": {
+            "PURL": "pkg:pypi/botocore@1.43.117",
+            "UID": "ec43486c6f164f23"
+          },
+          "Version": "1.43.117",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/botocore-1.43.117.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "certifi",
+          "Identifier": {
+            "PURL": "pkg:pypi/certifi@2026.10.19",
+            "UID": "23bf3e4142f96122"
+          },
+          "Version": "2026.10.19",
+          "Licenses": [
+            "MPL-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/certifi-2026.10.19.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "cffi",
+          "Identifier": {
+            "PURL": "pkg:pypi/cffi@2.1.1",
+            "UID": "a44cbc0100508af6"
+          },
+          "Version": "2.1.1",
+          "Licenses": [
+            "MIT-0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/cffi-2.1.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "charset-normalizer",
+          "Identifier": {
+            "PURL": "pkg:pypi/charset-normalizer@3.5.2",
+            "UID": "6ea6e138e29fd5f8"
+          },
+          "Version": "3.5.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/charset_normalizer-3.5.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "click",
+          "Identifier": {
+            "PURL": "pkg:pypi/click@8.5.0",
+            "UID": "1726c35a3b1d5d0d"
+          },
+          "Version": "8.5.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/click-8.5.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "cryptography",
+          "Identifier": {
+            "PURL": "pkg:pypi/cryptography@50.0.2",
+            "UID": "3a9cc4354fd49e31"
+          },
+          "Version": "50.0.2",
+          "Licenses": [
+            "Apache-2.0 OR BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/cryptography-50.0.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "distro",
+          "Identifier": {
+            "PURL": "pkg:pypi/distro@1.9.0",
+            "UID": "7b685866dfee9da9"
+          },
+          "Version": "1.9.0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/distro-1.9.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "dnspython",
+          "Identifier": {
+            "PURL": "pkg:pypi/dnspython@2.9.0",
+            "UID": "bed2ea3534a8af44"
+          },
+          "Version": "2.9.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/dnspython-2.9.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "email-validator",
+          "Identifier": {
+            "PURL": "pkg:pypi/email-validator@2.3.0",
+            "UID": "847682a8a6db025a"
+          },
+          "Version": "2.3.0",
+          "Licenses": [
+            "Unlicense"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/email_validator-2.3.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "fastapi",
+          "Identifier": {
+            "PURL": "pkg:pypi/fastapi@0.159.1",
+            "UID": "e183c4c0a9c7e83b"
+          },
+          "Version": "0.159.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/fastapi-0.159.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "filelock",
+          "Identifier": {
+            "PURL": "pkg:pypi/filelock@4.2.4",
+            "UID": "d87a8f2c84cfc3ee"
+          },
+          "Version": "4.2.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/filelock-4.2.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "flatbuffers",
+          "Identifier": {
+            "PURL": "pkg:pypi/flatbuffers@25.12.19",
+            "UID": "73bae2d486f4e8f"
+          },
+          "Version": "25.12.19",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/flatbuffers-25.12.19.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "fsspec",
+          "Identifier": {
+            "PURL": "pkg:pypi/fsspec@2026.9.0",
+            "UID": "b73bd32ba5b0b1e3"
+          },
+          "Version": "2026.9.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/fsspec-2026.9.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "greenlet",
+          "Identifier": {
+            "PURL": "pkg:pypi/greenlet@3.5.6",
+            "UID": "86839ff0762e713a"
+          },
+          "Version": "3.5.6",
+          "Licenses": [
+            "MIT AND PSF-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/greenlet-3.5.6.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "grpcio",
+          "Identifier": {
+            "PURL": "pkg:pypi/grpcio@1.84.0",
+            "UID": "d351875f27460e5a"
+          },
+          "Version": "1.84.0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/grpcio-1.84.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "h11",
+          "Identifier": {
+            "PURL": "pkg:pypi/h11@0.16.0",
+            "UID": "2ec0fe64a8b38d3a"
+          },
+          "Version": "0.16.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/h11-0.16.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "h2",
+          "Identifier": {
+            "PURL": "pkg:pypi/h2@4.4.1",
+            "UID": "a807e2d52bad3b1f"
+          },
+          "Version": "4.4.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/h2-4.4.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "hf-xet",
+          "Identifier": {
+            "PURL": "pkg:pypi/hf-xet@1.7.0",
+            "UID": "c5ab44f4353a645e"
+          },
+          "Version": "1.7.0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/hf_xet-1.7.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "hpack",
+          "Identifier": {
+            "PURL": "pkg:pypi/hpack@4.2.0",
+            "UID": "7b16d0d1ebb79d41"
+          },
+          "Version": "4.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/hpack-4.2.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "httpcore",
+          "Identifier": {
+            "PURL": "pkg:pypi/httpcore@1.0.9",
+            "UID": "336ebe8bbce379bb"
+          },
+          "Version": "1.0.9",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/httpcore-1.0.9.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "httpcore2",
+          "Identifier": {
+            "PURL": "pkg:pypi/httpcore2@2.16.0",
+            "UID": "8f3f7c9ae7bb01f5"
+          },
+          "Version": "2.16.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/httpcore2-2.16.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "httpx",
+          "Identifier": {
+            "PURL": "pkg:pypi/httpx@0.28.1",
+            "UID": "e625874b858226c9"
+          },
+          "Version": "0.28.1",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/httpx-0.28.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "httpx2",
+          "Identifier": {
+            "PURL": "pkg:pypi/httpx2@2.16.0",
+            "UID": "362b3a02f2f4cd97"
+          },
+          "Version": "2.16.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/httpx2-2.16.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "huggingface_hub",
+          "Identifier": {
+            "PURL": "pkg:pypi/huggingface-hub@1.33.0",
+            "UID": "d875e54cff86d033"
+          },
+          "Version": "1.33.0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/huggingface_hub-1.33.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "hyperframe",
+          "Identifier": {
+            "PURL": "pkg:pypi/hyperframe@6.1.0",
+            "UID": "5819f72ceb4d98c8"
+          },
+          "Version": "6.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/hyperframe-6.1.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "idna",
+          "Identifier": {
+            "PURL": "pkg:pypi/idna@3.20",
+            "UID": "f1b3d4f2a93b9098"
+          },
+          "Version": "3.20",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/idna-3.20.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "jmespath",
+          "Identifier": {
+            "PURL": "pkg:pypi/jmespath@1.1.0",
+            "UID": "483d80446fb1b18d"
+          },
+          "Version": "1.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/jmespath-1.1.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "jsonpatch",
+          "Identifier": {
+            "PURL": "pkg:pypi/jsonpatch@1.36",
+            "UID": "dc872984146ea2e0"
+          },
+          "Version": "1.36",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/jsonpatch-1.36.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "jsonpointer",
+          "Identifier": {
+            "PURL": "pkg:pypi/jsonpointer@3.4",
+            "UID": "9ce4ef15b2a290e7"
+          },
+          "Version": "3.4",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/jsonpointer-3.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langchain-core",
+          "Identifier": {
+            "PURL": "pkg:pypi/langchain-core@1.6.13",
+            "UID": "e033d27905a35296"
+          },
+          "Version": "1.6.13",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langchain_core-1.6.13.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langchain-protocol",
+          "Identifier": {
+            "PURL": "pkg:pypi/langchain-protocol@0.0.20",
+            "UID": "51519415071de9de"
+          },
+          "Version": "0.0.20",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langchain_protocol-0.0.20.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langgraph",
+          "Identifier": {
+            "PURL": "pkg:pypi/langgraph@1.2.16",
+            "UID": "6da3558e3d3df3a4"
+          },
+          "Version": "1.2.16",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langgraph-1.2.16.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langgraph-checkpoint",
+          "Identifier": {
+            "PURL": "pkg:pypi/langgraph-checkpoint@4.3.0",
+            "UID": "2c73e0ee8b1795c2"
+          },
+          "Version": "4.3.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langgraph_checkpoint-4.3.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langgraph-checkpoint-postgres",
+          "Identifier": {
+            "PURL": "pkg:pypi/langgraph-checkpoint-postgres@3.2.0",
+            "UID": "71ea3599d73ce165"
+          },
+          "Version": "3.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langgraph_checkpoint_postgres-3.2.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langgraph-prebuilt",
+          "Identifier": {
+            "PURL": "pkg:pypi/langgraph-prebuilt@1.1.1",
+            "UID": "1bf7e9564d8b65dd"
+          },
+          "Version": "1.1.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langgraph_prebuilt-1.1.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langgraph-sdk",
+          "Identifier": {
+            "PURL": "pkg:pypi/langgraph-sdk@0.4.8",
+            "UID": "101ffea5c10477b4"
+          },
+          "Version": "0.4.8",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langgraph_sdk-0.4.8.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "langsmith",
+          "Identifier": {
+            "PURL": "pkg:pypi/langsmith@0.14.12",
+            "UID": "fc821bd71cf62016"
+          },
+          "Version": "0.14.12",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/langsmith-0.14.12.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "mmh3",
+          "Identifier": {
+            "PURL": "pkg:pypi/mmh3@5.3.1",
+            "UID": "ee6770986751726b"
+          },
+          "Version": "5.3.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/mmh3-5.3.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "numpy",
+          "Identifier": {
+            "PURL": "pkg:pypi/numpy@2.5.4",
+            "UID": "2a52a7f0e1e9ace8"
+          },
+          "Version": "2.5.4",
+          "Licenses": [
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/numpy-2.5.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "onnxruntime",
+          "Identifier": {
+            "PURL": "pkg:pypi/onnxruntime@1.31.0",
+            "UID": "71caa3b74d89ce1d"
+          },
+          "Version": "1.31.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/onnxruntime-1.31.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "opentelemetry-api",
+          "Identifier": {
+            "PURL": "pkg:pypi/opentelemetry-api@1.45.1",
+            "UID": "61af64081466dd93"
+          },
+          "Version": "1.45.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/opentelemetry_api-1.45.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "orjson",
+          "Identifier": {
+            "PURL": "pkg:pypi/orjson@3.13.0",
+            "UID": "b4f930c071ae540c"
+          },
+          "Version": "3.13.0",
+          "Licenses": [
+            "MPL-2.0 AND (Apache-2.0 OR MIT)"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/orjson-3.13.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "ormsgpack",
+          "Identifier": {
+            "PURL": "pkg:pypi/ormsgpack@1.13.0",
+            "UID": "6e2301dbe7906925"
+          },
+          "Version": "1.13.0",
+          "Licenses": [
+            "Apache-2.0 OR MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/ormsgpack-1.13.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "packaging",
+          "Identifier": {
+            "PURL": "pkg:pypi/packaging@26.3",
+            "UID": "15a13f7bd88e9d9d"
+          },
+          "Version": "26.3",
+          "Licenses": [
+            "Apache-2.0 OR BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/packaging-26.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pip",
+          "Identifier": {
+            "PURL": "pkg:pypi/pip@25.0.1",
+            "UID": "7d864d9a4bf3bfe8"
+          },
+          "Version": "25.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pip-25.0.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "portalocker",
+          "Identifier": {
+            "PURL": "pkg:pypi/portalocker@3.2.0",
+            "UID": "af50b5147e809b4c"
+          },
+          "Version": "3.2.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/portalocker-3.2.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "prometheus_client",
+          "Identifier": {
+            "PURL": "pkg:pypi/prometheus-client@0.26.0",
+            "UID": "386c0fd78b210a86"
+          },
+          "Version": "0.26.0",
+          "Licenses": [
+            "Apache-2.0 AND BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/prometheus_client-0.26.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "protobuf",
+          "Identifier": {
+            "PURL": "pkg:pypi/protobuf@7.36.2",
+            "UID": "19e2bfb7ac091337"
+          },
+          "Version": "7.36.2",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/protobuf-7.36.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "psycopg",
+          "Identifier": {
+            "PURL": "pkg:pypi/psycopg@3.3.6",
+            "UID": "2fa84bec1f6158ba"
+          },
+          "Version": "3.3.6",
+          "Licenses": [
+            "LGPL-3.0-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/psycopg-3.3.6.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "psycopg-binary",
+          "Identifier": {
+            "PURL": "pkg:pypi/psycopg-binary@3.3.6",
+            "UID": "da8118185c14332"
+          },
+          "Version": "3.3.6",
+          "Licenses": [
+            "LGPL-3.0-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/psycopg_binary-3.3.6.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "psycopg-pool",
+          "Identifier": {
+            "PURL": "pkg:pypi/psycopg-pool@3.3.3",
+            "UID": "7238ad50aa9eb57d"
+          },
+          "Version": "3.3.3",
+          "Licenses": [
+            "LGPL-3.0-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/psycopg_pool-3.3.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "py_rust_stemmers",
+          "Identifier": {
+            "PURL": "pkg:pypi/py-rust-stemmers@0.1.8",
+            "UID": "3d3a18768de524fe"
+          },
+          "Version": "0.1.8",
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/py_rust_stemmers-0.1.8.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pycparser",
+          "Identifier": {
+            "PURL": "pkg:pypi/pycparser@3.11",
+            "UID": "b00e271f94e29d5c"
+          },
+          "Version": "3.11",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pycparser-3.11.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pydantic",
+          "Identifier": {
+            "PURL": "pkg:pypi/pydantic@2.14.1",
+            "UID": "29ac2fcf31094fe9"
+          },
+          "Version": "2.14.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pydantic-2.14.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pydantic-settings",
+          "Identifier": {
+            "PURL": "pkg:pypi/pydantic-settings@2.16.1",
+            "UID": "c454abd2462106aa"
+          },
+          "Version": "2.16.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pydantic_settings-2.16.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pydantic_core",
+          "Identifier": {
+            "PURL": "pkg:pypi/pydantic-core@2.50.1",
+            "UID": "c8d4361ad05f531f"
+          },
+          "Version": "2.50.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pydantic_core-2.50.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pypdf",
+          "Identifier": {
+            "PURL": "pkg:pypi/pypdf@6.21.2",
+            "UID": "4ed5b39b968811a8"
+          },
+          "Version": "6.21.2",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/pypdf-6.21.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "python-dateutil",
+          "Identifier": {
+            "PURL": "pkg:pypi/python-dateutil@2.9.0.post0",
+            "UID": "f8462eb573af85ab"
+          },
+          "Version": "2.9.0.post0",
+          "Licenses": [
+            "BSD-3-Clause",
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/python_dateutil-2.9.0.post0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "python-dotenv",
+          "Identifier": {
+            "PURL": "pkg:pypi/python-dotenv@1.2.4",
+            "UID": "5b193dd50b868eda"
+          },
+          "Version": "1.2.4",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/python_dotenv-1.2.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "python-multipart",
+          "Identifier": {
+            "PURL": "pkg:pypi/python-multipart@0.0.32",
+            "UID": "e856806d05368373"
+          },
+          "Version": "0.0.32",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/python_multipart-0.0.32.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "qdrant-client",
+          "Identifier": {
+            "PURL": "pkg:pypi/qdrant-client@1.19.1",
+            "UID": "317f66d5213c02c4"
+          },
+          "Version": "1.19.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/qdrant_client-1.19.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "quarry-research",
+          "Identifier": {
+            "PURL": "pkg:pypi/quarry-research@0.1.0",
+            "UID": "409e5bb6f4f666f9"
+          },
+          "Version": "0.1.0",
+          "Layer": {
+            "Digest": "sha256:0721266ad872e62eed48e53810566b8022f61adff91f2e18a3dffce32d2b8267",
+            "DiffID": "sha256:e8500fadc78b74cae950636bfc7a2f4913385534895e5df5149e3f873fc65958"
+          },
+          "FilePath": "app/quarry_research.egg-info/PKG-INFO",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "requests",
+          "Identifier": {
+            "PURL": "pkg:pypi/requests@2.34.2",
+            "UID": "3fe7a3810163bf16"
+          },
+          "Version": "2.34.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/requests-2.34.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "requests-toolbelt",
+          "Identifier": {
+            "PURL": "pkg:pypi/requests-toolbelt@1.0.0",
+            "UID": "41f4f15b89009f45"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/requests_toolbelt-1.0.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "s3transfer",
+          "Identifier": {
+            "PURL": "pkg:pypi/s3transfer@0.19.3",
+            "UID": "f9400343d20523bd"
+          },
+          "Version": "0.19.3",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/s3transfer-0.19.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "six",
+          "Identifier": {
+            "PURL": "pkg:pypi/six@1.17.0",
+            "UID": "3c749e9680577add"
+          },
+          "Version": "1.17.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/six-1.17.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "sniffio",
+          "Identifier": {
+            "PURL": "pkg:pypi/sniffio@1.3.1",
+            "UID": "890c37cf9b0255a1"
+          },
+          "Version": "1.3.1",
+          "Licenses": [
+            "MIT",
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/sniffio-1.3.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "soupsieve",
+          "Identifier": {
+            "PURL": "pkg:pypi/soupsieve@3.0.4",
+            "UID": "82aaaef90e76cefe"
+          },
+          "Version": "3.0.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/soupsieve-3.0.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "starlette",
+          "Identifier": {
+            "PURL": "pkg:pypi/starlette@1.9.0",
+            "UID": "deed38e1962cb0dc"
+          },
+          "Version": "1.9.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/starlette-1.9.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "tenacity",
+          "Identifier": {
+            "PURL": "pkg:pypi/tenacity@9.2.1",
+            "UID": "f8398bdfa1349bb4"
+          },
+          "Version": "9.2.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/tenacity-9.2.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "tokenizers",
+          "Identifier": {
+            "PURL": "pkg:pypi/tokenizers@0.23.3",
+            "UID": "977ada823576dc7b"
+          },
+          "Version": "0.23.3",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/tokenizers-0.23.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "tqdm",
+          "Identifier": {
+            "PURL": "pkg:pypi/tqdm@4.70.1",
+            "UID": "a1332d859809045a"
+          },
+          "Version": "4.70.1",
+          "Licenses": [
+            "MPL-2.0 AND MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/tqdm-4.70.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "truststore",
+          "Identifier": {
+            "PURL": "pkg:pypi/truststore@0.10.5",
+            "UID": "1b2c6e881d795fd0"
+          },
+          "Version": "0.10.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/truststore-0.10.5.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "typing-inspection",
+          "Identifier": {
+            "PURL": "pkg:pypi/typing-inspection@0.4.4",
+            "UID": "53f9ffc7d6a5637e"
+          },
+          "Version": "0.4.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/typing_inspection-0.4.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "typing_extensions",
+          "Identifier": {
+            "PURL": "pkg:pypi/typing-extensions@4.16.0",
+            "UID": "723d87d1aaa6dd8"
+          },
+          "Version": "4.16.0",
+          "Licenses": [
+            "PSF-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/typing_extensions-4.16.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "urllib3",
+          "Identifier": {
+            "PURL": "pkg:pypi/urllib3@2.8.0",
+            "UID": "4a304fd1825f5c2e"
+          },
+          "Version": "2.8.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/urllib3-2.8.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "uuid_utils",
+          "Identifier": {
+            "PURL": "pkg:pypi/uuid-utils@0.18.0",
+            "UID": "2fc12cfe5a95105"
+          },
+          "Version": "0.18.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/uuid_utils-0.18.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "uvicorn",
+          "Identifier": {
+            "PURL": "pkg:pypi/uvicorn@0.54.0",
+            "UID": "7d7dd9826c91f227"
+          },
+          "Version": "0.54.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/uvicorn-0.54.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "websockets",
+          "Identifier": {
+            "PURL": "pkg:pypi/websockets@16.1.1",
+            "UID": "4b50cd9889e7cad8"
+          },
+          "Version": "16.1.1",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/websockets-16.1.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "xxhash",
+          "Identifier": {
+            "PURL": "pkg:pypi/xxhash@4.0.2",
+            "UID": "c8c71870326b5a3b"
+          },
+          "Version": "4.0.2",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/xxhash-4.0.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "zstandard",
+          "Identifier": {
+            "PURL": "pkg:pypi/zstandard@0.25.0",
+            "UID": "a9f2fcb25a6bb5bf"
+          },
+          "Version": "0.25.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:acb313657f5af20b2a148aee939581c437fbb7d6e47a32c11712c4d36329aa41",
+            "DiffID": "sha256:6eed5bc806ad6ec74b69263f267cc223c35ec65bb37ca8b1385bbe60ea670f18"
+          },
+          "FilePath": "usr/local/lib/python3.12/site-packages/zstandard-0.25.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        }
+      ]
+    }
+  ]
+}

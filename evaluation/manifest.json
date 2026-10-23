@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "case_count": 120,
+  "dev_count": 30,
+  "test_count": 90,
+  "synthetic": true,
+  "independent_human_validation": false,
+  "description": "Original authored engineering scenarios. Source-level relevance labels; not a public generalization benchmark. Frozen before tuning.",
+  "sha256": {
+    "corpus.json": "63deca3ca4a2b78218b25b768a1c75c7a16eb44da2a345d03138f6fd224e5410",
+    "cases.json": "45ea48975be2012a26f93664030e878842e2329001acb38aaf177594fb035c0d"
+  }
+}

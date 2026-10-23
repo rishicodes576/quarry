@@ -1,0 +1,24 @@
+services:
+  mailpit:
+    ports: !override ["127.0.0.1:8026:8025"]
+  initialize:
+    environment:
+      QUARRY_DEMO_SEED: "false"
+  api:
+    environment:
+      QUARRY_APP_ORIGIN: http://localhost:3001
+      QUARRY_DEMO_SEED: "false"
+  worker:
+    environment:
+      QUARRY_APP_ORIGIN: http://localhost:3001
+      QUARRY_DEMO_SEED: "false"
+  web:
+    environment:
+      APP_ORIGIN: http://localhost:3001
+      DEMO_MODE: "false"
+  gateway:
+    ports: !override ["127.0.0.1:3001:3000"]
+volumes:
+  models:
+    external: true
+    name: quarry_models

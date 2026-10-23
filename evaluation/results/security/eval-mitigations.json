@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "policy": "text-only-no-pickle-v1",
+  "advisories": [
+    "CVE-2026-6587",
+    "CVE-2025-69872"
+  ],
+  "checks": [
+    "source hashes",
+    "blocked metadata URL",
+    "blocked local file",
+    "blocked multimodal entry",
+    "blocked inline pickle",
+    "blocked file pickle",
+    "blocked key pickle",
+    "safe primitive cache"
+  ],
+  "network_calls": 0,
+  "files": [
+    {
+      "path": "/usr/local/lib/python3.12/site-packages/ragas/metrics/collections/multi_modal_faithfulness/util.py",
+      "original_sha256": "99808618a8574f0a1d666b4f20e7549b570ea7ac203aab448bfeb87596428fbe",
+      "patched_sha256": "6d2c74ac22fc165d281b13d1f7fd7d5adaf6d6dd97c36837b540758ce534c5d0"
+    },
+    {
+      "path": "/usr/local/lib/python3.12/site-packages/diskcache/core.py",
+      "original_sha256": "a229e61e76025ef476417551681a2a3dff2233bf4ce6901e8b16a395a27d4cdb",
+      "patched_sha256": "f6d7b7d7a13fe68a3e073eff3d8da4f775ce115ecf6dd1cdb6473876008dbd52"
+    }
+  ]
+}

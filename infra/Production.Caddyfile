@@ -1,0 +1,15 @@
+{
+    admin off
+    email {$QUARRY_ACME_EMAIL}
+}
+{$QUARRY_PUBLIC_HOST} {
+    request_body {
+        max_size 11MB
+    }
+    header -Server
+    reverse_proxy web:3000 {
+        header_up X-Quarry-Client-IP {remote_host}
+        header_up -X-Quarry-Proxy-Secret
+        flush_interval -1
+    }
+}

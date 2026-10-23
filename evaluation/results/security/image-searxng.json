@@ -1,0 +1,812 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a1638d-acf6-7da0-9b38-40e7da518019",
+  "CreatedAt": "2026-10-22T12:19:51.670898618Z",
+  "ArtifactID": "sha256:71598fb116c19e1dee3bb7b18a4bb10a3f3ad806d0c3ae014e2e255b7ef0a2a3",
+  "ArtifactName": "/images/searxng.tar",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 271557632,
+    "ImageID": "sha256:4d55893f956d7c824d7a5f90c32886dca41206c226ac9f5a269e4ed92329e3f8",
+    "DiffIDs": [
+      "sha256:f05f7882eced69bc18f751f9c0dd4f05277d6006a12cbcf1e91f12153109eb21",
+      "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010",
+      "sha256:bdcc4566813faa2fad7fe8d4bbd5518616e61615c282e5a53b2c16dfd6b00e37",
+      "sha256:faf66e331ff6b0e217ed3de2efa1fb44b0c7d735904353685f32c568104ecc82",
+      "sha256:5b1e98404ce1549fe48d99ad781fcca42a636e771b4b8d636c9a5c81aaa9f6f9",
+      "sha256:a3701b713d9585b33ff57a7f73c8d31b6066f0701c851e1d8b23870111e050f5",
+      "sha256:f9e4bc5dce306235e56be58dfb8321e6f7077f32553df112aaea9544077f0a5f"
+    ],
+    "RepoTags": [
+      "quarry-searxng:local"
+    ],
+    "Reference": "quarry-searxng:local",
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2026-10-22T11:48:55.215829328Z",
+      "history": [
+        {
+          "created": "2026-10-16T03:43:01.597911956Z",
+          "created_by": "/bin/sh -c #(nop) COPY dir:ec9f083c4ae07993f34ae3c5e7c54f9570193188b363ff8fbe25c7e54dd63cb8 in /      ",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:29.81254466Z",
+          "created_by": "/bin/sh -c set -eu;     for app in $(/usr/bin/busybox --list); do     [ ! -f \"/usr/bin/$app\" ] \u0026\u0026 /usr/bin/busybox ln -s busybox \"/usr/bin/$app\";     done;     xbps-reconfigure -fa;     xbps-remove -Rofy xbps;     rm -rf /var/cache/* /var/libexec/xbps* /etc/xbps* /var/db/;     python -m compileall -q -j 0 /usr/lib/python*/",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:29.934073181Z",
+          "created_by": "/bin/sh -c #(nop) COPY file:c10cc01fd51bf21d1398609b2d515e1783e4d193ae4335c5e6ba754aa7912b9c in /etc/group      ",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:30.062191967Z",
+          "created_by": "/bin/sh -c #(nop) COPY file:ea0b94841f18c8f91cabe74ec242ab829f4d072595fc194398a29fefd8aad9b2 in /etc/passwd      ",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:30.483985615Z",
+          "created_by": "/bin/sh -c set -eu;     install -dm0555 -o 977 -g 977 /usr/local/searxng/;     install -dm0755 -o 977 -g 977 /etc/searxng/;     install -dm0755 -o 977 -g 977 /var/cache/searxng/",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:30.509584748Z",
+          "created_by": "/bin/sh -c #(nop) ENV PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"     SSL_CERT_DIR=\"/etc/ssl/certs\"     SSL_CERT_FILE=\"/etc/ssl/certs/ca-certificates.crt\"     HISTFILE=\"/dev/null\"     __SEARXNG_CONFIG_PATH=\"/etc/searxng\"     __SEARXNG_DATA_PATH=\"/var/cache/searxng\"",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:30.535681246Z",
+          "created_by": "/bin/sh -c #(nop) WORKDIR /usr/local/searxng/",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-16T03:44:32.396052549Z",
+          "created_by": "/bin/sh -c #(nop) ENTRYPOINT [\"/usr/bin/sh\"]"
+        },
+        {
+          "created": "2026-10-19T21:31:54.051132632Z",
+          "created_by": "/bin/sh -c #(nop) COPY dir:bdc6796442fc07d6e96166e8a526112399497c60ad0af8e8eda024281765a7dc in ./.venv/      ",
+          "comment": "FROM docker.io/searxng/base:searxng"
+        },
+        {
+          "created": "2026-10-19T21:31:55.226851452Z",
+          "created_by": "/bin/sh -c #(nop) COPY dir:76033e3c44d5124b8ffa82c2d2650ede857f54b1f5d62b129857c0a0bcbe1d85 in ./searx/      "
+        },
+        {
+          "created": "2026-10-19T21:31:55.569915894Z",
+          "created_by": "/bin/sh -c #(nop) COPY dir:c4fe51570f76bd325dcc019a19dc75016f550c4cc6a5017fc468a66a64ea0ea4 in ./      "
+        },
+        {
+          "created": "2026-10-19T21:31:55.717144895Z",
+          "created_by": "/bin/sh -c #(nop) COPY file:453afa8dbc84d3fd6be922229a30474c7255f3e2d51b86c65a68748accff6770 in ./searx/      "
+        },
+        {
+          "created": "2026-10-19T21:31:55.774326056Z",
+          "created_by": "/bin/sh -c #(nop) ARG CREATED",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:55.804797696Z",
+          "created_by": "/bin/sh -c #(nop) ARG CREATED VERSION",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:55.836164092Z",
+          "created_by": "/bin/sh -c #(nop) ARG CREATED VCS_URL VERSION",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:55.867466158Z",
+          "created_by": "/bin/sh -c #(nop) ARG CREATED VCS_REVISION VCS_URL VERSION",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:55.898773798Z",
+          "created_by": "/bin/sh -c #(nop) LABEL org.opencontainers.image.created=\"$CREATED\"     org.opencontainers.image.description=\"SearXNG is a metasearch engine. Users are neither tracked nor profiled.\"     org.opencontainers.image.documentation=\"https://docs.searxng.org/admin/installation-docker\"     org.opencontainers.image.licenses=\"AGPL-3.0-or-later\"     org.opencontainers.image.revision=\"$VCS_REVISION\"     org.opencontainers.image.source=\"$VCS_URL\"     org.opencontainers.image.title=\"SearXNG\"     org.opencontainers.image.url=\"https://searxng.org\"     org.opencontainers.image.version=\"$VERSION\"",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:55.932471365Z",
+          "created_by": "/bin/sh -c #(nop) ENV __SEARXNG_VERSION=\"$VERSION\"     __SEARXNG_SETTINGS_PATH=\"$__SEARXNG_CONFIG_PATH/settings.yml\"     GRANIAN_PROCESS_NAME=\"searxng\"     GRANIAN_INTERFACE=\"wsgi\"     GRANIAN_HOST=\"::\"     GRANIAN_PORT=\"8080\"     GRANIAN_WEBSOCKETS=\"false\"     GRANIAN_BLOCKING_THREADS=\"4\"     GRANIAN_WORKERS_KILL_TIMEOUT=\"30s\"     GRANIAN_BLOCKING_THREADS_IDLE_TIMEOUT=\"5m\"",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:55.969861644Z",
+          "created_by": "/bin/sh -c #(nop) VOLUME $__SEARXNG_CONFIG_PATH",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:56.019438108Z",
+          "created_by": "/bin/sh -c #(nop) VOLUME $__SEARXNG_DATA_PATH",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:56.088202855Z",
+          "created_by": "/bin/sh -c #(nop) EXPOSE 8080",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-19T21:31:56.156790368Z",
+          "created_by": "/bin/sh -c #(nop) ENTRYPOINT [\"/usr/local/searxng/entrypoint.sh\"]",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:48:54.311145196Z",
+          "created_by": "USER root",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-10-22T11:48:54.311145196Z",
+          "created_by": "ADD https://files.pythonhosted.org/packages/c4/51/29046e48f693c54e5b7412216d447a1d8362c9653148d98c02cdf65fa733/certifi-2026.10.19-py3-none-any.whl /tmp/certifi.whl # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:48:55.215829328Z",
+          "created_by": "RUN /bin/sh -c /usr/local/searxng/.venv/bin/python -c \"import sysconfig,pathlib,shutil,zipfile; p=pathlib.Path(sysconfig.get_paths()['purelib']); [shutil.rmtree(x) for x in p.glob('certifi*') if x.is_dir()]; zipfile.ZipFile('/tmp/certifi.whl').extractall(p)\" \u0026\u0026 rm /tmp/certifi.whl # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-22T11:48:55.215829328Z",
+          "created_by": "USER 977:977",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:f05f7882eced69bc18f751f9c0dd4f05277d6006a12cbcf1e91f12153109eb21",
+          "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010",
+          "sha256:bdcc4566813faa2fad7fe8d4bbd5518616e61615c282e5a53b2c16dfd6b00e37",
+          "sha256:faf66e331ff6b0e217ed3de2efa1fb44b0c7d735904353685f32c568104ecc82",
+          "sha256:5b1e98404ce1549fe48d99ad781fcca42a636e771b4b8d636c9a5c81aaa9f6f9",
+          "sha256:a3701b713d9585b33ff57a7f73c8d31b6066f0701c851e1d8b23870111e050f5",
+          "sha256:f9e4bc5dce306235e56be58dfb8321e6f7077f32553df112aaea9544077f0a5f"
+        ]
+      },
+      "config": {
+        "Entrypoint": [
+          "/usr/local/searxng/entrypoint.sh"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "SSL_CERT_DIR=/etc/ssl/certs",
+          "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt",
+          "HISTFILE=/dev/null",
+          "__SEARXNG_CONFIG_PATH=/etc/searxng",
+          "__SEARXNG_DATA_PATH=/var/cache/searxng",
+          "__SEARXNG_VERSION=2026.10.19-81371861f",
+          "__SEARXNG_SETTINGS_PATH=/etc/searxng/settings.yml",
+          "GRANIAN_PROCESS_NAME=searxng",
+          "GRANIAN_INTERFACE=wsgi",
+          "GRANIAN_HOST=::",
+          "GRANIAN_PORT=8080",
+          "GRANIAN_WEBSOCKETS=false",
+          "GRANIAN_BLOCKING_THREADS=4",
+          "GRANIAN_WORKERS_KILL_TIMEOUT=30s",
+          "GRANIAN_BLOCKING_THREADS_IDLE_TIMEOUT=5m"
+        ],
+        "Labels": {
+          "com.docker.compose.project": "quarry",
+          "com.docker.compose.service": "searxng",
+          "com.docker.compose.version": "5.6.1",
+          "org.opencontainers.image.created": "2026-10-19T21:31:37Z",
+          "org.opencontainers.image.description": "SearXNG is a metasearch engine. Users are neither tracked nor profiled.",
+          "org.opencontainers.image.documentation": "https://docs.searxng.org/admin/installation-docker",
+          "org.opencontainers.image.licenses": "AGPL-3.0-or-later",
+          "org.opencontainers.image.revision": "81371861f67226091d1c4df2e3908a11d3b54eb9",
+          "org.opencontainers.image.source": "https://github.com/searxng/searxng",
+          "org.opencontainers.image.title": "SearXNG",
+          "org.opencontainers.image.url": "https://searxng.org",
+          "org.opencontainers.image.version": "2026.10.19-81371861f"
+        },
+        "User": "977:977",
+        "Volumes": {
+          "/etc/searxng": {},
+          "/var/cache/searxng": {}
+        },
+        "WorkingDir": "/usr/local/searxng",
+        "ExposedPorts": {
+          "8080/tcp": {}
+        }
+      }
+    },
+    "Layers": [
+      {
+        "Size": 143777792,
+        "Digest": "sha256:63b91863b8dd3b158d0b5fd05e79321f4ed16eab7b8c2c1a5821037ad28d80e4",
+        "DiffID": "sha256:f05f7882eced69bc18f751f9c0dd4f05277d6006a12cbcf1e91f12153109eb21"
+      },
+      {
+        "Size": 103491072,
+        "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+        "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+      },
+      {
+        "Size": 23874048,
+        "Digest": "sha256:3fb8752a791652294a3803a52608041311e8dab1d1768c582fa14eca66f8c9e1",
+        "DiffID": "sha256:bdcc4566813faa2fad7fe8d4bbd5518616e61615c282e5a53b2c16dfd6b00e37"
+      },
+      {
+        "Size": 6656,
+        "Digest": "sha256:381e8cc6c609e53b4f31439c4f0d963933113ae39c967e529cd87202d120bafe",
+        "DiffID": "sha256:faf66e331ff6b0e217ed3de2efa1fb44b0c7d735904353685f32c568104ecc82"
+      },
+      {
+        "Size": 4096,
+        "Digest": "sha256:339cf78cf255fd79594ecadeecfe2ee3760a2632f869d0a0deb52ca927df840f",
+        "DiffID": "sha256:5b1e98404ce1549fe48d99ad781fcca42a636e771b4b8d636c9a5c81aaa9f6f9"
+      },
+      {
+        "Size": 138752,
+        "Digest": "sha256:1425267620c4b95d2dd811a57d55e4a54c05f64f67dd981eac0e8d3192e02bf7",
+        "DiffID": "sha256:a3701b713d9585b33ff57a7f73c8d31b6066f0701c851e1d8b23870111e050f5"
+      },
+      {
+        "Size": 265216,
+        "Digest": "sha256:048b22285bcf1eb2724e328c7ffde1d2337beab3731f849e2bea4e777c732618",
+        "DiffID": "sha256:f9e4bc5dce306235e56be58dfb8321e6f7077f32553df112aaea9544077f0a5f"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "Python",
+      "Class": "lang-pkgs",
+      "Type": "python-pkg",
+      "Packages": [
+        {
+          "Name": "Flask",
+          "Identifier": {
+            "PURL": "pkg:pypi/flask@3.1.3",
+            "UID": "7da251da1a4d254e"
+          },
+          "Version": "3.1.3",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/flask-3.1.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "Jinja2",
+          "Identifier": {
+            "PURL": "pkg:pypi/jinja2@3.1.6",
+            "UID": "45131f4ce6429668"
+          },
+          "Version": "3.1.6",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/jinja2-3.1.6.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "MarkupSafe",
+          "Identifier": {
+            "PURL": "pkg:pypi/markupsafe@3.0.4",
+            "UID": "3c0d2b6d2c35a9fb"
+          },
+          "Version": "3.0.4",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/markupsafe-3.0.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "PyYAML",
+          "Identifier": {
+            "PURL": "pkg:pypi/pyyaml@6.0.3",
+            "UID": "e4194a39be71e40"
+          },
+          "Version": "6.0.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "Pygments",
+          "Identifier": {
+            "PURL": "pkg:pypi/pygments@2.21.0",
+            "UID": "3bcaf0d03ba20aee"
+          },
+          "Version": "2.21.0",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/pygments-2.21.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "Werkzeug",
+          "Identifier": {
+            "PURL": "pkg:pypi/werkzeug@3.1.9",
+            "UID": "b659b8488124610d"
+          },
+          "Version": "3.1.9",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/werkzeug-3.1.9.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "annotated-doc",
+          "Identifier": {
+            "PURL": "pkg:pypi/annotated-doc@0.0.5",
+            "UID": "48b3f06c96e24061"
+          },
+          "Version": "0.0.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/annotated_doc-0.0.5.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "babel",
+          "Identifier": {
+            "PURL": "pkg:pypi/babel@2.18.0",
+            "UID": "5a0e2116037f1b59"
+          },
+          "Version": "2.18.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/babel-2.18.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "blinker",
+          "Identifier": {
+            "PURL": "pkg:pypi/blinker@1.9.0",
+            "UID": "6712a59eca272aa"
+          },
+          "Version": "1.9.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/blinker-1.9.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "certifi",
+          "Identifier": {
+            "PURL": "pkg:pypi/certifi@2026.10.19",
+            "UID": "68e2a83905a0a8a7"
+          },
+          "Version": "2026.10.19",
+          "Licenses": [
+            "MPL-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:048b22285bcf1eb2724e328c7ffde1d2337beab3731f849e2bea4e777c732618",
+            "DiffID": "sha256:f9e4bc5dce306235e56be58dfb8321e6f7077f32553df112aaea9544077f0a5f"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/certifi-2026.10.19.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "cffi",
+          "Identifier": {
+            "PURL": "pkg:pypi/cffi@2.1.1",
+            "UID": "1ef74867a7f2588f"
+          },
+          "Version": "2.1.1",
+          "Licenses": [
+            "MIT-0"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/cffi-2.1.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "click",
+          "Identifier": {
+            "PURL": "pkg:pypi/click@8.5.0",
+            "UID": "110556aeb6baff4d"
+          },
+          "Version": "8.5.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/click-8.5.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "curl_cffi",
+          "Identifier": {
+            "PURL": "pkg:pypi/curl-cffi@0.16.3",
+            "UID": "87fa15ab8b6420b4"
+          },
+          "Version": "0.16.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/curl_cffi-0.16.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "flask-babel",
+          "Identifier": {
+            "PURL": "pkg:pypi/flask-babel@4.0.0",
+            "UID": "14c630934f81f85e"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/flask_babel-4.0.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "granian",
+          "Identifier": {
+            "PURL": "pkg:pypi/granian@2.8.4",
+            "UID": "fcc4b165dcbf1640"
+          },
+          "Version": "2.8.4",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/granian-2.8.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "isodate",
+          "Identifier": {
+            "PURL": "pkg:pypi/isodate@0.7.2",
+            "UID": "895b6a5f581e30e0"
+          },
+          "Version": "0.7.2",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/isodate-0.7.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "itsdangerous",
+          "Identifier": {
+            "PURL": "pkg:pypi/itsdangerous@2.2.0",
+            "UID": "a36af20117618e8a"
+          },
+          "Version": "2.2.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/itsdangerous-2.2.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "lxml",
+          "Identifier": {
+            "PURL": "pkg:pypi/lxml@6.1.3",
+            "UID": "bc24752da443d98"
+          },
+          "Version": "6.1.3",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/lxml-6.1.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "markdown-it-py",
+          "Identifier": {
+            "PURL": "pkg:pypi/markdown-it-py@4.2.0",
+            "UID": "7326ce3c7375eee9"
+          },
+          "Version": "4.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/markdown_it_py-4.2.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "mdurl",
+          "Identifier": {
+            "PURL": "pkg:pypi/mdurl@0.1.2",
+            "UID": "efbe1be630a43831"
+          },
+          "Version": "0.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/mdurl-0.1.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "msgspec",
+          "Identifier": {
+            "PURL": "pkg:pypi/msgspec@0.22.0",
+            "UID": "f31837386d4b7294"
+          },
+          "Version": "0.22.0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/msgspec-0.22.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pycparser",
+          "Identifier": {
+            "PURL": "pkg:pypi/pycparser@3.11",
+            "UID": "28d80bcd8eab7ecb"
+          },
+          "Version": "3.11",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/pycparser-3.11.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "python-dateutil",
+          "Identifier": {
+            "PURL": "pkg:pypi/python-dateutil@2.9.0.post0",
+            "UID": "29579eb6f389085a"
+          },
+          "Version": "2.9.0.post0",
+          "Licenses": [
+            "BSD-3-Clause",
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/python_dateutil-2.9.0.post0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pytz",
+          "Identifier": {
+            "PURL": "pkg:pypi/pytz@2026.5",
+            "UID": "b0d19fb6123de5de"
+          },
+          "Version": "2026.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/pytz-2026.5.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "rich",
+          "Identifier": {
+            "PURL": "pkg:pypi/rich@15.0.0",
+            "UID": "3005b3bc1273ebb1"
+          },
+          "Version": "15.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/rich-15.0.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "setproctitle",
+          "Identifier": {
+            "PURL": "pkg:pypi/setproctitle@1.3.8",
+            "UID": "ef26d4e5b7cd8a21"
+          },
+          "Version": "1.3.8",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/setproctitle-1.3.8.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "shellingham",
+          "Identifier": {
+            "PURL": "pkg:pypi/shellingham@1.5.4",
+            "UID": "644ffdb88b623859"
+          },
+          "Version": "1.5.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/shellingham-1.5.4.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "six",
+          "Identifier": {
+            "PURL": "pkg:pypi/six@1.17.0",
+            "UID": "5ecb48de112b2520"
+          },
+          "Version": "1.17.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/six-1.17.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "typer",
+          "Identifier": {
+            "PURL": "pkg:pypi/typer@0.27.3",
+            "UID": "cea524d8a2fca585"
+          },
+          "Version": "0.27.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/typer-0.27.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "typing_extensions",
+          "Identifier": {
+            "PURL": "pkg:pypi/typing-extensions@4.16.0",
+            "UID": "34621073a80dad4b"
+          },
+          "Version": "4.16.0",
+          "Licenses": [
+            "PSF-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/typing_extensions-4.16.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "valkey",
+          "Identifier": {
+            "PURL": "pkg:pypi/valkey@6.1.1",
+            "UID": "14cc051c26853bdf"
+          },
+          "Version": "6.1.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/valkey-6.1.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "whitenoise",
+          "Identifier": {
+            "PURL": "pkg:pypi/whitenoise@6.12.0",
+            "UID": "54df1c4c196db59"
+          },
+          "Version": "6.12.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:336b138d034f5f02a914f11948467b65e8e05bd1cf04a980bee9cd006d3585a6",
+            "DiffID": "sha256:b386985b043487e1d02741ba87b7594f3a95e5f321d1902a0296630d23dd7010"
+          },
+          "FilePath": "usr/local/searxng/.venv/lib/python3.14/site-packages/whitenoise-6.12.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        }
+      ]
+    }
+  ]
+}

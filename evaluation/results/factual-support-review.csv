@@ -1,0 +1,6 @@
+case_id,run_id,claim_paraphrase,citation,assistant_review,human_verdict,human_reviewer
+q001,5667a4bd0c1b456f97e0bdb1ff5c9d3d,Lease is 90 seconds; heartbeat is every 30 seconds.,E1,Supported by the supplied lease passage.,pending,
+q001,5667a4bd0c1b456f97e0bdb1ff5c9d3d,The result transaction locks the job and verifies the token and unexpired lease.,E1,Supported by the supplied lease passage.,pending,
+q001,5667a4bd0c1b456f97e0bdb1ff5c9d3d,A longer lease increases the window in which a crashed worker could publish stale results.,,"Unsupported by the supplied evidence; a crashed worker cannot publish, and fencing still applies.",pending,
+q001,5667a4bd0c1b456f97e0bdb1ff5c9d3d,An external broker decouples result publishing from the lease check.,E5,"The passage supports an outbox/idempotent consumer, not removal or decoupling of the fencing check.",pending,
+q001,5667a4bd0c1b456f97e0bdb1ff5c9d3d,Clock skew and heartbeat loss are uncertainties.,,"Plausible engineering concerns, not directly established by the supplied passages. They should be clearly separated from sourced claims.",pending,

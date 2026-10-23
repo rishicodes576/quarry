@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "samples": 7,
+  "dense_max_absolute_error": 0.0,
+  "sparse_weights_equal": true,
+  "reranker_max_absolute_error": 0.0,
+  "baseline": "FastEmbed 0.9.0; same immutable model assets",
+  "replacement": "Native ONNX Runtime, mean pooling, same BM25 parameters"
+}
