@@ -23,7 +23,10 @@ def binary(args,*,source=None,target=None):
 def backup(*,source_endpoint=None,restart=True):
     folder=ROOT/'.runtime/backups'/time.strftime('%Y%m%dT%H%M%SZ',time.gmtime())
     folder.mkdir(parents=True,mode=0o700)
-    manage.compose('stop','api','worker')
+    active=manage.compose('--profile','evaluation','ps','--status','running','--services',capture=True)
+    campaign_running='evaluation-campaign' in active.stdout.splitlines()
+    # The resumable judge is also a database writer; quiesce it before pg_dump.
+    manage.compose('--profile','evaluation','stop','evaluation-campaign','api','worker')
     try:
         binary(['exec','-T','postgres','pg_dump','-U','quarry','-Fc','--no-owner','--no-privileges','quarry'],target=folder/'database.dump')
         override=['-e','QUARRY_S3_ENDPOINT='+source_endpoint] if source_endpoint else []
@@ -31,7 +34,9 @@ def backup(*,source_endpoint=None,restart=True):
     finally:
         if restart:
             manage.compose('start','api','worker')
-    manifest={'created_at':time.time(),'method':'Quiesced API and workers; PostgreSQL custom dump and hashed private source objects',
+            if campaign_running:
+                manage.compose('--profile','evaluation','start','evaluation-campaign')
+    manifest={'created_at':time.time(),'method':'Quiesced API, workers and background evaluation campaign; PostgreSQL custom dump and hashed private source objects',
               'sha256':{name:hashlib.file_digest((folder/name).open('rb'),'sha256').hexdigest() for name in ['database.dump','objects.zip']}}
     (folder/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print('Backup saved under ignored .runtime/backups/'+folder.name)

@@ -1,5 +1,6 @@
 """Single-use account lifecycle operations; roles always originate on the server."""
 
+import hashlib
 import json
 import secrets
 import smtplib
@@ -10,7 +11,7 @@ from email.message import EmailMessage
 import pyotp
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
-from sqlalchemy import delete, func, select
+from sqlalchemy import delete, func, select, text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.exc import IntegrityError
 
@@ -200,6 +201,25 @@ def forgot(body: EmailInput, request: Request):
 def invite(body: InviteInput, request: Request, user: User = Depends(owner)):
     sensitive(request, "invite", body.email)
     with session() as db, db.begin():
+        lock_key = int.from_bytes(
+            hashlib.sha256(("invitations:" + user.workspace_id).encode()).digest()[:8],
+            "big",
+            signed=True,
+        )
+        db.execute(text("SELECT pg_advisory_xact_lock(:key)"), {"key": lock_key})
+        pending = db.scalar(
+            select(func.count())
+            .select_from(AccountToken)
+            .where(
+                AccountToken.workspace_id == user.workspace_id,
+                AccountToken.purpose == "invite",
+                AccountToken.consumed_at.is_(None),
+                AccountToken.expires_at > time.time(),
+                AccountToken.email != body.email.lower(),
+            )
+        )
+        if pending >= settings().max_workspace_members:
+            raise HTTPException(429, "Pending invitation limit reached; revoke unused invitations")
         if db.scalar(select(User.id).where(User.email == body.email.lower())):
             raise HTTPException(409, "This address cannot accept a new account invitation")
         raw, expires = issue(db, "invite", body.email.lower(), user.workspace_id, body.role)
@@ -257,6 +277,12 @@ def redeem(body: RedeemInput, request: Request):
                 workspace_id, role = workspace.id, "owner"
             else:
                 workspace_id, role = token.workspace_id, token.role
+                db.get(Workspace, workspace_id, with_for_update=True)
+                members = db.scalar(
+                    select(func.count()).select_from(User).where(User.workspace_id == workspace_id)
+                )
+                if members >= settings().max_workspace_members:
+                    raise HTTPException(429, "Workspace member limit reached; contact its owner")
             user = User(
                 email=token.email, password_hash=encoded, workspace_id=workspace_id, role=role
             )
@@ -390,12 +416,13 @@ def mfa_confirm(body: CredentialInput, request: Request, user: User = Depends(cu
         ):
             raise HTTPException(400, "MFA setup expired or password is incorrect")
         secret = cipher().decrypt(row.mfa_pending.encode()).decode()
-        if not pyotp.TOTP(secret).verify(body.code, valid_window=0):
+        verified_at = time.time()
+        if not pyotp.TOTP(secret).verify(body.code, for_time=verified_at, valid_window=0):
             raise HTTPException(400, "Verification code is incorrect")
         row.mfa_secret, row.mfa_pending, row.mfa_last_step = (
             row.mfa_pending,
             "",
-            int(time.time() // 30),
+            int(verified_at // 30),
         )
         codes = [secrets.token_hex(10) for _ in range(8)]
         row.recovery_codes = [digest("recovery:" + code) for code in codes]

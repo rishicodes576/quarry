@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     s3_bucket: str = "quarry"
     data_dir: Path = Path("data")
     model_cache: str = "data/models"
+    parser_socket: str = ""
     embedding_mode: str = "onnx"
     demo_seed: bool = False
     cookie_secure: bool = False
@@ -52,9 +53,14 @@ class Settings(BaseSettings):
     max_global_runs: int = Field(default=8, ge=1, le=1000)
     max_global_pending_jobs: int = Field(default=1000, ge=1, le=100000)
     max_global_daily_tokens: int = Field(default=100_000, ge=1)
+    max_evaluation_daily_tokens: int = Field(default=100_000, ge=1)
     max_workspace_storage_bytes: int = Field(default=100 * 1024 * 1024, ge=1)
     max_global_storage_bytes: int = Field(default=5 * 1024 * 1024 * 1024, ge=1)
     max_workspaces: int = Field(default=1000, ge=1)
+    max_workspace_conversations: int = Field(default=1000, ge=1)
+    max_workspace_documents: int = Field(default=1000, ge=1)
+    max_workspace_runs: int = Field(default=10_000, ge=1)
+    max_workspace_members: int = Field(default=100, ge=1)
     qdrant_api_key: str = ""
 
     @model_validator(mode="after")
@@ -66,6 +72,8 @@ class Settings(BaseSettings):
         if not self.database_url.startswith("postgresql+psycopg://"):
             raise ValueError("Quarry requires PostgreSQL with psycopg; no SQLite fallback")
         if self.env == "production":
+            if not self.parser_socket:
+                raise ValueError("Production requires the credentialless parser service")
             if len(self.proxy_secret) < 32:
                 raise ValueError("Production requires a private gateway signature secret")
             if self.signup_mode == "public" and not self.smtp_host:

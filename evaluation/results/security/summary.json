@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-10-22T12:09:53Z",
-  "source_sha256": "7e97cdc7effc580ba8abd3fdfb97f50bb0dced6cf91d01021ba5b7d0ac50fe2c",
+  "created_at": "2026-10-23T22:41:55Z",
+  "source_sha256": "4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407",
   "images": {
     "semgrep": "semgrep/semgrep@sha256:3db5c7af55eb1f512eac0abf0ab69a97b52c74b5e9a27314c221aee1a78d7ab2",
     "trivy": "ghcr.io/aquasecurity/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
@@ -10,44 +10,44 @@
     {
       "name": "semgrep",
       "exit_code": 0,
-      "seconds": 227.98,
-      "log_sha256": "2e55787db931d0fe817d9525b48599970d4597a47d4e7a00c81e20bec0102923",
+      "seconds": 24.99,
+      "log_sha256": "473600f5ac878c3cdf4e2e0247790c018bdb003092f4af4b2f0472e05fdeee27",
       "gate_passed": true
     },
     {
       "name": "trivy-filesystem",
       "exit_code": 0,
-      "seconds": 36.01,
-      "log_sha256": "288d08ba8221b151bd83532493e973b575fef94411af3e3fded6eefe188ee907",
+      "seconds": 4.39,
+      "log_sha256": "e9590222263da6000f492efc48e8cb81cbd5fafb6ed62ca1c4526408ece0e99b",
       "gate_passed": true
     },
     {
       "name": "pip-audit",
       "exit_code": 0,
-      "seconds": 13.12,
-      "log_sha256": "0f2758b7ad96005b429553ae8d6b7cf0ac1b67648b366f6810799380643825f7",
+      "seconds": 13.92,
+      "log_sha256": "682db3888e094ee8c4080fc2fcfd018d1debed6931a9f510ade65359a358a959",
       "gate_passed": true
     },
     {
       "name": "pip-audit-dev",
       "exit_code": 0,
-      "seconds": 12.98,
-      "log_sha256": "c7f2aed5430494e674ec2fef4152482cae991dd59f2672f3b6d8ba1d9550236f",
+      "seconds": 10.39,
+      "log_sha256": "557cf4559b0e8eb9b5d3c33808b9f42303ba5af15e09c983b0e74bbb19932cf4",
       "gate_passed": true
     },
     {
       "name": "pip-audit-eval",
       "exit_code": 1,
-      "seconds": 11.64,
-      "log_sha256": "d30f014c7156aa262ceb62301a4fb0307da76e769899ff2342be0cf6cd3b1260",
+      "seconds": 14.0,
+      "log_sha256": "8713b200129f4e86554d73d89884060e59eac76dd4e78dc13466afdb3f3d0cdd",
       "gate_passed": true,
       "disposition": "Locally patched optional components; vulnerable capabilities removed and exploit-negative checks passed. Raw package findings remain present. See security/EVALUATOR_MITIGATIONS.md."
     },
     {
       "name": "zap-baseline",
       "exit_code": 0,
-      "seconds": 73.45,
-      "log_sha256": "e20d961161040542e06338bff5334684522dc3b7e2746f2b04fa7605a693ee94",
+      "seconds": 80.9,
+      "log_sha256": "1e615b70a09df47fa7ecf01fb9655d29d4a23c0be3c9d070deab21ee0bd3fbbe",
       "gate_passed": true
     },
     {
@@ -99,6 +99,8 @@
       "gate_passed": true
     }
   ],
+  "source_snapshot": "2c74c8fb1ddc538696fc0964e75cc62e5fba3027ccf760408df9a227a4938918",
+  "source_file_count": 142,
   "scope": "Local source and optional unauthenticated loopback deployment. No model provider calls.",
   "rules": "Public Semgrep community packs and Trivy databases retrieved at run time; reports preserve tool/rule metadata.",
   "status": "passed",

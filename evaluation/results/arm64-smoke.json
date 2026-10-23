@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "backend": {
+    "platform": "aarch64",
+    "embedding_dimensions": 384,
+    "finite_rerank_score": true,
+    "model_hashes_verified": true
+  },
+  "qdrant": "qdrant 1.20.0",
+  "seconds": 79.35,
+  "paid_calls": 0,
+  "scope": "ARM64 Docker emulation on the amd64 local host; real local ONNX inference and Qdrant executable. No native Oracle runtime or performance claim.",
+  "backend_image_id": "sha256:03327e89a1366526355c8707136aae86da8b1f13f82f2103c8f5c882d0f09bf6",
+  "qdrant_image_id": "sha256:3bccc9d7b2c30c95990304376399bb38a1cd988f127d7d23fbd77a74d58048c8"
+}

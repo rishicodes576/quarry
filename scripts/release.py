@@ -1,10 +1,11 @@
 """Release evidence binds checks to the executable source, never to secrets or generated reports."""
 import hashlib
 import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CRITICAL = ["accounts", "agent", "api", "capacity", "config", "encoders", "ingest", "metrics", "network", "providers", "queue", "retrieval", "schemas", "security", "storage", "tools", "worker"]
+CRITICAL = ["accounts", "agent", "api", "capacity", "config", "encoders", "ingest", "metrics", "network", "parse_document", "parser_service", "providers", "queue", "retrieval", "schemas", "security", "storage", "tools", "worker"]
 SKIP = {"node_modules", ".next", "__pycache__", ".pytest_cache", ".ruff_cache", "results", "assets"}
 
 
@@ -12,7 +13,12 @@ def fingerprint():
     digest = hashlib.sha256()
     paths = []
     for name in ["backend", "frontend", "infra", "scripts", "security", ".github", "evaluation"]:
-        paths.extend(p for p in (ROOT / name).rglob("*") if p.is_file() and not any(s in SKIP for s in p.relative_to(ROOT).parts) and p.suffix not in {".pyc", ".log", ".tsbuildinfo"} and p.name not in {".coverage"})
+        # Prune before descent: traversing node_modules/.next on a Windows bind mount
+        # can take minutes even though those files never contribute to the digest.
+        for folder, directories, files in os.walk(ROOT / name):
+            directories[:] = [d for d in directories if d not in SKIP]
+            paths.extend(p for filename in files if (p := Path(folder) / filename).suffix
+                         not in {".pyc", ".log", ".tsbuildinfo"} and filename != ".coverage")
     paths.extend(ROOT / name for name in ["compose.yaml", ".dockerignore", ".env.example", ".gitignore", ".gitattributes"])
     for path in sorted(paths):
         digest.update(path.relative_to(ROOT).as_posix().encode() + b"\0")

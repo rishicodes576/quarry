@@ -4,11 +4,32 @@ import http.client
 import ipaddress
 import socket
 import ssl
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as ResolutionTimeout
 from urllib.parse import quote, urljoin, urlsplit, urlunsplit
 
 
 class FetchError(ValueError):
     pass
+
+
+_DNS_POOL = ThreadPoolExecutor(max_workers=4, thread_name_prefix="public-source-dns")
+_DNS_SLOTS = threading.BoundedSemaphore(4)
+
+
+def resolve_before_deadline(host: str, port: int, deadline: float) -> list[str]:
+    # A stuck OS resolver must not create an unbounded queue of resolver threads.
+    if not _DNS_SLOTS.acquire(blocking=False):
+        raise FetchError("Source DNS capacity is busy; retry shortly")
+    future = _DNS_POOL.submit(public_addresses, host, port)
+    future.add_done_callback(lambda _: _DNS_SLOTS.release())
+    try:
+        return future.result(timeout=max(0.001, min(8, deadline - time.monotonic())))
+    except ResolutionTimeout:
+        future.cancel()
+        raise FetchError("Source DNS exceeded the total fetch deadline") from None
 
 
 def public_addresses(host: str, port: int) -> list[str]:
@@ -52,20 +73,75 @@ class PinnedHTTP(http.client.HTTPConnection):
         self.address, self.tls = address, tls
 
     def connect(self):
+        self.check_deadline()
         self.sock = socket.create_connection((self.address, self.port), self.timeout)
+        self._active_socket = self.sock
+        self.check_deadline()
         if self.tls:
             self.sock = ssl.create_default_context().wrap_socket(
-                self.sock, server_hostname=self.host
+                self.sock, server_hostname=self.host, do_handshake_on_connect=False
             )
+            self._active_socket = self.sock
+            self.check_deadline()
+            self.sock.do_handshake()
+            self.check_deadline()
+
+    def check_deadline(self):
+        deadline = getattr(self, "_fetch_deadline", None)
+        expired = getattr(self, "_fetch_expired", None)
+        if (expired is not None and expired.is_set()) or (
+            deadline is not None and time.monotonic() >= deadline
+        ):
+            self.abort()
+            raise FetchError("Source exceeded the total fetch deadline")
+
+    def abort(self):
+        # HTTPConnection can clear .sock while HTTPResponse still owns the socket.
+        active = getattr(self, "_active_socket", None)
+        if active is not None:
+            try:
+                active.shutdown(socket.SHUT_RDWR)
+            except OSError:
+                pass
+            active.close()
 
 
-def fetch_public(url: str, max_bytes: int = 2_000_000) -> tuple[bytes, str, str]:
+def fetch_public(
+    url: str, max_bytes: int = 2_000_000, *, total_timeout: float = 20
+) -> tuple[bytes, str, str]:
+    deadline = time.monotonic() + total_timeout
+    expired = threading.Event()
+    active = []
+
+    def interrupt():
+        expired.set()
+        if active:
+            active[0].abort()
+
+    timer = threading.Timer(total_timeout, interrupt)
+    timer.daemon = True
+    timer.start()
+    try:
+        return _fetch_public(url, max_bytes, deadline, expired, active)
+    finally:
+        timer.cancel()
+
+
+def _fetch_public(url, max_bytes, deadline, expired, active):
     current = url
     for _ in range(4):
         parsed, host = validate_url(current)
         port = 443 if parsed.scheme == "https" else 80
-        addresses = public_addresses(host, port)
+        if expired.is_set() or time.monotonic() >= deadline:
+            raise FetchError("Source exceeded the total fetch deadline")
+        addresses = resolve_before_deadline(host, port, deadline)
         connection = PinnedHTTP(host, addresses[0], port, parsed.scheme == "https")
+        connection.timeout = max(0.001, min(8, deadline - time.monotonic()))
+        connection._fetch_deadline = deadline
+        connection._fetch_expired = expired
+        active[:] = [connection]
+        if expired.is_set() or time.monotonic() >= deadline:
+            raise FetchError("Source exceeded the total fetch deadline")
         path = urlunsplit(("", "", quote(parsed.path or "/", safe="/%:@"), parsed.query, ""))
         try:
             connection.request(
@@ -79,6 +155,8 @@ def fetch_public(url: str, max_bytes: int = 2_000_000) -> tuple[bytes, str, str]
                 },
             )
             response = connection.getresponse()
+            if expired.is_set():
+                raise FetchError("Source exceeded the total fetch deadline")
             if response.status in {301, 302, 303, 307, 308}:
                 target = response.getheader("Location")
                 if not target:
@@ -91,6 +169,8 @@ def fetch_public(url: str, max_bytes: int = 2_000_000) -> tuple[bytes, str, str]
             if size and int(size) > max_bytes:
                 raise FetchError("Source exceeds the download limit")
             body = response.read(max_bytes + 1)
+            if expired.is_set() or time.monotonic() >= deadline:
+                raise FetchError("Source exceeded the total fetch deadline")
             if len(body) > max_bytes:
                 raise FetchError("Source exceeds the download limit")
             return body, response.getheader("Content-Type", "text/plain").split(";")[0], current

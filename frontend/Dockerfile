@@ -25,5 +25,8 @@ COPY frontend/package*.json ./
 RUN npm ci --no-audit --no-fund
 COPY --chown=pwuser:pwuser frontend/tests ./tests
 COPY --chown=pwuser:pwuser frontend/playwright.config.ts ./playwright.config.ts
+COPY --chown=pwuser:pwuser frontend/src/app/api ./frontend/src/app/api
+COPY --chown=pwuser:pwuser security/review-probes ./security/review-probes
+RUN ln -s /app/node_modules /app/frontend/node_modules && mkdir -p /app/evaluation/results && chown -R pwuser:pwuser /app/evaluation
 USER pwuser
 CMD ["npx", "playwright", "test"]

@@ -2,6 +2,8 @@
 
 Raw JSON artifacts are in `evaluation/results`. This report describes local Linux amd64 Docker Desktop experiments on an AMD Ryzen 5 7430U (6 cores/12 threads), 15.9 GB host RAM and a 7.18 GiB Docker memory allocation. API and worker limits are 2 CPU cores and 1536 MiB each. No paid service was used.
 
+The performance tables below retain their dated local experiment artifacts; timing was not repeated during this final security pass. Current-source release checks are reported separately.
+
 ## Retrieval
 
 Run: 2026-10-22T12:26:04.753522+00:00. Frozen, authored synthetic corpus: 24 sources and 120 cases; 30 development and 90 held-out test. 100 cases have relevance labels; all 120 are timed per mode. Warm CPU models, uncached sequential queries, source-unique top five from 20 passages. Labels are not independently validated.
@@ -42,19 +44,21 @@ This is a finite laptop burst, not sustained internet capacity. Queueing dominat
 
 ## Quality limits
 
-Live free-provider quality status: partial; requested cases: 37; fully judged cases: 1. Stop reason recorded by the evaluator: `InstructorRetryException`. A later network-recovery retry again stopped at a configured quota gate with HTTP 429, one SDK attempt for the rejected call, no provider switch and zero paid calls; see `live-resume.json`. The completed q001 case has context precision approximately 1.000, recall 1.000 and faithfulness 0.7083. The same model family answered and judged. This single case is not a representative benchmark and does not establish the screenshot's targets. See `ANSWER_REVIEW.md`; independent human verdicts remain pending.
+Live free-provider quality status: **quota_wait**; requested cases: 37; fully judged cases: **6**. Completed scores are retained in `live-ragas.json`. The original same model family answered and judged. This incomplete sample is not a representative 37-case benchmark or independent factual-support assessment. The first case's faithfulness score remains 0.7083; its unsupported claims remain visible in `ANSWER_REVIEW.md`.
 
-The screenshot's approximately 1.10-second full-answer target is not claimed as achieved. Retrieval, extractive graph time, queued HTTP completion, and live generated-answer latency have distinct scopes. The actual free-provider smoke completed in about 6.60 seconds with two calls and 2067 tokens; its factual support remains unverified.
+Judge RPC outputs are persisted by prompt/model/configuration hash and reused on resume. New metrics record model/provider and judge run IDs. Legacy records retain their original configuration history. A changed model/provider or frozen dataset is rejected rather than silently mixed. Temporary provider limits receive bounded same-provider retries; local daily limits pause until UTC reset. `python scripts/manage.py benchmark --live --until-complete` starts an explicit background campaign with at most 64 resumes. Non-quota failures stop for inspection. No paid service or automatic provider switch is used.
+
+The screenshot's approximately 1.10-second full-answer target is not claimed as achieved. Retrieval, extractive graph time, queued HTTP completion, and live generated-answer latency have distinct scopes. The free-provider smoke completed in about 6.60 seconds with two calls and 2067 tokens; mechanical citation validity does not establish factual correctness.
 
 ## Verification and security
 
-Functional release status: **passed**. 152 backend tests and eight Playwright workflows passed. Critical aggregate branch coverage: 459/502 = **91.434%** across the explicit modules in `scripts/release.py`; operator/evaluation CLIs are excluded. Source SHA-256: `7e97cdc7effc580ba8abd3fdfb97f50bb0dced6cf91d01021ba5b7d0ac50fe2c`.
+Functional release status: **passed**. **184 backend tests**, eight Playwright workflows, and the BFF deadline/SSE component probe passed. Critical aggregate branch coverage: **504/556 = 90.647%**, including the new parser service and bounded child entry point. Operator/evaluation CLIs are excluded from this aggregate; whole-repository coverage is lower. Source SHA-256: `4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407`.
 
-Complete security gate: **passed**; source SHA-256 `7e97cdc7effc580ba8abd3fdfb97f50bb0dced6cf91d01021ba5b7d0ac50fe2c`. Semgrep, Trivy filesystem and runtime/development Python audit reports retain their exact scope. Image reports cover all eight runtime image families. ZAP is an unauthenticated local baseline with zero failures/warnings and two reviewed informational categories; it is not a full authenticated penetration test.
+Complete security gate: **passed** for that same source. Semgrep, Trivy filesystem, runtime/development dependency audits, all eight runtime image families and the unauthenticated local OWASP ZAP baseline retain their raw evidence. The source scanner includes new/uncommitted files. Scanner coverage is finite.
 
-Optional evaluator package metadata still reports two distinct advisories (four raw records). The separate evaluator image removes the vulnerable URL/file-loading and pickle-reading capabilities, with checksum-guarded modifications and exploit-negative tests. The raw pip-audit exit code remains 1. See `../security/EVALUATOR_MITIGATIONS.md`; neither package is in the production backend. This is a documented local mitigation, not an upstream fixed-version or vulnerability-free claim.
+Optional evaluator package metadata still reports two distinct advisories (four raw records). The separate evaluator image removes vulnerable URL/file-loading and pickle-reading capabilities through checksum-guarded local patches and exploit-negative checks. Raw pip-audit exit 1 remains visible. See `../security/EVALUATOR_MITIGATIONS.md`; these dependencies are absent from the production backend. This is a documented mitigation, not an upstream fix or a vulnerability-free claim.
 
-Backup restoration, killed-worker recovery, tenant isolation, SSRF/redirect/DNS-rebinding checks, cancellation, SSE reconnect and simulated provider failures have distinct evidence in the verification and operational reports. Production HTTPS, external SMTP, off-host disaster recovery, multi-zone failover, payment collection and independent security review remain unexecuted. The supplied production overlay and monetization discussion are deployment/design options, not live-service claims.
+The separate independent AI reviewer recorded five initial findings, inspected their fixes and additional metadata caps, ran component probes and inspected live parser isolation. See `INDEPENDENT_SECURITY_REVIEW.md`. It was not a human audit/certification. The local production-mode HTTPS/STARTTLS signup rehearsal passed; its private test CA and local SMTP sink do not substantiate Internet delivery or public ACME issuance. ARM64 emulation ran real local embedding/reranking inference and the Qdrant executable; the complete stack has not been validated on a native Oracle host. Public deployment is deferred at the user's request. Multi-zone failover, off-host disaster recovery, payment collection and independent human factual-support review are not claimed.
 
 ## Sampled resource consumption
 
@@ -70,4 +74,4 @@ Queueing dominates the burst timings, and throughput grows less than linearly wh
 
 ## Startup and restoration
 
-A new isolated Compose project passed clean startup and stop/start readiness in 139.29 seconds using the verified shared model cache. Backup restoration on the final hardened images verified 69 source hashes and completed a new query with five cited passages in 130.48 seconds. Test stacks were stopped with volumes retained; the primary workspace was not restored over.
+A fresh isolated Compose project passed startup and stop/start readiness in 132.65 seconds using the shared verified model cache. A PostgreSQL marker persisted across restart. The current backup restoration verified 89 source hashes and completed a query with 5 cited passages in 128.39 seconds. Rehearsal stacks were stopped with volumes retained; primary data was untouched.

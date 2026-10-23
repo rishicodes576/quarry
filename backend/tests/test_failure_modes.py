@@ -65,7 +65,10 @@ def test_tls_pinning_keeps_original_server_name(monkeypatch):
     monkeypatch.setattr(network.ssl, "create_default_context", Mock(return_value=context))
     connection = network.PinnedHTTP("example.com", "8.8.8.8", 443, True)
     connection.connect()
-    context.wrap_socket.assert_called_once_with(sock, server_hostname="example.com")
+    context.wrap_socket.assert_called_once_with(
+        sock, server_hostname="example.com", do_handshake_on_connect=False
+    )
+    context.wrap_socket.return_value.do_handshake.assert_called_once()
 
 
 def test_tool_policies_and_external_response_parsing(monkeypatch):
@@ -154,6 +157,7 @@ def test_production_configuration_fails_closed(changes):
         "smtp_host": "",
         "qdrant_api_key": "test" * 16,
         "s3_secret_key": "test" * 16,
+        "parser_socket": "/parser/parse.sock",
     }
     with pytest.raises(ValueError):
         Settings(**{**defaults, **changes})
@@ -172,6 +176,7 @@ def test_valid_production_configuration():
             smtp_host="",
             qdrant_api_key="test" * 16,
             s3_secret_key="test" * 16,
+            parser_socket="/parser/parse.sock",
         ).env
         == "production"
     )

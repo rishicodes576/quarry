@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a1638d-445b-7db0-9e69-6d99c2e5cb21",
-  "CreatedAt": "2026-10-22T12:19:24.891900081Z",
-  "ArtifactID": "sha256:b5880f7b93afc00e0536e42799df94aa0f0575f93ce6d5039945002574055fc9",
+  "ReportID": "01a16af2-14a5-7a93-8a22-99c3c5d2f52c",
+  "CreatedAt": "2026-10-23T22:46:52.325696837Z",
+  "ArtifactID": "sha256:72b0f631ef9649c0bbdbea699b60876e4cc2420f1b13cbefd13fbe46e312f4e4",
   "ArtifactName": "/images/qdrant.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -14,12 +14,12 @@
       "Family": "none",
       "Name": ""
     },
-    "ImageID": "sha256:67cd67c1f86757355097f76d640738b9c6eca05430aff70afe4f95211fd394eb",
+    "ImageID": "sha256:1912b171dc9a2c95afb497dd5f0e4b5ea466d2608235f52e312d3fbba451ccf3",
     "DiffIDs": [
-      "sha256:14ba9da7e00088bc72123543d49356f1f29de0ea4df4b47b1b9d7bd98d2aede3",
-      "sha256:72157ea720bca8b04a7938a3932e7ec70dfea206a166701949a0cf806e8feca4",
-      "sha256:c6285fefd615491be8429bfc0120e3e6e1e480f7038c4a8f6e7cde1d1b3853ab",
-      "sha256:97e5c3be487ac93b15b0190ab43ca8e67a46797a70b8d9527b98b12d0977ce8e",
+      "sha256:afbcb215afc7041d54521b15e60b9612ecaf348ee8c3439d5b05aad00c3720ed",
+      "sha256:12f9b4a5923d81e6969b51fca6f9bdde1976e0b97f34ff1043c0aea62e639dd1",
+      "sha256:65700bc8148bc15b1d24146a6d837ed86922d674f24d46a39d8973ac467eabcd",
+      "sha256:997618c298d25db43fc1eedc1fda819581c543c71e665aab3ea200435ab51721",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
     ],
     "RepoTags": [
@@ -28,47 +28,47 @@
     "Reference": "quarry-qdrant:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-22T11:53:00.31249021Z",
+      "created": "2026-10-23T08:27:48.95532683Z",
       "history": [
         {
-          "created": "2026-10-22T11:48:55.000319684Z",
+          "created": "2026-10-23T08:27:46.913349406Z",
           "created_by": "COPY /runtime / # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:48:55.784448101Z",
+          "created": "2026-10-23T08:27:48.393469327Z",
           "created_by": "COPY /qdrant/qdrant /qdrant/qdrant # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:48:55.902202029Z",
+          "created": "2026-10-23T08:27:48.565244645Z",
           "created_by": "COPY /qdrant/config /qdrant/config # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:52:59.942229537Z",
+          "created": "2026-10-23T08:27:48.79462622Z",
           "created_by": "COPY docs/licenses/qdrant.LICENSE /usr/share/licenses/qdrant/LICENSE # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:53:00.31249021Z",
+          "created": "2026-10-23T08:27:48.95532683Z",
           "created_by": "WORKDIR /qdrant",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:53:00.31249021Z",
+          "created": "2026-10-23T08:27:48.95532683Z",
           "created_by": "USER 10001:10001",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-22T11:53:00.31249021Z",
+          "created": "2026-10-23T08:27:48.95532683Z",
           "created_by": "ENV RUN_MODE=production QDRANT__SERVICE__ENABLE_STATIC_CONTENT=false",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-22T11:53:00.31249021Z",
+          "created": "2026-10-23T08:27:48.95532683Z",
           "created_by": "ENTRYPOINT [\"/qdrant/qdrant\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -78,10 +78,10 @@
       "rootfs": {
         "type": "layers",
         "diff_ids": [
-          "sha256:14ba9da7e00088bc72123543d49356f1f29de0ea4df4b47b1b9d7bd98d2aede3",
-          "sha256:72157ea720bca8b04a7938a3932e7ec70dfea206a166701949a0cf806e8feca4",
-          "sha256:c6285fefd615491be8429bfc0120e3e6e1e480f7038c4a8f6e7cde1d1b3853ab",
-          "sha256:97e5c3be487ac93b15b0190ab43ca8e67a46797a70b8d9527b98b12d0977ce8e",
+          "sha256:afbcb215afc7041d54521b15e60b9612ecaf348ee8c3439d5b05aad00c3720ed",
+          "sha256:12f9b4a5923d81e6969b51fca6f9bdde1976e0b97f34ff1043c0aea62e639dd1",
+          "sha256:65700bc8148bc15b1d24146a6d837ed86922d674f24d46a39d8973ac467eabcd",
+          "sha256:997618c298d25db43fc1eedc1fda819581c543c71e665aab3ea200435ab51721",
           "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
         ]
       },
@@ -106,23 +106,23 @@
     "Layers": [
       {
         "Size": 4089856,
-        "Digest": "sha256:677df31767d43c5285307f8908962dd829d138d9e56977269ed6e5bd127821ae",
-        "DiffID": "sha256:14ba9da7e00088bc72123543d49356f1f29de0ea4df4b47b1b9d7bd98d2aede3"
+        "Digest": "sha256:a4ebb5b2558e86ace71743f71e73aae4778eaafbbba9b14609027ed8bf4de728",
+        "DiffID": "sha256:afbcb215afc7041d54521b15e60b9612ecaf348ee8c3439d5b05aad00c3720ed"
       },
       {
         "Size": 94109184,
-        "Digest": "sha256:7875ca7efc26068d5e22844e2ed7d4b7cee015352a190cae5b28d133d2029556",
-        "DiffID": "sha256:72157ea720bca8b04a7938a3932e7ec70dfea206a166701949a0cf806e8feca4"
+        "Digest": "sha256:0f98fbf6baea39cd7b0a76543b4023d0849f5a32979a2204e73a61ecbc034e9b",
+        "DiffID": "sha256:12f9b4a5923d81e6969b51fca6f9bdde1976e0b97f34ff1043c0aea62e639dd1"
       },
       {
         "Size": 29696,
-        "Digest": "sha256:58a84c3ce172800d613d9edb3b65d7dc0284843b503f19f8e5305368be1c7e38",
-        "DiffID": "sha256:c6285fefd615491be8429bfc0120e3e6e1e480f7038c4a8f6e7cde1d1b3853ab"
+        "Digest": "sha256:16ae72923335066383dec87052c38c1dad8364db4fc750af84df4d0905646c81",
+        "DiffID": "sha256:65700bc8148bc15b1d24146a6d837ed86922d674f24d46a39d8973ac467eabcd"
       },
       {
         "Size": 15360,
-        "Digest": "sha256:8fce8b6fd2b80733ea5f195200978897bacc093fb9c5927e64011c5d05857e27",
-        "DiffID": "sha256:97e5c3be487ac93b15b0190ab43ca8e67a46797a70b8d9527b98b12d0977ce8e"
+        "Digest": "sha256:bcd89bd92fba4830fe91b744aded9f5a080ae7dc38f46b151e9deda49cb8db26",
+        "DiffID": "sha256:997618c298d25db43fc1eedc1fda819581c543c71e665aab3ea200435ab51721"
       },
       {
         "Size": 1024,

@@ -7,6 +7,16 @@ type Usage = {
   tokens: { used: number; reserved: number; daily_limit: number };
   shared_tokens: { used: number; reserved: number; daily_limit: number };
   storage: { bytes: number; limit_bytes: number };
+  metadata: {
+    retained_runs: number;
+    run_limit: number;
+    members: number;
+    member_limit: number;
+    conversations: number;
+    conversation_limit: number;
+    retained_source_versions: number;
+    source_version_limit: number;
+  };
   queue: {
     pending: number;
     running: number;
@@ -105,6 +115,32 @@ export default function CapacityControls({ user }: { user: User }) {
                 <dd>
                   {usage.queue.workspace_concurrency} /{" "}
                   {usage.queue.shared_concurrency}
+                </dd>
+              </div>
+              <div>
+                <dt>Retained research / limit</dt>
+                <dd>
+                  {usage.metadata.retained_runs} / {usage.metadata.run_limit}
+                </dd>
+              </div>
+              <div>
+                <dt>Members / limit</dt>
+                <dd>
+                  {usage.metadata.members} / {usage.metadata.member_limit}
+                </dd>
+              </div>
+              <div>
+                <dt>Conversations / limit</dt>
+                <dd>
+                  {usage.metadata.conversations} /{" "}
+                  {usage.metadata.conversation_limit}
+                </dd>
+              </div>
+              <div>
+                <dt>Retained source versions / limit</dt>
+                <dd>
+                  {usage.metadata.retained_source_versions} /{" "}
+                  {usage.metadata.source_version_limit}
                 </dd>
               </div>
               <div>

@@ -111,9 +111,23 @@ def process(job):
                 from quarry.accounts import deliver
 
                 deliver(job)
-            elif job.kind == "research":
-                with fenced(job) as (db, _):
+            elif job.kind in {"research", "evaluation_judge"}:
+                with fenced(job) as (db, current):
                     run = db.get(Run, job.target_id)
+                    from quarry.bootstrap import EVAL_WORKSPACE
+
+                    if job.kind == "evaluation_judge" or (
+                        run.workspace_id == EVAL_WORKSPACE
+                        and run.question == "Ragas judge request"
+                    ):
+                        # The campaign owns judge prompts, not the research graph.
+                        # Recover interrupted calls conservatively and let it retry.
+                        providers.settle_run(db, run, None)
+                        run.status, run.finished_at = "failed", time.time()
+                        run.error = "Judge interrupted; resume the evaluation campaign"
+                        current.status, current.error = "dead", "InterruptedJudge"
+                        event(db, run, "failed", {"reason": "interrupted_judge"})
+                        return
                     if run.cancel_requested:
                         raise Cancelled("Research was cancelled")
                     # Ambiguous in-flight provider calls are charged conservatively after crashes.
@@ -150,12 +164,16 @@ def process(job):
         with fenced(job) as (db, current):
             run = db.get(Run, job.target_id)
             run.status, run.error = "quota_exhausted", str(error)
-            run.diagnostics = {**run.diagnostics, "retry_after": error.retry_after}
+            run.diagnostics = {
+                **run.diagnostics,
+                "retry_after": error.retry_after,
+                "quota_scope": error.scope,
+            }
             event(
                 db,
                 run,
                 "quota_exhausted",
-                {"retry_after": error.retry_after, "automatic_switch": False},
+                {"retry_after": error.retry_after, "scope": error.scope, "automatic_switch": False},
             )
             current.status = "done"
     except Cancelled:
@@ -175,7 +193,7 @@ def process(job):
             current.error = type(error).__name__
             current.status = "dead" if terminal else "pending"
             current.available_at = time.time() + retry_delay(job.attempt)
-            if job.kind == "research":
+            if job.kind in {"research", "evaluation_judge"}:
                 run = db.get(Run, job.target_id)
                 providers.settle_run(db, run, None)
                 run.status = "failed" if terminal else "queued"

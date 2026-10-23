@@ -1,0 +1,30 @@
+# Isolated production-mode rehearsal: local CA and local STARTTLS SMTP, no Internet mail.
+services:
+  initialize:
+    environment:
+      SSL_CERT_FILE: /tls/ca.pem
+    volumes: [./.runtime/production-probe/tls:/tls:ro]
+  api:
+    environment:
+      SSL_CERT_FILE: /tls/ca.pem
+    volumes: [./.runtime/production-probe/tls:/tls:ro]
+  worker:
+    environment:
+      SSL_CERT_FILE: /tls/ca.pem
+    volumes: [./.runtime/production-probe/tls:/tls:ro]
+  mailpit:
+    ports: !override []
+    environment:
+      MP_SMTP_TLS_CERT: /tls/server.pem
+      MP_SMTP_TLS_KEY: /tls/server.key
+      MP_SMTP_REQUIRE_STARTTLS: "true"
+    volumes: [./.runtime/production-probe/tls:/tls:ro]
+  gateway:
+    ports: !override ["127.0.0.1:3443:3443"]
+    volumes: !override [./infra/Rehearsal.Caddyfile:/etc/caddy/Caddyfile:ro, ./.runtime/production-probe/tls:/tls:ro]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://web:3000"]
+volumes:
+  models:
+    external: true
+    name: quarry_models

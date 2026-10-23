@@ -6,7 +6,7 @@ Engineering research with inspectable evidence, reproducible retrieval compariso
 
 Upload technical documents, ask a research question, inspect the execution timeline and cited passages, then export a decision brief. The retrieval lab compares dense, BM25, reciprocal-rank fusion and local cross-encoder reranking against the same sources. No generation key is required for document processing, retrieval, calculations or clearly labeled extractive briefs.
 
-**Local release checks passed:** 152 backend tests, eight browser workflows, and 91.4% aggregate critical branch coverage. All eight runtime image families reported zero High/Critical findings in the configured scan. Optional evaluator dependencies have documented local mitigations with raw advisory findings retained. Live answer-quality judging remains partial; public production deployment is not claimed. See [measured results](docs/RESULTS.md) and [audit](docs/AUDIT.md).
+**Local release checks passed:** 184 backend tests, eight browser workflows, and 90.647% aggregate critical branch coverage. All eight runtime image families passed the configured High/Critical scan. Optional evaluator advisories retain documented local mitigations and raw findings. Independent AI security review and a local production HTTPS/STARTTLS rehearsal are recorded; live judging remains partial (6/37 complete), and public production deployment is deferred. See [measured results](docs/RESULTS.md), [audit](docs/AUDIT.md), and [completion matrix](docs/COMPLETION_MATRIX.md).
 
 ## Run
 
@@ -40,6 +40,8 @@ Security checks use public Semgrep rules, Trivy databases, pip-audit and an unau
 ```powershell
 python scripts/manage.py configure-groq
 python scripts/manage.py benchmark --live
+# Optional resumable background campaign, with the same free provider and strict budgets:
+python scripts/manage.py benchmark --live --until-complete
 ```
 
 Configure your own **Groq Free Plan organization** locally with the hidden prompt. Never paste keys into issues or chat. Quarry cannot determine billing status from a key. The key stays in ignored `.env`, goes only to backend services, and is never sent to the browser. Development and all executed paid-adapter tests use no paid services. A provider quota error retains the original run and evidence. It does not change providers. The UI offers a separately submitted continuation using a user-selected configured provider.
@@ -68,4 +70,4 @@ python scripts/manage.py publish --owner rishicodes576
 
 Publication verifies the authenticated GitHub account, source-bound verification and security evidence, local commit identity, existing history and secret scans. It refuses repository collisions, remote repointing and force pushes. The repository-local Git identity is Rishab Chetal `<rishabchetal@gmail.com>`. Dependencies retain their own license notices. Source, documentation and sample data are included; local keys, backups, account tokens, browser traces, build caches and original private attachments are excluded.
 
-The default Compose stack is a local, single-host deployment with persistent volumes. Replicated API/worker operation has a different availability profile from a multi-zone production service. Production requires the operational gates in the runbook, supported storage, HTTPS, real email delivery and independent security review. Payments and cloud infrastructure are deliberately not provisioned by these commands.
+The default Compose stack is a local, single-host deployment with persistent volumes. Replicated API/worker operation has a different availability profile from a multi-zone production service. Public deployment requires the host acceptance gates in the runbook, supported storage, public HTTPS and real email delivery. The recorded independent AI review has a finite scope. Payments and cloud infrastructure are deliberately not provisioned by these commands.

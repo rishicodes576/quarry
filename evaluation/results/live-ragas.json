@@ -1,5 +1,5 @@
 {
-  "status": "partial",
+  "status": "quota_wait",
   "provider": "groq",
   "model": "openai/gpt-oss-120b",
   "judge_independence": "Same free model family; scores require manual corroboration",
@@ -55,7 +55,8 @@
       ],
       "metrics": {
         "context_precision": 0.9999999999,
-        "context_recall": 1.0
+        "context_recall": 1.0,
+        "faithfulness": 1.0
       },
       "latency_ms": 5087.27,
       "tokens": 1390,
@@ -69,9 +70,201 @@
           "reasoning_effort": "low",
           "reasoning_format": "hidden",
           "max_completion_tokens": 2000
+        },
+        "faithfulness": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        }
+      }
+    },
+    {
+      "case_id": "q004",
+      "run_id": "6f9e9d0196894779802ba826bad5839a",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] PostgreSQL queue claiming\n\nThe queue uses SELECT FOR UPDATE SKIP LOCKED ordered by available_at and created_at. Workers skip rows claimed by another transaction instead of waiting on the same oldest job. A workspace row lock serializes capacity decisions, and the default workspace concurrency ceiling is four jobs.\n\n[E2] Leased workers and fencing tokens\n\nWorkers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully.\n\n[E3] Transactional work creation and outbox reasoning\n\nA research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.\n\n[E4] Token reservations and quota exhaustion\n\nBefore a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.\n\n[E5] Queue backpressure and fairness\n\n# Queue backpressure and fairness\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "The queue uses SELECT FOR UPDATE SKIP LOCKED ordered by available_at and created_at. Workers skip rows claimed by another transaction instead of waiting on the same oldest job. A workspace row lock serializes capacity decisions, and the default workspace concurrency ceiling is four jobs.",
+        "Workers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully.",
+        "A research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.",
+        "Before a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.",
+        "# Queue backpressure and fairness"
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 6039.01,
+      "tokens": 2023,
+      "metric_configuration": {
+        "context_precision": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "context_recall": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "faithfulness": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        }
+      }
+    },
+    {
+      "case_id": "q005",
+      "run_id": "29db319c69b44cd99d4cf09aff1337e3",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] PostgreSQL queue claiming\n\nThe queue uses SELECT FOR UPDATE SKIP LOCKED ordered by available_at and created_at. Workers skip rows claimed by another transaction instead of waiting on the same oldest job. A workspace row lock serializes capacity decisions, and the default workspace concurrency ceiling is four jobs.\n\n[E2] Queue backpressure and fairness\n\nThe sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls.\n\n[E3] Token reservations and quota exhaustion\n\nBefore a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.\n\n[E4] PostgreSQL queue claiming\n\nKeep claim transactions short and perform network work outside them. Index status, available_at and lease_until. A saturated workspace is postponed briefly so another workspace can make progress. Polling introduces bounded pickup delay; PostgreSQL remains the durable source of truth.\n\n[E5] Workspace authorization and role checks\n\n# Workspace authorization and role checks\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "The queue uses SELECT FOR UPDATE SKIP LOCKED ordered by available_at and created_at. Workers skip rows claimed by another transaction instead of waiting on the same oldest job. A workspace row lock serializes capacity decisions, and the default workspace concurrency ceiling is four jobs.",
+        "The sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls.",
+        "Before a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.",
+        "Keep claim transactions short and perform network work outside them. Index status, available_at and lease_until. A saturated workspace is postponed briefly so another workspace can make progress. Polling introduces bounded pickup delay; PostgreSQL remains the durable source of truth.",
+        "# Workspace authorization and role checks"
+      ],
+      "metrics": {
+        "context_precision": 0.99999999995,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 3303.07,
+      "tokens": 1492,
+      "metric_configuration": {
+        "context_precision": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "context_recall": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "faithfulness": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        }
+      }
+    },
+    {
+      "case_id": "q008",
+      "run_id": "7d1dbebb1fb84441af93798bf0b513ff",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Transactional work creation and outbox reasoning\n\nA research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.\n\n[E2] Payload-bound request idempotency\n\nResearch submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.\n\n[E3] Transactional work creation and outbox reasoning\n\n# Transactional work creation and outbox reasoning\n\n[E4] Token reservations and quota exhaustion\n\nQuota exhaustion pauses research without changing providers. A user may retry later or explicitly select an owner-configured paid adapter. Every paid run requires a separate consent flag. A key does not reveal whether its organization has billing enabled; free-plan status must be confirmed during deployment.\n\n[E5] Leased workers and fencing tokens\n\nWorkers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "A research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "# Transactional work creation and outbox reasoning",
+        "Quota exhaustion pauses research without changing providers. A user may retry later or explicitly select an owner-configured paid adapter. Every paid run requires a separate consent flag. A key does not reveal whether its organization has billing enabled; free-plan status must be confirmed during deployment.",
+        "Workers claim a job with a 90-second lease and a random fencing token. A heartbeat extends the lease every 30 seconds. Every result transaction locks the job row and checks the current token and unexpired lease. An expired worker is forbidden from publishing a result even if its network operation completed successfully."
+      ],
+      "metrics": {
+        "context_precision": 0.49999999995,
+        "context_recall": 1.0,
+        "faithfulness": 0.8095238095238095
+      },
+      "latency_ms": 4735.34,
+      "tokens": 2103,
+      "metric_configuration": {
+        "context_precision": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "context_recall": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "faithfulness": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        }
+      }
+    },
+    {
+      "case_id": "q010",
+      "run_id": "4924871b8eb249acaf6e5ae5a36e1e33",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Token reservations and quota exhaustion\n\nBefore a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.\n\n[E2] Payload-bound request idempotency\n\nIdempotency is scoped to the workspace and checked before queue capacity. Clients retain their key after a timeout. Do not infer request identity from the question alone: users may intentionally repeat an experiment under a new key. Keep receipts through the run retention period.\n\n[E3] Timeouts, bounded retries and circuit breaking\n\nThe sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.\n\n[E4] Local dense embeddings\n\nThe local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.\n\n[E5] Token reservations and quota exhaustion\n\n# Token reservations and quota exhaustion\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Before a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.",
+        "Idempotency is scoped to the workspace and checked before queue capacity. Clients retain their key after a timeout. Do not infer request identity from the question alone: users may intentionally repeat an experiment under a new key. Keep receipts through the run retention period.",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.",
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+        "# Token reservations and quota exhaustion"
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 3987.53,
+      "tokens": 1814,
+      "metric_configuration": {
+        "context_precision": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "context_recall": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        },
+        "faithfulness": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
+        }
+      }
+    },
+    {
+      "case_id": "q011",
+      "run_id": "5e96f60fc4984810a47819ed6db30848",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Token reservations and quota exhaustion\n\nBefore a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.\n\n[E2] PostgreSQL queue claiming\n\nThe queue uses SELECT FOR UPDATE SKIP LOCKED ordered by available_at and created_at. Workers skip rows claimed by another transaction instead of waiting on the same oldest job. A workspace row lock serializes capacity decisions, and the default workspace concurrency ceiling is four jobs.\n\n[E3] Leased workers and fencing tokens\n\nUse fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.\n\n[E4] Passage boundaries and source provenance\n\nWord windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none.\n\n[E5] Queue backpressure and fairness\n\nThe sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Before a generation call, reserve 5500 tokens in a shared daily ledger under a row lock. The default workspace daily budget is 30000 tokens. After a successful call, release the reservation and record actual usage. An ambiguous timeout consumes the reservation conservatively. Calls rejected with HTTP 429 release their reservation.",
+        "The queue uses SELECT FOR UPDATE SKIP LOCKED ordered by available_at and created_at. Workers skip rows claimed by another transaction instead of waiting on the same oldest job. A workspace row lock serializes capacity decisions, and the default workspace concurrency ceiling is four jobs.",
+        "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.",
+        "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none.",
+        "The sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls."
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999
+      },
+      "latency_ms": 3151.85,
+      "tokens": 1512,
+      "metric_configuration": {
+        "context_precision": {
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000
         }
       }
     }
   ],
-  "stopped_reason": "InstructorRetryException"
+  "campaign_daily_token_limit": 100000,
+  "shared_daily_token_limit": 100000,
+  "judge_pacing_seconds": 60,
+  "judge_transport": {
+    "cache_hits": 0,
+    "requests": 1
+  },
+  "dataset_sha256": {
+    "corpus.json": "63deca3ca4a2b78218b25b768a1c75c7a16eb44da2a345d03138f6fd224e5410",
+    "cases.json": "45ea48975be2012a26f93664030e878842e2329001acb38aaf177594fb035c0d"
+  },
+  "stopped_reason": "InstructorRetryException",
+  "quota": {
+    "message": "Shared deployment token budget exhausted; no provider switch was attempted",
+    "type": "quota_exhausted",
+    "scope": "deployment",
+    "retry_after": 3600,
+    "run_id": "5948672c6b254d7892bf42058b8b04d4"
+  },
+  "next_retry_at": "2026-10-24T00:00:59.542374+00:00"
 }

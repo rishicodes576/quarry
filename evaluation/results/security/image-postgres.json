@@ -3,18 +3,18 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a1638d-2460-7f0a-a86d-e8119ae5c2a5",
-  "CreatedAt": "2026-10-22T12:19:16.704990833Z",
-  "ArtifactID": "sha256:60f8a7d5399108cd7e3e351943349920409d12624aaf5d1e6d046ce9da1e6fa7",
+  "ReportID": "01a16af1-db12-7a00-a6e4-621eeaf89e5b",
+  "CreatedAt": "2026-10-23T22:46:37.586660124Z",
+  "ArtifactID": "sha256:6f5490d0438ba6bdef6ca3cf092fb30bd190fcf3efdf46f2908ea17cc4dfc897",
   "ArtifactName": "/images/postgres.tar",
   "ArtifactType": "container_image",
   "Metadata": {
-    "Size": 308611584,
+    "Size": 309695488,
     "OS": {
       "Family": "alpine",
       "Name": "3.24.3"
     },
-    "ImageID": "sha256:ccd224436cad7fd7b7ddc89d4ed7f809f6f87570717386ebbf4c786ada983009",
+    "ImageID": "sha256:0689f49e340c8e174ef17918807b56bf30893040859336c23f1f532a2009c029",
     "DiffIDs": [
       "sha256:75c137aedfb2760f88629236cb7b797630aed0c3d91d626d1d1bb694878fc2ba",
       "sha256:4d0273c37bdc514fffff95149ce8785621655581d2c069a31cf3038e08c308fa",
@@ -25,9 +25,10 @@
       "sha256:7ca201ad0f726c7eaf249399e04994c30e26d3c9e06e43d6b371e3b25f8630bc",
       "sha256:2343fb8f16ceba7c1a809c8517142814afe99462036a7aa83ef784bbb3312ad4",
       "sha256:ac355b2037545737428ed497d5706127f23722edfa2f5f6d9ac7a75fd30d75c6",
-      "sha256:ad34020961cef47cc81c65e88bd4ab123dcd33f0e17af966034927d25320cea8",
-      "sha256:3eac32a943e4f62d80430b7c03fc6774cb9575b2c46d4d5777c8e706529a56bb",
-      "sha256:b3540fba79daffe3b445a214d0a9af529a69b03d480c14262713fd28f8eb388c"
+      "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300",
+      "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de",
+      "sha256:6f9d22ef58a97a561412836e93d5bbb84ffeb9128b1fe1427d736a5a761f48d5",
+      "sha256:90ece4c85e49f74a552caa070290023964e28614a7e756e3c249de957232154c"
     ],
     "RepoTags": [
       "quarry-postgres:local"
@@ -35,7 +36,7 @@
     "Reference": "quarry-postgres:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-22T11:48:57.427616089Z",
+      "created": "2026-10-23T20:37:18.644107446Z",
       "history": [
         {
           "created": "2026-10-21T22:37:22.870489069Z",
@@ -161,22 +162,27 @@
           "empty_layer": true
         },
         {
-          "created": "2026-10-22T11:48:57.205805392Z",
+          "created": "2026-10-23T20:37:18.393601736Z",
+          "created_by": "RUN /bin/sh -c apk add --no-cache 'brotli-libs=1.2.1-r0' # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-10-23T20:37:18.478328059Z",
           "created_by": "COPY /out/gosu /usr/local/bin/gosu # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:48:57.3083966Z",
+          "created": "2026-10-23T20:37:18.550655878Z",
           "created_by": "COPY /src/LICENSE /usr/share/licenses/gosu/LICENSE # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:48:57.427616089Z",
+          "created": "2026-10-23T20:37:18.644107446Z",
           "created_by": "COPY /src/go.mod /src/go.sum /usr/share/quarry/gosu/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-22T11:48:57.427616089Z",
+          "created": "2026-10-23T20:37:18.644107446Z",
           "created_by": "USER postgres",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -195,9 +201,10 @@
           "sha256:7ca201ad0f726c7eaf249399e04994c30e26d3c9e06e43d6b371e3b25f8630bc",
           "sha256:2343fb8f16ceba7c1a809c8517142814afe99462036a7aa83ef784bbb3312ad4",
           "sha256:ac355b2037545737428ed497d5706127f23722edfa2f5f6d9ac7a75fd30d75c6",
-          "sha256:ad34020961cef47cc81c65e88bd4ab123dcd33f0e17af966034927d25320cea8",
-          "sha256:3eac32a943e4f62d80430b7c03fc6774cb9575b2c46d4d5777c8e706529a56bb",
-          "sha256:b3540fba79daffe3b445a214d0a9af529a69b03d480c14262713fd28f8eb388c"
+          "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300",
+          "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de",
+          "sha256:6f9d22ef58a97a561412836e93d5bbb84ffeb9128b1fe1427d736a5a761f48d5",
+          "sha256:90ece4c85e49f74a552caa070290023964e28614a7e756e3c249de957232154c"
         ]
       },
       "config": {
@@ -280,19 +287,24 @@
         "DiffID": "sha256:ac355b2037545737428ed497d5706127f23722edfa2f5f6d9ac7a75fd30d75c6"
       },
       {
+        "Size": 1083904,
+        "Digest": "sha256:f3326da42cb12676450507ff48fb029f3a28de8779c999096c48ff8243df2556",
+        "DiffID": "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300"
+      },
+      {
         "Size": 1940480,
-        "Digest": "sha256:47090ade35306613308bb692053e29a6e9b713168efaf722a9e0b246621dd0e1",
-        "DiffID": "sha256:ad34020961cef47cc81c65e88bd4ab123dcd33f0e17af966034927d25320cea8"
+        "Digest": "sha256:b3f7db3e8b0c2de46622f0304f2bf0a7b0f29905a412f7a1c1b98a923f835d18",
+        "DiffID": "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de"
       },
       {
         "Size": 15360,
-        "Digest": "sha256:cec2a80602edbbde8a630debd2a2983fa38e1eb2bb2a45aad107a83028bbfdbe",
-        "DiffID": "sha256:3eac32a943e4f62d80430b7c03fc6774cb9575b2c46d4d5777c8e706529a56bb"
+        "Digest": "sha256:5d0bdb17cdb3c2c331b8f63ec0b76e1e4ec83d37914e69a9231069755bc6e28b",
+        "DiffID": "sha256:6f9d22ef58a97a561412836e93d5bbb84ffeb9128b1fe1427d736a5a761f48d5"
       },
       {
         "Size": 5120,
-        "Digest": "sha256:c3eb15b104f1806223b6a07a5a3f53402efaf733c3b34adc7df1d288ab73c609",
-        "DiffID": "sha256:b3540fba79daffe3b445a214d0a9af529a69b03d480c14262713fd28f8eb388c"
+        "Digest": "sha256:c370a1834d7b5e745477f36b2cf350b2e77573834a1419de901208f62cc08096",
+        "DiffID": "sha256:90ece4c85e49f74a552caa070290023964e28614a7e756e3c249de957232154c"
       }
     ]
   },
@@ -625,16 +637,16 @@
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "brotli-libs@1.2.0-r1",
+          "ID": "brotli-libs@1.2.1-r0",
           "Name": "brotli-libs",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/brotli-libs@1.2.0-r1?arch=x86_64\u0026distro=3.24.3",
-            "UID": "fd4f9b355be52825"
+            "PURL": "pkg:apk/alpine/brotli-libs@1.2.1-r0?arch=x86_64\u0026distro=3.24.3",
+            "UID": "ea7f1b0dd8326b2a"
           },
-          "Version": "1.2.0-r1",
+          "Version": "1.2.1-r0",
           "Arch": "x86_64",
           "SrcName": "brotli",
-          "SrcVersion": "1.2.0-r1",
+          "SrcVersion": "1.2.1-r0",
           "Licenses": [
             "MIT"
           ],
@@ -643,17 +655,17 @@
             "musl@1.2.6-r3"
           ],
           "Layer": {
-            "Digest": "sha256:242c5d565900091c2cf94a3d5525d2de099cad11e58238fce17558da98a9da5d",
-            "DiffID": "sha256:d948599f0e747cf5ceeb3302b4a67fde5edd06abbe9f61fd4d4e2fe4e4980294"
+            "Digest": "sha256:f3326da42cb12676450507ff48fb029f3a28de8779c999096c48ff8243df2556",
+            "DiffID": "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300"
           },
-          "Digest": "sha1:82f881516c045f06f22d7dc0a83cc64ca554ef10",
+          "Digest": "sha1:f482d0e3f6ec36fd4910358472c6b48be6388584",
           "InstalledFiles": [
             "usr/lib/libbrotlicommon.so.1",
-            "usr/lib/libbrotlicommon.so.1.2.0",
+            "usr/lib/libbrotlicommon.so.1.2.1",
             "usr/lib/libbrotlidec.so.1",
-            "usr/lib/libbrotlidec.so.1.2.0",
+            "usr/lib/libbrotlidec.so.1.2.1",
             "usr/lib/libbrotlienc.so.1",
-            "usr/lib/libbrotlienc.so.1.2.0"
+            "usr/lib/libbrotlienc.so.1.2.1"
           ],
           "AnalyzedBy": "apk"
         },
@@ -1087,7 +1099,7 @@
           "Name": "libcurl",
           "Identifier": {
             "PURL": "pkg:apk/alpine/libcurl@8.22.0-r0?arch=x86_64\u0026distro=3.24.3",
-            "UID": "b2e7a645709b8d1d"
+            "UID": "5459458448472038"
           },
           "Version": "8.22.0-r0",
           "Arch": "x86_64",
@@ -1098,7 +1110,7 @@
           ],
           "Maintainer": "Achill Gilgenast \u003cachill@achill.org\u003e",
           "DependsOn": [
-            "brotli-libs@1.2.0-r1",
+            "brotli-libs@1.2.1-r0",
             "c-ares@1.34.9-r0",
             "ca-certificates-bundle@20261020-r0",
             "libcrypto3@3.5.9-r0",
@@ -2735,8 +2747,8 @@
             "stdlib@v1.26.10"
           ],
           "Layer": {
-            "Digest": "sha256:47090ade35306613308bb692053e29a6e9b713168efaf722a9e0b246621dd0e1",
-            "DiffID": "sha256:ad34020961cef47cc81c65e88bd4ab123dcd33f0e17af966034927d25320cea8"
+            "Digest": "sha256:b3f7db3e8b0c2de46622f0304f2bf0a7b0f29905a412f7a1c1b98a923f835d18",
+            "DiffID": "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de"
           },
           "AnalyzedBy": "gobinary"
         },
@@ -2750,8 +2762,8 @@
           "Version": "v1.26.10",
           "Relationship": "direct",
           "Layer": {
-            "Digest": "sha256:47090ade35306613308bb692053e29a6e9b713168efaf722a9e0b246621dd0e1",
-            "DiffID": "sha256:ad34020961cef47cc81c65e88bd4ab123dcd33f0e17af966034927d25320cea8"
+            "Digest": "sha256:b3f7db3e8b0c2de46622f0304f2bf0a7b0f29905a412f7a1c1b98a923f835d18",
+            "DiffID": "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de"
           },
           "AnalyzedBy": "gobinary"
         },

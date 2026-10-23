@@ -1,0 +1,23 @@
+{
+    admin off
+    auto_https off
+    servers {
+        timeouts {
+            read_header 5s
+            read_body 15s
+            idle 60s
+        }
+    }
+}
+https://localhost:3443 {
+    tls /tls/server.pem /tls/server.key
+    request_body {
+        max_size 11MiB
+    }
+    header -Server
+    reverse_proxy web:3000 {
+        header_up X-Quarry-Client-IP {remote_host}
+        header_up -X-Quarry-Proxy-Secret
+        flush_interval -1
+    }
+}

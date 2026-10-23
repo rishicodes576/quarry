@@ -2,7 +2,7 @@
 # Real DNS, private infrastructure, supported email and operational review are prerequisites.
 services:
   permissions:
-    command: ["python", "-c", "import os; [os.chown(p,10001,10001) for p in ['/models','/objects','/vectors','/seaweed','/certificates']]"]
+    command: ["python", "-c", "import os; [os.chown(p,10001,10001) for p in ['/models','/objects','/vectors','/seaweed','/certificates']]; os.chown('/parser',10002,10001); os.chmod('/parser',0o750)"]
     volumes: [certificates:/certificates]
   initialize:
     environment:

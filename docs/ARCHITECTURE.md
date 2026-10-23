@@ -11,6 +11,7 @@ flowchart LR
   PG <--> Workers[Independent worker replicas]
   Workers --> S3
   Workers --> Q
+  Workers --> Parser[Private Unix socket / credentialless networkless parser]
   Workers --> ONNX[Local pinned CPU ONNX encoders]
   Workers --> Search[Self-hosted SearXNG / pinned public fetch]
   Workers --> Provider[Explicit fixed provider / free Groq by default]
@@ -25,7 +26,7 @@ PostgreSQL owns application truth. A research run, request-payload digest, initi
 
 Workers choose one eligible head job per workspace, compare weighted virtual finish times, and claim with `FOR UPDATE SKIP LOCKED`. A shared scheduler row serializes global capacity and virtual-clock updates. One worker executes one job at a time. A 90-second lease is renewed every 30 seconds. Publication and checkpoint writes lock and verify the job's random fencing token and unexpired lease. Old workers may finish an external operation but cannot commit stale application results. Delivery remains at-least-once; arbitrary external calls are not claimed to be exactly-once.
 
-Ingestion stores the original object first, creates an immutable version, parses it in a bounded child process, and upserts deterministic passage IDs into Qdrant. Only after successful indexing does a fenced SQL transaction mark the version ready and supersede the previous ready version. SQL eligibility is checked again around retrieval, so Qdrant's temporary stale points cannot authorize access. Older versions finishing late never supersede a newer ready version. Deleted sources are excluded immediately; asynchronous cleanup removes vectors, passages, original bytes and affected historical checkpoint snapshots. Object creation and SQL are not a distributed transaction: a hard crash between them can leave an orphan object; an offline inventory/reconciliation job is a production follow-up.
+Ingestion stores the original object first, creates an immutable version, parses it through a private Unix socket in a separate credentialless, networkless container and bounded child process, and upserts deterministic passage IDs into Qdrant. Only after successful indexing does a fenced SQL transaction mark the version ready and supersede the previous ready version. SQL eligibility is checked again around retrieval, so Qdrant's temporary stale points cannot authorize access. Older versions finishing late never supersede a newer ready version. Deleted sources are excluded immediately; asynchronous cleanup removes vectors, passages, original bytes and affected historical checkpoint snapshots. Object creation and SQL are not a distributed transaction: a hard crash between them can leave an orphan object; the operator reconciliation command lists and optionally removes unreferenced objects older than 24 hours for one explicit workspace. Normal metadata admission is locked during apply; direct operator restores and external S3 writers must be coordinated.
 
 Research is a bounded LangGraph sequence: plan → retrieve → tools → answer → validate. Checkpoints use PostgreSQL and synchronous durability. Retries resume completed graph stages. A crashed in-flight generation request has ambiguous billing; its reserved upper bound is charged conservatively rather than silently refunded. Cancellation is cooperative between stages and checked again at publication. It cannot revoke an already accepted external request.
 

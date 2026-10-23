@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a1638d-cf61-7955-9182-3fe3c2ec54e8",
-  "CreatedAt": "2026-10-22T12:20:00.481617287Z",
+  "ReportID": "01a16af2-bff6-7c03-94b6-26a6462d6253",
+  "CreatedAt": "2026-10-23T22:47:36.182791947Z",
   "ArtifactID": "sha256:ae0dc8434d29f4c189fec0ffaf6cf62a8c67341822e96417d1a52f5a1696567d",
   "ArtifactName": "/images/mailpit.tar",
   "ArtifactType": "container_image",

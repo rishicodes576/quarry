@@ -19,9 +19,11 @@ class ProviderQuota(RuntimeError):
         self,
         message="Free quota exhausted; retry later or explicitly choose another configured provider",
         retry_after=60,
+        scope="provider",
     ):
         super().__init__(message)
         self.retry_after = retry_after
+        self.scope = scope
 
 
 class ProviderFailure(RuntimeError):
@@ -83,7 +85,9 @@ def reserve(job):
             > settings().max_global_daily_tokens
         ):
             raise ProviderQuota(
-                "Shared deployment token budget exhausted; no provider switch was attempted", 3600
+                "Shared deployment token budget exhausted; no provider switch was attempted",
+                3600,
+                scope="deployment",
             )
         db.execute(
             insert(UsageDay)
@@ -97,7 +101,9 @@ def reserve(job):
         row = db.get(UsageDay, day_id, with_for_update=True)
         if row.tokens + row.reserved + RESERVATION > settings().max_daily_tokens:
             raise ProviderQuota(
-                "Workspace token budget exhausted; retry after the UTC daily reset", 3600
+                "Workspace token budget exhausted; retry after the UTC daily reset",
+                3600,
+                scope="workspace",
             )
         if run.reserved_tokens:
             raise ProviderFailure("An unsettled model reservation requires worker recovery")
@@ -193,6 +199,18 @@ def complete(job, messages: list[dict], *, json_mode=False, transport=None) -> s
                 retry_after = min(86400, max(1, int(response.headers.get("retry-after", "60"))))
             except ValueError:
                 retry_after = 60
+            with fenced(job) as (db, _):
+                run = db.get(Run, job.target_id)
+                run.diagnostics = {
+                    **run.diagnostics,
+                    "quota": {"scope": "provider", "retry_after": retry_after},
+                }
+                event(
+                    db,
+                    run,
+                    "provider_quota",
+                    {"provider": name, "retry_after": retry_after, "scope": "provider"},
+                )
             raise ProviderQuota(retry_after=retry_after)
         if response.status_code >= 400:
             settle(job, 0)

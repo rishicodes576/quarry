@@ -5,12 +5,12 @@ from alembic import command
 from alembic.config import Config
 from fastapi.testclient import TestClient
 from langgraph.checkpoint.postgres import PostgresSaver
-from sqlalchemy import delete
+from sqlalchemy import delete, text
 
 from quarry import retrieval, storage
 from quarry.api import app
 from quarry.config import settings
-from quarry.db import Base, Conversation, Document, Run, User, Workspace, session
+from quarry.db import Base, Conversation, Document, Run, User, Workspace, engine, session
 from quarry.queue import enqueue
 from quarry.security import hash_password
 
@@ -21,6 +21,22 @@ def services():
     assert config.database_url.rsplit("/", 1)[-1] == "quarry_test", (
         "Tests require the isolated quarry_test database"
     )
+    # Hold a database-level guard for the entire process, even if its host orchestrator
+    # is interrupted. A second suite must never clean tables used by a live first suite.
+    connection = engine().connect()
+    if not connection.execute(text("SELECT pg_try_advisory_lock(712918045)")).scalar():
+        connection.close()
+        pytest.exit(
+            "Another suite holds quarry_test; wait for its container to finish", returncode=2
+        )
+    try:
+        yield from initialize_services(config)
+    finally:
+        connection.execute(text("SELECT pg_advisory_unlock(712918045)"))
+        connection.close()
+
+
+def initialize_services(config):
     command.upgrade(Config("alembic.ini"), "head")
     with PostgresSaver.from_conn_string(
         config.database_url.replace("postgresql+psycopg://", "postgresql://")
@@ -29,6 +45,7 @@ def services():
     retrieval.init_index()
     storage.init_storage()
     retrieval.warm_models()
+    yield
 
 
 @pytest.fixture(autouse=True)

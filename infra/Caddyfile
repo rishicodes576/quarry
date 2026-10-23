@@ -1,5 +1,12 @@
 {
     admin off
+    servers {
+        timeouts {
+            read_header 5s
+            read_body 15s
+            idle 60s
+        }
+    }
     auto_https off
 }
 :3000 {

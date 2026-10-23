@@ -1,8 +1,9 @@
 {
   "status": "passed",
-  "project": "quarry-clean-release",
-  "seconds": 139.29,
-  "method": "New isolated project volumes, shared read-only verified model cache; clean startup followed by stop/start with volumes preserved. No source data restored over the primary project.",
+  "project": "quarry-clean-final-20261024",
+  "source_sha256": "4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407",
+  "method": "Fresh isolated project volumes with shared read-only verified model cache. Clean startup, durable PostgreSQL marker, stop/start, marker and readiness verification. Primary data untouched.",
+  "paid_calls": 0,
   "first_services": [
     {
       "service": "api",
@@ -26,6 +27,11 @@
     },
     {
       "service": "objectstore",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "parser",
       "state": "running",
       "health": "healthy"
     },
@@ -82,6 +88,11 @@
       "health": "healthy"
     },
     {
+      "service": "parser",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
       "service": "postgres",
       "state": "running",
       "health": "healthy"
@@ -107,5 +118,6 @@
       "health": ""
     }
   ],
-  "paid_calls": 0
+  "persistent_marker_verified": true,
+  "seconds": 132.65
 }

@@ -38,6 +38,11 @@ x-backend-env: &backend-env
   QUARRY_MAX_WORKSPACE_STORAGE_BYTES: "${QUARRY_MAX_WORKSPACE_STORAGE_BYTES:-104857600}"
   QUARRY_MAX_GLOBAL_STORAGE_BYTES: "${QUARRY_MAX_GLOBAL_STORAGE_BYTES:-5368709120}"
   QUARRY_MAX_WORKSPACES: "${QUARRY_MAX_WORKSPACES:-1000}"
+  QUARRY_MAX_WORKSPACE_CONVERSATIONS: "${QUARRY_MAX_WORKSPACE_CONVERSATIONS:-1000}"
+  QUARRY_MAX_WORKSPACE_DOCUMENTS: "${QUARRY_MAX_WORKSPACE_DOCUMENTS:-1000}"
+  QUARRY_MAX_WORKSPACE_RUNS: "${QUARRY_MAX_WORKSPACE_RUNS:-10000}"
+  QUARRY_MAX_WORKSPACE_MEMBERS: "${QUARRY_MAX_WORKSPACE_MEMBERS:-100}"
+  QUARRY_PARSER_SOCKET: /parser/parse.sock
 x-backend: &backend
   image: quarry-backend:local
   build:
@@ -49,15 +54,40 @@ x-backend: &backend
   volumes:
     - models:/models:ro
     - ./evaluation/results:/app/evaluation/results
+    - parser:/parser:ro
   init: true
   stop_grace_period: 60s
   restart: unless-stopped
 services:
+  parser:
+    image: quarry-backend:local
+    user: "10002:10001"
+    command: ["python", "-m", "quarry.parser_service"]
+    environment:
+      QUARRY_SESSION_SECRET: credentialless-parser-no-application-secrets-000000000000
+      QUARRY_DATA_DIR: /tmp/data
+    network_mode: none
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    volumes: [parser:/parser]
+    depends_on:
+      permissions: {condition: service_completed_successfully}
+    deploy:
+      resources:
+        limits: {cpus: "2", memory: 1200M, pids: 32}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; c=httpx.Client(transport=httpx.HTTPTransport(uds='/parser/parse.sock')); c.get('http://parser/health').raise_for_status()"]
+      interval: 5s
+      timeout: 4s
+      retries: 24
+    restart: unless-stopped
   permissions:
     image: python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
     user: "0:0"
-    command: ["python", "-c", "import os; [os.chown(p,10001,10001) for p in ['/models','/objects','/vectors','/seaweed']]"]
-    volumes: [models:/models, objects:/objects, vectors:/vectors, seaweed:/seaweed]
+    command: ["python", "-c", "import os; [os.chown(p,10001,10001) for p in ['/models','/objects','/vectors','/seaweed']]; os.chown('/parser',10002,10001); os.chmod('/parser',0o750)"]
+    volumes: [models:/models, objects:/objects, vectors:/vectors, seaweed:/seaweed, parser:/parser]
     restart: "no"
   postgres:
     image: quarry-postgres:local
@@ -176,6 +206,7 @@ services:
     <<: *backend
     depends_on:
       initialize: {condition: service_completed_successfully}
+      parser: {condition: service_healthy}
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready',timeout=5)"]
       interval: 10s
@@ -190,6 +221,7 @@ services:
     command: ["python", "-m", "quarry.worker"]
     depends_on:
       initialize: {condition: service_completed_successfully}
+      parser: {condition: service_healthy}
     deploy:
       resources:
         limits: {cpus: "2", memory: 1536M}
@@ -246,6 +278,7 @@ services:
       OPENAI_API_KEY: ""
       QUARRY_SMTP_HOST: ""
       QUARRY_SIGNUP_MODE: invite
+      QUARRY_PARSER_SOCKET: ""
     command: ["pytest", "--cov=quarry", "--cov-branch", "--cov-report=term-missing", "--cov-report=json:/app/evaluation/results/coverage.json"]
     depends_on:
       initialize: {condition: service_completed_successfully}
@@ -265,9 +298,12 @@ services:
       gateway: {condition: service_healthy}
     init: true
     restart: "no"
-  evaluate:
+  evaluate: &evaluate
     <<: *backend
     image: quarry-evaluation:local
+    environment:
+      <<: *backend-env
+      QUARRY_MAX_EVALUATION_DAILY_TOKENS: "${QUARRY_MAX_EVALUATION_DAILY_TOKENS:-100000}"
     profiles: [evaluation]
     build:
       context: .
@@ -277,12 +313,17 @@ services:
     depends_on:
       initialize: {condition: service_completed_successfully}
     restart: "no"
+  evaluation-campaign:
+    <<: *evaluate
+    command: ["python", "-m", "quarry.benchmark", "--live", "--until-complete"]
+    restart: "on-failure:3"
 volumes:
   postgres:
   vectors:
   objects:
   models:
   seaweed:
+  parser:
 networks:
   storage:
     internal: true

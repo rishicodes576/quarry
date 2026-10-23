@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a1638c-43a4-7140-82cf-ddab38497d5e",
-  "CreatedAt": "2026-10-22T12:18:19.17208557Z",
+  "ReportID": "01a16af1-450d-7e39-b90e-030f68763fbe",
+  "CreatedAt": "2026-10-23T22:45:59.181936265Z",
   "ArtifactID": "sha256:7b50742f62a958382b54f14e0832752d7043cf43f5406afe04e84989cd09faf0",
   "ArtifactName": "/images/objectstore.tar",
   "ArtifactType": "container_image",

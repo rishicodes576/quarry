@@ -2,6 +2,7 @@ import hashlib
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor
+from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import pyotp
@@ -9,7 +10,7 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import select
 
-from quarry import accounts
+from quarry import accounts, security
 from quarry.api import app
 from quarry.config import settings
 from quarry.db import AccountMail, AccountToken, LoginSession, User, session
@@ -173,7 +174,13 @@ def test_password_change_requires_old_password_and_revokes_every_session(client)
         )
 
 
-def test_mfa_enrollment_replay_recovery_and_disable(client, actors):
+def test_mfa_enrollment_replay_recovery_and_disable(client, actors, monkeypatch):
+    # Exercise a real 30-second rollover deterministically, without sleeping or
+    # mistakenly submitting a fresh code when the assertion intends replay.
+    now = [(int(time.time() // 30) + 1) * 30 - 0.1]
+    clock = SimpleNamespace(time=lambda: now[0])
+    monkeypatch.setattr(accounts, "time", clock)
+    monkeypatch.setattr(security, "time", clock)
     credential = {"password": "a-long-test-password"}
     assert client.post("/v1/auth/mfa/setup", json={"password": "wrong"}).status_code == 400
     setup = client.post("/v1/auth/mfa/setup", json=credential).json()
@@ -181,8 +188,18 @@ def test_mfa_enrollment_replay_recovery_and_disable(client, actors):
     assert (
         client.post("/v1/auth/mfa/confirm", json={**credential, "code": "bad"}).status_code == 400
     )
+    verified_at = now[0]
+    enrollment_code = pyotp.TOTP(setup["secret"]).at(verified_at)
+    original_verify = pyotp.TOTP.verify
+
+    def verify_across_rollover(otp, *args, **kwargs):
+        valid = original_verify(otp, *args, **kwargs)
+        now[0] += 0.2
+        return valid
+
+    monkeypatch.setattr(pyotp.TOTP, "verify", verify_across_rollover)
     result = client.post(
-        "/v1/auth/mfa/confirm", json={**credential, "code": pyotp.TOTP(setup["secret"]).now()}
+        "/v1/auth/mfa/confirm", json={**credential, "code": enrollment_code}
     )
     assert result.status_code == 200, result.text
     recovery = result.json()["recovery_codes"]
@@ -190,16 +207,17 @@ def test_mfa_enrollment_replay_recovery_and_disable(client, actors):
     with session() as db:
         row = db.get(User, actors["owner"].id)
         assert row.mfa_secret != setup["secret"] and recovery[0] not in row.recovery_codes
+        assert row.mfa_last_step == int(verified_at // 30)
     with TestClient(app) as peer:
         login = {"email": "owner@example.com", **credential}
         assert peer.post("/v1/auth/login", json=login).status_code == 401
         assert (
             peer.post(
-                "/v1/auth/login", json={**login, "code": pyotp.TOTP(setup["secret"]).now()}
+                "/v1/auth/login", json={**login, "code": enrollment_code}
             ).status_code
             == 401
         )
-        next_code = pyotp.TOTP(setup["secret"]).at((int(time.time() // 30) + 1) * 30)
+        next_code = pyotp.TOTP(setup["secret"]).at(now[0])
         assert peer.post("/v1/auth/login", json={**login, "code": next_code}).status_code == 200
         assert peer.post("/v1/auth/login", json={**login, "code": next_code}).status_code == 401
         assert peer.post("/v1/auth/login", json={**login, "code": recovery[0]}).status_code == 200

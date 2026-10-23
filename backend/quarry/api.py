@@ -64,6 +64,7 @@ REQUESTS = Counter("quarry_http_requests_total", "HTTP responses", ["method", "s
 LATENCY = Histogram("quarry_http_duration_seconds", "HTTP handler latency", ["method"])
 TERMINAL = {"completed", "failed", "cancelled", "quota_exhausted"}
 BODY_SLOTS = threading.BoundedSemaphore(16)
+BODY_TIMEOUT_SECONDS = 15
 
 
 @asynccontextmanager
@@ -118,11 +119,17 @@ async def guarded_boundary(request: Request, call_next):
         return JSONResponse({"detail": "Invalid Content-Length"}, status_code=400)
     if request.method in {"POST", "PUT", "PATCH"}:
         size, parts = 0, []
-        async for part in request.stream():
-            size += len(part)
-            if size > settings().max_upload_bytes + 64_000:
-                return JSONResponse({"detail": "Request exceeds upload limit"}, status_code=413)
-            parts.append(part)
+        try:
+            async with asyncio.timeout(BODY_TIMEOUT_SECONDS):
+                async for part in request.stream():
+                    size += len(part)
+                    if size > settings().max_upload_bytes + 64_000:
+                        return JSONResponse(
+                            {"detail": "Request exceeds upload limit"}, status_code=413
+                        )
+                    parts.append(part)
+        except TimeoutError:
+            return JSONResponse({"detail": "Request body deadline exceeded"}, status_code=408)
         request._body = b"".join(parts)
     try:
         response = await call_next(request)
@@ -193,6 +200,9 @@ def ready():
                 raise RuntimeError("Runtime database privileges are excessive")
         retrieval.qdrant().get_collection(retrieval.COLLECTION)
         storage.client().head_bucket(Bucket=settings().s3_bucket)
+        from quarry.ingest import parser_ready
+
+        parser_ready()
     except Exception:
         raise HTTPException(503, "A required dependency is unavailable") from None
     return {"status": "ready"}
@@ -340,6 +350,15 @@ def add_document(user: User, body: bytes, media_type: str, title: str, source_ur
                 storage.remove(object_key)
                 return existing
             admit(db)
+            retained_count = db.scalar(
+                select(func.count())
+                .select_from(Document)
+                .where(Document.workspace_id == user.workspace_id)
+            )
+            if retained_count >= settings().max_workspace_documents:
+                raise HTTPException(
+                    429, "Retained source-version limit reached; contact an operator"
+                )
             stored = db.scalar(
                 select(func.coalesce(func.sum(Document.byte_size), 0)).where(
                     Document.workspace_id == user.workspace_id, Document.object_key != ""
@@ -519,7 +538,16 @@ def retry_document(document_id: str, user: User = Depends(writer)):
 
 @app.post("/v1/conversations", response_model=ConversationOut, status_code=201)
 def create_conversation(body: ConversationInput, user: User = Depends(writer)):
+    rate_limit(f"conversation-create:{user.workspace_id}", 20)
     with session() as db, db.begin():
+        db.get(Workspace, user.workspace_id, with_for_update=True)
+        count = db.scalar(
+            select(func.count())
+            .select_from(Conversation)
+            .where(Conversation.workspace_id == user.workspace_id)
+        )
+        if count >= settings().max_workspace_conversations:
+            raise HTTPException(429, "Workspace conversation limit reached")
         item = Conversation(workspace_id=user.workspace_id, title=body.title)
         db.add(item)
         db.flush()
@@ -558,6 +586,11 @@ def create_run(body: RunInput, idempotency_key: str = Header(...), user: User = 
             if existing.request_hash != payload_hash:
                 raise HTTPException(409, "Idempotency key is already bound to another payload")
             return existing
+        retained = db.scalar(
+            select(func.count()).select_from(Run).where(Run.workspace_id == user.workspace_id)
+        )
+        if retained >= settings().max_workspace_runs:
+            raise HTTPException(429, "Retained research limit reached; contact an operator")
         admit(db)
         conversation = scoped(db, Conversation, body.conversation_id, user)
         if body.parent_run_id:

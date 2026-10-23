@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "checks": {
+    "separate_uid": true,
+    "no_network": true,
+    "read_only_root": true,
+    "capabilities_dropped": true,
+    "no_new_privileges": true,
+    "bounded_processes": true,
+    "bounded_memory": true,
+    "no_application_credentials": true,
+    "only_private_socket_volume": true,
+    "egress_denied": true,
+    "root_write_denied": true,
+    "private_volumes_absent": true
+  },
+  "source_sha256": "4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407",
+  "image_id": "sha256:fa078439a3531895c0f684144af2bbfff8d0e6d0858423097c1238b0c699c2f1",
+  "paid_calls": 0,
+  "scope": "Local container configuration and inert negative probes; not a parser RCE or kernel escape test."
+}

@@ -103,7 +103,7 @@ def up():
     compose('build','api','web','objectstore','gateway','postgres','qdrant','searxng','mailpit')
     from migrate_storage import migrate
     migrate()
-    compose("up", "--build", "--detach", "--wait", "--wait-timeout", "900")
+    compose("up", "--no-build", "--detach", "--wait", "--wait-timeout", "900")
     print("\nQuarry is ready: http://localhost:3000")
     if read_env().get("QUARRY_DEMO_SEED") == "true":
         print("Use 'Explore sample workspace'. Sample indexing may continue briefly in the background.")
@@ -162,6 +162,7 @@ def verify_locked():
         ["--profile", "test", "run", "--rm", "--no-deps", "tests", "alembic", "check"],
         ["--profile", "test", "run", "--rm", "--no-deps", "tests", "python", "-m", "quarry.contract"],
         ["--profile", "test", "run", "--rm", "--no-deps", "tests"],
+        ["--profile", "test", "run", "--rm", "--no-deps", "browser-tests", "node", "security/review-probes/bff-patch.cjs"],
         ["--profile", "test", "run", "--rm", "--no-deps", "browser-tests"],
     ]
     report = {"created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "source_sha256": fingerprint(), "steps": [], "paid_calls": 0}
@@ -177,6 +178,15 @@ def verify_locked():
         if result.returncode:
             failure = True
             break
+    if not failure:
+        started = time.monotonic()
+        command = [sys.executable,str(ROOT/'scripts/parser_boundary.py')]
+        result = run(command,capture=True,check=False)
+        output = redact(result.stdout+result.stderr)
+        print(output)
+        report['steps'].append({'command':command,'exit_code':result.returncode,
+                               'seconds':round(time.monotonic()-started,2),'output':output})
+        failure = result.returncode != 0
     if not failure:
         report['critical_coverage'] = coverage_gate()
         failure = report['critical_coverage']['status'] != 'passed'
@@ -262,7 +272,10 @@ def main():
     parser.add_argument("command", choices=["up", "down", "doctor", "verify", "benchmark", "scan", "configure-groq", "publish", "loadtest", "backup", "restore-test", "create-owner", "retention"])
     parser.add_argument("--owner", default="rishicodes576")
     parser.add_argument("--live", action="store_true", help="Explicitly enable free-key live answer evaluation")
+    parser.add_argument("--until-complete", action="store_true", help="Run the free campaign in a background container, pausing at quota resets")
     args = parser.parse_args()
+    if args.until_complete and (args.command != "benchmark" or not args.live):
+        parser.error('--until-complete requires benchmark --live')
     if args.command == "up":
         up()
     elif args.command == "down":
@@ -275,7 +288,11 @@ def main():
         scan()
     elif args.command == "benchmark":
         compose("--profile", "evaluation", "build", "evaluate")
-        compose("--profile", "evaluation", "run", "--rm", "--no-deps", "evaluate", "python", "-m", "quarry.benchmark", *(["--live"] if args.live else []))
+        if args.until_complete:
+            compose('--profile','evaluation','up','--detach','--no-deps','evaluation-campaign')
+            print('Free evaluation campaign started. Progress: evaluation/results/live-ragas.json. It pauses at quotas; no provider switch is allowed.')
+        else:
+            compose("--profile", "evaluation", "run", "--rm", "--no-deps", "evaluate", "python", "-m", "quarry.benchmark", *(["--live"] if args.live else []))
         if not args.live:
             compose('--profile','evaluation','run','--rm','--no-deps','evaluate','python','-m','quarry.agent_eval')
     elif args.command == "loadtest":

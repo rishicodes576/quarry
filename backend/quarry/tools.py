@@ -9,7 +9,7 @@ from urllib.parse import urlencode
 import httpx
 
 from quarry.config import settings
-from quarry.ingest import extract
+from quarry.ingest import isolated_extract
 from quarry.network import FetchError, fetch_public
 
 
@@ -70,7 +70,7 @@ def execute(name: str, argument: str, allow_web: bool) -> list[dict]:
         raise ValueError("Public-web tools are disabled for this run")
     if name == "fetch_url":
         body, media, final = fetch_public(argument)
-        text = extract(body, media)
+        text = isolated_extract(body, media, final)
         return [source(final, text, final, "web")]
     if name == "wikipedia":
         url = "https://en.wikipedia.org/w/api.php?" + urlencode(

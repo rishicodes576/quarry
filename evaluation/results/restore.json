@@ -1,15 +1,15 @@
 {
   "status": "passed",
-  "restoration_seconds": 130.48,
+  "restoration_seconds": 128.39,
   "evidence": {
     "status": "passed",
-    "source_hashes_verified": 69,
-    "research_run": "07f69e4a5fac4e59863cebb7997c5698",
+    "source_hashes_verified": 89,
+    "research_run": "cff3718907734f0f81fe2012802a6087",
     "cited_passages": 5
   },
   "backup_checksums": {
-    "database.dump": "4eba6731a434bf4047ee00e53837b7c5bb8f61548d539d456d745a4dc36fdfa6",
-    "objects.zip": "7fc5bf4a8400c9171bd36d6ed870b184f3664829a9a3054f207b89a9c1be96cf"
+    "database.dump": "4521bbbff988f37b07a6ad5c8c7c600d0d79325132770c8a9df2ece6b587ffd1",
+    "objects.zip": "e2af1b03890906f05044b2887617ea41abb24de36dbf3c667ed07a79bd2ee12f"
   },
   "isolated_project": "quarry-restore",
   "paid_calls": 0

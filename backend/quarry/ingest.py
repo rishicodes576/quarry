@@ -6,13 +6,59 @@ import subprocess
 import sys
 import uuid
 
+import httpx
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
 
 from quarry.config import settings
 
 
+class ParserUnavailable(RuntimeError):
+    """Transient parser overload/outage; the fenced job retry policy applies."""
+
+
+def parser_ready():
+    if settings().parser_socket:
+        with httpx.Client(
+            transport=httpx.HTTPTransport(uds=settings().parser_socket), timeout=2, trust_env=False
+        ) as client:
+            client.get("http://parser/health").raise_for_status()
+
+
 def isolated_extract(body: bytes, media_type: str, name: str) -> str:
+    cfg = settings()
+    if len(body) > cfg.max_upload_bytes:
+        raise ValueError("Document exceeds the 10 MiB upload limit")
+    if cfg.parser_socket:
+        try:
+            with httpx.Client(
+                transport=httpx.HTTPTransport(uds=cfg.parser_socket), timeout=30, trust_env=False
+            ) as client:
+                response = client.post(
+                    "http://parser/parse",
+                    content=body,
+                    headers={
+                        "Content-Type": media_type,
+                        "X-Document-Name": name.encode("ascii", "replace").decode()[:2048],
+                    },
+                )
+            if response.status_code != 200:
+                if response.status_code in {408, 429} or response.status_code >= 500:
+                    raise ParserUnavailable("Isolated parser is busy or unavailable")
+                raise ValueError("Isolated parser rejected the document envelope")
+            value = response.json()
+            if "error" in value:
+                raise ValueError(value["error"])
+            text = value["text"]
+            if not isinstance(text, str) or len(text) > cfg.max_document_chars:
+                raise ValueError("Isolated parser returned an invalid document")
+            return text
+        except (httpx.HTTPError, KeyError, TypeError) as error:
+            raise ParserUnavailable("Isolated parser is unavailable; retry the document") from error
+    return subprocess_extract(body, media_type, name)
+
+
+def subprocess_extract(body: bytes, media_type: str, name: str) -> str:
     try:
         result = subprocess.run(  # noqa: S603
             [sys.executable, "-m", "quarry.parse_document", media_type, name],
@@ -24,6 +70,7 @@ def isolated_extract(body: bytes, media_type: str, name: str) -> str:
                 "PATH": "/usr/local/bin:/usr/bin:/bin",
                 "PYTHONPATH": "/app",
                 "LANG": "C.UTF-8",
+                "LD_LIBRARY_PATH": "/usr/local/lib:/opt/quarry-libs",
                 "QUARRY_SESSION_SECRET": "isolated-parser-without-application-credentials-0000000000",
                 "QUARRY_DATA_DIR": ".",
                 "QUARRY_MAX_UPLOAD_BYTES": str(settings().max_upload_bytes),

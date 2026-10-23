@@ -19,6 +19,8 @@ coverage.xml
 .runtime/
 *.tsbuildinfo
 evaluation/results/coverage.json
+evaluation/results/.live-eval.lock
+evaluation/results/live-ragas.tmp
 docs/assets/results.json
 docs/assets/*/trace.zip
 docs/assets/runs/

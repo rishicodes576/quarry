@@ -61,18 +61,36 @@ async function proxy(
       { status: 503, headers: { "Retry-After": "1" } },
     );
   if (mutation) bodyRequests++;
+  let bodyTimedOut = false;
+  let upstreamTimedOut = false;
+  let bodyTimer: ReturnType<typeof setTimeout> | undefined;
+  let upstreamTimer: ReturnType<typeof setTimeout> | undefined;
+  let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
+  const controller = new AbortController();
+  const signal = AbortSignal.any([request.signal, controller.signal]);
+  const cancelBody = () => {
+    controller.abort();
+    if (reader) void reader.cancel().catch(() => {});
+  };
+  request.signal.addEventListener("abort", cancelBody, { once: true });
   try {
     let body: ArrayBuffer | undefined;
     if (mutation && request.body) {
-      const reader = request.body.getReader();
+      reader = request.body.getReader();
+      bodyTimer = setTimeout(() => {
+        bodyTimedOut = true;
+        cancelBody();
+      }, 15_000);
+      if (signal.aborted) cancelBody();
       const chunks: Uint8Array[] = [];
       let size = 0;
       while (true) {
         const { done, value } = await reader.read();
+        if (signal.aborted) throw new Error("Body interrupted");
         if (done) break;
         size += value.byteLength;
         if (size > 10 * 1024 * 1024 + 64000) {
-          await reader.cancel();
+          void reader.cancel().catch(() => {});
           return Response.json(
             { detail: "Upload exceeds 10 MiB" },
             { status: 413 },
@@ -80,6 +98,8 @@ async function proxy(
         }
         chunks.push(value);
       }
+      clearTimeout(bodyTimer);
+      bodyTimer = undefined;
       body = new ArrayBuffer(size);
       const buffer = new Uint8Array(body);
       let offset = 0;
@@ -88,14 +108,20 @@ async function proxy(
         offset += chunk.byteLength;
       }
     }
+    upstreamTimer = setTimeout(() => {
+      upstreamTimedOut = true;
+      controller.abort();
+    }, 30_000);
     const response = await fetch(target, {
       method: request.method,
       headers,
       body,
       cache: "no-store",
       redirect: "manual",
-      signal: request.signal,
+      signal,
     });
+    clearTimeout(upstreamTimer);
+    upstreamTimer = undefined;
     const outgoing = new Headers();
     for (const key of [
       "content-type",
@@ -115,6 +141,16 @@ async function proxy(
       headers: outgoing,
     });
   } catch {
+    if (bodyTimedOut)
+      return Response.json(
+        { detail: "Request body deadline exceeded" },
+        { status: 408 },
+      );
+    if (upstreamTimedOut)
+      return Response.json(
+        { detail: "Research service response deadline exceeded" },
+        { status: 504 },
+      );
     return Response.json(
       {
         detail:
@@ -123,6 +159,10 @@ async function proxy(
       { status: 503 },
     );
   } finally {
+    clearTimeout(bodyTimer);
+    clearTimeout(upstreamTimer);
+    request.signal.removeEventListener("abort", cancelBody);
+    if (reader) reader.releaseLock();
     if (mutation) bodyRequests--;
   }
 }

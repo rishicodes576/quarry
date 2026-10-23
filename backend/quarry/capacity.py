@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy import func, select
 
 from quarry.config import settings
-from quarry.db import Document, Job, UsageDay, User, Workspace, session
+from quarry.db import Conversation, Document, Job, Run, UsageDay, User, Workspace, session
 from quarry.queue import PLAN_WEIGHTS
 from quarry.security import current_user
 
@@ -48,6 +48,28 @@ def usage(user: User = Depends(current_user)):
             "plan": workspace.plan,
             "weight": PLAN_WEIGHTS.get(workspace.plan, 1),
             "storage": {"bytes": stored, "limit_bytes": cfg.max_workspace_storage_bytes},
+            "metadata": {
+                "conversations": db.scalar(
+                    select(func.count())
+                    .select_from(Conversation)
+                    .where(Conversation.workspace_id == workspace.id)
+                ),
+                "conversation_limit": cfg.max_workspace_conversations,
+                "retained_source_versions": db.scalar(
+                    select(func.count())
+                    .select_from(Document)
+                    .where(Document.workspace_id == workspace.id)
+                ),
+                "source_version_limit": cfg.max_workspace_documents,
+                "retained_runs": db.scalar(
+                    select(func.count()).select_from(Run).where(Run.workspace_id == workspace.id)
+                ),
+                "run_limit": cfg.max_workspace_runs,
+                "members": db.scalar(
+                    select(func.count()).select_from(User).where(User.workspace_id == workspace.id)
+                ),
+                "member_limit": cfg.max_workspace_members,
+            },
             "tokens": {
                 "used": ledger.tokens if ledger else 0,
                 "reserved": ledger.reserved if ledger else 0,

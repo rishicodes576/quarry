@@ -46,16 +46,44 @@ Health: `/health/live` and dependency-aware `/health/ready` are internal. `/metr
 
 If queue age rises, compare admitted arrival rate, completions, downstream latency and memory before increasing replicas. Inspect pending/running/dead jobs and the lease timestamps. A killed worker's lease expires and another worker claims a new fencing token. Do not manually mark a running job done or change its fence to make a stale result commit. Retries are bounded; failed ingestion has a visible retry action. Provider 429 pauses instead of using another service. A selected alternative creates a linked continuation; the original run remains attributable to its original provider.
 
-Security and functional checks intentionally fail closed. `publish` accepts only current source-bound successful reports, the correct GitHub account and local author/committer. Review unresolved findings and update dependencies; do not edit report status or add scanner ignores merely to obtain a green release. The image scanner's raw reports distinguish package presence from exploitability in this deployment. A qualified independent assessment is still required before internet exposure.
+Security and functional checks intentionally fail closed. `publish` accepts only current source-bound successful reports, the correct GitHub account and local author/committer. Review unresolved findings and update dependencies; do not edit report status or add scanner ignores merely to obtain a green release. The image scanner's raw reports distinguish package presence from exploitability in this deployment. The independent AI review is recorded with its scope and residual risks; review the actual host and public ingress before exposure.
 
 ## Prepared HTTPS deployment overlay
 
 `infra/production.compose.yaml` and `infra/Production.Caddyfile` provide a prepared HTTPS edge with persistent free ACME certificates and independently scalable API/worker services. This overlay has not been deployed to the internet. Configure the real HTTPS application origin, hostname, operator email, private credentials and a STARTTLS mail service in a separately secured environment before selecting it. It removes the default mail sink from startup and disables demo accounts. Review it with the threat model; it does not create a cloud account, buy infrastructure or collect payments.
 
-The checked local runtime currently targets Linux amd64, matching the Docker Desktop verification host. Native model wheels, copied shared libraries and image digests must be revalidated before an ARM64 release.
+The full local integration runtime was verified on Linux amd64. Architecture-neutral library collection and a multi-platform base pin also passed ARM64-emulated ONNX inference and Qdrant execution. The complete native ARM stack remains a deployment acceptance check; an emulated component smoke is not a native Oracle release claim.
 
 ## Container maintenance
 
 The default stack builds patched free supporting images from pinned upstream inputs. See `THIRD_PARTY.md` and the Dockerfiles for archive hashes, upstream versions, Go module changes, and license records. Scan all eight image families after changing them. Qdrant is an API-only runtime; its optional dashboard and shell-based OOM recovery mode are not included. Compose restart policy restarts a terminated server, and application indexing/retrieval readiness is checked independently. Update the pinned inputs deliberately and repeat integration, restore and image checks. The retained legacy MinIO profile is for the already documented rollback only; it is stopped and is not an approved public deployment option.
 
 The supplied GitHub Actions workflow is configured but has not been executed on GitHub. Source builds can require substantially more disk than the final runtime images; verify runner memory/disk capacity before interpreting CI readiness. A free self-hosted runner with the tested local capacity is an option. Local passing reports do not establish that a hosted CI run has passed.
+
+## Parser, metadata ceilings and reconciliation
+
+Uploads and fetched pages use a separate UID 10002 parser container with no network, no application secrets, no private data/model volumes, a read-only root, dropped capabilities and bounded memory/processes. Only its private Unix socket is shared. Resource-limited child parsing remains inside that container. This strengthens isolation; it is not a per-document hostile-code VM or a parser-exploit immunity claim. Temporary overload/outages retry through the fenced job policy; invalid sources fail with an actionable parsing error. Readiness includes the parser.
+
+Default retained ceilings per workspace are 1000 conversations, 1000 source-version rows, 10000 research rows and 100 members; pending invitations are also bounded. Usage displays counts and limits. Deleted/superseded source metadata and disabled members still count until an operator changes the documented retention/configuration. Byte quota cleanup does not erase immutable version metadata or promise unlimited record capacity.
+
+Object creation and SQL cannot commit atomically. Reconcile one explicit workspace after inspecting a dry run:
+
+```powershell
+
+docker compose exec -T api python -m quarry.admin reconcile-storage --workspace WORKSPACE_ID
+
+# Apply only after reviewing the candidate list and coordinating direct restores/S3 writers:
+
+docker compose exec -T api python -m quarry.admin reconcile-storage --workspace WORKSPACE_ID --apply
+
+```
+
+Referenced objects are protected, including retained deleted/superseded rows. Objects newer than 24 hours are skipped; apply holds workspace metadata admission and rechecks references. This operator tool does not provide atomic safety against direct external S3 writers or restores bypassing application locks.
+
+## Repeatable local production rehearsal
+
+`python scripts/production_rehearsal.py` uses a separate Compose project, fresh locally stored credentials, production settings, a private test CA, trusted HTTPS on loopback 3443 and local STARTTLS-required SMTP. It checks verified signup, single-use links, secure cookies, CSRF and session revocation, then stops the isolated stack. Its ignored volumes/configuration remain for inspection. It sends no Internet mail and creates no cloud resources. Use this before the real public-host TLS/mail acceptance checks, not as a substitute for them.
+
+## Resumable free judging
+
+`python scripts/manage.py benchmark --live --until-complete` starts the explicit evaluation profile in the background. It shares the finite deployment token ledger, uses a separate finite operator campaign allowance, preserves response/RPC checkpoints, and never switches provider. Daily local-budget exhaustion sleeps until UTC reset; provider backoff is bounded. Non-quota metric failures stop for inspection; rerunning the command resumes retained work. The backup command quiesces this background writer too and resumes it only if it was previously running. Coordinate any separately launched benchmark, retention, restore or direct database/storage writer before backup. The machine running evaluation must be available for progress; restarting a stopped Docker service may require the command again. Stop it with `docker compose --profile evaluation stop evaluation-campaign`. This benchmark container is separate from application hosting and does not solve public uptime.

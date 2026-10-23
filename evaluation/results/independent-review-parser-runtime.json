@@ -1,0 +1,45 @@
+{
+  "review_type": "Independent AI component/code review; read-only running-container inspection",
+  "observed_date": "2026-10-23",
+  "container": "quarry-parser-1",
+  "user": "10002:10001",
+  "network_mode": "none",
+  "interfaces": [
+    "lo"
+  ],
+  "readonly_root": true,
+  "cap_drop": [
+    "ALL"
+  ],
+  "security_opt": [
+    "no-new-privileges:true"
+  ],
+  "pids_limit": 32,
+  "memory_limit_bytes": 1258291200,
+  "mounts": [
+    {
+      "type": "volume",
+      "name": "quarry_parser",
+      "destination": "/parser",
+      "read_write": true
+    }
+  ],
+  "checked_secret_variable_names": [
+    "GROQ_API_KEY",
+    "OPENAI_API_KEY",
+    "QUARRY_DATABASE_URL",
+    "QUARRY_MIGRATION_DATABASE_URL",
+    "QUARRY_S3_SECRET_KEY",
+    "QUARRY_QDRANT_API_KEY",
+    "QUARRY_SMTP_PASSWORD",
+    "QUARRY_PROXY_SECRET"
+  ],
+  "checked_secret_variable_names_present": [],
+  "socket": {
+    "uid": 10002,
+    "gid": 10001,
+    "mode": "0666",
+    "is_unix_socket": true
+  },
+  "scope": "Actual docker inspect and read-only exec observations. No environment values, source documents or database data read. This does not prove resistance to kernel or parser RCE."
+}

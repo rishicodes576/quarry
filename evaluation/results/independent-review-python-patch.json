@@ -1,0 +1,24 @@
+{
+  "probe": "current original Python functions; loopback trickle server / delayed DNS / inert isolated parser spy; no external network or database",
+  "network_sha256": "5eda301c0787ef49fcb50262979f4e38641a4b12e9c97b15c61bb5357651acb2",
+  "tools_sha256": "4e81ad23275ab44bb2007475b6e48034dfd57816f2b41419e0c30647f4b0461b",
+  "trickle": {
+    "deadline_seconds": 0.12,
+    "elapsed_seconds": 0.134,
+    "error": "Source fetch failed or timed out"
+  },
+  "dns": {
+    "deadline_seconds": 0.04,
+    "elapsed_seconds": 0.047,
+    "error": "Source DNS exceeded the total fetch deadline"
+  },
+  "parser_calls": [
+    {
+      "media": "application/pdf",
+      "isolation_entry_point": true
+    }
+  ],
+  "late_dns_dispatch_blocked": true,
+  "late_socket_closed": true,
+  "status": "passed"
+}

@@ -1,0 +1,17 @@
+{
+  "reviewed_commit": "9e7833d6ae90c27c0d5338da22855524bc4047bd",
+  "probe": "original BFF transpiled with fake fetch and bounded stalled streams; no sockets/database",
+  "held_unauthenticated_mutations": 8,
+  "held_ms": 300,
+  "ninth_status": 503,
+  "released_statuses": [
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401
+  ]
+}

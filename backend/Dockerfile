@@ -20,14 +20,14 @@ FROM dependencies AS runtime-libraries
 COPY infra/python-runtime.py /tmp/python-runtime.py
 RUN python /tmp/python-runtime.py
 
-FROM gcr.io/distroless/base-debian13:nonroot@sha256:e93db009b28a4b028cbc0265265d37e9021f8e39ce1883eb6f5b2184e7014d10 AS base
+FROM gcr.io/distroless/base-debian13:nonroot@sha256:6c591b4ac789b683ab3665327181e7cfb7a39b5834f42dcb73d7becb8d18a5d9 AS base
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false \
     HF_HUB_DISABLE_TELEMETRY=1 LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false \
-    QUARRY_DATA_DIR=/data QUARRY_MODEL_CACHE=/models LD_LIBRARY_PATH=/usr/local/lib:/usr/lib/x86_64-linux-gnu \
+    QUARRY_DATA_DIR=/data QUARRY_MODEL_CACHE=/models LD_LIBRARY_PATH=/usr/local/lib:/opt/quarry-libs \
     PATH=/usr/local/bin
 WORKDIR /app
 COPY --from=runtime-libraries /usr/local /usr/local
-COPY --from=runtime-libraries /runtime-libs/ /usr/lib/x86_64-linux-gnu/
+COPY --from=runtime-libraries /runtime-libs/ /opt/quarry-libs/
 COPY --from=runtime-libraries /runtime-status/ /var/lib/dpkg/status.d/
 COPY --from=runtime-libraries /usr/share/doc/ /usr/share/doc/
 COPY --from=runtime-libraries --chown=10001:10001 /data /data

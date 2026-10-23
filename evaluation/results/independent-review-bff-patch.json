@@ -1,0 +1,25 @@
+{
+  "probe": "current original BFF transpiled; real inert Web Streams, mocked fetch, timers scaled15s->50ms; no database/network",
+  "source_sha256": "ab3de3c1054aff00d271e98c6c086033e9f4907b772ff0a78e2908e272c253bf",
+  "busy_status": 503,
+  "timeout_statuses": [
+    408,
+    408,
+    408,
+    408,
+    408,
+    408,
+    408,
+    408
+  ],
+  "recovered_status": 401,
+  "csrf_status": 403,
+  "blocked_path_status": 404,
+  "traversal_status": 404,
+  "invalid_machine_status": 401,
+  "machine_cookie_forwarded": false,
+  "upstream_deadline_status": 504,
+  "sse_survived_scaled_header_deadline": true,
+  "sse_abort_observed": false,
+  "status": "passed"
+}

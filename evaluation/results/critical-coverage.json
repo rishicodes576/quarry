@@ -1,14 +1,14 @@
 {
   "status": "passed",
   "scope": "Aggregate branches across explicitly listed request, authorization, queue, agent, retrieval and provider modules; operator/evaluation CLIs excluded. This is not per-file coverage.",
-  "covered": 459,
-  "total": 502,
-  "percent": 91.434,
+  "covered": 504,
+  "total": 556,
+  "percent": 90.647,
   "modules": [
     {
       "module": "accounts",
-      "covered": 50,
-      "total": 56
+      "covered": 54,
+      "total": 60
     },
     {
       "module": "agent",
@@ -17,8 +17,8 @@
     },
     {
       "module": "api",
-      "covered": 69,
-      "total": 78
+      "covered": 75,
+      "total": 84
     },
     {
       "module": "capacity",
@@ -27,8 +27,8 @@
     },
     {
       "module": "config",
-      "covered": 18,
-      "total": 22
+      "covered": 20,
+      "total": 24
     },
     {
       "module": "encoders",
@@ -37,8 +37,8 @@
     },
     {
       "module": "ingest",
-      "covered": 32,
-      "total": 34
+      "covered": 45,
+      "total": 48
     },
     {
       "module": "metrics",
@@ -47,8 +47,18 @@
     },
     {
       "module": "network",
-      "covered": 21,
-      "total": 22
+      "covered": 31,
+      "total": 38
+    },
+    {
+      "module": "parse_document",
+      "covered": 1,
+      "total": 2
+    },
+    {
+      "module": "parser_service",
+      "covered": 7,
+      "total": 8
     },
     {
       "module": "providers",
@@ -87,8 +97,8 @@
     },
     {
       "module": "worker",
-      "covered": 39,
-      "total": 48
+      "covered": 41,
+      "total": 50
     }
   ]
 }

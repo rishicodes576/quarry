@@ -110,7 +110,7 @@ def claim() -> Job | None:
         if job.attempt >= cfg.max_attempts:
             job.status = "dead"
             job.error = "Retry budget exhausted after worker interruption"
-            if job.kind == "research":
+            if job.kind in {"research", "evaluation_judge"}:
                 run = db.get(Run, job.target_id)
                 if run:
                     from quarry.providers import settle_run

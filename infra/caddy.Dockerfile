@@ -5,8 +5,11 @@ WORKDIR /src
 RUN tar -xzf /tmp/source.tar.gz --strip-components=1
 RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
     go get golang.org/x/net@v0.60.0 && go build -p 2 -trimpath -ldflags="-s -w" -o /out/caddy ./cmd/caddy
-FROM caddy@sha256:24ec7b05bc532c7bb57f727030c5056e257ff7138b4b50460306819ff79362bd
+FROM alpine:3.22@sha256:d406446bc05b82480756ce8f1287964d28768c23955fa9480d2a74a2eae7a654
+RUN apk add --no-cache ca-certificates && mkdir -p /etc/caddy /config /data \
+    && chown -R 10001:10001 /config /data
 COPY --from=build /out/caddy /usr/bin/caddy
 COPY --from=build /src/LICENSE /usr/share/licenses/caddy/LICENSE
 COPY --from=build /src/go.mod /src/go.sum /usr/share/quarry/caddy/
 USER 10001:10001
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

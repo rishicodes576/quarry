@@ -204,11 +204,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=["all", "dev", "test"], default="all")
     parser.add_argument("--live", action="store_true")
+    parser.add_argument("--until-complete", action="store_true")
     args = parser.parse_args()
     if args.live:
         from quarry.live_eval import run_live
 
-        run_live()
+        run_live(until_complete=args.until_complete)
     else:
         artifact = run(args.split)
         if artifact["status"] != "completed":

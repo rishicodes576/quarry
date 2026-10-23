@@ -266,6 +266,52 @@ def verify_objects():
     print(json.dumps({"source_hashes_verified": len(docs), "status": "passed"}))
 
 
+def reconcile_storage(workspace_id, apply=False):
+    """Reconcile one explicit workspace; never sweep another tenant or recent uploads."""
+    if not workspace_id:
+        raise ValueError("Specify one workspace ID; global object deletion is unsupported")
+    with session() as db, db.begin():
+        workspace = db.get(Workspace, workspace_id, with_for_update=apply)
+        if not workspace:
+            raise ValueError("Workspace does not exist")
+        referenced = set(
+            db.scalars(
+                select(Document.object_key).where(
+                    Document.workspace_id == workspace_id, Document.object_key != ""
+                )
+            )
+        )
+        prefix, cutoff = workspace_id + "/", time.time() - 86400
+        candidates = []
+        for page in (
+            storage.client()
+            .get_paginator("list_objects_v2")
+            .paginate(Bucket=settings().s3_bucket, Prefix=prefix)
+        ):
+            for item in page.get("Contents", []):
+                key = item["Key"]
+                if (
+                    key.startswith(prefix)
+                    and key not in referenced
+                    and item["LastModified"].timestamp() < cutoff
+                ):
+                    candidates.append({"key": key, "bytes": item["Size"]})
+        if apply:
+            for item in candidates:
+                # Recheck before deletion even though workspace metadata admission is locked.
+                if not db.scalar(select(Document.id).where(Document.object_key == item["key"])):
+                    storage.remove(item["key"])
+        result = {
+            "dry_run": not apply,
+            "workspace_id": workspace_id,
+            "minimum_age_hours": 24,
+            "unreferenced_objects": candidates,
+            "bytes": sum(item["bytes"] for item in candidates),
+        }
+    print(json.dumps(result))
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -279,9 +325,11 @@ def main():
             "verify-restore",
             "set-plan",
             "verify-objects",
+            "reconcile-storage",
         ],
     )
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument("--workspace")
     parser.add_argument("--acknowledge-isolated", action="store_true")
     args = parser.parse_args()
     if args.action == "create-owner":
@@ -302,6 +350,8 @@ def main():
         verify_restore()
     elif args.action == "verify-objects":
         verify_objects()
+    elif args.action == "reconcile-storage":
+        reconcile_storage(args.workspace, args.apply)
     else:
         retention(args.apply)
 
