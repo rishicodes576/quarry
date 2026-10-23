@@ -6,7 +6,7 @@
     "backend/quarry/accounts.py": "ab3d8afd0923daf3e1c5029a51d931d2f2a48ea08de733bd317912543f363d8a",
     "backend/quarry/api.py": "8411cb71799f02705e9c700b743fbb1a2ac5df544d51d36854fe865393bac892",
     "backend/quarry/capacity.py": "8713252b81ba497184141ad4a18c11b861c4d8b3e47201c03b08acfef5d1e561",
-    "backend/quarry/config.py": "c3b3b0c4d4c8d88080b47b60bdca22ac75ca9c49b4552327a099edb330e73871",
+    "backend/quarry/config.py": "5bd3044182eb6bfebe5c255a0c8c3ab18d17bc8f91e04bf06337ff7621281771",
     "backend/quarry/ingest.py": "98fd245ff7159e7627f7d1760c8f681bc23fec729b5daed112bf33cef4a20e8e",
     "backend/quarry/parser_service.py": "14ac9ef39584bb96381aca6e0c103a7524466e94af6953bb4c6059700729e385",
     "backend/quarry/network.py": "5eda301c0787ef49fcb50262979f4e38641a4b12e9c97b15c61bb5357651acb2",
@@ -15,11 +15,11 @@
     "backend/quarry/queue.py": "5c1362cea4ed94d101570bf24b4c4572951175e129c62dfdbd8c1ffe18ffb5e1",
     "backend/quarry/worker.py": "6c38241261209d621ce204288da96071c4efb8099ed72d8f2969dee4791c422e",
     "frontend/src/app/api/[...path]/route.ts": "ab3de3c1054aff00d271e98c6c086033e9f4907b772ff0a78e2908e272c253bf",
-    "compose.yaml": "52bdcb1ebd23d82c3733ff5ac261ccae63fb411708259de783dbaeb2648d8168",
+    "compose.yaml": "19c01114110ae3fe91e57f0694c231ef1f9ece5fcb021871427ae06daf107ffe",
     "infra/Caddyfile": "581f53d9409fd429335e76e610a32c886c179123c1dae8637f58291d29ac5e84",
     "infra/Production.Caddyfile": "ea557c36db133699c3b4cdb8fece82ed2a2f1b19349a1f74220fc9d3b7f1386b",
     "infra/production.compose.yaml": "612fbce4078f9184b2b3c384256539099c5a4fa18dcc812772e1fbc7b9bf4ca8",
-    "backend/quarry/live_eval.py": "0f93b6e885f528d6ac4ca7a3ae18e6d63b03f76872b930354e7516951e6e1868",
+    "backend/quarry/live_eval.py": "58df10e035dac76e06fcc1d893c2cfff4b23b7981ae5fe0a4ce3cd985e4f9b3f",
     "backend/quarry/parse_document.py": "06ba1c003c7feb073c625b3474eae151e1649b0fbef6b801fcf9b19c468f938b",
     "frontend/src/proxy.ts": "d975a012c69c75fdf1a4921c74e7a5dfb64b8109fbac5abb33f117beaec1a902",
     "infra/S3.Caddyfile": "7679a9e63538c2a4961882c4e051ce95f5daecc010f8b7e857669e75f65b6b7d",
@@ -29,10 +29,11 @@
     "infra/postgres.Dockerfile": "7ff1164dc929d113a1a2e0cf5e973cd8879b3a898ef2c5405df702fd50cd4b60",
     "backend/tests/test_accounts.py": "04cd7ab6863e189f440f83f2d2c2073d27b8fc9162ab62d4b3a5fd14097cfd79",
     "scripts/backup.py": "47f71f715894f3619f103535e858bd7d80ff0c3f2768bc087a02368757fe63ca",
-    "backend/tests/test_review_regressions.py": "900357706c0f3f85ccaabcd8c06661dfa51f39e612bebe83a13c281f4d2e2063"
+    "backend/tests/test_review_regressions.py": "144db32d29141f034c43ba912a5312b8b722c2bf28f28379332489158b4a428f"
   },
   "storage_reconciliation_followup": "24 October 2026: source-only inspection of explicit-workspace orphan reconciliation; no apply/deletion or pytest run",
   "scanner_runtime_followup": "24 October 2026: read-only source snapshot/shell argument/image Dockerfile review; no scans, builds, tests or live provider calls started",
   "mfa_rollover_followup": "24 October 2026: source-only inspection of single-time enrollment verification/persisted step, exact-code rollover regression and conditional background-campaign backup quiescence; no pytest run",
-  "judge_recovery_followup": "24 October 2026: source-only inspection of dedicated evaluation_judge job recovery, fenced publication and marked JSON-object cache admission; no tests/provider calls started by reviewer"
+  "judge_recovery_followup": "24 October 2026: source-only inspection of dedicated evaluation_judge job recovery, fenced publication and marked JSON-object cache admission; no tests/provider calls started by reviewer",
+  "evaluation_pacing_followup": "Source-only inspection of bounded15\u2013300-second ordinary evaluator pacing, preserved provider 429 backoff/budgets and 15/60-second regression parameterization; no ignored configuration, tests, scans or live calls read/run by reviewer"
 }

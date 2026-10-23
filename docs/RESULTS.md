@@ -44,7 +44,7 @@ This is a finite laptop burst, not sustained internet capacity. Queueing dominat
 
 ## Quality limits
 
-Live free-provider quality status: **quota_wait**; requested cases: 37; fully judged cases: **6**. Completed scores are retained in `live-ragas.json`. The original same model family answered and judged. This incomplete sample is not a representative 37-case benchmark or independent factual-support assessment. The first case's faithfulness score remains 0.7083; its unsupported claims remain visible in `ANSWER_REVIEW.md`.
+Live free-provider quality status: **quota_wait**; requested cases: 37; fully judged cases: **12**. This is an incomplete checkpoint, not a representative complete benchmark. Across only these 12 completed cases, mean context precision / recall / faithfulness are **0.954167 / 0.933333 / 0.868017**. The same model family answered and judged; human factual-support review is separate. Raw responses, source passages and metric configuration remain in `live-ragas.json`. q001 faithfulness remains 0.7083 and its unsupported claims remain in `ANSWER_REVIEW.md`.
 
 Judge RPC outputs are persisted by prompt/model/configuration hash and reused on resume. New metrics record model/provider and judge run IDs. Legacy records retain their original configuration history. A changed model/provider or frozen dataset is rejected rather than silently mixed. Temporary provider limits receive bounded same-provider retries; local daily limits pause until UTC reset. `python scripts/manage.py benchmark --live --until-complete` starts an explicit background campaign with at most 64 resumes. Non-quota failures stop for inspection. No paid service or automatic provider switch is used.
 
@@ -52,13 +52,13 @@ The screenshot's approximately 1.10-second full-answer target is not claimed as 
 
 ## Verification and security
 
-Functional release status: **passed**. **184 backend tests**, eight Playwright workflows, and the BFF deadline/SSE component probe passed. Critical aggregate branch coverage: **504/556 = 90.647%**, including the new parser service and bounded child entry point. Operator/evaluation CLIs are excluded from this aggregate; whole-repository coverage is lower. Source SHA-256: `4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407`.
+Functional release status: **passed**. **185 backend tests**, eight Playwright workflows, and the BFF deadline/SSE component probe passed. Critical aggregate branch coverage: **504/556 = 90.647%**, including the new parser service and bounded child entry point. Operator/evaluation CLIs are excluded from this aggregate; whole-repository coverage is lower. Source SHA-256: `0f0f03ed2478dbd33108e5ddeb8053d2d649e3ff694cb039f72fa9517638060e`.
 
 Complete security gate: **passed** for that same source. Semgrep, Trivy filesystem, runtime/development dependency audits, all eight runtime image families and the unauthenticated local OWASP ZAP baseline retain their raw evidence. The source scanner includes new/uncommitted files. Scanner coverage is finite.
 
 Optional evaluator package metadata still reports two distinct advisories (four raw records). The separate evaluator image removes vulnerable URL/file-loading and pickle-reading capabilities through checksum-guarded local patches and exploit-negative checks. Raw pip-audit exit 1 remains visible. See `../security/EVALUATOR_MITIGATIONS.md`; these dependencies are absent from the production backend. This is a documented mitigation, not an upstream fix or a vulnerability-free claim.
 
-The separate independent AI reviewer recorded five initial findings, inspected their fixes and additional metadata caps, ran component probes and inspected live parser isolation. See `INDEPENDENT_SECURITY_REVIEW.md`. It was not a human audit/certification. The local production-mode HTTPS/STARTTLS signup rehearsal passed; its private test CA and local SMTP sink do not substantiate Internet delivery or public ACME issuance. ARM64 emulation ran real local embedding/reranking inference and the Qdrant executable; the complete stack has not been validated on a native Oracle host. Public deployment is deferred at the user's request. Multi-zone failover, off-host disaster recovery, payment collection and independent human factual-support review are not claimed.
+The separate independent AI reviewer recorded five initial findings, inspected their fixes and additional metadata caps, ran component probes and inspected live parser isolation. See `INDEPENDENT_SECURITY_REVIEW.md`. It was not a human audit/certification. The local production-mode HTTPS/STARTTLS signup rehearsal passed; its private test CA and local SMTP sink do not substantiate Internet delivery or public ACME issuance. ARM64 emulation ran real local embedding/reranking inference and the Qdrant executable; the complete stack has not been validated on a native Oracle host. Public deployment is requested and awaits the owner’s Oracle account verification and private SMTP configuration. Multi-zone failover, off-host disaster recovery, payment collection and independent human factual-support review are not claimed.
 
 ## Sampled resource consumption
 
@@ -74,4 +74,8 @@ Queueing dominates the burst timings, and throughput grows less than linearly wh
 
 ## Startup and restoration
 
-A fresh isolated Compose project passed startup and stop/start readiness in 132.65 seconds using the shared verified model cache. A PostgreSQL marker persisted across restart. The current backup restoration verified 89 source hashes and completed a query with 5 cited passages in 128.39 seconds. Rehearsal stacks were stopped with volumes retained; primary data was untouched.
+A fresh isolated Compose project passed startup and stop/start readiness in 132.65 seconds using the shared verified model cache. A PostgreSQL marker persisted across restart. The most recent recorded backup restoration verified 89 source hashes and completed a query with 5 cited passages in 128.39 seconds. Rehearsal stacks were stopped with volumes retained; primary data was untouched.
+
+## Free campaign continuation
+
+The repository defaults remain 100,000 daily campaign/shared tokens and 60-second judge spacing. For this operator-run campaign, the ignored local configuration explicitly selects 200,000 daily tokens and 15-second ordinary spacing. Each provider 429 still receives at least 60 seconds or its longer retry hint; retries are bounded. Ordinary workspace allowances remain 30,000 tokens. The fixed model, dataset, prompt and Ragas scoring method are unchanged. Conservative reservations, including ambiguous-call charges, remain enforced. Changes are recorded in `campaign-budget-change.json`. Published Free Plan allowances are organization-specific and a key cannot prove billing status: [Groq limits](https://console.groq.com/docs/rate-limits). No plan was upgraded and no paid provider was enabled.

@@ -234,7 +234,9 @@
         "The sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls."
       ],
       "metrics": {
-        "context_precision": 0.9999999999
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
       },
       "latency_ms": 3151.85,
       "tokens": 1512,
@@ -243,28 +245,330 @@
           "reasoning_effort": "low",
           "reasoning_format": "hidden",
           "max_completion_tokens": 2000
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "68a8496d36e54e79b5708e041f0f0f39"
+          ]
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "8b60965b0a544e94ba8c140f812f4276",
+            "0f4be99964994b0b9a020246cdc1934a"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "q012",
+      "run_id": "d3dcbd7b6dac4aa58f78022265d1f3d2",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Leased workers and fencing tokens\n\nUse fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.\n\n[E2] Latency measurement and operational telemetry\n\nA fast cached retrieval is not evidence of the same full-agent performance. Avoid high-cardinality labels such as document IDs and user questions in Prometheus. Correlation IDs connect request and job logs without logging API keys or document bodies. Benchmarks must retain unsuccessful requests too.\n\n[E3] Payload-bound request idempotency\n\nResearch submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.\n\n[E4] Token reservations and quota exhaustion\n\n# Token reservations and quota exhaustion\n\n[E5] Timeouts, bounded retries and circuit breaking\n\nThe sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.",
+        "A fast cached retrieval is not evidence of the same full-agent performance. Avoid high-cardinality labels such as document IDs and user questions in Prometheus. Correlation IDs connect request and job logs without logging API keys or document bodies. Benchmarks must retain unsuccessful requests too.",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "# Token reservations and quota exhaustion",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely."
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 0.2,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 6837.47,
+      "tokens": 2477,
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "a3b25c15e6f443c39318b9a564cf9b92",
+            "e3da94d89670444a810bfee42dfd7946",
+            "684bcab056204e8084413bf677250017",
+            "dca59029f7be4587ac442df041b82f85",
+            "4ac0e5eb08a842b0a5cf913733520fc9"
+          ]
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "fb081a9dbcd34876a206c60e1e7a2970"
+          ]
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "9527e2620e014f85a4f9acbcf304cf14",
+            "6050e166272541a09c61571af9d496f1"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "q013",
+      "run_id": "448443330ae94154a0ffc23c6622dbdf",
+      "response": "**Engineering Decision Brief \u2013 Use of Rank\u2011Based Fusion in Reciprocal Rank Fusion (RRF)**  \n\n**Question**  \nWhy does Reciprocal Rank Fusion combine *ranks* rather than raw similarity scores when merging the outputs of dense and BM25 retrieval systems?\n\n**Evidence**  \n- The description of RRF states that \u201cDense and BM25 retrieval each return a shortlist of 40 passages. **Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores**\u201d and that \u201cDocuments that rank well in both lists tend to rise\u201d\u202f[E1].\n\n**Explanation Derived from Evidence**  \n1. **Incompatible similarity scales** \u2013 Dense vector similarity (e.g., inner product or cosine) and BM25 term\u2011frequency based scores are computed on fundamentally different metrics and ranges. Adding them directly would mix incomparable quantities, potentially biasing the fusion toward the method with larger numeric values.  \n2. **Rank\u2011based aggregation avoids scale issues** \u2013 By converting each system\u2019s output to a rank (position in its shortlist) and applying the reciprocal\u2011rank formula, RRF treats every system uniformly, regardless of its internal scoring scale. This ensures that a document\u2019s contribution to the fused score depends only on *how highly* it is placed, not on the absolute magnitude of the original score.  \n3. **Promotes consensus relevance** \u2013 Because the fused score is the sum of reciprocals of ranks, items that appear near the top of *both* lists receive a larger combined value (\u201cDocuments that rank well in both lists tend to rise\u201d)\u202f[E1]. This aligns with the hybrid retrieval goal of capturing both semantic paraphrases (dense) and exact identifier matches (BM25).  \n\n**Alternatives**  \n| Alternative | How it works | Trade\u2011offs |\n|-------------|--------------|------------|\n| **Score normalization + weighted sum** | Transform each system\u2019s raw scores to a common scale (e.g., min\u2011max, z\u2011score) and sum them, possibly with learned weights. | Requires reliable calibration; residual scale mismatches can still bias fusion; adds complexity and risk of over\u2011fitting. |\n| **Learning\u2011to\u2011rank model** | Train a model (e.g., LambdaMART) on features including raw scores and ranks. | Needs labeled training data; higher computational cost; may not generalize across domains. |\n| **Hybrid reranking only** | Feed the union of both shortlists to a cross\u2011encoder reranker without prior fusion. | Reranker cannot recover items missing from *both* shortlists; candidate recall may suffer (as noted in hybrid retrieval discussion)\u202f[E3]. |\n\n**Uncertainties & Open Issues**  \n- The evidence does not quantify how much performance is lost or gained by rank\u2011based fusion versus normalized\u2011score fusion; empirical testing would be needed.  \n- No explicit discussion of the impact of shortlist size (e.g., 40) on the effectiveness of rank\u2011based versus score\u2011based fusion.  \n\n**Conclusion**  \nRRF uses ranks instead of raw similarity scores because the underlying scores from dense and BM25 retrieval are *incompatible* in scale, and rank\u2011based aggregation provides a simple, scale\u2011agnostic way to reward items that appear highly in multiple systems\u202f[E1]. Alternatives exist but introduce calibration, data, or computational complexities that the rank\u2011based method avoids. Further empirical evaluation would be required to resolve remaining uncertainties.",
+      "contexts": [
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "# Reciprocal rank fusion for hybrid retrieval",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "# Cross-encoder reranking"
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 0.5769230769230769
+      },
+      "latency_ms": 5424.13,
+      "tokens": 2122,
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "edf187622f9444db94aa2fd9a20ac56c",
+            "5708ac91fb2e4d449d52a9dcf217ca11",
+            "f861aa7266df4d4c973e086c5e2bc672",
+            "a9f9d055812947bcbd8ec62cf80b4057",
+            "06b5c8e3125941baba14b1008d515c7f"
+          ]
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "31aca2a0ff0d41eeb329265b95c2853c"
+          ]
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "aae75ffca8cd46d4b215ef04709696eb",
+            "572d4173e03141b0ab3e51cd55d89dd4"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "q014",
+      "run_id": "b2c679599b574050b20b4616a67dc580",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Reciprocal rank fusion for hybrid retrieval\n\nDense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.\n\n[E2] Reciprocal rank fusion for hybrid retrieval\n\nHybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.\n\n[E3] Canary rollout and rollback\n\nThe sample rollout routes 5 percent of traffic to a candidate for 15 minutes before expansion. Abort when the candidate error rate exceeds the stable version by one percentage point or its P95 latency increases by more than 20 percent. Keep database changes compatible with both application versions.\n\n[E4] Queue backpressure and fairness\n\nThe sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls.\n\n[E5] Cross-encoder reranking\n\nThe ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "The sample rollout routes 5 percent of traffic to a candidate for 15 minutes before expansion. Abort when the candidate error rate exceeds the stable version by one percentage point or its P95 latency increases by more than 20 percent. Keep database changes compatible with both application versions.",
+        "The sample admission limit is 50 pending or running jobs per workspace. A full queue rejects new work with HTTP 429 before creating another job. The execution ceiling is four concurrent jobs per workspace. Keep the HTTP submission path separate from expensive parsing, indexing and model calls.",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime."
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 0.9047619047619048
+      },
+      "latency_ms": 2722.52,
+      "tokens": 1422,
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "2c95a421962f4288a98f4f53bb597b08",
+            "3db199abfaa045a79f8696c2e171f623",
+            "0211902a2fb04fd99a4a5df818ef09a4",
+            "e45abfeb0dd74f7a9e7dca88f7719b8d",
+            "865f12e4529b4b0cb3603eb9169455c7"
+          ]
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "d0796716bf9942acac95e9729e5b94c1"
+          ]
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "5b558c96dd0d464c98d2fc9d3221bcd6",
+            "935041ed7b0a432ca535a53db00aaf35"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "q015",
+      "run_id": "9163c50e7c574895aa00df360d2fbde0",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Reciprocal rank fusion for hybrid retrieval\n\nDense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.\n\n[E2] Reciprocal rank fusion for hybrid retrieval\n\nHybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.\n\n[E3] BM25 sparse retrieval and IDF\n\nEnable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.\n\n[E4] Local dense embeddings\n\nThe local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.\n\n[E5] BM25 sparse retrieval and IDF\n\nBM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+        "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases."
+      ],
+      "metrics": {
+        "context_precision": 0.94999999997625,
+        "context_recall": 1.0,
+        "faithfulness": 0.8333333333333334
+      },
+      "latency_ms": 5023.77,
+      "tokens": 2486,
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "9ca00b61afef44cc8c8ff86feef81dc1",
+            "d98d0cc45f254cf09fe3fdfd8c745eb8",
+            "daae20608e954b2a9aacf446d75ccbd4",
+            "8922aa7637d64367a31af7c9a993bd81",
+            "4d8f983cdbd14ff5b3c324976f83d542"
+          ]
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "a798a46eb3884dae9e99892d352a2f3e"
+          ]
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "878338bce8be45c3b44e7894da060b3a",
+            "97837d3ee10546feb83b75a41c011583"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "q016",
+      "run_id": "b38e1e5c7ce2415f8d1a3da7c99c86c1",
+      "response": "**Engineering Decision Brief \u2013 Requirement for the Qdrant BM25 Sparse\u2011Vector IDF Modifier**\n\n**Question**  \nWhy does Qdrant BM25 require the sparse\u2011vector IDF modifier?\n\n**Evidence Summary**  \n- **[E1]** BM25 \u201crewards query term occurrence while accounting for term rarity and document length.\u201d Qdrant \u201ccomputes inverse document frequency using its sparse\u2011vector IDF modifier.\u201d  \n- **[E2]** Explicit instruction: \u201cEnable the IDF modifier when using Qdrant/bm25 vectors.\u201d  \n\n**Explanation**  \nBM25\u2019s scoring formula combines raw term frequency with an *inverse document frequency* (IDF) component to down\u2011weight common terms and up\u2011weight rare ones. In Qdrant, the IDF values are not derived automatically from the index; they must be supplied via the *sparse\u2011vector IDF modifier*. Enabling this modifier supplies the necessary term\u2011rarity weights so that Qdrant\u2019s BM25 implementation can correctly compute the full BM25 score (term frequency\u202f\u00d7\u202fIDF\u202f\u00d7\u202flength normalization). Without the modifier, Qdrant would only use raw term frequencies, losing the rarity adjustment that is central to BM25\u2019s effectiveness.\n\n**Alternatives**  \n1. **Omit the IDF modifier** \u2013 would produce a TF\u2011only ranking, degrading relevance for queries containing common terms.  \n2. **Pre\u2011compute and embed IDF into dense vectors** \u2013 would require a custom hybrid approach and duplicate the functionality already provided by the modifier.  \n\n**Trade\u2011offs**  \n- **Using the IDF modifier**: minimal configuration overhead; retains full BM25 semantics.  \n- **Skipping IDF**: simpler pipeline but poorer ranking quality, especially on large corpora with high term frequency variance.  \n\n**Uncertainties**  \n- The evidence does not detail how Qdrant internally stores or updates IDF values; the impact of corpus changes on the modifier\u2019s accuracy is not described.  \n\n**Conclusion**  \nQdrant BM25 requires the sparse\u2011vector IDF modifier because BM25\u2019s core algorithm depends on IDF to reflect term rarity, and Qdrant supplies this via the modifier as a required configuration step ([E1], [E2]).",
+      "contexts": [
+        "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+        "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+        "# BM25 sparse retrieval and IDF",
+        "Back up PostgreSQL with a consistent dump and the object bucket with versioned copies. Qdrant snapshots preserve the vector collection, but vectors can also be regenerated from retained source text and pinned model revisions. The sample recovery objective is a 24-hour recovery point and a 60-minute restoration window.",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker."
+      ],
+      "metrics": {
+        "context_precision": 0.99999999995,
+        "context_recall": 1.0,
+        "faithfulness": 0.5833333333333334
+      },
+      "latency_ms": 4314.87,
+      "tokens": 1957,
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "d8bf862f2b9d450d83ad71051c1e1b1e",
+            "fbf8a8082f4e4ef888425c4d10ea81af",
+            "2bcdd2ef1f184292905359cc4806b3d1",
+            "d2da232e1962480dbdb6653c55f4f8c4",
+            "7c55630655054f70839c337daffbc862"
+          ]
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "f51599339c554456b935f7ec243140bd"
+          ]
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "59c850914380400da50ebc5a9887e6c6",
+            "878d6b44f7724910b3002d12e4178723"
+          ]
         }
       }
     }
   ],
-  "campaign_daily_token_limit": 100000,
-  "shared_daily_token_limit": 100000,
-  "judge_pacing_seconds": 60,
+  "campaign_daily_token_limit": 200000,
+  "shared_daily_token_limit": 200000,
+  "judge_pacing_seconds": 15,
   "judge_transport": {
     "cache_hits": 0,
-    "requests": 1
+    "requests": 10
   },
   "dataset_sha256": {
     "corpus.json": "63deca3ca4a2b78218b25b768a1c75c7a16eb44da2a345d03138f6fd224e5410",
     "cases.json": "45ea48975be2012a26f93664030e878842e2329001acb38aaf177594fb035c0d"
   },
-  "stopped_reason": "InstructorRetryException",
+  "next_retry_at": "2026-10-24T00:00:59.619574+00:00",
+  "pending_case_runs": {
+    "q017": "e08454e3e4804861a40791202c9eee7f"
+  },
+  "stopped_reason": "quota_exhausted",
   "quota": {
-    "message": "Shared deployment token budget exhausted; no provider switch was attempted",
-    "type": "quota_exhausted",
     "scope": "deployment",
     "retry_after": 3600,
-    "run_id": "5948672c6b254d7892bf42058b8b04d4"
-  },
-  "next_retry_at": "2026-10-24T00:00:59.542374+00:00"
+    "run_id": "e08454e3e4804861a40791202c9eee7f"
+  }
 }

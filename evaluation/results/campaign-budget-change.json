@@ -1,0 +1,28 @@
+{
+  "changed_at": "2026-10-23T23:01:16.638342+00:00",
+  "previous": {
+    "QUARRY_MAX_GLOBAL_DAILY_TOKENS": "100000",
+    "QUARRY_MAX_EVALUATION_DAILY_TOKENS": "100000"
+  },
+  "current": {
+    "QUARRY_MAX_GLOBAL_DAILY_TOKENS": "200000",
+    "QUARRY_MAX_EVALUATION_DAILY_TOKENS": "200000"
+  },
+  "ordinary_workspace_daily_tokens_unchanged": 30000,
+  "paid_providers_enabled": false,
+  "basis": "User requested completion; existing Free Plan attestation retained. Published model Free Plan limit is 200000 tokens/day, exact organization exceptions remain possible and provider 429 is honored.",
+  "source": "https://console.groq.com/docs/rate-limits",
+  "automatic_provider_switch": false,
+  "previous_pace_seconds": 60,
+  "current_pace_seconds": 15,
+  "provider_quota_backoff_minimum_seconds": 60,
+  "scoring_method_changed": false,
+  "history": [
+    {
+      "changed_at": "2026-10-23T23:17:35.105478+00:00",
+      "previous_daily_limits": 180000,
+      "current_daily_limits": 200000,
+      "reason": "Use the published free allowance fully; retain the 17000-token conservative per-call reservation and provider 429 backoff. No billing-plan change."
+    }
+  ]
+}

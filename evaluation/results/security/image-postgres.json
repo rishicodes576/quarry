@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a16af1-db12-7a00-a6e4-621eeaf89e5b",
-  "CreatedAt": "2026-10-23T22:46:37.586660124Z",
+  "ReportID": "01a16b0d-876f-7cbe-a513-097c1d1670f6",
+  "CreatedAt": "2026-10-23T23:16:51.183839611Z",
   "ArtifactID": "sha256:6f5490d0438ba6bdef6ca3cf092fb30bd190fcf3efdf46f2908ea17cc4dfc897",
   "ArtifactName": "/images/postgres.tar",
   "ArtifactType": "container_image",

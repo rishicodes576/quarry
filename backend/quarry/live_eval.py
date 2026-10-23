@@ -133,7 +133,8 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
             parent_id = None
             for attempt in range(4):
                 # Benchmark-only pacing; API workers never hold a lease while waiting here.
-                # 60 seconds avoids a burst across the free plan's 8,000 TPM window.
+                # Benchmark-only pacing is configurable; provider 429s still impose
+                # at least 60 seconds of backoff, and daily reservations stay enforced.
                 while (remaining := self.next_call - time.monotonic()) > 0:
                     await asyncio.sleep(min(30, remaining))
                 result = await asyncio.to_thread(self._generate, request, payload, key, parent_id)
@@ -141,7 +142,7 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
                 if result.status_code == 200:
                     self.used_runs.append(result.json()["id"])
                     self.last_quota = None
-                self.next_call = time.monotonic() + 60
+                self.next_call = time.monotonic() + settings().evaluation_pace_seconds
                 if result.status_code != 429:
                     return result
                 detail = result.json()["error"]
@@ -448,7 +449,7 @@ def _run_live_locked():
         cfg.max_daily_tokens = min(cfg.max_evaluation_daily_tokens, cfg.max_global_daily_tokens)
         output["campaign_daily_token_limit"] = cfg.max_daily_tokens
         output["shared_daily_token_limit"] = cfg.max_global_daily_tokens
-        output["judge_pacing_seconds"] = 60
+        output["judge_pacing_seconds"] = cfg.evaluation_pace_seconds
         try:
             asyncio.run(evaluate_cases(output, cases, conversation_id))
         finally:

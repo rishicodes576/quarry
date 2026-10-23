@@ -304,6 +304,7 @@ services:
     environment:
       <<: *backend-env
       QUARRY_MAX_EVALUATION_DAILY_TOKENS: "${QUARRY_MAX_EVALUATION_DAILY_TOKENS:-100000}"
+      QUARRY_EVALUATION_PACE_SECONDS: "${QUARRY_EVALUATION_PACE_SECONDS:-60}"
     profiles: [evaluation]
     build:
       context: .

@@ -208,8 +208,10 @@ def test_member_and_pending_invitation_limits_are_enforced(client, monkeypatch):
     assert usage["members"] == usage["member_limit"] == 3
 
 
-def test_judge_quota_retry_links_attempts_and_persists_reusable_output(actors, monkeypatch):
+@pytest.mark.parametrize("pace", [15, 60])
+def test_judge_quota_retry_links_attempts_and_persists_reusable_output(actors, monkeypatch, pace):
     monkeypatch.setattr(live_eval, "EVAL_WORKSPACE", actors["owner"].workspace_id)
+    monkeypatch.setattr(settings(), "evaluation_pace_seconds", pace)
     with session() as db, db.begin():
         conversation = Conversation(
             workspace_id=actors["owner"].workspace_id, title="Judge retry test"
@@ -223,7 +225,7 @@ def test_judge_quota_retry_links_attempts_and_persists_reusable_output(actors, m
     pauses = []
 
     async def wait(seconds):
-        pauses.append(seconds)
+        pauses.append((seconds, transport.next_call - time.monotonic()))
         transport.next_call = 0
 
     monkeypatch.setattr(live_eval.asyncio, "sleep", wait)
@@ -234,6 +236,7 @@ def test_judge_quota_retry_links_attempts_and_persists_reusable_output(actors, m
     )
     response = asyncio.run(transport.handle_async_request(request))
     assert response.status_code == 200 and complete.call_count == 2 and pauses
+    assert pauses[0][1] > 30  # Provider backoff is longer than the 15-second campaign pace.
     with session() as db:
         row = db.get(live_eval.Run, response.json()["id"])
         assert db.get(live_eval.Run, row.parent_run_id).status == "quota_exhausted"

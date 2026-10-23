@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a16af0-cf68-72a5-8517-92ac596b86d4",
-  "CreatedAt": "2026-10-23T22:45:29.064178318Z",
-  "ArtifactID": "sha256:495063dce9a410769497f091b53736f9fcd7e25de163d903ee822b84ed63a112",
+  "ReportID": "01a16b0c-8878-74bd-960a-e5df9ec9395c",
+  "CreatedAt": "2026-10-23T23:15:45.912315507Z",
+  "ArtifactID": "sha256:a8c412012b10cd469f669a0e37334b0a754a9b8751a95cd2a8aa085f7056a386",
   "ArtifactName": "/images/backend.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -14,7 +14,7 @@
       "Family": "debian",
       "Name": "13.7"
     },
-    "ImageID": "sha256:98bbcaa66f3f5d6cd512153d9c43c158a6457d14e5e885b8be87bfa15de35397",
+    "ImageID": "sha256:882c189ce330a8cfbdbcfe701d9ecf85ea60ced014cab7e54142401a1f7242ac",
     "DiffIDs": [
       "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de",
       "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda",
@@ -39,8 +39,8 @@
       "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a",
       "sha256:c807524be021c74091780d1b9693040526863138ce17890ec3ed475866dd335e",
       "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6",
-      "sha256:876d64d4f87a0efe15b78b489987a5c398db0f2c3a0da1b8c183c1f638d62e1f",
-      "sha256:f421a1e4c5e22b76c92c91e3cfc6014205b0b1986c6684db09c40e190d85c8e2"
+      "sha256:c1f3514dc952f019be5e0b137a4e895db8de53f10db8161dd4a0f13d08c62acf",
+      "sha256:5eba8d96bb21f8d12f959d25de3916392029c8382eca86373bd19a67c1df51c8"
     ],
     "RepoTags": [
       "quarry-backend:local"
@@ -48,7 +48,7 @@
     "Reference": "quarry-backend:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-23T22:33:27.239656278Z",
+      "created": "2026-10-23T23:07:14.025622604Z",
       "history": [
         {
           "created": "1970-01-01T00:00:00Z",
@@ -155,35 +155,35 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T22:33:26.904260109Z",
+          "created": "2026-10-23T23:07:13.940218749Z",
           "created_by": "COPY --chown=10001:10001 backend /app # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T22:33:27.239656278Z",
+          "created": "2026-10-23T23:07:14.025622604Z",
           "created_by": "COPY --chown=10001:10001 evaluation /app/evaluation # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T22:33:27.239656278Z",
+          "created": "2026-10-23T23:07:14.025622604Z",
           "created_by": "USER 10001:10001",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-23T22:33:27.239656278Z",
+          "created": "2026-10-23T23:07:14.025622604Z",
           "created_by": "EXPOSE [8000/tcp]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-23T22:33:27.239656278Z",
+          "created": "2026-10-23T23:07:14.025622604Z",
           "created_by": "ENTRYPOINT []",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-23T22:33:27.239656278Z",
+          "created": "2026-10-23T23:07:14.025622604Z",
           "created_by": "CMD [\"/usr/local/bin/python\" \"-m\" \"uvicorn\" \"quarry.api:app\" \"--host\" \"0.0.0.0\" \"--port\" \"8000\" \"--no-proxy-headers\" \"--limit-concurrency\" \"100\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -216,8 +216,8 @@
           "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a",
           "sha256:c807524be021c74091780d1b9693040526863138ce17890ec3ed475866dd335e",
           "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6",
-          "sha256:876d64d4f87a0efe15b78b489987a5c398db0f2c3a0da1b8c183c1f638d62e1f",
-          "sha256:f421a1e4c5e22b76c92c91e3cfc6014205b0b1986c6684db09c40e190d85c8e2"
+          "sha256:c1f3514dc952f019be5e0b137a4e895db8de53f10db8161dd4a0f13d08c62acf",
+          "sha256:5eba8d96bb21f8d12f959d25de3916392029c8382eca86373bd19a67c1df51c8"
         ]
       },
       "config": {
@@ -378,13 +378,13 @@
       },
       {
         "Size": 1177088,
-        "Digest": "sha256:93ed0ba0fd3e6982db69cf0cfaead09bbbbdb226168948c6b804222481b9e436",
-        "DiffID": "sha256:876d64d4f87a0efe15b78b489987a5c398db0f2c3a0da1b8c183c1f638d62e1f"
+        "Digest": "sha256:fd2049c12d4b600bc43263d78a5b8c10856298f2fbc4c99f8906319d914dfa00",
+        "DiffID": "sha256:c1f3514dc952f019be5e0b137a4e895db8de53f10db8161dd4a0f13d08c62acf"
       },
       {
         "Size": 98816,
-        "Digest": "sha256:c7613fe75667b2ecb1b2f306eff1ef71bd61173fa11d634c91c86573aa3a655d",
-        "DiffID": "sha256:f421a1e4c5e22b76c92c91e3cfc6014205b0b1986c6684db09c40e190d85c8e2"
+        "Digest": "sha256:058d82d4c199d60ad3e1eeb126061e516da25fe82197ba073e02f533e967e2c4",
+        "DiffID": "sha256:5eba8d96bb21f8d12f959d25de3916392029c8382eca86373bd19a67c1df51c8"
       }
     ]
   },
@@ -1305,7 +1305,7 @@
           "Name": "libzstd1",
           "Identifier": {
             "PURL": "pkg:deb/debian/libzstd1@1.5.7%2Bdfsg-1?arch=amd64\u0026distro=debian-13.7",
-            "UID": "6fbc13fb7d2a8697"
+            "UID": "cea539729c307399"
           },
           "Version": "1.5.7+dfsg",
           "Release": "1",

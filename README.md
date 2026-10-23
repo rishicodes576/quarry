@@ -6,7 +6,7 @@ Engineering research with inspectable evidence, reproducible retrieval compariso
 
 Upload technical documents, ask a research question, inspect the execution timeline and cited passages, then export a decision brief. The retrieval lab compares dense, BM25, reciprocal-rank fusion and local cross-encoder reranking against the same sources. No generation key is required for document processing, retrieval, calculations or clearly labeled extractive briefs.
 
-**Local release checks passed:** 184 backend tests, eight browser workflows, and 90.647% aggregate critical branch coverage. All eight runtime image families passed the configured High/Critical scan. Optional evaluator advisories retain documented local mitigations and raw findings. Independent AI security review and a local production HTTPS/STARTTLS rehearsal are recorded; live judging remains partial (6/37 complete), and public production deployment is deferred. See [measured results](docs/RESULTS.md), [audit](docs/AUDIT.md), and [completion matrix](docs/COMPLETION_MATRIX.md).
+**Local release checks passed:** 185 backend tests, eight browser workflows, and 90.647% aggregate critical branch coverage. All eight runtime image families passed the configured High/Critical scan. Evaluator advisories and tested mitigations remain disclosed. The live free campaign has 12/37 fully judged cases at this snapshot and continues across quota resets. Public deployment awaits the owner’s Oracle account verification and private SMTP configuration. See [results](docs/RESULTS.md), [audit](docs/AUDIT.md), [completion matrix](docs/COMPLETION_MATRIX.md), and [Oracle setup](docs/ORACLE_DEPLOYMENT.md).
 
 ## Run
 

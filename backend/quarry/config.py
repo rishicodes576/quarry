@@ -54,6 +54,7 @@ class Settings(BaseSettings):
     max_global_pending_jobs: int = Field(default=1000, ge=1, le=100000)
     max_global_daily_tokens: int = Field(default=100_000, ge=1)
     max_evaluation_daily_tokens: int = Field(default=100_000, ge=1)
+    evaluation_pace_seconds: int = Field(default=60, ge=15, le=300)
     max_workspace_storage_bytes: int = Field(default=100 * 1024 * 1024, ge=1)
     max_global_storage_bytes: int = Field(default=5 * 1024 * 1024 * 1024, ge=1)
     max_workspaces: int = Field(default=1000, ge=1)
