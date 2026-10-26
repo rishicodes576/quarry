@@ -38,7 +38,7 @@
     "backend/quarry/agent.py": "dba2fed3457051248c6a65f7b5806dbe58a6c0273768276cdac61c075ead1ba8",
     "backend/quarry/schemas.py": "ca33c577a77162889015c53f966ed19d2150ca4f284676d47437af8a67b463de",
     "backend/quarry/benchmark.py": "3fe777653892154b5744b2c7d5b0112c3718983d5bfd31e56e17b32d7e06d942",
-    "backend/Dockerfile": "29664ba2d105270b39a67b5d48cc4baa11bf429a0f6274f37cbf7df4c52a52d1",
+    "backend/Dockerfile": "1851180c7f29cea81ad2e7375a4044a4f862ffbd7cae438faedd302ea0880843",
     "frontend/Dockerfile": "0c83a63126ba04677a7b62b3606c97eeb151610fbcee7d71fd4156c198282605",
     "frontend/src/components/campaign-results.tsx": "8b43022e8722ba6bb081d4db65acd63f9ea980e31c59ebd059d3bb8ff7dcf9cd",
     "frontend/scripts/check-api.cjs": "e3e9afe7e690502c6f8ebae448d53d461fd59ebb46e10061eb3a0454cfd133a0",
@@ -51,7 +51,7 @@
     "backend/tests/test_release_readiness.py": "0115e7b4e71140d9fbe38d8b0eb8bdafe97df42a240791e5d1a31717707806fe",
     "frontend/src/app/globals.css": "7a7d171d43544375d9f89b4b5b4e608b7bc4be437974debc4cdd6bc56b085724",
     "frontend/tests/workspace.spec.ts": "fde61ff44b31ff9197bbc985f8ba5fd710c4b22f2b3a93b291c265467a835362",
-    ".github/workflows/security.yml": "800ecc9315a81a49c80206f5001d0cbb7fd6427f541290a6c46da8ec36d00cb6"
+    ".github/workflows/security.yml": "4909ec699883fbe06217093303dcd52dfa4f536425e69d8e4535e6c0122bc194"
   },
   "storage_reconciliation_followup": "24 October 2026: source-only inspection of explicit-workspace orphan reconciliation; no apply/deletion or pytest run",
   "scanner_runtime_followup": "24 October 2026: read-only source snapshot/shell argument/image Dockerfile review; no scans, builds, tests or live provider calls started",
@@ -60,7 +60,7 @@
   "evaluation_pacing_followup": "Source-only inspection of bounded15\u2013300-second ordinary evaluator pacing, preserved provider 429 backoff/budgets and 15/60-second regression parameterization; no ignored configuration, tests, scans or live calls read/run by reviewer",
   "suspension_and_arithmetic_followup": "25 October 2026: source-only review of authoritative UTC daily-reset waiting and saved-measurement arithmetic/integrity audit with corruption guards; no tests, audit CLI, database export or provider calls executed by reviewer",
   "audited_release_followup": "25 October 2026: reviewed isolated-campaign/release/publication refinements and scoped source/tree fingerprinting. Acceptance is code inspection only; fresh executed gates remain separate.",
-  "current_source_sha256": "8a3e7adfc3f002b3054ad57e504681ae004639569eddcfdfc6782fbf9e363b6b",
+  "current_source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
   "test_layout_and_style_followup": "Source-only review: test-stage operator copy and test loader both use /opt/quarry-operator; campaign border uses defined --line CSS variable. Also synchronized the already-reviewed Compose JUnit-output hash. No operator/model/scoring logic change; no tests/scanners executed by reviewer.",
   "scanner_transfer_and_undefined_score_followup": "Source-only review of exact combobox test locator, native-container Trivy report copy with fail-closed gate/UUID-scoped cleanup, and frozen v2-only undefined/out-of-range score quarantine preserving all finite low/zero values. No tests/scans/provider calls executed.",
   "format_only_followup": "Automatic line wrapping of the already-reviewed exact Campaign combobox locator only; no executable behavior or scorer protocol change.",
@@ -82,5 +82,19 @@
     "reviewed_commit": "90b29e9dc7ee141b760f76f500c7511c60f20d21",
     "existing_evidence_inspected": "Historical initial hosted CI failure record; not proof of root cause or successful remediation.",
     "not_executed": "No hosted CI, tests, scans, Docker commands, provider calls or actual secret configuration reads by reviewer."
+  },
+  "hf_cache_followup": {
+    "date": "2026-10-26",
+    "reviewed_commit": "d99b45d11c568318af2c3c2c2021ea8f29336ab6",
+    "scope": "Only production base ENV adds HF_HOME=/tmp/quarry-huggingface; container UID and model revision/cache destinations unchanged.",
+    "not_executed": "No cold-start test, download, container invocation, scanner or provider call by reviewer; CI/runtime success requires fresh builder evidence."
+  },
+  "runner_action_followup": {
+    "date": "2026-10-26",
+    "reviewed_commit": "6a062a12b815ef0c06699be4900cdd65c4a49270",
+    "scope": "Only runner label ubuntu-24.04 and immutable actions/checkout commit pin change.",
+    "official_metadata_read": "https://raw.githubusercontent.com/actions/checkout/3d3c42e5aac5ba805825da76410c181273ba90b1/action.yml",
+    "official_metadata_confirmed": "runs.using node24 and persist-credentials input present; not a complete audit of bundled action implementation.",
+    "not_executed": "No workflow, tests, scanners, provider calls, downloads of models or actual secret configuration reads by reviewer."
   }
 }

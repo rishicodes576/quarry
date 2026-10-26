@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.17.0",
-	"@generated": "Mon, 26 Oct 2026 08:32:45",
-	"created": "2026-10-26T08:32:45.325166026Z",
+	"@generated": "Mon, 26 Oct 2026 14:30:34",
+	"created": "2026-10-26T14:30:34.936331820Z",
 	"insights":[
 		{
 			"level": "Low",
@@ -10,7 +10,7 @@
 			"site": "",
 			"key": "insight.log.warn",
 			"description": "ZAP warnings logged - see the zap.log file for details",
-			"statistic": "5"
+			"statistic": "10"
 		},
 		{
 			"level": "Info",
@@ -67,14 +67,6 @@
 			"key": "insight.endpoint.total",
 			"description": "Count of total endpoints",
 			"statistic": "10"
-		},
-		{
-			"level": "Info",
-			"reason": "Informational",
-			"site": "http://localhost:3000",
-			"key": "insight.response.slow",
-			"description": "Percentage of slow responses",
-			"statistic": "66"
 		}
 	],
 	"site":[ 
@@ -95,37 +87,27 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Client Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
+							"id": "1",
+							"uri": "http://localhost:3000",
+							"nodeName": "http:\/\/localhost:3000",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"/_next/static/chunks/0r-yur70-ku2o.js\" async=\"\" nonce=\"YTBiZDIwMWItNGUzYy00N2RmLTg5OTgtNjdhYjdjOTBiZjU2\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
 							"id": "3",
 							"uri": "http://localhost:3000",
 							"nodeName": "http:\/\/localhost:3000",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src=\"/_next/static/chunks/0r-yur70-ku2o.js\" async=\"\" nonce=\"MGI3ZmYwZWEtMDNmNy00YTE0LWFiYWMtOTMzZGJkZWU2ODQw\"></script>",
+							"evidence": "<script src=\"/_next/static/chunks/0r-yur70-ku2o.js\" async=\"\" nonce=\"YjJhZDVlZjktZWQ5ZS00NTM2LTlmYWItYTdiYmJlNjIyMjcw\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
 							"id": "2",
-							"uri": "http://localhost:3000",
-							"nodeName": "http:\/\/localhost:3000",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"/_next/static/chunks/0r-yur70-ku2o.js\" async=\"\" nonce=\"NTc0ZTAxYTQtZjE5My00MjAzLTkxY2EtMTBkNmVmMTJjZWY3\"></script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "1",
-							"uri": "http://localhost:3000/robots.txt",
-							"nodeName": "http:\/\/localhost:3000\/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"/_next/static/chunks/0r-yur70-ku2o.js\" async=\"\"></script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "0",
 							"uri": "http://localhost:3000/sitemap.xml",
 							"nodeName": "http:\/\/localhost:3000\/sitemap.xml",
 							"method": "GET",
@@ -135,7 +117,7 @@
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
@@ -165,7 +147,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "14",
 							"uri": "http://localhost:3000/robots.txt",
 							"nodeName": "http:\/\/localhost:3000\/robots.txt",
 							"method": "GET",
@@ -175,7 +157,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "6",
 							"uri": "http://localhost:3000/sitemap.xml",
 							"nodeName": "http:\/\/localhost:3000\/sitemap.xml",
 							"method": "GET",
@@ -192,7 +174,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -215,7 +197,27 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "11",
+							"uri": "http://localhost:3000/_next/static/chunks/0cz1d0mv5g_q7.js",
+							"nodeName": "http:\/\/localhost:3000\/_next\/static\/chunks\/0cz1d0mv5g_q7.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "10",
+							"uri": "http://localhost:3000/_next/static/chunks/0r-yur70-ku2o.js",
+							"nodeName": "http:\/\/localhost:3000\/_next\/static\/chunks\/0r-yur70-ku2o.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "7",
 							"uri": "http://localhost:3000/_next/static/chunks/0umf92h1sb77c.js",
 							"nodeName": "http:\/\/localhost:3000\/_next\/static\/chunks\/0umf92h1sb77c.js",
 							"method": "GET",
@@ -225,27 +227,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
-							"uri": "http://localhost:3000/_next/static/chunks/1kucjblc_tkcb.js",
-							"nodeName": "http:\/\/localhost:3000\/_next\/static\/chunks\/1kucjblc_tkcb.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
-							"id": "7",
-							"uri": "http://localhost:3000/_next/static/chunks/3cfn99dbrcvvp.js",
-							"nodeName": "http:\/\/localhost:3000\/_next\/static\/chunks\/3cfn99dbrcvvp.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
-							"id": "11",
+							"id": "9",
 							"uri": "http://localhost:3000/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
 							"nodeName": "http:\/\/localhost:3000\/_next\/static\/chunks\/turbopack-3-ry682tkyiqk.js",
 							"method": "GET",
@@ -262,7 +244,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "11"
+					"sourceid": "20"
 				}
 			]
 		}

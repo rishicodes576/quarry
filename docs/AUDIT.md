@@ -1,3 +1,11 @@
+# Hosted verification closure — 26 October 2026
+
+The real hosted verification at https://github.com/rishicodes576/quarry/actions/runs/40337592192 passed startup, functional/browser and security steps with zero GitHub annotations. Final builder functional, security, scaling, startup/restart, restore, local transport and scoped independent AI-review reports bind to executable fingerprint `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`.
+
+Linux report write errors were resolved with access/default ACLs for the two non-root tool UIDs on public artifact directories. Cold initialization was reproduced failing at `/.cache/huggingface` as UID 10001; setting `HF_HOME=/tmp/quarry-huggingface` fixed Xet cache writes. The corrected disposable cold probe matched every pinned model file hash. Runtime and parser isolation/model pins remain intact. Node 24 checkout is pinned to its verified official commit and the runner major version is explicit. Initial failures and the probe harness correction remain documented, not represented as passing runs.
+
+Actual assistant support review is complete for all 12 available isolated answers and 169 decomposed claims, including full-answer text and claims omitted or distorted by the model decomposition. Unsupported/uncertain judgments remain visible. Original scores and blank human-review fields were not rewritten. Remaining isolated evaluations still require free quota resets and remain unfinished acceptance work.
+
 # Implementation and verification audit
 
 Evidence is recorded by the command that actually executes a check. Source changes can make a prior report historical; publication requires fresh matching source hashes. Mock transports, unit callbacks and unexecuted configurations are never treated as live integration evidence. The final source ZIP must exclude credentials, backups, account mail, raw private attachments and browser traces.

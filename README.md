@@ -1,5 +1,7 @@
 # Quarry
 
+[![Security and integration](https://github.com/rishicodes576/quarry/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/rishicodes576/quarry/actions/workflows/security.yml)
+
 An engineering research platform with inspectable citations, reproducible retrieval experiments, and recoverable background processing.
 
 **Next.js · TypeScript · FastAPI · LangGraph · PostgreSQL · Qdrant · ONNX · Docker**
@@ -50,7 +52,7 @@ These are executed Docker Desktop CPU experiments, with the hardware, conditions
 |---|---|---|
 | Retrieval comparison | Four modes × 120 cases = **480 timed queries** | [Per-case results](evaluation/results/latest.json) |
 | Hybrid reranking | **0.990 Recall@5**, **0.925 nDCG@5** on 100 relevance-labeled cases | [Measurement scope](docs/CURRENT_LOCAL_EVIDENCE.md) |
-| Worker scaling | **1.89 → 4.70 extractive runs/s**, one → four workers behind two APIs; 100 requests per configuration | [Scaling records](evaluation/results/scaling.json) |
+| Worker scaling | **2.05 → 5.14 extractive runs/s**, one → four workers behind two APIs; 100 requests per configuration | [Scaling records](evaluation/results/scaling.json) |
 | Functional verification | **224 backend tests**, **9 Playwright workflows** | [Verification report](evaluation/results/verification.json) |
 | Critical branch coverage | **90.722% aggregate**, 528/582 branches across explicitly listed critical modules | [Coverage scope](evaluation/results/critical-coverage.json) |
 | Recovery | Clean startup, persistent restart, interrupted work and isolated backup restoration exercised | [Acceptance checklist](docs/RELEASE_STATUS.md) |
@@ -59,7 +61,7 @@ Throughput is a finite local extractive workload, not public-service capacity or
 
 ### Live-quality evaluation status
 
-The historical live campaign completed **37/37 cases**; its original answers, scores and methodology limitations are retained. A separate frozen campaign now extends the comparison across four retrieval modes using independent research conversations and separate judge requests. This comparison and its factual-support review are in progress. Generated answers and citation fallbacks are recorded separately; partial averages are not a complete four-mode result. Exact per-mode completion counts and evidence remain available in the linked reports and the application's evaluation view.
+The historical live campaign completed **37/37 cases**; its original answers, scores and methodology limitations are retained. A separate frozen campaign now extends the comparison across four retrieval modes using independent research conversations and separate judge requests. The full comparison remains in progress. All twelve currently completed answers and 169 decomposed claims have received attributed assistant review; independent human validation is not claimed. Generated answers and citation fallbacks are recorded separately; partial averages are not a complete four-mode result. Exact per-mode completion counts and evidence remain available in the linked reports and the application's evaluation view.
 
 Inspect the [frozen protocol](docs/EVALUATION_PROTOCOL.md), [arithmetic/provenance audit](evaluation/results/isolated-mathematical-audit.json), [historical audit](evaluation/results/mathematical-audit.json) and [release acceptance checklist](docs/RELEASE_STATUS.md). Reports retain their actual sample counts, model/configuration hashes and measurement scope.
 

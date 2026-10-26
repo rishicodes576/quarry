@@ -1,16 +1,16 @@
 {
   "status": "passed",
-  "source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
-  "restoration_seconds": 142.0,
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "restoration_seconds": 141.25,
   "evidence": {
     "status": "passed",
-    "source_hashes_verified": 129,
-    "research_run": "4660f9ff24d746ed9bd10cd8b6e18f8f",
-    "cited_passages": 5
+    "source_hashes_verified": 149,
+    "research_run": "b08248dd31654516844c778ab3d5c7fe",
+    "cited_passages": 1
   },
   "backup_checksums": {
-    "database.dump": "6cca009d1dbe1b29ea488ee54aecd0b6b96fbda90ba18f9d8022904b44089e3b",
-    "objects.zip": "7146059a2cc186467ec511687bb7fc0d30d7df0b73bf7c5fc0ae93266fcc0e85"
+    "database.dump": "8d18eaeb70241d7ff06aadd67e34e0913da184810e3fd64440374b13a8eada9c",
+    "objects.zip": "874f8bdaf43cb3515c3564e8b6102e413495d49f9f8c8f86f3f742dbb458810c"
   },
   "isolated_project": "quarry-restore",
   "paid_calls": 0

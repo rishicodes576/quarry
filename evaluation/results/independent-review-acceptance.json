@@ -1,13 +1,13 @@
 {
   "status": "passed",
-  "created_at": "2026-10-26T13:56:25.486339+00:00",
-  "source_sha256": "8a3e7adfc3f002b3054ad57e504681ae004639569eddcfdfc6782fbf9e363b6b",
+  "created_at": "2026-10-26T14:15:52.182481+00:00",
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
   "review_type": "Independent AI code inspection of the explicitly reviewed source deltas",
   "scope": "Campaign registry/isolation/free-provider protocol, provenance arithmetic, finalizer/publication guards, secret-safe candidate/tree audit, canonical source fingerprints and XML declaration rejection",
   "review_report": "docs/INDEPENDENT_SECURITY_REVIEW.md",
-  "review_report_sha256": "0e00e76c582cf0ee54748898a6df0d8203365aaaa5e583ef3b51af042bc302de",
+  "review_report_sha256": "067ee77e94c840dcd6c4f774c8764b37da56c3ebc3d52a8cbab8022ba94bea56",
   "reviewed_source_manifest": "evaluation/results/independent-review-source.json",
-  "reviewed_source_manifest_sha256": "23cdc043887827bf0bc359cfe2bf59e1871eb02d89f7ccf7b34108388d27b572",
+  "reviewed_source_manifest_sha256": "828ed3f3ed4c203ffabd3c88f4d23aef07804b4f61238c03e8a3998be19ab022",
   "conclusion": "No further concrete blocker identified within the inspected scope; prior release/provenance findings have source-level corrections.",
   "executed_in_this_acceptance": {
     "source_inspection_and_fingerprinting": true,
@@ -32,6 +32,6 @@
     "No Groq account billing/free-plan status was independently verified by this reviewer.",
     "No actual campaign completion or factual-support judgment is established by code inspection."
   ],
-  "previous_acceptance_source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
-  "narrow_refresh": "Hosted CI public-report ACLs for named non-root container UIDs and bounded failure-only redacted service logs; no new hosted CI, tests, scans or actual environment reads. Initial hosted failure remains unresolved historical evidence until rerun."
+  "previous_acceptance_source_sha256": "0b33fbb4372d0c2d8a85692e73ddb9de78a36d255bcec0c54f0ea7f07a906a19",
+  "narrow_refresh": "Runner label explicitly ubuntu-24.04 and checkout immutable commit pin updated; official exact-commit action metadata confirms Node24 and retained credential-persistence control. No new workflow/tests/scanners/model execution; scoped code-inspection limits unchanged."
 }

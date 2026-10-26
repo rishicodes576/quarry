@@ -2467,10 +2467,18 @@
       "logical_cpus": 12,
       "warmup_ms": 5259.512,
       "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-26T13:40:15.531738+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 1040.271,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
     }
   ],
   "pending_case_runs": {
-    "q017": "99c2798788b74459a8ff0639c5c209d4"
+    "q017": "9aad901d2ee742acaa833bb21fc3d685"
   },
   "case_conversations": {
     "q001": "7c1262e6df544c4bbb2c49721c5c7980",
@@ -2485,7 +2493,7 @@
     "q014": "5d9e6d7ac8f5414396360ad45d667074",
     "q015": "9e79f2c75e4e447888db312b531f6afd",
     "q016": "b8370a16ddd44c5aab10fddab03924bf",
-    "q017": "4bad967fc4b7463dbb67517360e3e67b"
+    "q017": "31d54d263c394bd484cee4b46553f81a"
   },
   "judge_transport": {
     "cache_hits": 31,
@@ -2495,7 +2503,7 @@
   "quota": {
     "scope": "deployment",
     "retry_after": 3600,
-    "run_id": "99c2798788b74459a8ff0639c5c209d4"
+    "run_id": "9aad901d2ee742acaa833bb21fc3d685"
   },
-  "next_retry_at": "2026-10-27T00:00:59.052776+00:00"
+  "next_retry_at": "2026-10-27T00:00:59.146405+00:00"
 }

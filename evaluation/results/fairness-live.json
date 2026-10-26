@@ -10,159 +10,159 @@
     "free": 1
   },
   "tenant_queue_p95_ms": {
-    "enterprise": 9848.837983608246,
-    "free": 10209.875774383545
+    "enterprise": 9282.708728313446,
+    "free": 9720.330619812012
   },
   "dispatch_order": [
     {
-      "run_id": "b4203178c0164bd1b94cacb18ee4d241",
+      "run_id": "127a58ed6e5047b1b017353924bd6b4b",
       "tenant": "enterprise",
-      "created_at": 1793004318.1752172,
-      "started_at": 1793004318.335763
+      "created_at": 1793024314.4564614,
+      "started_at": 1793024314.5679686
     },
     {
-      "run_id": "6e5bdeee0fba41fa8d2e2924ae45bdbf",
+      "run_id": "a9f2937bc54340ee9f136b8fcb13e810",
       "tenant": "enterprise",
-      "created_at": 1793004318.2335339,
-      "started_at": 1793004318.9616954
+      "created_at": 1793024314.5283225,
+      "started_at": 1793024315.1289124
     },
     {
-      "run_id": "5bae66b49dcd4c96acd167677bd82805",
+      "run_id": "6a06cd16342b4277a5919582e82fe5cd",
       "tenant": "enterprise",
-      "created_at": 1793004318.2914724,
-      "started_at": 1793004319.6158223
+      "created_at": 1793024314.5952413,
+      "started_at": 1793024315.6640205
     },
     {
-      "run_id": "cb68d2f5a8934929ac9860d7d9b8e1ad",
+      "run_id": "6ea48cb48ebe47289537e1b24238c65f",
       "tenant": "enterprise",
-      "created_at": 1793004318.356031,
-      "started_at": 1793004320.05856
+      "created_at": 1793024314.6349797,
+      "started_at": 1793024316.1790268
     },
     {
-      "run_id": "e6e2fd88be8f445da24b2845fd21ecf9",
+      "run_id": "b10e6b55ddca4f2186dce8b149b6c114",
       "tenant": "enterprise",
-      "created_at": 1793004318.4202995,
-      "started_at": 1793004320.4781842
+      "created_at": 1793024314.6796594,
+      "started_at": 1793024316.6034656
     },
     {
-      "run_id": "06be54b2f9a946c6acd51db6b570dbe3",
+      "run_id": "1755e2d4e71f46209403c4bba0a5531f",
       "tenant": "enterprise",
-      "created_at": 1793004318.4913757,
-      "started_at": 1793004321.0323236
+      "created_at": 1793024314.7448654,
+      "started_at": 1793024317.068491
     },
     {
-      "run_id": "67bf343d647b4a20b1275362e53af308",
+      "run_id": "0112b9d984694e73bcbe026e9f3dca6a",
       "tenant": "free",
-      "created_at": 1793004319.2654793,
-      "started_at": 1793004321.5012627
+      "created_at": 1793024315.5237434,
+      "started_at": 1793024317.5156388
     },
     {
-      "run_id": "e9f0fde6651349248b1f4b137ea5daf6",
+      "run_id": "cc389448b76f4260b6d3b7c0b4b982c2",
       "tenant": "enterprise",
-      "created_at": 1793004318.560801,
-      "started_at": 1793004321.9943092
+      "created_at": 1793024314.7949128,
+      "started_at": 1793024317.9496658
     },
     {
-      "run_id": "1b6fee5da2fe4f7b8b89fb7d17e12358",
+      "run_id": "2ccd404188e747f5913a4446ba91efe1",
       "tenant": "enterprise",
-      "created_at": 1793004318.6302316,
-      "started_at": 1793004322.4217713
+      "created_at": 1793024314.8714337,
+      "started_at": 1793024318.420215
     },
     {
-      "run_id": "64d077733e42473ea72ba6141a4de9f8",
+      "run_id": "73c18e1d8e144e65a673544c94529ba2",
       "tenant": "enterprise",
-      "created_at": 1793004318.6990657,
-      "started_at": 1793004322.9113693
+      "created_at": 1793024314.9326763,
+      "started_at": 1793024318.8625348
     },
     {
-      "run_id": "8289a0c17ceb4d3c91304e1407c7da38",
+      "run_id": "f2ab7126e48b48489ceb420e273e2c96",
       "tenant": "enterprise",
-      "created_at": 1793004318.7364953,
-      "started_at": 1793004323.359331
+      "created_at": 1793024314.9851534,
+      "started_at": 1793024319.2992501
     },
     {
-      "run_id": "c7bfcbf02c13415ca2f34816dc8f92ee",
+      "run_id": "a8b91124c406420c9dcb3a427e77c96c",
       "tenant": "free",
-      "created_at": 1793004319.3108938,
-      "started_at": 1793004323.8104076
+      "created_at": 1793024315.5481117,
+      "started_at": 1793024319.7545118
     },
     {
-      "run_id": "093371d3f84d4436837aa48442ef205a",
+      "run_id": "5ec610dff38746f5a4b7d40b32616ed7",
       "tenant": "enterprise",
-      "created_at": 1793004318.7746444,
-      "started_at": 1793004324.3076124
+      "created_at": 1793024315.0402029,
+      "started_at": 1793024320.1798527
     },
     {
-      "run_id": "1ca4a21454a143a6971ece227febdfa0",
+      "run_id": "847a44f8b54e46a583f62e723ef0969c",
       "tenant": "enterprise",
-      "created_at": 1793004318.8396916,
-      "started_at": 1793004324.7408204
+      "created_at": 1793024315.0753977,
+      "started_at": 1793024320.6654243
     },
     {
-      "run_id": "0bcc2572a77b486eba11537bda3efc04",
+      "run_id": "4e9469df248a4beaa005f5c00745b809",
       "tenant": "enterprise",
-      "created_at": 1793004318.878515,
-      "started_at": 1793004325.2616942
+      "created_at": 1793024315.1041007,
+      "started_at": 1793024321.0844858
     },
     {
-      "run_id": "769dab7d3dd94714881ec8e2d3993ab5",
+      "run_id": "f8650c32ba6148f29e8b3c2a43a35ba1",
       "tenant": "enterprise",
-      "created_at": 1793004318.9088688,
-      "started_at": 1793004325.6950467
+      "created_at": 1793024315.142188,
+      "started_at": 1793024321.496395
     },
     {
-      "run_id": "615e9e65f9374e198e6383a9469c2388",
+      "run_id": "84e690555a2c4631850acb9e96e32f05",
       "tenant": "free",
-      "created_at": 1793004319.3508236,
-      "started_at": 1793004326.1749313
+      "created_at": 1793024315.5723329,
+      "started_at": 1793024321.9442368
     },
     {
-      "run_id": "e860a6f6c3a14f719126000da9565521",
+      "run_id": "3f880c1915b04c0990a9575fa6fbac2a",
       "tenant": "enterprise",
-      "created_at": 1793004318.9392285,
-      "started_at": 1793004326.5864294
+      "created_at": 1793024315.1760705,
+      "started_at": 1793024322.4180543
     },
     {
-      "run_id": "eae53692bd9542a1abde5716c55a550c",
+      "run_id": "2861244a16ee4dce967b1f48f637768b",
       "tenant": "enterprise",
-      "created_at": 1793004318.9737246,
-      "started_at": 1793004326.9955032
+      "created_at": 1793024315.216267,
+      "started_at": 1793024322.8567915
     },
     {
-      "run_id": "995dc1e06cd64901b57c285cc57bf1d4",
+      "run_id": "1c08862421e54329bb7dd993baaf6a0e",
       "tenant": "enterprise",
-      "created_at": 1793004319.0046256,
-      "started_at": 1793004327.443408
+      "created_at": 1793024315.2522397,
+      "started_at": 1793024323.278399
     },
     {
-      "run_id": "b001148c90b24f789286977bb779d31d",
+      "run_id": "6173591e37b3450fa6c67226c34c0b4d",
       "tenant": "enterprise",
-      "created_at": 1793004319.0361717,
-      "started_at": 1793004327.8656788
+      "created_at": 1793024315.287856,
+      "started_at": 1793024323.7159238
     },
     {
-      "run_id": "d6bb3ee76a0d4792a82c2fa93a8da0ab",
+      "run_id": "0f76e18a97004169b88df4e4546f5eec",
       "tenant": "free",
-      "created_at": 1793004319.3968198,
-      "started_at": 1793004328.2740843
+      "created_at": 1793024315.5988789,
+      "started_at": 1793024324.1555424
     },
     {
-      "run_id": "95417c1afe274491804c9c9b5d389ea5",
+      "run_id": "193b015bd9fc4e5bbc7b5b7f8100eec9",
       "tenant": "enterprise",
-      "created_at": 1793004319.070884,
-      "started_at": 1793004328.8911216
+      "created_at": 1793024315.3281665,
+      "started_at": 1793024324.5832872
     },
     {
-      "run_id": "c395b4c6c763488189626813760ecd7f",
+      "run_id": "179dfb5a263446e99867351a28b0c031",
       "tenant": "enterprise",
-      "created_at": 1793004319.1063476,
-      "started_at": 1793004329.4985921
+      "created_at": 1793024315.3634746,
+      "started_at": 1793024325.1703548
     },
     {
-      "run_id": "a46cdcd00aca48ba831a00497257be1e",
+      "run_id": "b9f01f409c4c439186d6aa9b4a66e5d0",
       "tenant": "free",
-      "created_at": 1793004319.4388313,
-      "started_at": 1793004329.98186
+      "created_at": 1793024315.6233847,
+      "started_at": 1793024325.634632
     }
   ],
   "method": "20 enterprise requests followed by five free requests while one actual worker drains the queue. Both accounts remain within the normal 20/min admission rate. Verifies finite progress, not a latency SLA or weighted CPU-time guarantee.",

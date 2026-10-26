@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "tested_commit": "6a062a12b815ef0c06699be4900cdd65c4a49270",
+  "url": "https://github.com/rishicodes576/quarry/actions/runs/40337592192",
+  "check_run_id": 121624595975,
+  "runner": "ubuntu-24.04",
+  "checkout": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+  "checkout_runtime": "node24",
+  "annotation_count": 0,
+  "backend_cases": 224,
+  "browser_workflows": 9,
+  "startup": "success",
+  "functional_browser": "success",
+  "security": "success",
+  "runtime_image_scans_passed": 8,
+  "scope": "Observed actual hosted run and annotation API results. Report/document updates may follow with the same executable fingerprint; a source change requires new gates. No live generation key was configured in CI."
+}

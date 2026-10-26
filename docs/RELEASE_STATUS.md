@@ -1,6 +1,6 @@
 # Current audited release status
 
-Status: **incomplete**. Source: `747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546`.
+Status: **incomplete**. Source: `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`.
 
 Legacy campaign: **37/37**. Isolated paired comparisons: **12/148**. Successful backend cases with current JUnit evidence: **224**.
 

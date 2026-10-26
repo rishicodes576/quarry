@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a1775b-d180-780b-a474-453cddb59a5a",
-  "CreatedAt": "2026-10-26T08:37:48.544530719Z",
+  "ReportID": "01a178a0-e985-75e7-9045-94990fc05700",
+  "CreatedAt": "2026-10-26T14:32:53.893390326Z",
   "ArtifactID": "sha256:72b0f631ef9649c0bbdbea699b60876e4cc2420f1b13cbefd13fbe46e312f4e4",
   "ArtifactName": "/images/qdrant.tar",
   "ArtifactType": "container_image",

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "Disposable first-download production-image probe, no generation credentials or persistent model cache; workflow-only changes after the probe do not alter the tested runtime Dockerfile",
+  "tested_source_sha256": "0b33fbb4372d0c2d8a85692e73ddb9de78a36d255bcec0c54f0ea7f07a906a19",
+  "runtime_dockerfile_sha256": "1851180c7f29cea81ad2e7375a4044a4f862ffbd7cae438faedd302ea0880843",
+  "uid": 10001,
+  "hf_home": "/tmp/quarry-huggingface",
+  "matched_model_files": 47,
+  "model_revisions": {
+    "bm25": "22b8d2af71a76161e18dd432d2cee0eefa66e412",
+    "dense": "d13954661f83248295ba75c1ed411eef3b7b936e",
+    "reranker": "a09144355adeed5f58c8ed011d209bf8ee5a1fec"
+  },
+  "provider_calls": 0,
+  "initial_failure": "Default home / selected /.cache/huggingface; Xet download failed with Permission denied",
+  "harness_correction": "Initial successful prepare probe tried to read a results file deliberately excluded from the image; repeated with a read-only expected-manifest mount and passed full file-map comparison"
+}

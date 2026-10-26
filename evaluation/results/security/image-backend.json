@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a17757-f562-78e3-bd5c-50842b8972cd",
-  "CreatedAt": "2026-10-26T08:33:35.586587696Z",
-  "ArtifactID": "sha256:50315bd114d360591ccab87235c2e9c3851db204ef538e8ddb6bffc3ae86f55f",
+  "ReportID": "01a1789f-6e3c-7ac7-b58e-674913984de1",
+  "CreatedAt": "2026-10-26T14:31:16.796711544Z",
+  "ArtifactID": "sha256:845da90d118de331d12dab8df34699887d91fcfb969161f3b7a44ad3b6185a81",
   "ArtifactName": "/images/backend.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -14,7 +14,7 @@
       "Family": "debian",
       "Name": "13.7"
     },
-    "ImageID": "sha256:ac1d91411eeac20a0e16363032e4040f358a2fd104c658aba66c4f0b9785f568",
+    "ImageID": "sha256:ee92a74f1331b21ac3bd557272c96b092a4dae347db9b7b9f03c292270aa15fe",
     "DiffIDs": [
       "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de",
       "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda",
@@ -39,8 +39,8 @@
       "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a",
       "sha256:c807524be021c74091780d1b9693040526863138ce17890ec3ed475866dd335e",
       "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6",
-      "sha256:011e04d7f79f9bda3b0d8a0a30ca9667ded78b7dc72f332642b19a1c9baa1101",
-      "sha256:729a9749277ed56e3f908a3827836f6c3ca2985be6f09d2fcfd20102d2ff182a"
+      "sha256:93efd874a50fe3eed50a45972e42dbee2da99494292b79c2ce0409d39b404cf1",
+      "sha256:e29d5c5e9dc4ccd1aa934b5cce901c257e9f801355f0b50312461aec8f9c6440"
     ],
     "RepoTags": [
       "quarry-backend:local"
@@ -48,7 +48,7 @@
     "Reference": "quarry-backend:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-25T15:30:14.075055933Z",
+      "created": "2026-10-26T14:03:10.538411463Z",
       "history": [
         {
           "created": "1970-01-01T00:00:00Z",
@@ -120,7 +120,7 @@
         },
         {
           "created": "2026-10-23T08:37:19.612066337Z",
-          "created_by": "ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false HF_HUB_DISABLE_TELEMETRY=1 LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false QUARRY_DATA_DIR=/data QUARRY_MODEL_CACHE=/models LD_LIBRARY_PATH=/usr/local/lib:/opt/quarry-libs PATH=/usr/local/bin",
+          "created_by": "ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false HF_HUB_DISABLE_TELEMETRY=1 HF_HOME=/tmp/quarry-huggingface LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false QUARRY_DATA_DIR=/data QUARRY_MODEL_CACHE=/models LD_LIBRARY_PATH=/usr/local/lib:/opt/quarry-libs PATH=/usr/local/bin",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
@@ -155,35 +155,35 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-25T15:30:13.981927816Z",
+          "created": "2026-10-26T14:03:10.460130527Z",
           "created_by": "COPY --chown=10001:10001 backend /app # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-25T15:30:14.075055933Z",
+          "created": "2026-10-26T14:03:10.538411463Z",
           "created_by": "COPY --chown=10001:10001 evaluation /app/evaluation # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-25T15:30:14.075055933Z",
+          "created": "2026-10-26T14:03:10.538411463Z",
           "created_by": "USER 10001:10001",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-25T15:30:14.075055933Z",
+          "created": "2026-10-26T14:03:10.538411463Z",
           "created_by": "EXPOSE [8000/tcp]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-25T15:30:14.075055933Z",
+          "created": "2026-10-26T14:03:10.538411463Z",
           "created_by": "ENTRYPOINT []",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-25T15:30:14.075055933Z",
+          "created": "2026-10-26T14:03:10.538411463Z",
           "created_by": "CMD [\"/usr/local/bin/python\" \"-m\" \"uvicorn\" \"quarry.api:app\" \"--host\" \"0.0.0.0\" \"--port\" \"8000\" \"--no-proxy-headers\" \"--limit-concurrency\" \"100\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -216,8 +216,8 @@
           "sha256:d6a0a9176ba618ad4d7c6e357aa680ca25be5efd85e9dfffedf5bbcd413ca78a",
           "sha256:c807524be021c74091780d1b9693040526863138ce17890ec3ed475866dd335e",
           "sha256:1a93a2ccf459f5965c9163e0f8f2f04c898540eab3d317616d11b3be7dc6d4a6",
-          "sha256:011e04d7f79f9bda3b0d8a0a30ca9667ded78b7dc72f332642b19a1c9baa1101",
-          "sha256:729a9749277ed56e3f908a3827836f6c3ca2985be6f09d2fcfd20102d2ff182a"
+          "sha256:93efd874a50fe3eed50a45972e42dbee2da99494292b79c2ce0409d39b404cf1",
+          "sha256:e29d5c5e9dc4ccd1aa934b5cce901c257e9f801355f0b50312461aec8f9c6440"
         ]
       },
       "config": {
@@ -241,6 +241,7 @@
           "PYTHONDONTWRITEBYTECODE=1",
           "TOKENIZERS_PARALLELISM=false",
           "HF_HUB_DISABLE_TELEMETRY=1",
+          "HF_HOME=/tmp/quarry-huggingface",
           "LANGSMITH_TRACING=false",
           "LANGCHAIN_TRACING_V2=false",
           "QUARRY_DATA_DIR=/data",
@@ -378,13 +379,13 @@
       },
       {
         "Size": 1276416,
-        "Digest": "sha256:60deba576c0c9d88db5e7c21c34cbc2481cba6f24c5806be0e017b630f35b975",
-        "DiffID": "sha256:011e04d7f79f9bda3b0d8a0a30ca9667ded78b7dc72f332642b19a1c9baa1101"
+        "Digest": "sha256:e2c1ffed3c0c2e23f7ae53a4f2541f5679f47ecf629af281c0c03b6a89f2303d",
+        "DiffID": "sha256:93efd874a50fe3eed50a45972e42dbee2da99494292b79c2ce0409d39b404cf1"
       },
       {
         "Size": 113664,
-        "Digest": "sha256:f6b1ffca1411e5bf48d10e8a0bbec4ef8f3d1160b1f0be820f543117d7fd65dc",
-        "DiffID": "sha256:729a9749277ed56e3f908a3827836f6c3ca2985be6f09d2fcfd20102d2ff182a"
+        "Digest": "sha256:4a1e0aac95cd690acca839dc2dcceaf394b7c6f873caef620c7b5e4b2416467b",
+        "DiffID": "sha256:e29d5c5e9dc4ccd1aa934b5cce901c257e9f801355f0b50312461aec8f9c6440"
       }
     ]
   },
@@ -1305,7 +1306,7 @@
           "Name": "libzstd1",
           "Identifier": {
             "PURL": "pkg:deb/debian/libzstd1@1.5.7%2Bdfsg-1?arch=amd64\u0026distro=debian-13.7",
-            "UID": "cea539729c307399"
+            "UID": "6fbc13fb7d2a8697"
           },
           "Version": "1.5.7+dfsg",
           "Release": "1",
@@ -2342,7 +2343,7 @@
           "Name": "zlib1g",
           "Identifier": {
             "PURL": "pkg:deb/debian/zlib1g@1.3.dfsg%2Breally1.3.1-1%2Bb1?arch=amd64\u0026distro=debian-13.7\u0026epoch=1",
-            "UID": "ee958543a42dbedd"
+            "UID": "68e79f13cf3512ab"
           },
           "Version": "1.3.dfsg+really1.3.1",
           "Release": "1+b1",
