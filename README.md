@@ -6,7 +6,7 @@ An engineering research platform with inspectable citations, reproducible retrie
 
 **Next.js · TypeScript · FastAPI · LangGraph · PostgreSQL · Qdrant · ONNX · Docker**
 
-![Research workspace with an inspectable cited answer](docs/assets/02-cited-research.png)
+![Research workspace with an inspectable cited answer](docs/assets/quarry-research.png)
 
 Upload technical documents, ask a question, follow the execution timeline, and inspect the passages supporting an engineering decision brief. Compare retrieval strategies against the same corpus and export the result as Markdown.
 
