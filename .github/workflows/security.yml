@@ -12,6 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with: {persist-credentials: false}
+      - name: Prepare non-root container report permissions
+        run: |
+          if ! command -v setfacl >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install --yes acl
+          fi
+          mkdir -p evaluation/results docs/assets
+          find evaluation/results docs/assets -type d -exec setfacl -m u:1000:rwx,u:10001:rwx,d:u:1000:rwx,d:u:10001:rwx {} +
+          find evaluation/results docs/assets -type f -exec setfacl -m u:1000:rw,u:10001:rw {} +
       - name: Start isolated local services
         run: python3 scripts/manage.py up
       - name: Verify behavior and browser workflows
@@ -19,6 +28,16 @@ jobs:
       - name: Free security scans
         if: always()
         run: python3 scripts/security_scan.py --dynamic --images
+      - name: Redacted service diagnostics on failure
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'scripts')
+          from manage import compose, redact
+          result = compose('logs', '--no-color', '--tail', '120', capture=True, check=False)
+          print(redact(result.stdout + result.stderr)[-40000:])
+          PY
       - name: Stop services
         if: always()
         run: docker compose down

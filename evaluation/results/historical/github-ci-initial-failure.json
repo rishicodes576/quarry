@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "scope": "First real hosted GitHub Actions run; local checks are separate",
+  "url": "https://github.com/rishicodes576/quarry/actions/runs/40332487170",
+  "commit": "73c83e1a7b056c4ac9f1a19f45cba9746d7f9100",
+  "startup": "initialize container exited 1; the original workflow did not retain service logs",
+  "scanner_errors": "pip-audit could not write report bind mounts as container UID 10001; dynamic scan had no running gateway",
+  "fix_in_progress": "Explicit non-root report ACLs and redacted failure diagnostics; initialization cause still to be established from the next actual run"
+}
