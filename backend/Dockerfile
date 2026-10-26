@@ -20,7 +20,7 @@ FROM dependencies AS runtime-libraries
 COPY infra/python-runtime.py /tmp/python-runtime.py
 RUN python /tmp/python-runtime.py
 
-FROM gcr.io/distroless/base-debian13:nonroot@sha256:6c591b4ac789b683ab3665327181e7cfb7a39b5834f42dcb73d7becb8d18a5d9 AS base
+FROM gcr.io/distroless/base-debian13:nonroot@sha256:f9518b74815721f537a7458cc693b4406208c04fce23bbffab511516117f34fd AS base
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false \
     HF_HUB_DISABLE_TELEMETRY=1 HF_HOME=/tmp/quarry-huggingface LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false \
     QUARRY_DATA_DIR=/data QUARRY_MODEL_CACHE=/models LD_LIBRARY_PATH=/usr/local/lib:/opt/quarry-libs \
