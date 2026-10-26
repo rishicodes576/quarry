@@ -50,7 +50,8 @@
     "backend/tests/test_campaign_audit.py": "34c34c08172dda2eb74836a86b669a649ef4c3754e307adaac37f92bcc3f16f1",
     "backend/tests/test_release_readiness.py": "0115e7b4e71140d9fbe38d8b0eb8bdafe97df42a240791e5d1a31717707806fe",
     "frontend/src/app/globals.css": "7a7d171d43544375d9f89b4b5b4e608b7bc4be437974debc4cdd6bc56b085724",
-    "frontend/tests/workspace.spec.ts": "fde61ff44b31ff9197bbc985f8ba5fd710c4b22f2b3a93b291c265467a835362"
+    "frontend/tests/workspace.spec.ts": "fde61ff44b31ff9197bbc985f8ba5fd710c4b22f2b3a93b291c265467a835362",
+    ".github/workflows/security.yml": "800ecc9315a81a49c80206f5001d0cbb7fd6427f541290a6c46da8ec36d00cb6"
   },
   "storage_reconciliation_followup": "24 October 2026: source-only inspection of explicit-workspace orphan reconciliation; no apply/deletion or pytest run",
   "scanner_runtime_followup": "24 October 2026: read-only source snapshot/shell argument/image Dockerfile review; no scans, builds, tests or live provider calls started",
@@ -59,7 +60,7 @@
   "evaluation_pacing_followup": "Source-only inspection of bounded15\u2013300-second ordinary evaluator pacing, preserved provider 429 backoff/budgets and 15/60-second regression parameterization; no ignored configuration, tests, scans or live calls read/run by reviewer",
   "suspension_and_arithmetic_followup": "25 October 2026: source-only review of authoritative UTC daily-reset waiting and saved-measurement arithmetic/integrity audit with corruption guards; no tests, audit CLI, database export or provider calls executed by reviewer",
   "audited_release_followup": "25 October 2026: reviewed isolated-campaign/release/publication refinements and scoped source/tree fingerprinting. Acceptance is code inspection only; fresh executed gates remain separate.",
-  "current_source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
+  "current_source_sha256": "8a3e7adfc3f002b3054ad57e504681ae004639569eddcfdfc6782fbf9e363b6b",
   "test_layout_and_style_followup": "Source-only review: test-stage operator copy and test loader both use /opt/quarry-operator; campaign border uses defined --line CSS variable. Also synchronized the already-reviewed Compose JUnit-output hash. No operator/model/scoring logic change; no tests/scanners executed by reviewer.",
   "scanner_transfer_and_undefined_score_followup": "Source-only review of exact combobox test locator, native-container Trivy report copy with fail-closed gate/UUID-scoped cleanup, and frozen v2-only undefined/out-of-range score quarantine preserving all finite low/zero values. No tests/scans/provider calls executed.",
   "format_only_followup": "Automatic line wrapping of the already-reviewed exact Campaign combobox locator only; no executable behavior or scorer protocol change.",
@@ -74,5 +75,12 @@
     "scope": "Only the existing apk add line adds exact libcurl=8.23.0-r0; pinned PostgreSQL base, gosu build, license copies and USER postgres are unchanged.",
     "existing_evidence_inspected": "Saved failed PostgreSQL scanner report lists HIGH CVE-2026-92392 for libcurl 8.22.0-r0 with fixed version 8.23.0-r0.",
     "not_executed": "No image build, scan, database recreation, tests or providers by reviewer. Fresh builder gates are required; remediation success is not established by source inspection."
+  },
+  "hosted_ci_permissions_followup": {
+    "date": "2026-10-26",
+    "scope": "Targeted access/default ACLs for container UIDs 1000 and 10001 on public report directories, and bounded redacted failure diagnostics only.",
+    "reviewed_commit": "90b29e9dc7ee141b760f76f500c7511c60f20d21",
+    "existing_evidence_inspected": "Historical initial hosted CI failure record; not proof of root cause or successful remediation.",
+    "not_executed": "No hosted CI, tests, scans, Docker commands, provider calls or actual secret configuration reads by reviewer."
   }
 }

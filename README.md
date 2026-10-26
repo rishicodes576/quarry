@@ -59,7 +59,7 @@ Throughput is a finite local extractive workload, not public-service capacity or
 
 ### Live-quality evaluation status
 
-The historical campaign is **37/37 completed** and retained with its original scores and limitations. The new isolated four-mode campaign is **12/148 completed** at this checkpoint. It uses independent research conversations and separate judge requests. The twelve completed cases include four generated answers and eight citation-fallback answers; partial averages are not a complete four-mode comparison. Attributed factual-support review remains in progress.
+The historical live campaign completed **37/37 cases**; its original answers, scores and methodology limitations are retained. A separate frozen campaign now extends the comparison across four retrieval modes using independent research conversations and separate judge requests. This comparison and its factual-support review are in progress. Generated answers and citation fallbacks are recorded separately; partial averages are not a complete four-mode result. Exact per-mode completion counts and evidence remain available in the linked reports and the application's evaluation view.
 
 Inspect the [frozen protocol](docs/EVALUATION_PROTOCOL.md), [arithmetic/provenance audit](evaluation/results/isolated-mathematical-audit.json), [historical audit](evaluation/results/mathematical-audit.json) and [release acceptance checklist](docs/RELEASE_STATUS.md). Reports retain their actual sample counts, model/configuration hashes and measurement scope.
 
