@@ -39,3 +39,20 @@ The timed burst starts after worker replicas report ready and fixture documents 
 For the final run an independent lightweight observer executed `docker stats --no-stream --format "{{json .}}"`, waited two seconds after each command, and repeated while the complete `python scripts/manage.py loadtest` command ran. `load-resources.json` retains timestamped raw snapshots, observer errors and sampled maxima grouped by observed worker count. Groups include startup and idle intervals. Docker CPU 100% represents one logical CPU; sampled maxima are not instantaneous peaks. To repeat the observation, capture timestamped Docker stats in a second terminal while running the management command. This additional observer is an executed experiment, not an automatically included step of the management command.
 
 The final noisy-tenant probe submits 20 enterprise requests followed by five free requests with two API replicas and one actual worker. Normal admission limits remain enabled. The raw dispatch order demonstrates finite progress for that burst; it does not prove a latency SLA, steady-state throughput or weighted CPU-time fairness.
+
+
+## Independent arithmetic audit
+
+Run the saved-measurement audit without generating new model calls:
+
+```powershell
+docker compose --profile evaluation run --rm --no-deps evaluate python -m quarry.metric_audit --export-judges --require-live-complete
+```
+
+The auditor implements the formulas separately from the benchmark implementation and fails on missing/duplicate source-mode rows, missing summaries, changed frozen labels/splits, incorrect counts, nonfinite scores or arithmetic mismatches. `mathematical-audit.json` records the input file hashes and exact checked scope; `judge-verdicts.json` contains the referenced synthetic-workspace judge outputs, never credentials. The strict option requires all 37 selected cases and a verdict export. Historical metrics without saved RPC identifiers remain explicitly listed as unaudited at the verdict level; their presence is not disguised as complete provenance.
+
+For unique source ranks 1 through k=5, let y_i be binary source relevance and R the complete source-label set. Recall is sum(y_i)/|R|; reciprocal rank is 1/(first relevant rank), or zero; DCG is sum(y_i/log2(i+1)); nDCG divides DCG by the ideal ordering of min(k,|R|) relevant sources. Returned-source precision divides sum(y_i) by the number returned, not always five. Relevance summaries are unweighted arithmetic means over relevance-labeled cases. Unanswerable/tool cases stay in timing counts.
+
+Ragas context precision is average precision over judge relevance verdicts: sum(precision_at_i * verdict_i)/(sum(verdict_i)+1e-10). Its denominator counts judged relevant returned passages, so a value near one does not establish complete source coverage or that every returned passage is useful. Ragas context recall averages binary reference-statement attributions; faithfulness averages supported generated-statement verdicts. Those are model judgments, distinct from deterministic source-ID metrics. The audit recomputes scores from available saved verdicts without re-judging their correctness.
+
+Latency P50/P95 uses linear interpolation at position (n-1)*p in the sorted observations. The audit allows .0011 ms for independently rounded retrieval rows and summaries. Throughput is completed runs divided by measured duration; rounding does not imply extra measurement precision. Unit tests include known nontrivial ranks, hand-calculated judge ratios, interpolation and deliberately corrupted score/summary/split artifacts.

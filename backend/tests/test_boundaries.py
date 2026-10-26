@@ -198,3 +198,15 @@ def test_metric_definitions_and_frozen_dataset():
     assert percentile([1, 3], 0.5) == 2
     assert percentile([], 0.5) == 0
     assert validate_dataset()["case_count"] == 120
+
+
+def test_rank_metrics_match_hand_calculation_and_deduplicate_sources():
+    # Unique ranks are x,a,b. A duplicate passage must not occupy a source rank.
+    result = score_sources(["x", "a", "a", "b"], ["a", "b"])
+    assert result["recall_at_5"] == 1
+    assert result["mrr"] == 0.5
+    assert result["precision_at_5"] == pytest.approx(2 / 3)
+    assert result["ndcg_at_5"] == pytest.approx(0.6934264036172708)
+    # A relevant source beyond unique rank five must not contribute.
+    assert score_sources(["x", "y", "z", "u", "v", "a"], ["a"])["ndcg_at_5"] == 0
+    assert percentile([10, 20, 30, 40], 0.95) == pytest.approx(38.5)

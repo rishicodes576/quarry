@@ -151,6 +151,7 @@ def process(job):
                         **run.diagnostics,
                         **result["diagnostics"],
                         "total_ms": round((time.time() - run.started_at) * 1000, 2),
+                        "answer_kind": result["diagnostics"].get("answer_kind", "unknown") if len(eligible) == len(result["evidence"]) else "source_deletion_fallback",
                     }
                     run.status, run.finished_at, run.error = "completed", time.time(), ""
                     event(db, run, "completed", {"total_ms": run.diagnostics["total_ms"]})

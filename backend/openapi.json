@@ -1425,6 +1425,67 @@
           }
         }
       }
+    },
+    "/v1/evaluations/campaigns": {
+      "get": {
+        "summary": "Evaluation Campaigns",
+        "operationId": "evaluation_campaigns_v1_evaluations_campaigns_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CampaignSummary"
+                  },
+                  "type": "array",
+                  "title": "Response Evaluation Campaigns V1 Evaluations Campaigns Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/evaluations/campaigns/{campaign_id}": {
+      "get": {
+        "summary": "Evaluation Campaign",
+        "operationId": "evaluation_campaign_v1_evaluations_campaigns__campaign_id__get",
+        "parameters": [
+          {
+            "name": "campaign_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Campaign Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1442,6 +1503,646 @@
           "file"
         ],
         "title": "Body_upload_v1_documents_post"
+      },
+      "CampaignCaseOut": {
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "title": "Case Id"
+          },
+          "response": {
+            "type": "string",
+            "title": "Response"
+          },
+          "contexts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Contexts"
+          },
+          "metrics": {
+            "additionalProperties": {
+              "type": "number",
+              "maximum": 1.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "context_precision",
+                "context_recall",
+                "faithfulness"
+              ]
+            },
+            "type": "object",
+            "title": "Metrics"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "latency_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latency Ms"
+          },
+          "tokens": {
+            "type": "integer",
+            "title": "Tokens",
+            "default": 0
+          },
+          "mode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mode"
+          },
+          "response_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Response Sha256"
+          },
+          "generation_request_sha256": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Generation Request Sha256"
+          },
+          "model_calls": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Calls"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
+          "answer_contexts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Answer Contexts"
+          },
+          "answer_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer Kind"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference"
+          },
+          "history_run_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "History Run Ids"
+          },
+          "metric_configuration": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CampaignMetricTrace"
+            },
+            "propertyNames": {
+              "enum": [
+                "context_precision",
+                "context_recall",
+                "faithfulness"
+              ]
+            },
+            "type": "object",
+            "title": "Metric Configuration"
+          }
+        },
+        "type": "object",
+        "required": [
+          "case_id",
+          "response",
+          "contexts",
+          "metrics",
+          "run_id"
+        ],
+        "title": "CampaignCaseOut"
+      },
+      "CampaignDetail": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "protocol": {
+            "type": "string",
+            "title": "Protocol",
+            "default": "isolated-v2"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "running",
+              "partial",
+              "quota_wait",
+              "completed"
+            ],
+            "title": "Status",
+            "default": "pending"
+          },
+          "completed": {
+            "type": "integer",
+            "maximum": 37.0,
+            "minimum": 0.0,
+            "title": "Completed",
+            "default": 0
+          },
+          "requested": {
+            "type": "integer",
+            "title": "Requested",
+            "default": 37
+          },
+          "provider": {
+            "type": "string",
+            "title": "Provider",
+            "default": "groq"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "default": "openai/gpt-oss-120b"
+          },
+          "next_retry_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Retry At"
+          },
+          "quota_scope": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quota Scope"
+          },
+          "stopped_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stopped Reason"
+          },
+          "means": {
+            "additionalProperties": {
+              "type": "number",
+              "maximum": 1.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "context_precision",
+                "context_recall",
+                "faithfulness"
+              ]
+            },
+            "type": "object",
+            "title": "Means"
+          },
+          "protocol_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protocol Sha256"
+          },
+          "provenance_gaps": {
+            "type": "integer",
+            "title": "Provenance Gaps",
+            "default": 0
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/CampaignCaseOut"
+            },
+            "type": "array",
+            "title": "Rows"
+          },
+          "configuration": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CampaignProtocolOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "mode",
+          "rows"
+        ],
+        "title": "CampaignDetail"
+      },
+      "CampaignMetricTrace": {
+        "properties": {
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "reasoning_effort": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasoning Effort"
+          },
+          "reasoning_format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasoning Format"
+          },
+          "max_completion_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Completion Tokens"
+          },
+          "historical_configuration": {
+            "type": "boolean",
+            "title": "Historical Configuration",
+            "default": false
+          },
+          "arguments_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Arguments Sha256"
+          },
+          "judge_run_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Judge Run Ids"
+          },
+          "judge_requests": {
+            "items": {
+              "$ref": "#/components/schemas/JudgeRequestOut"
+            },
+            "type": "array",
+            "title": "Judge Requests"
+          }
+        },
+        "type": "object",
+        "title": "CampaignMetricTrace"
+      },
+      "CampaignProtocolOut": {
+        "properties": {
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "provider": {
+            "type": "string",
+            "title": "Provider"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "case_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Case Ids"
+          },
+          "history_policy": {
+            "type": "string",
+            "title": "History Policy"
+          },
+          "judge_cache_policy": {
+            "type": "string",
+            "title": "Judge Cache Policy"
+          },
+          "context_policy": {
+            "type": "string",
+            "title": "Context Policy"
+          },
+          "temperature": {
+            "type": "number",
+            "title": "Temperature"
+          },
+          "max_completion_tokens": {
+            "type": "integer",
+            "title": "Max Completion Tokens"
+          },
+          "model_assets_sha256": {
+            "type": "string",
+            "title": "Model Assets Sha256"
+          },
+          "implementation_sha256": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Implementation Sha256"
+          },
+          "scorer_files_sha256": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Scorer Files Sha256"
+          },
+          "scorer_package_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Scorer Package Versions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "version",
+          "mode",
+          "provider",
+          "model",
+          "case_ids",
+          "history_policy",
+          "judge_cache_policy",
+          "context_policy",
+          "temperature",
+          "max_completion_tokens",
+          "model_assets_sha256",
+          "implementation_sha256",
+          "scorer_files_sha256",
+          "scorer_package_versions"
+        ],
+        "title": "CampaignProtocolOut"
+      },
+      "CampaignSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "protocol": {
+            "type": "string",
+            "title": "Protocol",
+            "default": "isolated-v2"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "running",
+              "partial",
+              "quota_wait",
+              "completed"
+            ],
+            "title": "Status",
+            "default": "pending"
+          },
+          "completed": {
+            "type": "integer",
+            "maximum": 37.0,
+            "minimum": 0.0,
+            "title": "Completed",
+            "default": 0
+          },
+          "requested": {
+            "type": "integer",
+            "title": "Requested",
+            "default": 37
+          },
+          "provider": {
+            "type": "string",
+            "title": "Provider",
+            "default": "groq"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "default": "openai/gpt-oss-120b"
+          },
+          "next_retry_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Retry At"
+          },
+          "quota_scope": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quota Scope"
+          },
+          "stopped_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stopped Reason"
+          },
+          "means": {
+            "additionalProperties": {
+              "type": "number",
+              "maximum": 1.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "context_precision",
+                "context_recall",
+                "faithfulness"
+              ]
+            },
+            "type": "object",
+            "title": "Means"
+          },
+          "protocol_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protocol Sha256"
+          },
+          "provenance_gaps": {
+            "type": "integer",
+            "title": "Provenance Gaps",
+            "default": 0
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "mode"
+        ],
+        "title": "CampaignSummary"
       },
       "ConversationInput": {
         "properties": {
@@ -1714,6 +2415,24 @@
           "email"
         ],
         "title": "InviteInput"
+      },
+      "JudgeRequestOut": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "request_sha256": {
+            "type": "string",
+            "title": "Request Sha256"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "request_sha256"
+        ],
+        "title": "JudgeRequestOut"
       },
       "KeyInput": {
         "properties": {

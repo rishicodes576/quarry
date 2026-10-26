@@ -690,6 +690,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/evaluations/campaigns": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Evaluation Campaigns */
+    get: operations["evaluation_campaigns_v1_evaluations_campaigns_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/evaluations/campaigns/{campaign_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Evaluation Campaign */
+    get: operations["evaluation_campaign_v1_evaluations_campaigns__campaign_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -698,6 +732,230 @@ export interface components {
     Body_upload_v1_documents_post: {
       /** File */
       file: string;
+    };
+    /** CampaignCaseOut */
+    CampaignCaseOut: {
+      /** Case Id */
+      case_id: string;
+      /** Response */
+      response: string;
+      /** Contexts */
+      contexts: string[];
+      /** Metrics */
+      metrics: {
+        [key: string]: number;
+      };
+      /** Run Id */
+      run_id: string;
+      /** Latency Ms */
+      latency_ms?: number | null;
+      /**
+       * Tokens
+       * @default 0
+       */
+      tokens: number;
+      /** Mode */
+      mode?: string | null;
+      /** Response Sha256 */
+      response_sha256?: string | null;
+      /** Generation Request Sha256 */
+      generation_request_sha256?: string[];
+      /** Model Calls */
+      model_calls?: number | null;
+      /** Conversation Id */
+      conversation_id?: string | null;
+      /** Answer Contexts */
+      answer_contexts?: string[];
+      /** Answer Kind */
+      answer_kind?: string | null;
+      /** Question */
+      question?: string | null;
+      /** Reference */
+      reference?: string | null;
+      /** History Run Ids */
+      history_run_ids?: string[] | null;
+      /** Metric Configuration */
+      metric_configuration?: {
+        [key: string]: components["schemas"]["CampaignMetricTrace"];
+      };
+    };
+    /** CampaignDetail */
+    CampaignDetail: {
+      /** Id */
+      id: string;
+      /** Mode */
+      mode: string;
+      /**
+       * Protocol
+       * @default isolated-v2
+       */
+      protocol: string;
+      /**
+       * Status
+       * @default pending
+       * @enum {string}
+       */
+      status: "pending" | "running" | "partial" | "quota_wait" | "completed";
+      /**
+       * Completed
+       * @default 0
+       */
+      completed: number;
+      /**
+       * Requested
+       * @default 37
+       */
+      requested: number;
+      /**
+       * Provider
+       * @default groq
+       */
+      provider: string;
+      /**
+       * Model
+       * @default openai/gpt-oss-120b
+       */
+      model: string;
+      /** Next Retry At */
+      next_retry_at?: string | null;
+      /** Quota Scope */
+      quota_scope?: string | null;
+      /** Stopped Reason */
+      stopped_reason?: string | null;
+      /** Means */
+      means?: {
+        [key: string]: number;
+      };
+      /** Protocol Sha256 */
+      protocol_sha256?: string | null;
+      /**
+       * Provenance Gaps
+       * @default 0
+       */
+      provenance_gaps: number;
+      /** Limitations */
+      limitations?: string[];
+      /** Rows */
+      rows: components["schemas"]["CampaignCaseOut"][];
+      configuration?: components["schemas"]["CampaignProtocolOut"] | null;
+    };
+    /** CampaignMetricTrace */
+    CampaignMetricTrace: {
+      /** Provider */
+      provider?: string | null;
+      /** Model */
+      model?: string | null;
+      /** Reasoning Effort */
+      reasoning_effort?: string | null;
+      /** Reasoning Format */
+      reasoning_format?: string | null;
+      /** Max Completion Tokens */
+      max_completion_tokens?: number | null;
+      /**
+       * Historical Configuration
+       * @default false
+       */
+      historical_configuration: boolean;
+      /** Arguments Sha256 */
+      arguments_sha256?: string | null;
+      /** Judge Run Ids */
+      judge_run_ids?: string[];
+      /** Judge Requests */
+      judge_requests?: components["schemas"]["JudgeRequestOut"][];
+    };
+    /** CampaignProtocolOut */
+    CampaignProtocolOut: {
+      /** Version */
+      version: string;
+      /** Mode */
+      mode: string;
+      /** Provider */
+      provider: string;
+      /** Model */
+      model: string;
+      /** Case Ids */
+      case_ids: string[];
+      /** History Policy */
+      history_policy: string;
+      /** Judge Cache Policy */
+      judge_cache_policy: string;
+      /** Context Policy */
+      context_policy: string;
+      /** Temperature */
+      temperature: number;
+      /** Max Completion Tokens */
+      max_completion_tokens: number;
+      /** Model Assets Sha256 */
+      model_assets_sha256: string;
+      /** Implementation Sha256 */
+      implementation_sha256: {
+        [key: string]: string;
+      };
+      /** Scorer Files Sha256 */
+      scorer_files_sha256: {
+        [key: string]: string;
+      };
+      /** Scorer Package Versions */
+      scorer_package_versions: {
+        [key: string]: string;
+      };
+    };
+    /** CampaignSummary */
+    CampaignSummary: {
+      /** Id */
+      id: string;
+      /** Mode */
+      mode: string;
+      /**
+       * Protocol
+       * @default isolated-v2
+       */
+      protocol: string;
+      /**
+       * Status
+       * @default pending
+       * @enum {string}
+       */
+      status: "pending" | "running" | "partial" | "quota_wait" | "completed";
+      /**
+       * Completed
+       * @default 0
+       */
+      completed: number;
+      /**
+       * Requested
+       * @default 37
+       */
+      requested: number;
+      /**
+       * Provider
+       * @default groq
+       */
+      provider: string;
+      /**
+       * Model
+       * @default openai/gpt-oss-120b
+       */
+      model: string;
+      /** Next Retry At */
+      next_retry_at?: string | null;
+      /** Quota Scope */
+      quota_scope?: string | null;
+      /** Stopped Reason */
+      stopped_reason?: string | null;
+      /** Means */
+      means?: {
+        [key: string]: number;
+      };
+      /** Protocol Sha256 */
+      protocol_sha256?: string | null;
+      /**
+       * Provenance Gaps
+       * @default 0
+       */
+      provenance_gaps: number;
+      /** Limitations */
+      limitations?: string[];
     };
     /** ConversationInput */
     ConversationInput: {
@@ -830,6 +1088,13 @@ export interface components {
        * @default editor
        */
       role: string;
+    };
+    /** JudgeRequestOut */
+    JudgeRequestOut: {
+      /** Run Id */
+      run_id: string;
+      /** Request Sha256 */
+      request_sha256: string;
     };
     /** KeyInput */
     KeyInput: {
@@ -2336,6 +2601,57 @@ export interface operations {
         };
         content: {
           "application/json": unknown;
+        };
+      };
+    };
+  };
+  evaluation_campaigns_v1_evaluations_campaigns_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CampaignSummary"][];
+        };
+      };
+    };
+  };
+  evaluation_campaign_v1_evaluations_campaigns__campaign_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaign_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CampaignDetail"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

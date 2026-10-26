@@ -1,10 +1,15 @@
 {
   "status": "passed",
   "scope": "Aggregate branches across explicitly listed request, authorization, queue, agent, retrieval and provider modules; operator/evaluation CLIs excluded. This is not per-file coverage.",
-  "covered": 504,
-  "total": 556,
-  "percent": 90.647,
+  "covered": 528,
+  "total": 582,
+  "percent": 90.722,
   "modules": [
+    {
+      "module": "campaigns",
+      "covered": 20,
+      "total": 22
+    },
     {
       "module": "accounts",
       "covered": 54,
@@ -12,13 +17,13 @@
     },
     {
       "module": "agent",
-      "covered": 34,
-      "total": 34
+      "covered": 36,
+      "total": 36
     },
     {
       "module": "api",
-      "covered": 75,
-      "total": 84
+      "covered": 77,
+      "total": 86
     },
     {
       "module": "capacity",

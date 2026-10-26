@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 import manage
+from release import fingerprint
 
 ROOT=manage.ROOT
 
@@ -62,7 +63,7 @@ def rehearse(folder):
         manage.compose(*project,'start','api','worker')
     check=manage.compose(*project,'exec','-T','api','python','-m','quarry.admin','verify-restore',capture=True)
     evidence=json.loads(check.stdout.strip().splitlines()[-1])
-    report={'status':'passed','restoration_seconds':round(time.monotonic()-started,2),
+    report={'status':'passed','source_sha256':fingerprint(),'restoration_seconds':round(time.monotonic()-started,2),
             'evidence':evidence,'backup_checksums':manifest['sha256'],
             'isolated_project':'quarry-restore','paid_calls':0}
     (ROOT/'evaluation/results/restore.json').write_text(json.dumps(report,indent=2))

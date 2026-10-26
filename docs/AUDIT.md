@@ -4,7 +4,7 @@ Evidence is recorded by the command that actually executes a check. Source chang
 
 ## Current local release status
 
-Source `0f0f03ed2478dbd33108e5ddeb8053d2d649e3ff694cb039f72fa9517638060e` passed 185 backend tests, eight browser workflows, 90.647% aggregate critical branch coverage and the complete configured security gate. Live judging is 12/37 complete at this checkpoint. Public deployment awaits a verified owner-controlled Oracle account and private real-mail configuration. See `ORACLE_DEPLOYMENT.md`.
+Source `82956962a7257027ac4bcc7387356be3fe2cf9f7b0443d17cd8eb9197f675bba` passed 193 backend tests, eight browser workflows, 90.647% aggregate critical branch coverage and the complete free security gate. Live judging is 35/37 fully scored. Independent arithmetic/identity checks passed for the saved retrieval, agent, throughput and available judge-verdict artifacts. Public deployment and Gmail setup are explicitly deferred in `DEPLOYMENT_LATER.md`.
 
 ## Previous local release snapshot — historical
 
@@ -103,3 +103,35 @@ The owner requested completion of remaining evaluation/deployment. Oracle accoun
 The initial 100,000-token internal budget paused a still-free campaign. Published Groq Free Plan documentation lists 200,000 daily tokens for the selected model, with possible organization exceptions. The operator-run finite local cap was explicitly raised first to 180,000 then 200,000; ordinary tenant limits remain 30,000 and paid providers remain disabled. Quota handling, conservative reservations and same-provider attribution remain intact. Pacing is now configurable from 15–300 seconds (repository default 60; this campaign 15). Provider quota backoff remains at least 60 seconds and its retry hint. The independent reviewer inspected this delta. Two real-database backoff/cache cases cover 15/60 spacing; the enlarged full release suite passed 185 tests.
 
 The campaign reached 12/37 fully judged cases. No incomplete case was counted, no old score was replaced to improve the result, and no model/dataset/prompt/scoring switch was made. Daily exhaustion schedules a future attempt; it does not establish that external provider capacity will be available at that exact time. The same finite campaign continues while Docker is running. Source-bound functional and scanner reports both passed for `0f0f03ed2478dbd33108e5ddeb8053d2d649e3ff694cb039f72fa9517638060e`.
+
+
+## GitHub-readiness and arithmetic audit — 25 October 2026
+
+An overdue daily-budget wait was observed after UTC reset, with no current-day ledger or in-flight request. Restarting at that idle boundary resumed the same campaign. Daily waits now honor the persisted UTC deadline rather than elapsed monotonic time, which can freeze during VM suspension. Provider Retry-After remains elapsed time; daily ledgers, provider selection, scoring, finite retries and model remain unchanged. Deterministic suspension/retry regressions passed.
+
+Independent AI review caught missing-summary/split/count guards in the first arithmetic-auditor implementation; they were corrected, with deliberately corrupted score/summary/split regression cases. A preliminary gate ran while these review refinements were still being made, so it was not used as final-source evidence. The final functional and complete scanner gates were rerun after source freeze and both bind to the source above.
+
+Live free-provider quality status: **quota_wait**; requested cases: 37; fully judged cases: **35**. This is an incomplete checkpoint, not a representative complete benchmark. Mean context precision / context recall / faithfulness over the 35 completed cases: **0.852857 / 0.862857 / 0.842901**. The same model family answered and judged; human factual-support review remains separate. Raw responses, passages and original metric configurations are preserved in `live-ragas.json`; q001 faithfulness remains 0.7083 and its support limitations remain in `ANSWER_REVIEW.md`.
+
+The independent auditor recomputed 86 saved metric values from actual judge JSON; 19 legacy metrics remain explicitly unverified at the RPC-verdict level. All eight frozen arithmetic cases passed exact-decimal expected answers. No human certification, general answer-accuracy claim or paid-service use is inferred. GitHub CLI account and commit author/committer identities were checked read-only. Publication remains the owner’s explicit command.
+
+The final free-budget checkpoint has 183,294 actual tokens used, zero outstanding reservations and a 200,000-token daily cap. The next call requires a conservative 17,000-token reservation, exceeding the remaining 16,706. No ledger was cleared or cap raised. The remaining q049/q050 evaluations are retained; the corrected campaign waits until approximately 2026-10-26 00:01 UTC (05:31 IST), subject to actual provider availability and Docker remaining online. `campaign-budget-status.json` records the read-only state. The delivery is a 35/37 checkpoint, not a completed 37-case claim.
+
+
+## Isolated protocol and strict release implementation — 25 October 2026
+
+A new requirement audit found that the legacy live evaluator shared a conversation across questions and judge RPCs and only exercised the default reranked mode. Legacy scores are preserved, not silently promoted to a clean four-mode comparison. The new protocol isolates each generation attempt, including recovery from an orphan committed before its JSON receipt; the graph rejects contaminated history. It freezes scorer locks/versions, actual model assets, application/hardener hashes and exact-prompt cache policy. Research and judge provenance are exported and independently checked. Missing provenance is not invented for historical rows.
+
+Typed authenticated campaign routes and UI states now expose progress, quota waits, configuration, recorded text and metric traces. OpenAPI-generated type drift is checked. Forty-one versioned requirement definitions plus completion gates distinguish executed cases, current source evidence, owner dependencies and unfinished free measurements. Finalization and direct publication share exact-secret, public-file, staged-tree and source-fingerprint checks. Source hashing now uses explicit POSIX path order, avoiding Windows-versus-Linux ordering differences.
+
+Independent review found stale-audit, truncated-review, staging-race, orphan-conversation and publication-preflight gaps; each received a correction and regression checks. Preliminary targeted suites passed 46 and then 29 cases at their respective snapshots; these are not substitutes for final-source full verification. Simulated 148-row fixtures exercise arithmetic/coverage and do not constitute live evaluation evidence. Assistant/human review fields are never auto-filled. Fresh full gates and measurements remain required by RELEASE_STATUS.md.
+# 26 October release continuation
+
+Authorized daily follow-ups are configured in the owner's app for 07:00 IST until local acceptance completes. The free-only Docker sequence remains the evaluation executor. Neither scheduling nor a quota wait establishes measurement completion.
+
+Reconciled three requirement patterns with pytest's actual parameterized JUnit names. Each function has three recorded successful executions; the patterns now require the literal parameter bracket after the exact module/function prefix. The independent AI reviewer inspected the correction. Fresh source-bound gates are required.
+
+The refreshed complete image gate identified HIGH CVE-2026-92392 in the PostgreSQL image's libcurl 8.22.0-r0. Preserved the failed summary and raw finding under `evaluation/results/historical/security-libcurl-finding.json` and `security-postgres-libcurl.json`. Pinned libcurl 8.23.0-r0 in `infra/postgres.Dockerfile`; the rebuild upgraded the package and the database restarted on its existing volume as the non-root postgres user. The independent AI reviewer inspected this narrow fix. Final clearance depends on fresh complete scans and runtime checks, not the package declaration alone. The generator, scorer, historical answers and frozen evaluation data were not changed.
+
+The legacy campaign advanced to 36/37 before the quiet verification pause. Compared all 35 previously completed rows against the prior audited checkpoint: answers, scores and configurations were unchanged, and frozen dataset hashes matched. All four isolated protocol preflights validated the selected 37 cases and local model/scorer assets without provider calls. Complete legacy/isolated acceptance and answer support review remain required; see `RELEASE_STATUS.md` and the raw current reports.
+

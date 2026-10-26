@@ -1,6 +1,7 @@
 """Portable, standard-library-only Docker orchestrator. Application code runs in containers."""
 import argparse
 import getpass
+import hashlib
 import json
 import os
 import re
@@ -161,6 +162,7 @@ def verify_locked():
         ["--profile", "test", "run", "--rm", "--no-deps", "tests", "ruff", "check", "."],
         ["--profile", "test", "run", "--rm", "--no-deps", "tests", "alembic", "check"],
         ["--profile", "test", "run", "--rm", "--no-deps", "tests", "python", "-m", "quarry.contract"],
+        ["--profile", "test", "run", "--rm", "--no-deps", "browser-tests", "node", "contract/check-api.cjs", "contract/openapi.json", "contract/api.generated.ts"],
         ["--profile", "test", "run", "--rm", "--no-deps", "tests"],
         ["--profile", "test", "run", "--rm", "--no-deps", "browser-tests", "node", "security/review-probes/bff-patch.cjs"],
         ["--profile", "test", "run", "--rm", "--no-deps", "browser-tests"],
@@ -190,6 +192,12 @@ def verify_locked():
     if not failure:
         report['critical_coverage'] = coverage_gate()
         failure = report['critical_coverage']['status'] != 'passed'
+    junit = ROOT/'evaluation/results/backend-junit.xml'
+    if not failure and junit.exists():
+        report['backend_junit_sha256'] = hashlib.sha256(junit.read_bytes()).hexdigest()
+    if report['source_sha256'] != fingerprint():
+        failure = True
+        report['source_changed_during_checks'] = True
     report["status"] = "failed" if failure else "passed"
     (ROOT / "evaluation/results/verification.json").write_text(json.dumps(report, indent=2))
     scan()
@@ -230,6 +238,10 @@ def publish(owner):
     login = run([gh, "api", "user", "--jq", ".login"], capture=True).stdout.strip()
     if login != owner:
         raise SystemExit("GitHub authentication does not match the intended owner")
+    from finalize import audit_candidates, audit_tree, readiness
+    ready = readiness()
+    if ready["status"] != "complete":
+        raise SystemExit("Local acceptance is incomplete; all isolated campaigns and current release gates must pass before publication")
     artifact = ROOT / "evaluation/results/verification.json"
     if not artifact.exists() or json.loads(artifact.read_text())["status"] != "passed":
         raise SystemExit("Run the verification command successfully before publishing")
@@ -257,25 +269,37 @@ def publish(owner):
         raise SystemExit("Repository already exists; refusing to overwrite it")
     if run(["git", "remote"], capture=True).stdout.strip():
         raise SystemExit("A remote already exists; refusing to repoint it")
+    audit_candidates()
     run(["git", "add", "."])
+    audited_tree = run(['git','write-tree'],capture=True).stdout.strip()
+    audit_tree(audited_tree,ready['source_sha256'])
     if run(["git", "diff", "--cached", "--quiet"], check=False).returncode:
         run(["git", "-c", "commit.gpgsign=false", "commit", "-m", "Build Quarry engineering research workspace"])
     identity = run(['git','log','-1','--format=%an|%ae|%cn|%ce'],capture=True).stdout.strip()
     if identity != 'Rishab Chetal|rishabchetal@gmail.com|Rishab Chetal|rishabchetal@gmail.com':
         raise SystemExit('Final commit attribution audit failed; no repository was created')
+    if fingerprint() != ready['source_sha256'] or readiness()['status'] != 'complete':
+        raise SystemExit('Source or acceptance evidence changed during publication checks; no remote repository was created')
     run([gh, "repo", "create", f"{owner}/quarry", "--public", "--source", ".", "--remote", "origin", "--push"])
     print(f"Published https://github.com/{owner}/quarry")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["up", "down", "doctor", "verify", "benchmark", "scan", "configure-groq", "publish", "loadtest", "backup", "restore-test", "create-owner", "retention"])
+    parser.add_argument("command", choices=["up", "down", "doctor", "verify", "benchmark", "scan", "configure-groq", "publish", "loadtest", "backup", "restore-test", "clean-test", "finalize", "create-owner", "retention"])
     parser.add_argument("--owner", default="rishicodes576")
     parser.add_argument("--live", action="store_true", help="Explicitly enable free-key live answer evaluation")
     parser.add_argument("--until-complete", action="store_true", help="Run the free campaign in a background container, pausing at quota resets")
+    parser.add_argument("--campaign", choices=["all", "legacy", "isolated-v2"], default="all")
+    parser.add_argument("--modes", nargs="+", choices=["dense", "bm25", "hybrid", "hybrid_rerank"])
+    parser.add_argument("--checkpoint", action="store_true", help="Package an explicitly incomplete checkpoint instead of a final release")
     args = parser.parse_args()
     if args.until_complete and (args.command != "benchmark" or not args.live):
         parser.error('--until-complete requires benchmark --live')
+    if (args.campaign != 'all' or args.modes) and (args.command != 'benchmark' or not args.live):
+        parser.error('Campaign/mode selection requires benchmark --live')
+    if args.checkpoint and args.command != 'finalize':
+        parser.error('--checkpoint requires finalize')
     if args.command == "up":
         up()
     elif args.command == "down":
@@ -288,15 +312,23 @@ def main():
         scan()
     elif args.command == "benchmark":
         compose("--profile", "evaluation", "build", "evaluate")
+        selection = ['--campaign',args.campaign, *(['--modes',*args.modes] if args.modes else [])]
         if args.until_complete:
+            if args.campaign != 'all' or args.modes:
+                parser.error('Background campaign runs the complete legacy/all-mode sequence; use foreground --live for selected modes')
             compose('--profile','evaluation','up','--detach','--no-deps','evaluation-campaign')
-            print('Free evaluation campaign started. Progress: evaluation/results/live-ragas.json. It pauses at quotas; no provider switch is allowed.')
+            print('Free legacy and isolated/all-mode sequence started. Reports under evaluation/results; it pauses at quotas without changing providers.')
         else:
-            compose("--profile", "evaluation", "run", "--rm", "--no-deps", "evaluate", "python", "-m", "quarry.benchmark", *(["--live"] if args.live else []))
+            compose("--profile", "evaluation", "run", "--rm", "--no-deps", "evaluate", "python", "-m", "quarry.benchmark", *(["--live",*selection] if args.live else []))
         if not args.live:
             compose('--profile','evaluation','run','--rm','--no-deps','evaluate','python','-m','quarry.agent_eval')
     elif args.command == "loadtest":
         run([sys.executable, str(ROOT / "scripts/loadtest.py")])
+    elif args.command == "clean-test":
+        run([sys.executable,str(ROOT/'scripts/clean_rehearsal.py')])
+    elif args.command == "finalize":
+        from finalize import run as finalize_release
+        finalize_release(checkpoint=args.checkpoint)
     elif args.command in {"backup", "restore-test"}:
         run([sys.executable,str(ROOT/'scripts/backup.py'),*(['--rehearse'] if args.command=='restore-test' else [])])
     elif args.command == "retention":

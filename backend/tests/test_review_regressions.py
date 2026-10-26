@@ -274,6 +274,29 @@ def test_campaign_resumes_only_quota_failures(monkeypatch, tmp_path):
     assert run.call_count == 1
 
 
+def test_daily_quota_wait_honors_utc_reset_after_host_suspension(monkeypatch):
+    before = datetime(2026, 10, 24, 23, 59, tzinfo=UTC)
+    resume_at = datetime(2026, 10, 25, 0, 1, tzinfo=UTC)
+    after = datetime(2026, 10, 25, 7, 24, tzinfo=UTC)
+    clock = Mock()
+    clock.now.side_effect = [before, after]
+    monkeypatch.setattr(live_eval, "datetime", clock)
+    sleep = Mock()
+    monkeypatch.setattr(live_eval.time, "sleep", sleep)
+    # A suspended VM need not advance monotonic time; daily UTC reset still passed.
+    monkeypatch.setattr(live_eval.time, "monotonic", lambda: 1)
+    live_eval.wait_for_quota_reset({"scope": "deployment"}, resume_at, 120)
+    sleep.assert_called_once_with(30)
+
+
+def test_provider_quota_wait_uses_elapsed_retry_hint(monkeypatch):
+    monkeypatch.setattr(live_eval.time, "monotonic", Mock(side_effect=[1, 1, 31, 61]))
+    sleep = Mock()
+    monkeypatch.setattr(live_eval.time, "sleep", sleep)
+    live_eval.wait_for_quota_reset({"scope": "provider"}, None, 60)
+    assert [call.args[0] for call in sleep.call_args_list] == [30, 30]
+
+
 def test_campaign_rejects_mixing_a_changed_model(monkeypatch, tmp_path):
     (tmp_path / "results").mkdir()
     monkeypatch.setattr(live_eval, "ROOT", tmp_path)

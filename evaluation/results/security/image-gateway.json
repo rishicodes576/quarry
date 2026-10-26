@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a16b0d-111d-7017-8cb5-a50fea2dd5de",
-  "CreatedAt": "2026-10-23T23:16:20.893009824Z",
+  "ReportID": "01a17758-c210-7581-8b4c-e28bfa968118",
+  "CreatedAt": "2026-10-26T08:34:27.984366139Z",
   "ArtifactID": "sha256:ec4c78c197def808302a8e3b4f742c2823b41dc9cace5fb5a428166aa3704181",
   "ArtifactName": "/images/gateway.tar",
   "ArtifactType": "container_image",

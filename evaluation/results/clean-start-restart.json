@@ -1,7 +1,7 @@
 {
   "status": "passed",
-  "project": "quarry-clean-final-20261024",
-  "source_sha256": "4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407",
+  "project": "quarry-clean-2e97de07053b",
+  "source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
   "method": "Fresh isolated project volumes with shared read-only verified model cache. Clean startup, durable PostgreSQL marker, stop/start, marker and readiness verification. Primary data untouched.",
   "paid_calls": 0,
   "first_services": [
@@ -119,5 +119,5 @@
     }
   ],
   "persistent_marker_verified": true,
-  "seconds": 132.65
+  "seconds": 137.53
 }

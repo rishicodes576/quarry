@@ -5,6 +5,7 @@ import json
 import os
 import tarfile
 import time
+import uuid
 from pathlib import Path
 
 from manage import ROOT, compose, docker, redact, run, scan
@@ -15,16 +16,15 @@ def source_snapshot(folder, output):
     """Copy all public source, including uncommitted files, onto native scanner storage."""
     before = fingerprint()
     archive = folder/'source.tar'
-    excluded = {'.git','.runtime','.venv','node_modules','.next','__pycache__','.pytest_cache',
-                '.ruff_cache','htmlcov','data','test-results','playwright-report'}
+    excluded = {'.git','.runtime','.venv','node_modules','.next','__pycache__','.pytest_cache','.ruff_cache'}
     files = {}
     with tarfile.open(archive,'w') as target:
         for directory, directories, names in os.walk(ROOT):
             relative_folder=Path(directory).relative_to(ROOT).as_posix()
             directories[:] = [d for d in directories if d not in excluded and
                                not d.endswith('.egg-info') and (relative_folder,d)
-                               not in {('evaluation','results'),('docs','assets')}]
-            if any((Path(directory)/d).is_symlink() for d in directories):
+                               not in {('evaluation','results'),('docs','assets'),('.','data'),('.','htmlcov'),('.','test-results'),('.','playwright-report'),('frontend','test-results'),('frontend','playwright-report')}]
+            if any((Path(directory)/d).is_symlink() or getattr(Path(directory)/d,'is_junction',lambda:False)() for d in directories):
                 raise SystemExit('Resolve source directory symlinks before scanning')
             for name in names:
                 path=Path(directory)/name
@@ -32,7 +32,7 @@ def source_snapshot(folder, output):
                     continue
                 if path.suffix in {'.pyc','.log','.tsbuildinfo'} or name=='.coverage':
                     continue
-                if path.is_symlink():
+                if path.is_symlink() or getattr(path,'is_junction',lambda:False)():
                     raise SystemExit('Resolve source symlinks before scanning: '+str(path.relative_to(ROOT)))
                 relative=path.relative_to(ROOT).as_posix()
                 files[relative]=hashlib.sha256(path.read_bytes()).hexdigest()
@@ -110,15 +110,24 @@ def main():
         for name in ['backend','web','objectstore','gateway','postgres','qdrant','searxng','mailpit']:
             archive = folder/(name+'.tar')
             image = f'quarry-{name}:local'
+            scanner_name='quarry-image-audit-'+uuid.uuid4().hex
+            temporary=output/('.image-'+name+'-'+uuid.uuid4().hex+'.json')
             print(f'Scanning built image {image}…',flush=True)
             run([docker(),'image','save','--output',str(archive),image])
             try:
-                command = [docker(),'run','--rm',*mount,*cache,'--mount',f'type=bind,source={folder},target=/images,readonly',images['trivy'],'image','--input',f'/images/{name}.tar','--scanners','vuln','--severity','HIGH,CRITICAL','--exit-code','1','--format','json','--output',f'/reports/image-{name}.json']
+                # Write on native container storage. Direct overwrite of a Windows
+                # bind-mounted report can fail with EINVAL despite a completed scan.
+                command = [docker(),'run','--name',scanner_name,*cache,'--mount',f'type=bind,source={folder},target=/images,readonly',images['trivy'],'image','--input',f'/images/{name}.tar','--scanners','vuln','--severity','HIGH,CRITICAL','--exit-code','1','--format','json','--output','/tmp/quarry-image.json']
                 result = run(command,capture=True,check=False)
-                (output/f'image-{name}.log').write_text(redact(result.stdout+result.stderr),encoding='utf-8')
-                report['steps'].append({'name':f'image-{name}','exit_code':result.returncode,'image':image,'gate_passed':result.returncode==0})
+                copied=run([docker(),'cp',scanner_name+':/tmp/quarry-image.json',str(temporary)],capture=True,check=False)
+                if copied.returncode==0:
+                    temporary.replace(output/f'image-{name}.json')
+                (output/f'image-{name}.log').write_text(redact(result.stdout+result.stderr+copied.stderr),encoding='utf-8')
+                report['steps'].append({'name':f'image-{name}','exit_code':result.returncode,'image':image,'report_copied':copied.returncode==0,'gate_passed':result.returncode==0 and copied.returncode==0})
                 print(f'Image {name}: exit {result.returncode}',flush=True)
             finally:
+                run([docker(),'rm','--force',scanner_name],capture=True,check=False)
+                temporary.unlink(missing_ok=True)
                 archive.unlink(missing_ok=True)
     report['status'] = 'passed' if all(s['gate_passed'] for s in report['steps']) else 'findings_or_error'
     report['known_optional_package_findings_present']=any('disposition' in step for step in report['steps'])

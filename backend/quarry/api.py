@@ -16,7 +16,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import load_only
 
-from quarry import providers, retrieval, storage
+from quarry import campaigns, providers, retrieval, storage
 from quarry.config import settings
 from quarry.db import (
     Chunk,
@@ -34,6 +34,8 @@ from quarry.db import (
 from quarry.network import FetchError, fetch_public
 from quarry.queue import admit, enqueue, event
 from quarry.schemas import (
+    CampaignDetail,
+    CampaignSummary,
     ConversationInput,
     ConversationOut,
     DocumentOut,
@@ -744,3 +746,21 @@ def evaluations(user: User = Depends(current_user)):
             "results": [],
         }
     return json.loads(target.read_text())
+
+
+@app.get("/v1/evaluations/campaigns", response_model=list[CampaignSummary])
+def evaluation_campaigns(user: User = Depends(current_user)):
+    try:
+        return campaigns.summaries()
+    except (ValueError, OSError):
+        raise HTTPException(503, "Saved evaluation reports are unavailable or invalid") from None
+
+
+@app.get("/v1/evaluations/campaigns/{campaign_id}", response_model=CampaignDetail)
+def evaluation_campaign(campaign_id: str, user: User = Depends(current_user)):
+    if campaign_id not in campaigns.IDS:
+        raise HTTPException(404, "Evaluation campaign not found")
+    try:
+        return campaigns.detail(campaign_id)
+    except (ValueError, OSError):
+        raise HTTPException(503, "Saved evaluation report is unavailable or invalid") from None

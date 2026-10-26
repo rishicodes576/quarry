@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-10-23T23:12:22Z",
-  "source_sha256": "0f0f03ed2478dbd33108e5ddeb8053d2d649e3ff694cb039f72fa9517638060e",
+  "created_at": "2026-10-26T08:30:00Z",
+  "source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
   "images": {
     "semgrep": "semgrep/semgrep@sha256:3db5c7af55eb1f512eac0abf0ab69a97b52c74b5e9a27314c221aee1a78d7ab2",
     "trivy": "ghcr.io/aquasecurity/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
@@ -10,97 +10,105 @@
     {
       "name": "semgrep",
       "exit_code": 0,
-      "seconds": 22.82,
-      "log_sha256": "0dd88cf71b274c4902a766637480c1b7f4deebeb48f3710e2f3b5a3ee538831c",
+      "seconds": 36.33,
+      "log_sha256": "025031e5c66d7e1ccc8842f077f5b93be767b74bfbf46696c59849c6d22618a0",
       "gate_passed": true
     },
     {
       "name": "trivy-filesystem",
       "exit_code": 0,
-      "seconds": 4.08,
-      "log_sha256": "4a2e91b3f68f8e2ee893d6b5a26ad45e29cca5e79cc586a86711f0c47b6b0b9d",
+      "seconds": 4.87,
+      "log_sha256": "d6405b4f2123508655322d6ca67ae02d36c4ba249d714cc88c107497de854b44",
       "gate_passed": true
     },
     {
       "name": "pip-audit",
       "exit_code": 0,
-      "seconds": 14.26,
-      "log_sha256": "66b8c887faeff86d83e71691b719e84465754b4980be43e195fc97ebd9dcc3df",
+      "seconds": 11.04,
+      "log_sha256": "67810c7469ff6e5bf6c2a296144f5a50874f03ce4e7818f30bff076996bf8087",
       "gate_passed": true
     },
     {
       "name": "pip-audit-dev",
       "exit_code": 0,
-      "seconds": 9.77,
-      "log_sha256": "eb177c073618dfc0c562194b79a2c5eeb7befbca3babe03434ee74ef75d5658c",
+      "seconds": 11.65,
+      "log_sha256": "2659ff484f4729d490c64c282495958376df918bf7050327c743aacaa25dd21e",
       "gate_passed": true
     },
     {
       "name": "pip-audit-eval",
       "exit_code": 1,
-      "seconds": 13.86,
-      "log_sha256": "1724adc03fbce00229b2ce1fd96d50745e3a8d26c544a873eea41331da761880",
+      "seconds": 13.45,
+      "log_sha256": "1af67d57b91dc296067b729714f06988809d99231425484fd77ee1e9461335c1",
       "gate_passed": true,
       "disposition": "Locally patched optional components; vulnerable capabilities removed and exploit-negative checks passed. Raw package findings remain present. See security/EVALUATOR_MITIGATIONS.md."
     },
     {
       "name": "zap-baseline",
       "exit_code": 0,
-      "seconds": 79.19,
-      "log_sha256": "9f5dac79be61f69ff90a9b23f075b24f70a2711afaab0e9812e1582d5312291f",
+      "seconds": 77.52,
+      "log_sha256": "4f20ea2976a05534bb7ff99eb822e6efeb2406036d6f073d0bcbfb5ef8e22e3d",
       "gate_passed": true
     },
     {
       "name": "image-backend",
       "exit_code": 0,
       "image": "quarry-backend:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-web",
       "exit_code": 0,
       "image": "quarry-web:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-objectstore",
       "exit_code": 0,
       "image": "quarry-objectstore:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-gateway",
       "exit_code": 0,
       "image": "quarry-gateway:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-postgres",
       "exit_code": 0,
       "image": "quarry-postgres:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-qdrant",
       "exit_code": 0,
       "image": "quarry-qdrant:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-searxng",
       "exit_code": 0,
       "image": "quarry-searxng:local",
+      "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-mailpit",
       "exit_code": 0,
       "image": "quarry-mailpit:local",
+      "report_copied": true,
       "gate_passed": true
     }
   ],
-  "source_snapshot": "a5b4366a24561ab22a1741d32307542b78e0430f61cbc3bae277309cb1c60c12",
-  "source_file_count": 143,
+  "source_snapshot": "2aa8c1d0d2eea5e5c25c12573919e6a8f0b2094f3704325c6dd426c789033c95",
+  "source_file_count": 160,
   "scope": "Local source and optional unauthenticated loopback deployment. No model provider calls.",
   "rules": "Public Semgrep community packs and Trivy databases retrieved at run time; reports preserve tool/rule metadata.",
   "status": "passed",

@@ -205,11 +205,22 @@ def main():
     parser.add_argument("--split", choices=["all", "dev", "test"], default="all")
     parser.add_argument("--live", action="store_true")
     parser.add_argument("--until-complete", action="store_true")
+    parser.add_argument("--campaign", choices=["all", "legacy", "isolated-v2"], default="all")
+    parser.add_argument("--modes", nargs="+", choices=["dense", "bm25", "hybrid", "hybrid_rerank"])
     args = parser.parse_args()
     if args.live:
-        from quarry.live_eval import run_live
+        from quarry.campaign_runner import run_suite
 
-        run_live(until_complete=args.until_complete)
+        result = run_suite(until_complete=args.until_complete, campaign=args.campaign, modes=args.modes)
+        if result["status"] != "completed":
+            raise SystemExit("Live campaign is incomplete; retained checkpoints are available for explicit resume")
+        if args.campaign == "all" and not args.modes:
+            from quarry.campaign_audit import audit_suite
+            from quarry.metric_audit import audit, export_judges
+
+            export_judges(ROOT)
+            audit(ROOT, require_complete=True)
+            audit_suite(ROOT, export=True, require_complete=True)
     else:
         artifact = run(args.split)
         if artifact["status"] != "completed":

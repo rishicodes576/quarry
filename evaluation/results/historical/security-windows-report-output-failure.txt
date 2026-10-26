@@ -1,0 +1,4 @@
+2026-10-25T15:12:37Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-25T15:12:58Z	INFO	Number of language-specific files	num=1
+2026-10-25T15:12:58Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-10-25T15:12:58Z	FATAL	Fatal error	run error: report error: unable to write results: failed to create a file: failed to create output file: open /reports/image-searxng.json: invalid argument

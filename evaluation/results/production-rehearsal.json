@@ -14,7 +14,7 @@
     "session_revoked": true
   },
   "paid_calls": 0,
-  "source_sha256": "4d3282767fdb0775d91ebce2c792b2c32f8d72db6aafe8581067efe5d2537407",
+  "source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
   "scope": "Isolated loopback production-mode HTTPS and STARTTLS with a private test CA. No public ACME, Internet SMTP or cloud deployment claim.",
-  "seconds": 88.43
+  "seconds": 90.15
 }

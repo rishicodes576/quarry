@@ -1,0 +1,116 @@
+{
+  "created_at": "2026-10-26T08:21:01Z",
+  "source_sha256": "0235deaef91c4c82b4b3a4c5f41277d495dd617926cdabfd08e823e78d988fcf",
+  "images": {
+    "semgrep": "semgrep/semgrep@sha256:3db5c7af55eb1f512eac0abf0ab69a97b52c74b5e9a27314c221aee1a78d7ab2",
+    "trivy": "ghcr.io/aquasecurity/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
+    "zap": "ghcr.io/zaproxy/zaproxy@sha256:5ccfff9a411743ab2615136a2edd7416bec9ce41572fa94e935df38c14adb2b6"
+  },
+  "steps": [
+    {
+      "name": "semgrep",
+      "exit_code": 0,
+      "seconds": 43.87,
+      "log_sha256": "025031e5c66d7e1ccc8842f077f5b93be767b74bfbf46696c59849c6d22618a0",
+      "gate_passed": true
+    },
+    {
+      "name": "trivy-filesystem",
+      "exit_code": 0,
+      "seconds": 60.62,
+      "log_sha256": "128350fe7ab3c32b78e283aac61c670c15b86a3effb96ef6c8d109afb2da0aa6",
+      "gate_passed": true
+    },
+    {
+      "name": "pip-audit",
+      "exit_code": 0,
+      "seconds": 12.87,
+      "log_sha256": "c509eec990dcf23405599c3783a1ae5de37fac8ad4412dc1e4c47cddab379a10",
+      "gate_passed": true
+    },
+    {
+      "name": "pip-audit-dev",
+      "exit_code": 0,
+      "seconds": 12.72,
+      "log_sha256": "497215b1aef03eda22066867ee5f00fef2682aced7d9f1ee63752cdfea0ce8e8",
+      "gate_passed": true
+    },
+    {
+      "name": "pip-audit-eval",
+      "exit_code": 1,
+      "seconds": 12.92,
+      "log_sha256": "df9c258aa1988f4760065b5cd9ac032e5296d5fc4fce1d2dcb7404c29f89092c",
+      "gate_passed": true,
+      "disposition": "Locally patched optional components; vulnerable capabilities removed and exploit-negative checks passed. Raw package findings remain present. See security/EVALUATOR_MITIGATIONS.md."
+    },
+    {
+      "name": "zap-baseline",
+      "exit_code": 0,
+      "seconds": 77.36,
+      "log_sha256": "50ee93d464189db36c47422404c0001bcf89568b68cd78ba15a9657039ffadbd",
+      "gate_passed": true
+    },
+    {
+      "name": "image-backend",
+      "exit_code": 0,
+      "image": "quarry-backend:local",
+      "report_copied": true,
+      "gate_passed": true
+    },
+    {
+      "name": "image-web",
+      "exit_code": 0,
+      "image": "quarry-web:local",
+      "report_copied": true,
+      "gate_passed": true
+    },
+    {
+      "name": "image-objectstore",
+      "exit_code": 0,
+      "image": "quarry-objectstore:local",
+      "report_copied": true,
+      "gate_passed": true
+    },
+    {
+      "name": "image-gateway",
+      "exit_code": 0,
+      "image": "quarry-gateway:local",
+      "report_copied": true,
+      "gate_passed": true
+    },
+    {
+      "name": "image-postgres",
+      "exit_code": 1,
+      "image": "quarry-postgres:local",
+      "report_copied": true,
+      "gate_passed": false
+    },
+    {
+      "name": "image-qdrant",
+      "exit_code": 0,
+      "image": "quarry-qdrant:local",
+      "report_copied": true,
+      "gate_passed": true
+    },
+    {
+      "name": "image-searxng",
+      "exit_code": 0,
+      "image": "quarry-searxng:local",
+      "report_copied": true,
+      "gate_passed": true
+    },
+    {
+      "name": "image-mailpit",
+      "exit_code": 0,
+      "image": "quarry-mailpit:local",
+      "report_copied": true,
+      "gate_passed": true
+    }
+  ],
+  "source_snapshot": "10e4006c9dfa675223703c6e65e6ed26d655edbd04278d2545cb27ff68859bcb",
+  "source_file_count": 160,
+  "scope": "Local source and optional unauthenticated loopback deployment. No model provider calls.",
+  "rules": "Public Semgrep community packs and Trivy databases retrieved at run time; reports preserve tool/rule metadata.",
+  "status": "findings_or_error",
+  "known_optional_package_findings_present": true
+}

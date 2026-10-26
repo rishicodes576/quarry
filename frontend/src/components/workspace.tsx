@@ -38,6 +38,7 @@ import {
 import AuthScreen from "./auth-screen";
 import AccountSecurity from "./account-security";
 import CapacityControls from "./capacity-controls";
+import CampaignResults from "./campaign-results";
 import {
   api,
   ApiError,
@@ -1858,6 +1859,7 @@ function Evaluations({ report }: { report: (e: unknown) => void }) {
           </span>
         </div>
       )}
+      <CampaignResults report={report} />
       <div className="evaluation-notes">
         <section className="panel">
           <h3>

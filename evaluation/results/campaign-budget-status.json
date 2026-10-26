@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-10-25T07:54:44.696644+00:00",
+  "day_utc": "2026-10-25",
+  "used_tokens": 183294,
+  "reserved_tokens": 0,
+  "daily_cap": 200000,
+  "next_call_conservative_reservation": 17000,
+  "paid_adapters_enabled": false,
+  "free_plan_owner_attested": true,
+  "scope": "Read-only local ledger snapshot; key billing status cannot be inferred"
+}

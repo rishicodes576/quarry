@@ -91,3 +91,12 @@ Referenced objects are protected, including retained deleted/superseded rows. Ob
 ## Public Oracle handoff
 
 Follow [Oracle deployment acceptance](ORACLE_DEPLOYMENT.md). The owner must create/verify the free account and privately configure an eligible free mail sender. No public host is currently provisioned. The private deployment-mail template is separate from the local Mailpit configuration. The local campaign selects 200,000 daily tokens and 15-second spacing; defaults remain 100,000 and 60 seconds. Provider backoff and both daily ledgers are retained; consult the campaign budget artifact before changing these finite limits.
+
+
+## Daily-budget waits after host suspension
+
+The campaign records an absolute UTC resume time. Daily workspace/deployment waits now poll that UTC deadline so a suspended Docker VM does not keep waiting for elapsed monotonic time after the daily reset has already passed. Provider Retry-After hints continue to use elapsed time. Quota enforcement remains in the provider transaction; waking the campaign does not clear usage or grant extra tokens. Every poll sleeps at most 30 seconds.
+
+If an older campaign image remains asleep after its recorded reset, inspect running jobs/reservations first. At an idle quota-wait boundary, restart the evaluation service; completed answers, metric checkpoints and prompt/configuration-bound judge responses remain stored. Avoid interrupting a live request merely to refresh progress. Rebuild/update a stopped campaign before the next run to pick up fixes.
+
+Public-host provisioning and the owner's Gmail sender configuration are explicitly deferred; see `DEPLOYMENT_LATER.md`. The GitHub source release and local audit do not depend on an Internet SMTP account.

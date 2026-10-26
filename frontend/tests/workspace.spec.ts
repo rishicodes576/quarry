@@ -406,3 +406,91 @@ test("public signup and password recovery deliver real local email and require v
   ).toBeVisible();
   await separate.close();
 });
+
+test("live campaign progress, quota state, safe passages and recoverable errors", async ({
+  page,
+}) => {
+  await login(page);
+  await page.getByRole("button", { name: "Evaluations", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Live answer-quality campaigns" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("combobox", { name: "Campaign", exact: true }),
+  ).toBeVisible();
+  await page.route(
+    "**/api/v1/evaluations/campaigns/isolated-v2-dense",
+    (route) =>
+      route.fulfill({
+        json: {
+          id: "isolated-v2-dense",
+          mode: "dense",
+          protocol: "isolated-v2",
+          status: "pending",
+          completed: 0,
+          requested: 37,
+          provider: "groq",
+          model: "openai/gpt-oss-120b",
+          means: {},
+          limitations: ["Simulated empty-state fixture"],
+          rows: [],
+        },
+      }),
+  );
+  await page
+    .getByRole("combobox", { name: "Campaign", exact: true })
+    .selectOption("isolated-v2-dense");
+  await expect(
+    page.getByText("No scored answers yet.", { exact: false }),
+  ).toBeVisible();
+  await page
+    .getByRole("combobox", { name: "Campaign", exact: true })
+    .selectOption("legacy");
+  await expect(page.getByText(/fully scored/)).toBeVisible();
+  const attack = '<img src=x onerror="window.quarryInjected=true">';
+  await page.route("**/api/v1/evaluations/campaigns/legacy", async (route) => {
+    await route.fulfill({
+      json: {
+        id: "legacy",
+        mode: "hybrid_rerank",
+        protocol: "legacy-shared-conversation",
+        status: "partial",
+        completed: 0,
+        requested: 37,
+        provider: "groq",
+        model: "openai/gpt-oss-120b",
+        means: {},
+        limitations: ["Simulated browser safety fixture"],
+        rows: [
+          {
+            case_id: "xss-fixture",
+            run_id: "fixture",
+            response: attack,
+            contexts: [attack],
+            metrics: {},
+          },
+        ],
+      },
+    });
+  });
+  await page.getByRole("button", { name: "Refresh campaigns" }).click();
+  await page.locator("summary").filter({ hasText: "xss-fixture" }).click();
+  await expect(page.getByText(attack, { exact: true })).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => (window as unknown as { quarryInjected?: boolean }).quarryInjected,
+    ),
+  ).toBeUndefined();
+  await page.route("**/api/v1/evaluations/campaigns", (route) =>
+    route.abort("failed"),
+  );
+  await page.getByRole("button", { name: "Refresh campaigns" }).click();
+  await expect(
+    page.getByRole("button", { name: "Retry campaign results" }),
+  ).toBeVisible();
+  await page.unroute("**/api/v1/evaluations/campaigns");
+  await page.getByRole("button", { name: "Retry campaign results" }).click();
+  await expect(
+    page.getByRole("combobox", { name: "Campaign", exact: true }),
+  ).toBeVisible();
+});

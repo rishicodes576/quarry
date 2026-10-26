@@ -1,10 +1,9 @@
-# Evidence-backed resume options
+# Quarry — Agentic Engineering Research Platform
 
-The original resume is unchanged. Choose two or three bullets for the available space; keep the dataset and workload qualifiers when shortening them.
+Next.js, TypeScript, FastAPI, LangGraph, PostgreSQL, Qdrant, ONNX, Docker
 
-- Built Quarry, a multi-tenant engineering research platform using Next.js, FastAPI, LangGraph, PostgreSQL, Qdrant and private S3 storage, with verified signup, MFA, role-based access and recoverable fenced background jobs.
-- Compared four retrieval strategies across 480 queries on 120 frozen synthetic engineering cases; hybrid reranking achieved 0.987 Recall@5 on 75 relevance-labeled held-out cases, with complete per-case ranks, model hashes and reproducible evaluation artifacts.
-- Demonstrated 2.86x local extractive throughput when scaling from one to four workers behind two API replicas (2.23 to 6.38 runs/second; 100 requests per configuration), and verified free-tenant progress during an enterprise backlog.
-- Verified 185 backend tests, eight browser workflows and 90.647% aggregate branch coverage across critical backend modules; restored 89 source hashes and completed a cited research query in an isolated backup rehearsal.
+- Built a multi-tenant agentic research platform with document/web/Wikipedia tools, passage-level citations, verified signup, MFA, role-based access and recoverable background jobs using Next.js, FastAPI, LangGraph, PostgreSQL and Qdrant.
+- Benchmarked dense, BM25, hybrid fusion and cross-encoder reranking across **480 queries on 120 frozen synthetic engineering cases**; achieved **0.990 Recall@5** and **0.925 nDCG@5** on 100 relevance-labeled cases using local ONNX models.
+- Scaled local extractive throughput **2.49× (1.89 → 4.70 runs/s)** behind two API replicas with one/four workers (100 requests per configuration); verified **224 backend tests**, **nine browser workflows** and **90.72% aggregate critical backend branch coverage**.
 
-Supporting evidence: `RESULTS.md`, `MEASUREMENTS.md`, `AUDIT.md` and the raw JSON under `evaluation/results`. These results do not establish general answer accuracy, a production SLA, independent security certification or a completed 37-case live Ragas benchmark. Avoid the screenshot's 1.000 quality and 1.10-second generated-answer claims: they were comparison targets and were not established as representative Quarry results.
+Evidence: [current local measurements](CURRENT_LOCAL_EVIDENCE.md), [verification](../evaluation/results/verification.json), [scaling](../evaluation/results/scaling.json) and [retrieval records](../evaluation/results/latest.json). These are local measurements, not public capacity or independently human-validated answer accuracy. Keep the synthetic-corpus and extractive-workload qualifiers when shortening the bullets. The original resume remains unchanged.

@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a16b0e-29ae-73ae-b6bc-05406cf4b471",
-  "CreatedAt": "2026-10-23T23:17:32.718262391Z",
+  "ReportID": "01a1775c-482a-7d9d-a443-fa7c93f8a718",
+  "CreatedAt": "2026-10-26T08:38:18.922897119Z",
   "ArtifactID": "sha256:71598fb116c19e1dee3bb7b18a4bb10a3f3ad806d0c3ae014e2e255b7ef0a2a3",
   "ArtifactName": "/images/searxng.tar",
   "ArtifactType": "container_image",

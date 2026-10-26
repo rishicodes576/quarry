@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-10-23T23:12:23Z",
-  "source_sha256": "0f0f03ed2478dbd33108e5ddeb8053d2d649e3ff694cb039f72fa9517638060e",
+  "created_at": "2026-10-26T08:29:51Z",
+  "source_sha256": "747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546",
   "steps": [
     {
       "command": [
@@ -13,8 +13,8 @@
         "browser-tests"
       ],
       "exit_code": 0,
-      "seconds": 4.51,
-      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 5.32kB 0.0s done\n#1 DONE 0.0s\n\n#2 [browser-tests internal] load build definition from Dockerfile\n#2 transferring dockerfile: 1.65kB 0.0s done\n#2 DONE 0.1s\n\n#3 [tests internal] load build definition from Dockerfile\n#3 transferring dockerfile: 2.87kB 0.0s done\n#3 DONE 0.1s\n\n#4 [tests internal] load metadata for docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2\n#4 DONE 0.1s\n\n#5 [browser-tests internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#5 ...\n\n#6 [tests internal] load .dockerignore\n#6 transferring context: 265B 0.0s done\n#6 DONE 0.0s\n\n#7 [tests dependencies 1/5] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2\n#7 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 0.1s done\n#7 DONE 0.1s\n\n#8 [tests internal] load build context\n#8 transferring context: 1.23MB 0.2s done\n#8 DONE 0.2s\n\n#9 [tests dependencies 2/5] WORKDIR /app\n#9 CACHED\n\n#10 [tests dependencies 5/5] RUN --mount=type=cache,target=/root/.cache/pip pip install --require-hashes -r /tmp/requirements.lock\n#10 CACHED\n\n#11 [tests test-dependencies 1/2] COPY backend/requirements-dev.lock /tmp/requirements-dev.lock\n#11 CACHED\n\n#12 [tests dependencies 3/5] RUN groupadd --gid 10001 quarry && useradd --uid 10001 --gid quarry --create-home quarry && mkdir /data && chown quarry:quarry /data\n#12 CACHED\n\n#13 [tests dependencies 4/5] COPY backend/requirements.lock /tmp/requirements.lock\n#13 CACHED\n\n#14 [tests test-dependencies 2/2] RUN --mount=type=cache,target=/root/.cache/pip pip install --require-hashes -r /tmp/requirements-dev.lock\n#14 CACHED\n\n#15 [tests test 1/2] COPY --chown=quarry:quarry backend /app\n#15 DONE 0.1s\n\n#5 [browser-tests internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#5 DONE 0.6s\n\n#6 [browser-tests internal] load .dockerignore\n#6 transferring context: 265B 0.0s done\n#6 DONE 0.0s\n\n#16 [browser-tests internal] load build context\n#16 DONE 0.0s\n\n#17 [tests test 2/2] COPY --chown=quarry:quarry evaluation /app/evaluation\n#17 DONE 0.1s\n\n#18 [browser-tests browser-tests 1/9] FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#18 resolve mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#18 resolve mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf 0.1s done\n#18 DONE 0.1s\n\n#16 [browser-tests internal] load build context\n#16 transferring context: 96.90kB 0.1s done\n#16 DONE 0.1s\n\n#19 [tests] exporting to image\n#19 exporting layers\n#19 ...\n\n#20 [browser-tests browser-tests 4/9] RUN npm ci --no-audit --no-fund\n#20 CACHED\n\n#21 [browser-tests browser-tests 5/9] COPY --chown=pwuser:pwuser frontend/tests ./tests\n#21 CACHED\n\n#22 [browser-tests browser-tests 7/9] COPY --chown=pwuser:pwuser frontend/src/app/api ./frontend/src/app/api\n#22 CACHED\n\n#23 [browser-tests browser-tests 8/9] COPY --chown=pwuser:pwuser security/review-probes ./security/review-probes\n#23 CACHED\n\n#24 [browser-tests browser-tests 3/9] COPY frontend/package*.json ./\n#24 CACHED\n\n#25 [browser-tests browser-tests 6/9] COPY --chown=pwuser:pwuser frontend/playwright.config.ts ./playwright.config.ts\n#25 CACHED\n\n#26 [browser-tests browser-tests 2/9] WORKDIR /app\n#26 CACHED\n\n#27 [browser-tests browser-tests 9/9] RUN ln -s /app/node_modules /app/frontend/node_modules && mkdir -p /app/evaluation/results && chown -R pwuser:pwuser /app/evaluation\n#27 CACHED\n\n#19 [tests] exporting to image\n#19 exporting layers 0.3s done\n#19 exporting manifest sha256:ac53b0ed908508e2277d37cfa50d4aa47f83c13e02598cf89787fde39576f964 0.0s done\n#19 exporting config sha256:b5b79751b51fc3318a1be28a243562c7e8ff6e6ef8cbc5bfcb23e26079d3ea3e 0.0s done\n#19 ...\n\n#28 [browser-tests] exporting to image\n#28 exporting layers 0.0s done\n#28 exporting manifest sha256:7a395b5ebd61835d82f59ed5b9fe0f1f4f377f3581244598e87e083f15be6758 done\n#28 exporting config sha256:b38da1a02cba64c9c244fc7ba0acc5d29a10114c3334811395b399e9a42b3c5c done\n#28 exporting attestation manifest sha256:a0a4a532cbd4a22e61be0f21176a239961a70ef0177870d9a081ce5c00eb8ac4 0.0s done\n#28 exporting manifest list sha256:5b4a9910131abb9b9e3e671f56ccdfec4385ea177e4329c845f30f87ad52c2ff 0.0s done\n#28 naming to docker.io/library/quarry-browser-tests:local done\n#28 unpacking to docker.io/library/quarry-browser-tests:local 0.0s done\n#28 DONE 0.3s\n\n#19 [tests] exporting to image\n#19 exporting attestation manifest sha256:d617ae7ec85a98ab96cd449f162c355b22fb0c95c77014116eecad1a42d935eb 0.0s done\n#19 exporting manifest list sha256:f503eb7568e37a73d7264a096b92d693a1878b5e7801ec68751da35591c8250c 0.1s done\n#19 naming to docker.io/library/quarry-tests:local\n#19 naming to docker.io/library/quarry-tests:local done\n#19 unpacking to docker.io/library/quarry-tests:local 0.1s done\n#19 DONE 0.7s\n\n#29 [browser-tests] resolving provenance for metadata file\n#29 DONE 0.0s\n\n#30 [tests] resolving provenance for metadata file\n#30 DONE 0.0s\n Image quarry-tests:local Building \n Image quarry-browser-tests:local Building \n Image quarry-tests:local Built \n Image quarry-browser-tests:local Built \n"
+      "seconds": 4.53,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 5.32kB done\n#1 DONE 0.0s\n\n#2 [browser-tests internal] load build definition from Dockerfile\n#2 transferring dockerfile: 1.90kB 0.0s done\n#2 DONE 0.1s\n\n#3 [tests internal] load build definition from Dockerfile\n#3 transferring dockerfile: 2.96kB 0.0s done\n#3 DONE 0.1s\n\n#4 [tests internal] load metadata for docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2\n#4 DONE 0.1s\n\n#5 [browser-tests internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#5 ...\n\n#6 [tests internal] load .dockerignore\n#6 transferring context: 265B 0.0s done\n#6 DONE 0.0s\n\n#7 [tests internal] load build context\n#7 transferring context: 80.74kB 0.0s done\n#7 DONE 0.1s\n\n#8 [tests dependencies 1/5] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2\n#8 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 0.1s done\n#8 DONE 0.1s\n\n#9 [tests dependencies 5/5] RUN --mount=type=cache,target=/root/.cache/pip pip install --require-hashes -r /tmp/requirements.lock\n#9 CACHED\n\n#10 [tests test-dependencies 1/2] COPY backend/requirements-dev.lock /tmp/requirements-dev.lock\n#10 CACHED\n\n#11 [tests test 2/3] COPY --chown=quarry:quarry evaluation /app/evaluation\n#11 CACHED\n\n#12 [tests test-dependencies 2/2] RUN --mount=type=cache,target=/root/.cache/pip pip install --require-hashes -r /tmp/requirements-dev.lock\n#12 CACHED\n\n#13 [tests dependencies 2/5] WORKDIR /app\n#13 CACHED\n\n#14 [tests dependencies 3/5] RUN groupadd --gid 10001 quarry && useradd --uid 10001 --gid quarry --create-home quarry && mkdir /data && chown quarry:quarry /data\n#14 CACHED\n\n#15 [tests dependencies 4/5] COPY backend/requirements.lock /tmp/requirements.lock\n#15 CACHED\n\n#16 [tests test 1/3] COPY --chown=quarry:quarry backend /app\n#16 CACHED\n\n#17 [tests test 3/3] COPY --chown=quarry:quarry scripts /opt/quarry-operator\n#17 CACHED\n\n#18 [tests] exporting to image\n#18 exporting layers 0.0s done\n#18 exporting manifest sha256:d95c9507d04b886adbb1c302ce3b45c5ab846ca04bf00890564c6a8cb8d00854 done\n#18 exporting config sha256:c8ebb792760567b88067cb7d40befd0102f98d4609242e5aeb289abeed345a42 done\n#18 exporting attestation manifest sha256:0074e09e04701886a88614b81eaac49254529bf35ca18d4e2fc96c2b827dca67\n#18 exporting attestation manifest sha256:0074e09e04701886a88614b81eaac49254529bf35ca18d4e2fc96c2b827dca67 0.1s done\n#18 exporting manifest list sha256:2d0f8586d913061c768948ecb600b55f20a706be8bb723f1fa06275a34190286 0.0s done\n#18 naming to docker.io/library/quarry-tests:local\n#18 naming to docker.io/library/quarry-tests:local done\n#18 unpacking to docker.io/library/quarry-tests:local 0.0s done\n#18 DONE 0.3s\n\n#5 [browser-tests internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#5 DONE 0.6s\n\n#6 [browser-tests internal] load .dockerignore\n#6 transferring context: 265B 0.0s done\n#6 DONE 0.0s\n\n#19 [browser-tests internal] load build context\n#19 DONE 0.0s\n\n#20 [browser-tests browser-tests  1/12] FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf\n#20 resolve mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf 0.1s done\n#20 DONE 0.1s\n\n#19 [browser-tests internal] load build context\n#19 transferring context: 1.17kB 0.0s done\n#19 DONE 0.0s\n\n#21 [browser-tests browser-tests  2/12] WORKDIR /app\n#21 CACHED\n\n#22 [browser-tests browser-tests  5/12] COPY --chown=pwuser:pwuser frontend/tests ./tests\n#22 CACHED\n\n#23 [browser-tests browser-tests  9/12] COPY --chown=pwuser:pwuser frontend/scripts/check-api.cjs ./contract/check-api.cjs\n#23 CACHED\n\n#24 [browser-tests browser-tests  7/12] COPY --chown=pwuser:pwuser frontend/src/app/api ./frontend/src/app/api\n#24 CACHED\n\n#25 [browser-tests browser-tests  3/12] COPY frontend/package*.json ./\n#25 CACHED\n\n#26 [browser-tests browser-tests  4/12] RUN npm ci --no-audit --no-fund\n#26 CACHED\n\n#27 [browser-tests browser-tests  8/12] COPY --chown=pwuser:pwuser security/review-probes ./security/review-probes\n#27 CACHED\n\n#28 [browser-tests browser-tests 10/12] COPY --chown=pwuser:pwuser frontend/src/lib/api.generated.ts ./contract/api.generated.ts\n#28 CACHED\n\n#29 [browser-tests browser-tests  6/12] COPY --chown=pwuser:pwuser frontend/playwright.config.ts ./playwright.config.ts\n#29 CACHED\n\n#30 [browser-tests browser-tests 11/12] COPY --chown=pwuser:pwuser backend/openapi.json ./contract/openapi.json\n#30 CACHED\n\n#31 [browser-tests browser-tests 12/12] RUN ln -s /app/node_modules /app/frontend/node_modules && mkdir -p /app/evaluation/results && chown -R pwuser:pwuser /app/evaluation\n#31 CACHED\n\n#32 [browser-tests] exporting to image\n#32 exporting layers 0.0s done\n#32 exporting manifest sha256:9629ffb650d8d3c6f4e674629eef8beae5ca61dc17178d84c12f07764b8e8803 0.0s done\n#32 exporting config sha256:d17e9552b95bcca633821ff056ff015c086cb4a1fe806b0b4e330c8d793b8b2c\n#32 exporting config sha256:d17e9552b95bcca633821ff056ff015c086cb4a1fe806b0b4e330c8d793b8b2c 0.0s done\n#32 exporting attestation manifest sha256:97c6a53e383a43a0d7df999fb0147e3900d330686ce5255aa924d37fa4e5d958\n#32 exporting attestation manifest sha256:97c6a53e383a43a0d7df999fb0147e3900d330686ce5255aa924d37fa4e5d958 0.1s done\n#32 exporting manifest list sha256:4b8586ee381519832e99c2d074bc2d39e864dc0afb3d285265cc1ccba1036440 0.1s done\n#32 naming to docker.io/library/quarry-browser-tests:local done\n#32 unpacking to docker.io/library/quarry-browser-tests:local 0.0s done\n#32 DONE 0.3s\n\n#33 [tests] resolving provenance for metadata file\n#33 DONE 0.1s\n\n#34 [browser-tests] resolving provenance for metadata file\n#34 DONE 0.0s\n Image quarry-tests:local Building \n Image quarry-browser-tests:local Building \n Image quarry-browser-tests:local Built \n Image quarry-tests:local Built \n"
     },
     {
       "command": [
@@ -31,8 +31,8 @@
         "head"
       ],
       "exit_code": 0,
-      "seconds": 5.1,
-      "output": " Container quarry-tests-run-f28cb503b61f Creating \n Container quarry-tests-run-f28cb503b61f Created \n"
+      "seconds": 6.48,
+      "output": " Container quarry-tests-run-611795f908b0 Creating \n Container quarry-tests-run-611795f908b0 Created \n"
     },
     {
       "command": [
@@ -49,8 +49,8 @@
         "."
       ],
       "exit_code": 0,
-      "seconds": 2.46,
-      "output": "All checks passed!\n Container quarry-tests-run-07864ab75395 Creating \n Container quarry-tests-run-07864ab75395 Created \n"
+      "seconds": 2.67,
+      "output": "All checks passed!\n Container quarry-tests-run-d5c5fa1a9b9c Creating \n Container quarry-tests-run-d5c5fa1a9b9c Created \n"
     },
     {
       "command": [
@@ -66,8 +66,8 @@
         "check"
       ],
       "exit_code": 0,
-      "seconds": 6.46,
-      "output": "No new upgrade operations detected.\n Container quarry-tests-run-e38cbf22f837 Creating \n Container quarry-tests-run-e38cbf22f837 Created \n"
+      "seconds": 6.09,
+      "output": "No new upgrade operations detected.\n Container quarry-tests-run-be5e1942eb2b Creating \n Container quarry-tests-run-be5e1942eb2b Created \n"
     },
     {
       "command": [
@@ -84,8 +84,27 @@
         "quarry.contract"
       ],
       "exit_code": 0,
-      "seconds": 8.51,
-      "output": "OpenAPI contract matches the backend\n Container quarry-tests-run-98b6ffe2ca52 Creating \n Container quarry-tests-run-98b6ffe2ca52 Created \n"
+      "seconds": 13.58,
+      "output": "OpenAPI contract matches the backend\n Container quarry-tests-run-b8171900ff28 Creating \n Container quarry-tests-run-b8171900ff28 Created \n"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--profile",
+        "test",
+        "run",
+        "--rm",
+        "--no-deps",
+        "browser-tests",
+        "node",
+        "contract/check-api.cjs",
+        "contract/openapi.json",
+        "contract/api.generated.ts"
+      ],
+      "exit_code": 0,
+      "seconds": 7.42,
+      "output": "Generated frontend API types match OpenAPI\n Container quarry-browser-tests-run-70f9749fb672 Creating \n Container quarry-browser-tests-run-70f9749fb672 Created \n"
     },
     {
       "command": [
@@ -99,8 +118,8 @@
         "tests"
       ],
       "exit_code": 0,
-      "seconds": 245.53,
-      "output": "........................................................................ [ 38%]\n........................................................................ [ 77%]\n.........................................                                [100%]\n=============================== warnings summary ===============================\ntests/test_accounts.py::test_invite_signup_atomic_single_use_and_server_roles\n  /app/quarry/retrieval.py:22: UserWarning: Api key is used with an insecure connection.\n    return QdrantClient(url=cfg.qdrant_url, api_key=cfg.qdrant_api_key or None, timeout=20)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n================================ tests coverage ================================\n_______________ coverage: platform linux, python 3.12.15-final-0 _______________\n\nName                       Stmts   Miss Branch BrPart  Cover   Missing\n----------------------------------------------------------------------\nquarry/__init__.py             0      0      0      0   100%\nquarry/accounts.py           289      8     60      6    96%   120, 155->157, 157->159, 168, 269, 292-293, 480->483, 488-489, 525\nquarry/admin.py              204    156     90      2    22%   40-60, 64-75, 88-102, 106-122, 126-142, 146-196, 200-255, 259-266, 302->300, 316-356, 360\nquarry/agent.py              147      0     34      0   100%\nquarry/agent_eval.py          45     45      6      0     0%   3-109\nquarry/api.py                373      7     84      9    96%   105->107, 184, 242->244, 324, 514, 533, 559-560, 598->600, 627->630, 672->exit, 741\nquarry/benchmark.py          116     70     34      2    36%   26-28, 32-38, 76, 83-200, 204-216, 220\nquarry/bootstrap.py           80     56     24      1    24%   26, 30-56, 60-91, 96-136, 144\nquarry/capacity.py            22      0      0      0   100%\nquarry/config.py              94      4     24      4    93%   70, 79, 81, 83\nquarry/contract.py            10     10      4      0     0%   3-19\nquarry/db.py                 181      1      0      0    99%   253\nquarry/encoders.py            66      0      6      0   100%\nquarry/eval_guard.py          46     46     10      0     0%   3-86\nquarry/fairness_probe.py      42     42      8      0     0%   3-99\nquarry/ingest.py             104      4     48      3    95%   22-25, 105, 131, 145->140\nquarry/live_eval.py          257    107     62      9    56%   123, 164, 175, 191, 221-341, 345-348, 365-366, 390-391, 397, 402, 426-469\nquarry/loadtest.py            85     85     18      0     0%   3-168\nquarry/metrics.py             25      0      6      0   100%\nquarry/model_assets.py        44     18     20      5    55%   34-59, 76, 80, 83, 85-86, 90\nquarry/network.py            129     10     38      5    90%   46, 104-105, 117-119, 136, 144, 159, 173\nquarry/parse_document.py      19      1      2      1    90%   26\nquarry/parser_service.py      41      1      8      1    96%   61\nquarry/providers.py          156      0     56      3    99%   132->131, 134->131, 285->281\nquarry/queue.py              110      4     30      5    94%   92, 115->127, 121->127, 125->127, 195-198\nquarry/retrieval.py           81      3     20      3    94%   28, 103, 193\nquarry/schemas.py            110      2      2      0    98%   25-26\nquarry/security.py           157      0     56      0   100%\nquarry/storage.py             25      0      2      0   100%\nquarry/tools.py               67      1     30      1    98%   29\nquarry/worker.py             156     11     50      7    90%   26->28, 39->68, 66-67, 158, 197-203, 206->214, 245\n----------------------------------------------------------------------\nTOTAL                       3281    692    832     67    77%\nCoverage JSON written to file /app/evaluation/results/coverage.json\n185 passed, 1 warning in 226.36s (0:03:46)\n Container quarry-tests-run-5c8f84fd7da6 Creating \n Container quarry-tests-run-5c8f84fd7da6 Created \n/usr/local/lib/python3.12/site-packages/qdrant_client/qdrant_client.py:169: RuntimeWarning: Unable to close http connection. Connection was interrupted on the server side\n"
+      "seconds": 319.85,
+      "output": "........................................................................ [ 32%]\n........................................................................ [ 64%]\n........................................................................ [ 96%]\n........                                                                 [100%]\n=============================== warnings summary ===============================\ntests/test_accounts.py::test_invite_signup_atomic_single_use_and_server_roles\n  /app/quarry/retrieval.py:22: UserWarning: Api key is used with an insecure connection.\n    return QdrantClient(url=cfg.qdrant_url, api_key=cfg.qdrant_api_key or None, timeout=20)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n================================ tests coverage ================================\n_______________ coverage: platform linux, python 3.12.15-final-0 _______________\n\nName                        Stmts   Miss Branch BrPart  Cover   Missing\n-----------------------------------------------------------------------\nquarry/__init__.py              0      0      0      0   100%\nquarry/accounts.py            289      8     60      6    96%   120, 155->157, 157->159, 168, 269, 292-293, 480->483, 488-489, 525\nquarry/admin.py               204    156     90      2    22%   40-60, 64-75, 88-102, 106-122, 126-142, 146-196, 200-255, 259-266, 302->300, 316-356, 360\nquarry/agent.py               150      0     36      0   100%\nquarry/agent_eval.py           45     45      6      0     0%   3-109\nquarry/api.py                 387      9     86      9    96%   107->109, 186, 244->246, 326, 516, 535, 561-562, 600->602, 629->632, 674->exit, 743, 765-766\nquarry/benchmark.py           126     80     38      2    33%   26-28, 32-38, 76, 83-200, 204-227, 231\nquarry/bootstrap.py            80     56     24      1    24%   26, 30-56, 60-91, 96-136, 144\nquarry/campaign_audit.py      168     40     94     24    73%   21-44, 51, 55, 60-61, 77, 81, 86-87, 94->96, 115, 125, 144, 148, 160->97, 163, 165->175, 171->169, 177, 198-199, 200->210, 204-205, 213-214, 215->225, 219-220, 226, 231-236, 240\nquarry/campaign_runner.py     106     55     38      4    47%   16-53, 64, 69, 77-111, 130-131, 146-148\nquarry/campaigns.py            57      2     22      2    95%   43, 67\nquarry/capacity.py             22      0      0      0   100%\nquarry/config.py               94      4     24      4    93%   70, 79, 81, 83\nquarry/contract.py             10     10      4      0     0%   3-19\nquarry/db.py                  181      1      0      0    99%   253\nquarry/encoders.py             66      0      6      0   100%\nquarry/eval_guard.py           46     46     10      0     0%   3-86\nquarry/fairness_probe.py       42     42      8      0     0%   3-99\nquarry/ingest.py              104      4     48      3    95%   22-25, 105, 131, 145->140\nquarry/live_eval.py           300     63     82     18    75%   128, 171, 182, 198, 232->236, 266->354, 271-281, 282->300, 283->293, 306, 310-318, 328->351, 356, 377->391, 382-390, 414-417, 447-448, 470, 476, 481, 505-548\nquarry/loadtest.py             85     85     18      0     0%   3-168\nquarry/metric_audit.py        176    101     94     10    37%   62-90, 105, 116, 122, 125, 128, 131-132, 134->119, 136-224, 228-236, 240\nquarry/metrics.py              25      0      6      0   100%\nquarry/model_assets.py         44     18     20      5    55%   34-59, 76, 80, 83, 85-86, 90\nquarry/network.py             129     10     38      5    90%   46, 104-105, 117-119, 136, 144, 159, 173\nquarry/parse_document.py       19      1      2      1    90%   26\nquarry/parser_service.py       41      1      8      1    96%   61\nquarry/providers.py           160      0     56      3    99%   133->132, 135->132, 297->293\nquarry/queue.py               110      4     30      5    94%   92, 115->127, 121->127, 125->127, 195-198\nquarry/retrieval.py            81      3     20      3    94%   28, 103, 193\nquarry/schemas.py             178      2      2      0    99%   27-28\nquarry/security.py            157      0     56      0   100%\nquarry/storage.py              25      0      2      0   100%\nquarry/tools.py                67      1     30      1    98%   29\nquarry/worker.py              156     11     50      7    90%   26->28, 39->68, 66-67, 159, 198-204, 207->215, 246\n-----------------------------------------------------------------------\nTOTAL                        3930    858   1108    116    75%\nCoverage JSON written to file /app/evaluation/results/coverage.json\n224 passed, 1 warning in 295.70s (0:04:55)\n Container quarry-tests-run-663747fe7ad3 Creating \n Container quarry-tests-run-663747fe7ad3 Created \n/usr/local/lib/python3.12/site-packages/qdrant_client/qdrant_client.py:169: RuntimeWarning: Unable to close http connection. Connection was interrupted on the server side\n"
     },
     {
       "command": [
@@ -116,8 +135,8 @@
         "security/review-probes/bff-patch.cjs"
       ],
       "exit_code": 0,
-      "seconds": 2.88,
-      "output": "{\"probe\":\"current original BFF transpiled; real inert Web Streams, mocked fetch, timers scaled15s->50ms; no database/network\",\"source_sha256\":\"ab3de3c1054aff00d271e98c6c086033e9f4907b772ff0a78e2908e272c253bf\",\"busy_status\":503,\"timeout_statuses\":[408,408,408,408,408,408,408,408],\"recovered_status\":401,\"csrf_status\":403,\"blocked_path_status\":404,\"traversal_status\":404,\"invalid_machine_status\":401,\"machine_cookie_forwarded\":false,\"upstream_deadline_status\":504,\"sse_survived_scaled_header_deadline\":true,\"sse_abort_observed\":false,\"status\":\"passed\"}\n Container quarry-browser-tests-run-c103854d9056 Creating \n Container quarry-browser-tests-run-c103854d9056 Created \n"
+      "seconds": 3.65,
+      "output": "{\"probe\":\"current original BFF transpiled; real inert Web Streams, mocked fetch, timers scaled15s->50ms; no database/network\",\"source_sha256\":\"ab3de3c1054aff00d271e98c6c086033e9f4907b772ff0a78e2908e272c253bf\",\"busy_status\":503,\"timeout_statuses\":[408,408,408,408,408,408,408,408],\"recovered_status\":401,\"csrf_status\":403,\"blocked_path_status\":404,\"traversal_status\":404,\"invalid_machine_status\":401,\"machine_cookie_forwarded\":false,\"upstream_deadline_status\":504,\"sse_survived_scaled_header_deadline\":true,\"sse_abort_observed\":false,\"status\":\"passed\"}\n Container quarry-browser-tests-run-f08409b5e56f Creating \n Container quarry-browser-tests-run-f08409b5e56f Created \n"
     },
     {
       "command": [
@@ -131,8 +150,8 @@
         "browser-tests"
       ],
       "exit_code": 0,
-      "seconds": 41.23,
-      "output": "\nRunning 8 tests using 1 worker\n\n  \u2713  1 tests/workspace.spec.ts:24:5 \u203a complete evidence workflow, export and reload (10.0s)\n  \u2713  2 tests/workspace.spec.ts:95:5 \u203a retrieval lab reports all real strategies (5.2s)\n  \u2713  3 tests/workspace.spec.ts:154:5 \u203a responsive navigation and provider policy (2.2s)\n  \u2713  4 tests/workspace.spec.ts:181:5 \u203a cross-origin mutations are rejected (214ms)\n  \u2713  5 tests/workspace.spec.ts:189:5 \u203a import dialog traps keyboard focus and restores it on Escape (1.6s)\n  \u2713  6 tests/workspace.spec.ts:212:5 \u203a invitation signup, least privilege and browser session revocation (5.2s)\n  \u2713  7 tests/workspace.spec.ts:281:5 \u203a public file exposure, security headers and unauthenticated authorization (363ms)\n  \u2713  8 tests/workspace.spec.ts:309:5 \u203a public signup and password recovery deliver real local email and require verification (7.1s)\n\n  8 passed (36.8s)\n Container quarry-browser-tests-run-00f87a47d45e Creating \n Container quarry-browser-tests-run-00f87a47d45e Created \n"
+      "seconds": 53.45,
+      "output": "\nRunning 9 tests using 1 worker\n\n  \u2713  1 tests/workspace.spec.ts:24:5 \u203a complete evidence workflow, export and reload (8.2s)\n  \u2713  2 tests/workspace.spec.ts:95:5 \u203a retrieval lab reports all real strategies (6.0s)\n  \u2713  3 tests/workspace.spec.ts:154:5 \u203a responsive navigation and provider policy (2.5s)\n  \u2713  4 tests/workspace.spec.ts:181:5 \u203a cross-origin mutations are rejected (183ms)\n  \u2713  5 tests/workspace.spec.ts:189:5 \u203a import dialog traps keyboard focus and restores it on Escape (1.9s)\n  \u2713  6 tests/workspace.spec.ts:212:5 \u203a invitation signup, least privilege and browser session revocation (7.1s)\n  \u2713  7 tests/workspace.spec.ts:281:5 \u203a public file exposure, security headers and unauthenticated authorization (530ms)\n  \u2713  8 tests/workspace.spec.ts:309:5 \u203a public signup and password recovery deliver real local email and require verification (7.5s)\n  \u2713  9 tests/workspace.spec.ts:410:5 \u203a live campaign progress, quota state, safe passages and recoverable errors (8.4s)\n\n  9 passed (47.6s)\n Container quarry-browser-tests-run-07413c2df274 Creating \n Container quarry-browser-tests-run-07413c2df274 Created \n"
     },
     {
       "command": [
@@ -140,18 +159,23 @@
         "C:\\Users\\risha\\Documents\\Codex\\2026-10-22\\thi\\outputs\\quarry\\scripts\\parser_boundary.py"
       ],
       "exit_code": 0,
-      "seconds": 3.56,
-      "output": "{\n  \"status\": \"passed\",\n  \"checks\": {\n    \"separate_uid\": true,\n    \"no_network\": true,\n    \"read_only_root\": true,\n    \"capabilities_dropped\": true,\n    \"no_new_privileges\": true,\n    \"bounded_processes\": true,\n    \"bounded_memory\": true,\n    \"no_application_credentials\": true,\n    \"only_private_socket_volume\": true,\n    \"egress_denied\": true,\n    \"root_write_denied\": true,\n    \"private_volumes_absent\": true\n  },\n  \"source_sha256\": \"0f0f03ed2478dbd33108e5ddeb8053d2d649e3ff694cb039f72fa9517638060e\",\n  \"image_id\": \"sha256:264917d70e5094c89ba2d6525adc7ac98ba987f407e91ed60f5ae92be4841744\",\n  \"paid_calls\": 0,\n  \"scope\": \"Local container configuration and inert negative probes; not a parser RCE or kernel escape test.\"\n}\n"
+      "seconds": 5.54,
+      "output": "{\n  \"status\": \"passed\",\n  \"checks\": {\n    \"separate_uid\": true,\n    \"no_network\": true,\n    \"read_only_root\": true,\n    \"capabilities_dropped\": true,\n    \"no_new_privileges\": true,\n    \"bounded_processes\": true,\n    \"bounded_memory\": true,\n    \"no_application_credentials\": true,\n    \"only_private_socket_volume\": true,\n    \"egress_denied\": true,\n    \"root_write_denied\": true,\n    \"private_volumes_absent\": true\n  },\n  \"source_sha256\": \"747ab5d84111e9971cb40c5522a8c5904c960795a4e5b0a7b1cc4c260f724546\",\n  \"image_id\": \"sha256:23e157fa80b83823e3fa0f57547d3a453b5c7859bbd550ef5de4272ae7ea6a0d\",\n  \"paid_calls\": 0,\n  \"scope\": \"Local container configuration and inert negative probes; not a parser RCE or kernel escape test.\"\n}\n"
     }
   ],
   "paid_calls": 0,
   "critical_coverage": {
     "status": "passed",
     "scope": "Aggregate branches across explicitly listed request, authorization, queue, agent, retrieval and provider modules; operator/evaluation CLIs excluded. This is not per-file coverage.",
-    "covered": 504,
-    "total": 556,
-    "percent": 90.647,
+    "covered": 528,
+    "total": 582,
+    "percent": 90.722,
     "modules": [
+      {
+        "module": "campaigns",
+        "covered": 20,
+        "total": 22
+      },
       {
         "module": "accounts",
         "covered": 54,
@@ -159,13 +183,13 @@
       },
       {
         "module": "agent",
-        "covered": 34,
-        "total": 34
+        "covered": 36,
+        "total": 36
       },
       {
         "module": "api",
-        "covered": 75,
-        "total": 84
+        "covered": 77,
+        "total": 86
       },
       {
         "module": "capacity",
@@ -249,5 +273,6 @@
       }
     ]
   },
+  "backend_junit_sha256": "f7f0133efce6da4ef639dc54d462f7b9772956b488be7c9f0d2f472ca5a43213",
   "status": "passed"
 }

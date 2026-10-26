@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "created_at": "2026-10-25T07:40:45.439792+00:00",
+  "case_count": 8,
+  "rows": [
+    {
+      "case_id": "q105",
+      "expression": "250 * 0.05",
+      "expected": "12.5",
+      "actual": "12.5",
+      "passed": true
+    },
+    {
+      "case_id": "q106",
+      "expression": "30000 - 5500",
+      "expected": "24500",
+      "actual": "24500",
+      "passed": true
+    },
+    {
+      "case_id": "q107",
+      "expression": "90 / 30",
+      "expected": "3",
+      "actual": "3",
+      "passed": true
+    },
+    {
+      "case_id": "q108",
+      "expression": "40 + 40",
+      "expected": "80",
+      "actual": "80",
+      "passed": true
+    },
+    {
+      "case_id": "q109",
+      "expression": "1024 * 1024",
+      "expected": "1048576",
+      "actual": "1048576",
+      "passed": true
+    },
+    {
+      "case_id": "q110",
+      "expression": "60 * 24",
+      "expected": "1440",
+      "actual": "1440",
+      "passed": true
+    },
+    {
+      "case_id": "q111",
+      "expression": "100 * (1 - 0.2)",
+      "expected": "80",
+      "actual": "80",
+      "passed": true
+    },
+    {
+      "case_id": "q112",
+      "expression": "180 / 45",
+      "expected": "4",
+      "actual": "4",
+      "passed": true
+    }
+  ],
+  "scope": "All eight frozen arithmetic cases; independent exact-decimal expected values. This is not general symbolic algebra or financial precision certification.",
+  "generation_calls": 0,
+  "tools_module_sha256": "4e81ad23275ab44bb2007475b6e48034dfd57816f2b41419e0c30647f4b0461b"
+}

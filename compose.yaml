@@ -279,7 +279,7 @@ services:
       QUARRY_SMTP_HOST: ""
       QUARRY_SIGNUP_MODE: invite
       QUARRY_PARSER_SOCKET: ""
-    command: ["pytest", "--cov=quarry", "--cov-branch", "--cov-report=term-missing", "--cov-report=json:/app/evaluation/results/coverage.json"]
+    command: ["pytest", "--cov=quarry", "--cov-branch", "--cov-report=term-missing", "--cov-report=json:/app/evaluation/results/coverage.json", "--junitxml=/app/evaluation/results/backend-junit.xml"]
     depends_on:
       initialize: {condition: service_completed_successfully}
     restart: "no"

@@ -27,6 +27,9 @@ COPY --chown=pwuser:pwuser frontend/tests ./tests
 COPY --chown=pwuser:pwuser frontend/playwright.config.ts ./playwright.config.ts
 COPY --chown=pwuser:pwuser frontend/src/app/api ./frontend/src/app/api
 COPY --chown=pwuser:pwuser security/review-probes ./security/review-probes
+COPY --chown=pwuser:pwuser frontend/scripts/check-api.cjs ./contract/check-api.cjs
+COPY --chown=pwuser:pwuser frontend/src/lib/api.generated.ts ./contract/api.generated.ts
+COPY --chown=pwuser:pwuser backend/openapi.json ./contract/openapi.json
 RUN ln -s /app/node_modules /app/frontend/node_modules && mkdir -p /app/evaluation/results && chown -R pwuser:pwuser /app/evaluation
 USER pwuser
 CMD ["npx", "playwright", "test"]

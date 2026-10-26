@@ -13,8 +13,8 @@ RUN --mount=type=cache,target=/root/.cache/pip pip install --require-hashes -r /
 FROM dependencies AS evaluation-dependencies
 COPY backend/requirements-eval.lock /tmp/requirements-eval.lock
 RUN --mount=type=cache,target=/root/.cache/pip pip install --require-hashes -r /tmp/requirements-eval.lock
-COPY infra/harden_eval.py /tmp/harden_eval.py
-RUN python /tmp/harden_eval.py
+COPY infra/harden_eval.py /usr/local/share/quarry/harden_eval.py
+RUN python /usr/local/share/quarry/harden_eval.py
 
 FROM dependencies AS runtime-libraries
 COPY infra/python-runtime.py /tmp/python-runtime.py
@@ -42,6 +42,7 @@ FROM test-dependencies AS test
 ENV COVERAGE_FILE=/tmp/quarry.coverage RUFF_CACHE_DIR=/tmp/quarry-ruff
 COPY --chown=quarry:quarry backend /app
 COPY --chown=quarry:quarry evaluation /app/evaluation
+COPY --chown=quarry:quarry scripts /opt/quarry-operator
 USER 10001:10001
 CMD ["pytest", "--cov=quarry", "--cov-branch", "--cov-report=term-missing"]
 

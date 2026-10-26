@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Annotated, Literal
 
 from email_validator import EmailNotValidError, validate_email
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -7,6 +7,8 @@ from quarry.config import settings
 
 Provider = Literal["extractive", "groq", "openai"]
 RetrievalMode = Literal["dense", "bm25", "hybrid", "hybrid_rerank"]
+MetricName = Literal["context_precision", "context_recall", "faithfulness"]
+MetricScore = Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
 
 
 class LoginInput(BaseModel):
@@ -140,3 +142,81 @@ class MemberInput(BaseModel):
     email: str = Field(min_length=3, max_length=254)
     password: str = Field(min_length=12, max_length=256)
     role: Literal["editor", "viewer"] = "viewer"
+
+
+class CampaignSummary(BaseModel):
+    id: str
+    mode: str
+    protocol: str = "isolated-v2"
+    status: Literal["pending", "running", "partial", "quota_wait", "completed"] = "pending"
+    completed: int = Field(default=0, ge=0, le=37)
+    requested: int = 37
+    provider: str = "groq"
+    model: str = "openai/gpt-oss-120b"
+    next_retry_at: str | None = None
+    quota_scope: str | None = None
+    stopped_reason: str | None = None
+    means: dict[MetricName, MetricScore] = Field(default_factory=dict)
+    protocol_sha256: str | None = None
+    provenance_gaps: int = 0
+    limitations: list[str] = Field(default_factory=list)
+
+
+class JudgeRequestOut(BaseModel):
+    run_id: str
+    request_sha256: str
+
+
+class CampaignMetricTrace(BaseModel):
+    provider: str | None = None
+    model: str | None = None
+    reasoning_effort: str | None = None
+    reasoning_format: str | None = None
+    max_completion_tokens: int | None = None
+    historical_configuration: bool = False
+    arguments_sha256: str | None = None
+    judge_run_ids: list[str] = Field(default_factory=list)
+    judge_requests: list[JudgeRequestOut] = Field(default_factory=list)
+
+
+class CampaignCaseOut(BaseModel):
+    case_id: str
+    response: str
+    contexts: list[str]
+    metrics: dict[MetricName, MetricScore]
+    run_id: str
+    latency_ms: float | None = None
+    tokens: int = 0
+    mode: str | None = None
+    response_sha256: str | None = None
+    generation_request_sha256: list[str] = Field(default_factory=list)
+    model_calls: int | None = None
+    conversation_id: str | None = None
+    answer_contexts: list[str] = Field(default_factory=list)
+    answer_kind: str | None = None
+    question: str | None = None
+    reference: str | None = None
+    history_run_ids: list[str] | None = None
+    metric_configuration: dict[MetricName, CampaignMetricTrace] = Field(default_factory=dict)
+
+
+class CampaignProtocolOut(BaseModel):
+    version: str
+    mode: str
+    provider: str
+    model: str
+    case_ids: list[str]
+    history_policy: str
+    judge_cache_policy: str
+    context_policy: str
+    temperature: float
+    max_completion_tokens: int
+    model_assets_sha256: str
+    implementation_sha256: dict[str, str]
+    scorer_files_sha256: dict[str, str]
+    scorer_package_versions: dict[str, str]
+
+
+class CampaignDetail(CampaignSummary):
+    rows: list[CampaignCaseOut]
+    configuration: CampaignProtocolOut | None = None

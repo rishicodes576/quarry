@@ -1,0 +1,130 @@
+{
+  "status": "passed",
+  "created_at": "2026-10-26T13:29:05.164035+00:00",
+  "scope": "Arithmetic/integrity audit; not independent factual-support or label validation",
+  "retrieval": [
+    {
+      "artifact": "retrieval-all.json",
+      "rows_checked": 480
+    },
+    {
+      "artifact": "retrieval-dev.json",
+      "rows_checked": 120
+    },
+    {
+      "artifact": "latest.json",
+      "rows_checked": 480
+    }
+  ],
+  "agent_cases": 120,
+  "tool_cases": 8,
+  "load_throughput_configurations": [
+    1,
+    2,
+    4
+  ],
+  "live_complete": true,
+  "live_fully_judged": 37,
+  "live_requested": 37,
+  "live_means": {
+    "context_precision": 0.852702702638521,
+    "context_recall": 0.8702702702702703,
+    "faithfulness": 0.8295140355158527
+  },
+  "live_verdict_metrics_recomputed": 92,
+  "metrics_without_exported_rpc_provenance": [
+    {
+      "case_id": "q001",
+      "metric": "context_precision"
+    },
+    {
+      "case_id": "q001",
+      "metric": "context_recall"
+    },
+    {
+      "case_id": "q001",
+      "metric": "faithfulness"
+    },
+    {
+      "case_id": "q002",
+      "metric": "context_precision"
+    },
+    {
+      "case_id": "q002",
+      "metric": "context_recall"
+    },
+    {
+      "case_id": "q002",
+      "metric": "faithfulness"
+    },
+    {
+      "case_id": "q004",
+      "metric": "context_precision"
+    },
+    {
+      "case_id": "q004",
+      "metric": "context_recall"
+    },
+    {
+      "case_id": "q004",
+      "metric": "faithfulness"
+    },
+    {
+      "case_id": "q005",
+      "metric": "context_precision"
+    },
+    {
+      "case_id": "q005",
+      "metric": "context_recall"
+    },
+    {
+      "case_id": "q005",
+      "metric": "faithfulness"
+    },
+    {
+      "case_id": "q008",
+      "metric": "context_precision"
+    },
+    {
+      "case_id": "q008",
+      "metric": "context_recall"
+    },
+    {
+      "case_id": "q008",
+      "metric": "faithfulness"
+    },
+    {
+      "case_id": "q010",
+      "metric": "context_precision"
+    },
+    {
+      "case_id": "q010",
+      "metric": "context_recall"
+    },
+    {
+      "case_id": "q010",
+      "metric": "faithfulness"
+    },
+    {
+      "case_id": "q011",
+      "metric": "context_precision"
+    }
+  ],
+  "input_sha256": {
+    "manifest.json": "392adf271a0531525880bae6b1f62ff8ff435d0a21556418eef6557ab2ab4b40",
+    "cases.json": "45ea48975be2012a26f93664030e878842e2329001acb38aaf177594fb035c0d",
+    "corpus.json": "63deca3ca4a2b78218b25b768a1c75c7a16eb44da2a345d03138f6fd224e5410",
+    "results/retrieval-all.json": "f8d379f56c54d10e4d1d1cd501761551d96d0b34639a068decd430fef1c9b97f",
+    "results/retrieval-dev.json": "a954713068bbfac69001de85ca614546a4328c6ad324ea0681beb0e5474d7642",
+    "results/latest.json": "f8d379f56c54d10e4d1d1cd501761551d96d0b34639a068decd430fef1c9b97f",
+    "results/agent-local.json": "e8d342ee2a28aed63d463e7f772561d8f85cb76d3f9326c15e1f21e97786ad23",
+    "results/load-1.json": "d98cb443969dc2d1ba5f3019bf095733d697894f65516eaa5f69a2d1bbe591f0",
+    "results/load-2.json": "3ffb2b6812c68b846682a237b269e2235b001962d010e66ff7d37a925530e322",
+    "results/load-4.json": "f801939239e9b4d71465eb3e906d4f149f61d4ee2624aeb43a8a897d3358d45e",
+    "results/live-ragas.json": "5f8670e2047af876438b94d47cd95591ad193503359fbf91a32beb25a3eac7af",
+    "results/judge-verdicts.json": "1d99dc84eb7570bccdc70feb94f62666142842f72e9e5e7079c9a1bd2751fa57"
+  },
+  "provider_calls": 0,
+  "latency_method": "Linear interpolation at (n-1)*p, tolerance .0011 ms for rounded retrieval rows",
+  "relevance_method": "Unique source ranks @5; binary DCG/log2(rank+1); macro means over relevance-labeled cases only"
+}

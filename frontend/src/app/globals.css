@@ -1620,6 +1620,37 @@ main {
 .table-scroll {
   overflow-x: auto;
 }
+.campaign-panel {
+  margin-top: 24px;
+  padding: 24px;
+}
+.campaign-panel .section-bar {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.campaign-panel select {
+  max-width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px;
+}
+.campaign-panel label {
+  display: block;
+}
+.campaign-case {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.campaign-case summary {
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.campaign-passage {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.campaign-hash {
+  overflow-wrap: anywhere;
+}
 .evaluation-panel table {
   width: 100%;
   border-collapse: collapse;

@@ -216,7 +216,7 @@ def graph_for(job, saver):
     def answer(state):
         evidence = active_evidence(workspace_id, state["evidence"])
         if state["provider"] == "extractive" or not evidence:
-            return {"answer": excerpt_answer(evidence), "evidence": evidence}
+            return {"answer": excerpt_answer(evidence), "evidence": evidence, "diagnostics": {**state["diagnostics"], "answer_kind": "extractive" if state["provider"] == "extractive" else "insufficient_evidence"}}
         context = [
             {"citation": e["citation"], "title": e["title"], "passage": e["text"][:1200]}
             for e in sorted(evidence, key=lambda e: e.get("kind") != "calculation")[:6]
@@ -247,7 +247,7 @@ def graph_for(job, saver):
                 },
             ],
         )
-        return {"answer": value, "evidence": evidence}
+        return {"answer": value, "evidence": evidence, "diagnostics": {**state["diagnostics"], "answer_kind": "generated"}}
 
     def validate(state):
         result = validate_citations(state["answer"], state["evidence"])
@@ -259,7 +259,7 @@ def graph_for(job, saver):
             result["generation_rejected"] = True
             result["rejection_reason"] = "Generated answer had missing or invalid references"
             result["rejected_references"] = rejected
-        return {"answer": answer_text, "diagnostics": {**state["diagnostics"], "citations": result}}
+        return {"answer": answer_text, "diagnostics": {**state["diagnostics"], "citations": result, "answer_kind": "citation_fallback" if result.get("generation_rejected") else state["diagnostics"].get("answer_kind", "unknown")}}
 
     builder = StateGraph(ResearchState)
     for name, action in [
@@ -293,6 +293,9 @@ def execute_run(job) -> dict:
             .order_by(Run.created_at.desc())
             .limit(3)
         ).all()
+        if run.diagnostics.get("evaluation_protocol") == "isolated-v2" and previous:
+            raise ValueError("Isolated evaluation cannot consume earlier conversation history")
+        run.diagnostics = {**run.diagnostics, "history_run_ids": [p.id for p in previous]}
         history = "\n".join(f"Q: {p.question}\nA: {p.answer[:300]}" for p in reversed(previous))[
             :1200
         ]

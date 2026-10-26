@@ -1,3 +1,4 @@
+import hashlib
 import json
 import time
 from datetime import UTC, datetime
@@ -185,6 +186,17 @@ def complete(job, messages: list[dict], *, json_mode=False, transport=None) -> s
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
     reserve(job)
+    with fenced(job) as (db, _):
+        run = db.get(Run, job.target_id)
+        run.diagnostics = {
+            **run.diagnostics,
+            "generation_model": model,
+            "generation_provider": name,
+            "generation_request_sha256": [
+                *run.diagnostics.get("generation_request_sha256", []),
+                hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest(),
+            ],
+        }
     started = time.perf_counter()
     try:
         with httpx.Client(

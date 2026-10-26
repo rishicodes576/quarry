@@ -3,6 +3,7 @@
 import asyncio
 import hashlib
 import json
+import math
 import os
 import time
 from datetime import UTC, datetime, timedelta
@@ -14,12 +15,12 @@ from quarry import providers
 from quarry.benchmark import ROOT, validate_dataset
 from quarry.bootstrap import EVAL_WORKSPACE
 from quarry.config import settings
-from quarry.db import Conversation, Job, Run, session, uid
+from quarry.db import Conversation, Event, Job, Run, session, uid
 from quarry.queue import Heartbeat, LeaseLost, fenced
 from quarry.worker import process
 
 
-def evaluation_run(question, conversation_id, provider="groq", parent_id=None, *, judge=False):
+def evaluation_run(question, conversation_id, provider="groq", parent_id=None, *, judge=False, mode="hybrid_rerank", isolated=False):
     with session() as db, db.begin():
         row = Run(
             workspace_id=EVAL_WORKSPACE,
@@ -29,6 +30,8 @@ def evaluation_run(question, conversation_id, provider="groq", parent_id=None, *
             request_key=uid(),
             request_hash="evaluation",
             parent_run_id=parent_id,
+            retrieval_mode=mode,
+            diagnostics={"evaluation_protocol": "isolated-v2"} if isolated else {},
         )
         db.add(row)
         db.flush()
@@ -49,7 +52,7 @@ def evaluation_run(question, conversation_id, provider="groq", parent_id=None, *
 class FreeJudgeTransport(httpx.AsyncBaseTransport):
     """Intercept the judge SDK and route exclusively to the budgeted free provider."""
 
-    def __init__(self, conversation_id):
+    def __init__(self, conversation_id, rejected_run_ids=()):
         self.conversation_id = conversation_id
         self.lock = asyncio.Lock()
         self.next_call = 0.0
@@ -57,6 +60,8 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
         self.cache_hits = 0
         self.requests = 0
         self.used_runs = []
+        self.used_requests = []
+        self.rejected_run_ids = set(rejected_run_ids)
 
     @staticmethod
     def cache_key(payload):
@@ -88,7 +93,7 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
                 .order_by(Run.created_at)
             )
             for row in rows:
-                if row.diagnostics.get("judge_cache_version") != 1:
+                if row.id in self.rejected_run_ids or row.diagnostics.get("judge_cache_version") != 1:
                     continue
                 try:
                     value = json.loads(row.answer)
@@ -129,6 +134,7 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
             if cached:
                 self.cache_hits += 1
                 self.used_runs.append(cached[0])
+                self.used_requests.append({"run_id": cached[0], "request_sha256": key})
                 return self.response(request, *cached)
             parent_id = None
             for attempt in range(4):
@@ -141,6 +147,7 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
                 self.requests += 1
                 if result.status_code == 200:
                     self.used_runs.append(result.json()["id"])
+                    self.used_requests.append({"run_id": result.json()["id"], "request_sha256": key})
                     self.last_quota = None
                 self.next_call = time.monotonic() + settings().evaluation_pace_seconds
                 if result.status_code != 429:
@@ -217,12 +224,28 @@ class FreeJudgeTransport(httpx.AsyncBaseTransport):
         )
 
 
-async def evaluate_cases(output, cases, conversation_id):
+def checked_score(value, output, transport, *, isolated=False, request_start=0):
+    score = float(value)
+    if not math.isfinite(score) or not 0 <= score <= 1:
+        # Empty structured judgments can produce NaN in Ragas. Preserve the raw
+        # RPC but do not reuse that final malformed judgment forever on resume.
+        if isolated and len(transport.used_runs) > request_start:
+            rejected = transport.used_runs[-1]
+            transport.rejected_run_ids.add(rejected)
+            output["rejected_judge_runs"] = sorted(transport.rejected_run_ids)
+        raise ValueError("Judge returned a nonfinite or out-of-range score")
+    return score
+
+
+async def evaluate_cases(output, cases, conversation_id, *, persist=None, isolated=False, mode="hybrid_rerank"):
     from openai import AsyncOpenAI
     from ragas.llms import llm_factory
     from ragas.metrics.collections import ContextPrecision, ContextRecall, Faithfulness
 
-    transport = FreeJudgeTransport(conversation_id)
+    persist = persist or save
+    # For isolated campaigns this is a dedicated judge conversation. Research uses
+    # a separate durable conversation per case; RPC outputs never become history.
+    transport = FreeJudgeTransport(conversation_id, output.get("rejected_judge_runs", []))
     async with httpx.AsyncClient(transport=transport, timeout=60) as http_client:
         client = AsyncOpenAI(
             api_key=settings().groq_api_key,
@@ -241,21 +264,38 @@ async def evaluate_cases(output, cases, conversation_id):
         for case in cases:
             entry = next((r for r in output["rows"] if r["case_id"] == case["id"]), None)
             if entry is None:
+                research_conversation = conversation_id
                 pending_id = output.setdefault("pending_case_runs", {}).get(case["id"])
                 parent_id = None
                 if pending_id:
                     with session() as db:
                         previous = db.get(Run, pending_id)
+                        if previous is None:
+                            raise ValueError("Saved evaluation run is missing; restore its database before resuming")
+                        if isolated:
+                            research_conversation = previous.conversation_id
+                            if output.get("case_conversations", {}).get(case["id"]) != research_conversation:
+                                raise ValueError("Saved case conversation binding changed")
                         if previous.status in {"quota_exhausted", "failed", "cancelled"}:
                             # Invoking --live again is an explicit same-provider continuation.
                             parent_id, pending_id = pending_id, None
                 if not pending_id:
+                    if isolated:
+                        # A crash can commit a run before its JSON receipt is saved.
+                        # Never reuse that conversation for another generation attempt.
+                        with session() as db, db.begin():
+                            conversation = Conversation(workspace_id=EVAL_WORKSPACE, title=f"{output['campaign_id']} {case['id']}")
+                            db.add(conversation)
+                            db.flush()
+                            research_conversation = conversation.id
+                        output.setdefault("case_conversations", {})[case["id"]] = research_conversation
+                        persist(output)
                     row, job = evaluation_run(
-                        case["question"], conversation_id, parent_id=parent_id
+                        case["question"], research_conversation, parent_id=parent_id, mode=mode, isolated=isolated
                     )
                     pending_id = row.id
                     output["pending_case_runs"][case["id"]] = pending_id
-                    save(output)
+                    persist(output)
                     process(job)
                 deadline = time.monotonic() + settings().max_run_seconds + settings().lease_seconds
                 while True:
@@ -285,15 +325,38 @@ async def evaluate_cases(output, cases, conversation_id):
                         "latency_ms": row.diagnostics.get("total_ms"),
                         "tokens": row.token_usage,
                     }
+                    if isolated:
+                        first = db.scalar(
+                            select(Event.created_at).where(
+                                Event.run_id == row.id,
+                                Event.kind == "stage_completed",
+                                Event.payload["stage"].as_string() == "retrieve",
+                            ).order_by(Event.id).limit(1)
+                        )
+                        entry.update(
+                            question=case["question"],
+                            reference=case["reference"],
+                            conversation_id=row.conversation_id,
+                            mode=row.retrieval_mode,
+                            evidence=row.evidence[:5],
+                            response_sha256=hashlib.sha256(row.answer.encode()).hexdigest(),
+                            generation_request_sha256=row.diagnostics.get("generation_request_sha256", []),
+                            model_calls=row.model_calls,
+                            history_run_ids=row.diagnostics.get("history_run_ids"),
+                            first_evidence_ms=round((first - row.created_at) * 1000, 3) if first is not None else None,
+                            completed_at=datetime.now(UTC).isoformat(),
+                            answer_contexts=[e["text"][:1200] for e in sorted(row.evidence, key=lambda e: e.get("kind") != "calculation")[:6]],
+                            answer_kind=row.diagnostics.get("answer_kind", "unknown"),
+                        )
                     output["rows"].append(entry)
                     output["pending_case_runs"].pop(case["id"], None)
-                    save(output)
+                    persist(output)
             for name, metric in metrics.items():
                 if name in entry["metrics"]:
                     continue
                 arguments = {
                     "user_input": case["question"],
-                    "retrieved_contexts": entry["contexts"],
+                    "retrieved_contexts": entry.get("answer_contexts", entry["contexts"]) if name == "faithfulness" else entry["contexts"],
                 }
                 arguments["response" if name == "faithfulness" else "reference"] = (
                     entry["response"] if name == "faithfulness" else case["reference"]
@@ -301,7 +364,8 @@ async def evaluate_cases(output, cases, conversation_id):
                 try:
                     request_start = len(transport.used_runs)
                     result = await metric.ascore(**arguments)
-                    entry["metrics"][name] = float(result.value)
+                    score = checked_score(result.value, output, transport, isolated=isolated, request_start=request_start)
+                    entry["metrics"][name] = score
                     entry.setdefault("metric_configuration", {})[name] = {
                         "provider": "groq",
                         "model": settings().groq_model,
@@ -310,6 +374,11 @@ async def evaluate_cases(output, cases, conversation_id):
                         "max_completion_tokens": 2000,
                         "judge_run_ids": transport.used_runs[request_start:],
                     }
+                    if isolated:
+                        entry["metric_configuration"][name]["judge_requests"] = transport.used_requests[request_start:]
+                        entry["metric_configuration"][name]["arguments_sha256"] = hashlib.sha256(
+                            json.dumps(arguments, sort_keys=True).encode()
+                        ).hexdigest()
                 except Exception as error:
                     output["status"] = "partial"
                     output["stopped_reason"] = type(error).__name__
@@ -334,7 +403,7 @@ async def evaluate_cases(output, cases, conversation_id):
                     ),
                     flush=True,
                 )
-                save(output)
+                persist(output)
     output["status"] = "completed"
     output.pop("stopped_reason", None)
     output.pop("quota", None)
@@ -355,6 +424,19 @@ def quota_wait_seconds(quota, now):
     return min(86400, max(60, int(quota.get("retry_after", 60)) + 2))
 
 
+def wait_for_quota_reset(quota, resume_at, delay):
+    if quota["scope"] in {"workspace", "deployment"}:
+        # Daily ledgers use UTC dates. VM/host suspension can stop the monotonic
+        # clock, so an elapsed-time wait can miss an already-passed UTC reset.
+        while (remaining := (resume_at - datetime.now(UTC)).total_seconds()) > 0:
+            time.sleep(min(30, remaining))
+    else:
+        # Provider retry hints are elapsed durations, independent of wall-clock edits.
+        deadline = time.monotonic() + delay
+        while (remaining := deadline - time.monotonic()) > 0:
+            time.sleep(min(30, remaining))
+
+
 def run_live(until_complete=False):
     # Compose uses Linux. Keep two benchmark processes from overwriting the same campaign.
     import fcntl
@@ -370,9 +452,8 @@ def run_live(until_complete=False):
                 return output
             now = datetime.now(UTC)
             delay = quota_wait_seconds(output["quota"], now)
-            output.update(
-                status="quota_wait", next_retry_at=(now + timedelta(seconds=delay)).isoformat()
-            )
+            resume_at = now + timedelta(seconds=delay)
+            output.update(status="quota_wait", next_retry_at=resume_at.isoformat())
             save(output)
             print(
                 json.dumps(
@@ -385,9 +466,7 @@ def run_live(until_complete=False):
                 ),
                 flush=True,
             )
-            deadline = time.monotonic() + delay
-            while (remaining := deadline - time.monotonic()) > 0:
-                time.sleep(min(30, remaining))
+            wait_for_quota_reset(output["quota"], resume_at, delay)
         raise SystemExit("Campaign reached its bounded 64-resume limit; inspect the saved report")
 
 

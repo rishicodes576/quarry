@@ -3,18 +3,18 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a16b0d-876f-7cbe-a513-097c1d1670f6",
-  "CreatedAt": "2026-10-23T23:16:51.183839611Z",
-  "ArtifactID": "sha256:6f5490d0438ba6bdef6ca3cf092fb30bd190fcf3efdf46f2908ea17cc4dfc897",
+  "ReportID": "01a1775b-9791-7d29-ac33-f55bc050cd72",
+  "CreatedAt": "2026-10-26T08:37:33.713867028Z",
+  "ArtifactID": "sha256:ba7efe72a4258253a9b202e603d8578e931d3c45b7d130285b91f61c9d6f1c7b",
   "ArtifactName": "/images/postgres.tar",
   "ArtifactType": "container_image",
   "Metadata": {
-    "Size": 309695488,
+    "Size": 310447104,
     "OS": {
       "Family": "alpine",
       "Name": "3.24.3"
     },
-    "ImageID": "sha256:0689f49e340c8e174ef17918807b56bf30893040859336c23f1f532a2009c029",
+    "ImageID": "sha256:90f25a3abda4a6121cb6358a12ade012177fa93dab739ab7dea59e6ceb2ee6c9",
     "DiffIDs": [
       "sha256:75c137aedfb2760f88629236cb7b797630aed0c3d91d626d1d1bb694878fc2ba",
       "sha256:4d0273c37bdc514fffff95149ce8785621655581d2c069a31cf3038e08c308fa",
@@ -25,10 +25,10 @@
       "sha256:7ca201ad0f726c7eaf249399e04994c30e26d3c9e06e43d6b371e3b25f8630bc",
       "sha256:2343fb8f16ceba7c1a809c8517142814afe99462036a7aa83ef784bbb3312ad4",
       "sha256:ac355b2037545737428ed497d5706127f23722edfa2f5f6d9ac7a75fd30d75c6",
-      "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300",
-      "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de",
-      "sha256:6f9d22ef58a97a561412836e93d5bbb84ffeb9128b1fe1427d736a5a761f48d5",
-      "sha256:90ece4c85e49f74a552caa070290023964e28614a7e756e3c249de957232154c"
+      "sha256:2c70ff6db109e868ab99f50e6994f00e600a5cff6dddd45fa25db71144189081",
+      "sha256:657ab3e5daa56421d3afbbb2ac89133e9d402b3d9bb6533bda012eabe9e17087",
+      "sha256:b531906c3d9001ffe305efad8b83ba0d7343084f1bcfab6098a08c21656f6e5d",
+      "sha256:9f781305be2a2311da94b3843da0ea6d18ea852d43347ce5dbd907437947c54f"
     ],
     "RepoTags": [
       "quarry-postgres:local"
@@ -36,7 +36,7 @@
     "Reference": "quarry-postgres:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-23T20:37:18.644107446Z",
+      "created": "2026-10-26T08:29:13.264091489Z",
       "history": [
         {
           "created": "2026-10-21T22:37:22.870489069Z",
@@ -162,27 +162,27 @@
           "empty_layer": true
         },
         {
-          "created": "2026-10-23T20:37:18.393601736Z",
-          "created_by": "RUN /bin/sh -c apk add --no-cache 'brotli-libs=1.2.1-r0' # buildkit",
+          "created": "2026-10-26T08:29:12.990497993Z",
+          "created_by": "RUN /bin/sh -c apk add --no-cache 'brotli-libs=1.2.1-r0' 'libcurl=8.23.0-r0' # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T20:37:18.478328059Z",
+          "created": "2026-10-26T08:29:13.085451463Z",
           "created_by": "COPY /out/gosu /usr/local/bin/gosu # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T20:37:18.550655878Z",
+          "created": "2026-10-26T08:29:13.175818393Z",
           "created_by": "COPY /src/LICENSE /usr/share/licenses/gosu/LICENSE # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T20:37:18.644107446Z",
+          "created": "2026-10-26T08:29:13.264091489Z",
           "created_by": "COPY /src/go.mod /src/go.sum /usr/share/quarry/gosu/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-23T20:37:18.644107446Z",
+          "created": "2026-10-26T08:29:13.264091489Z",
           "created_by": "USER postgres",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -201,10 +201,10 @@
           "sha256:7ca201ad0f726c7eaf249399e04994c30e26d3c9e06e43d6b371e3b25f8630bc",
           "sha256:2343fb8f16ceba7c1a809c8517142814afe99462036a7aa83ef784bbb3312ad4",
           "sha256:ac355b2037545737428ed497d5706127f23722edfa2f5f6d9ac7a75fd30d75c6",
-          "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300",
-          "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de",
-          "sha256:6f9d22ef58a97a561412836e93d5bbb84ffeb9128b1fe1427d736a5a761f48d5",
-          "sha256:90ece4c85e49f74a552caa070290023964e28614a7e756e3c249de957232154c"
+          "sha256:2c70ff6db109e868ab99f50e6994f00e600a5cff6dddd45fa25db71144189081",
+          "sha256:657ab3e5daa56421d3afbbb2ac89133e9d402b3d9bb6533bda012eabe9e17087",
+          "sha256:b531906c3d9001ffe305efad8b83ba0d7343084f1bcfab6098a08c21656f6e5d",
+          "sha256:9f781305be2a2311da94b3843da0ea6d18ea852d43347ce5dbd907437947c54f"
         ]
       },
       "config": {
@@ -287,24 +287,24 @@
         "DiffID": "sha256:ac355b2037545737428ed497d5706127f23722edfa2f5f6d9ac7a75fd30d75c6"
       },
       {
-        "Size": 1083904,
-        "Digest": "sha256:f3326da42cb12676450507ff48fb029f3a28de8779c999096c48ff8243df2556",
-        "DiffID": "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300"
+        "Size": 1835520,
+        "Digest": "sha256:8a05722bbb5524c24ffbfba94a0aa4977a60b0c3c6f73924abf64311282c692a",
+        "DiffID": "sha256:2c70ff6db109e868ab99f50e6994f00e600a5cff6dddd45fa25db71144189081"
       },
       {
         "Size": 1940480,
-        "Digest": "sha256:b3f7db3e8b0c2de46622f0304f2bf0a7b0f29905a412f7a1c1b98a923f835d18",
-        "DiffID": "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de"
+        "Digest": "sha256:50293ff625fc90216f023d0474f5b4175daf3e3a7c76b2b2b6fd7e41030d7cb9",
+        "DiffID": "sha256:657ab3e5daa56421d3afbbb2ac89133e9d402b3d9bb6533bda012eabe9e17087"
       },
       {
         "Size": 15360,
-        "Digest": "sha256:5d0bdb17cdb3c2c331b8f63ec0b76e1e4ec83d37914e69a9231069755bc6e28b",
-        "DiffID": "sha256:6f9d22ef58a97a561412836e93d5bbb84ffeb9128b1fe1427d736a5a761f48d5"
+        "Digest": "sha256:cc042b1189fd0767e880d0eae20a0a046faa6bb6393e9c902c19909a4edbe123",
+        "DiffID": "sha256:b531906c3d9001ffe305efad8b83ba0d7343084f1bcfab6098a08c21656f6e5d"
       },
       {
         "Size": 5120,
-        "Digest": "sha256:c370a1834d7b5e745477f36b2cf350b2e77573834a1419de901208f62cc08096",
-        "DiffID": "sha256:90ece4c85e49f74a552caa070290023964e28614a7e756e3c249de957232154c"
+        "Digest": "sha256:63f218f2b9774cac3249b320d5131c03b1963be73048f2d5608c3c9918919ff9",
+        "DiffID": "sha256:9f781305be2a2311da94b3843da0ea6d18ea852d43347ce5dbd907437947c54f"
       }
     ]
   },
@@ -319,7 +319,7 @@
           "Name": ".postgresql-rundeps",
           "Identifier": {
             "PURL": "pkg:apk/alpine/.postgresql-rundeps@20261021.225639?arch=noarch\u0026distro=3.24.3",
-            "UID": "b207e6a61a1e87d0"
+            "UID": "ba27dc9f85e727dc"
           },
           "Version": "20261021.225639",
           "Arch": "noarch",
@@ -329,7 +329,7 @@
             "icu-libs@78.1-r0",
             "krb5-libs@1.22.2-r1",
             "libcrypto3@3.5.9-r0",
-            "libcurl@8.22.0-r0",
+            "libcurl@8.23.0-r0",
             "libedit@20260508.3.1-r1",
             "libgcc@15.2.0-r5",
             "libldap@2.6.15-r0",
@@ -655,8 +655,8 @@
             "musl@1.2.6-r3"
           ],
           "Layer": {
-            "Digest": "sha256:f3326da42cb12676450507ff48fb029f3a28de8779c999096c48ff8243df2556",
-            "DiffID": "sha256:64aeed472fe8dff6aae19a3a18946d7cc2b6d5fe4e63f19ea51adc937730f300"
+            "Digest": "sha256:8a05722bbb5524c24ffbfba94a0aa4977a60b0c3c6f73924abf64311282c692a",
+            "DiffID": "sha256:2c70ff6db109e868ab99f50e6994f00e600a5cff6dddd45fa25db71144189081"
           },
           "Digest": "sha1:f482d0e3f6ec36fd4910358472c6b48be6388584",
           "InstalledFiles": [
@@ -1095,16 +1095,16 @@
           "AnalyzedBy": "apk"
         },
         {
-          "ID": "libcurl@8.22.0-r0",
+          "ID": "libcurl@8.23.0-r0",
           "Name": "libcurl",
           "Identifier": {
-            "PURL": "pkg:apk/alpine/libcurl@8.22.0-r0?arch=x86_64\u0026distro=3.24.3",
-            "UID": "5459458448472038"
+            "PURL": "pkg:apk/alpine/libcurl@8.23.0-r0?arch=x86_64\u0026distro=3.24.3",
+            "UID": "a59da8bbde6fe2d1"
           },
-          "Version": "8.22.0-r0",
+          "Version": "8.23.0-r0",
           "Arch": "x86_64",
           "SrcName": "curl",
-          "SrcVersion": "8.22.0-r0",
+          "SrcVersion": "8.23.0-r0",
           "Licenses": [
             "curl"
           ],
@@ -1123,10 +1123,10 @@
             "zstd-libs@1.5.7-r2"
           ],
           "Layer": {
-            "Digest": "sha256:242c5d565900091c2cf94a3d5525d2de099cad11e58238fce17558da98a9da5d",
-            "DiffID": "sha256:d948599f0e747cf5ceeb3302b4a67fde5edd06abbe9f61fd4d4e2fe4e4980294"
+            "Digest": "sha256:8a05722bbb5524c24ffbfba94a0aa4977a60b0c3c6f73924abf64311282c692a",
+            "DiffID": "sha256:2c70ff6db109e868ab99f50e6994f00e600a5cff6dddd45fa25db71144189081"
           },
-          "Digest": "sha1:7816006b6af2270ab6e7e85f74adb94c16bdc48b",
+          "Digest": "sha1:7adaabffb7d1facb5cd3de9a522b43bc63373bd4",
           "InstalledFiles": [
             "usr/lib/libcurl.so.4",
             "usr/lib/libcurl.so.4.8.0"
@@ -2747,8 +2747,8 @@
             "stdlib@v1.26.10"
           ],
           "Layer": {
-            "Digest": "sha256:b3f7db3e8b0c2de46622f0304f2bf0a7b0f29905a412f7a1c1b98a923f835d18",
-            "DiffID": "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de"
+            "Digest": "sha256:50293ff625fc90216f023d0474f5b4175daf3e3a7c76b2b2b6fd7e41030d7cb9",
+            "DiffID": "sha256:657ab3e5daa56421d3afbbb2ac89133e9d402b3d9bb6533bda012eabe9e17087"
           },
           "AnalyzedBy": "gobinary"
         },
@@ -2762,8 +2762,8 @@
           "Version": "v1.26.10",
           "Relationship": "direct",
           "Layer": {
-            "Digest": "sha256:b3f7db3e8b0c2de46622f0304f2bf0a7b0f29905a412f7a1c1b98a923f835d18",
-            "DiffID": "sha256:f46e02a3caae24cc9e989147efeedbed14fbfa630217516698d46b47c67f86de"
+            "Digest": "sha256:50293ff625fc90216f023d0474f5b4175daf3e3a7c76b2b2b6fd7e41030d7cb9",
+            "DiffID": "sha256:657ab3e5daa56421d3afbbb2ac89133e9d402b3d9bb6533bda012eabe9e17087"
           },
           "AnalyzedBy": "gobinary"
         },
