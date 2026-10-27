@@ -2446,6 +2446,2110 @@
           "arguments_sha256": "5ef2bf5449b5b3da28e30b48b3343bca686eec3a516c794824484450e4433fa9"
         }
       }
+    },
+    {
+      "case_id": "q017",
+      "run_id": "1604b81e3e144929a23445825b882509",
+      "response": "**Engineering Decision Brief \u2013 When to Prefer Exact Lexical Matching**\n\n**Question**  \nWhich types of engineering queries benefit from exact lexical matching?\n\n**Evidence\u2011Based Answer**  \n\n- **Exact identifiers and codes** \u2013 Passages describe \u201cexact error codes, configuration keys and product identifiers\u201d as \u201cstrong lexical retrieval cases\u201d\u202f[E4].  \n- **Precise terminology** \u2013 BM25 (a lexical model) \u201crewards query term occurrence while accounting for term rarity\u201d\u202f[E1][E4]; this is most effective when the user\u2019s wording matches the term used in the document (e.g., specific API names, flag values).  \n- **Short, un\u2011paraphrased queries** \u2013 Hybrid retrieval notes that \u201cexact identifiers\u201d are handled by the lexical component, while semantic paraphrases require dense embeddings\u202f[E3].  \n\n**Conclusion**  \nEngineering queries that reference **exact identifiers, error codes, configuration keys, product IDs, or other fixed terminology** gain the most from lexical matching (e.g., BM25). These queries rely on term\u2011level overlap rather than semantic similarity.\n\n**Alternatives & Trade\u2011offs**  \n\n| Approach | Strengths | Weaknesses |\n|----------|-----------|------------|\n| **Pure lexical (BM25)** | Fast, high precision for exact terms; no need for expensive dense embeddings. | Misses paraphrased or semantically related content. |\n| **Hybrid (lexical\u202f+\u202fdense)** | Captures both exact identifiers and paraphrased concepts. | More complex; requires fusion and may need larger compute. |\n| **Dense\u2011only** | Handles paraphrases well. | Poor recall for exact codes/identifiers; higher latency. |\n\n**Uncertainties**  \n\n- The evidence does not quantify recall/precision differences for specific engineering domains; performance may vary with corpus size and term distribution.  \n- No data is provided on how often engineering queries are paraphrased versus exact, so the optimal balance between lexical and dense components remains uncertain.  \n\n**Contradictions**  \n\nNone identified in the supplied passages.",
+      "contexts": [
+        "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+        "The current sample design note, dated 2026-09-01, sets retrieval-cache TTL to 90 seconds. Cache keys include workspace, query, embedding revision, retrieval mode and corpus generation. Ingestion publication and deletion increment the corpus generation to invalidate prior entries.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime."
+      ],
+      "metrics": {
+        "context_precision": 0.8055555555287036,
+        "context_recall": 1.0,
+        "faithfulness": 0.6842105263157895
+      },
+      "latency_ms": 2728.24,
+      "tokens": 1398,
+      "question": "Which types of engineering queries benefit from exact lexical matching?",
+      "reference": "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+      "conversation_id": "46d5a50e03bf42f5a3639a7a72cac636",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "a7fbe7ab-dc9d-5769-ad59-77dae1afcbbc",
+          "document_id": "5d20acb559c24e2ba530af041ae313cf",
+          "title": "BM25 sparse retrieval and IDF",
+          "text": "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "074aa1117b5eaae65b34d5ec20b48fdc9e5f10e2d34d4ed8b99d82cd746fbea0",
+          "score": 0.46824235,
+          "retrieval_score": 0.46824235,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793077677.8892674
+        },
+        {
+          "chunk_id": "1d5f2be6-1019-5b02-8e38-c81453cbd0de",
+          "document_id": "e3ce0d0bc8314f7ba5a63a3a28b1ef28",
+          "title": "Retrieval cache policy, current revision",
+          "text": "The current sample design note, dated 2026-09-01, sets retrieval-cache TTL to 90 seconds. Cache keys include workspace, query, embedding revision, retrieval mode and corpus generation. Ingestion publication and deletion increment the corpus generation to invalidate prior entries.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "10a4f224e186c539b7e15f31f39d7a35c31f72141b7bbad0820fc6f1a24e5ebe",
+          "score": 0.43038607,
+          "retrieval_score": 0.43038607,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793077677.8892715
+        },
+        {
+          "chunk_id": "5ad88682-4cc1-52ad-9b3a-8280b33f18c1",
+          "document_id": "6272447af2434ede82a52037b1031a4e",
+          "title": "Reciprocal rank fusion for hybrid retrieval",
+          "text": "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "a47c6cfa52877bcc03bb50299e9cf06c32703fd9cd1a4919ee4b1d4496ca2353",
+          "score": 0.42755657,
+          "retrieval_score": 0.42755657,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793077677.8892732
+        },
+        {
+          "chunk_id": "9e42bf4c-496b-5a54-95bc-ad0479c848cd",
+          "document_id": "5d20acb559c24e2ba530af041ae313cf",
+          "title": "BM25 sparse retrieval and IDF",
+          "text": "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "074aa1117b5eaae65b34d5ec20b48fdc9e5f10e2d34d4ed8b99d82cd746fbea0",
+          "score": 0.40636238,
+          "retrieval_score": 0.40636238,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793077677.8892741
+        },
+        {
+          "chunk_id": "63ee6dac-4253-55e6-9eaa-1a6e8f714e6d",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.36061192,
+          "retrieval_score": 0.36061192,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793077677.8892748
+        }
+      ],
+      "response_sha256": "7ec41ba753863340a65a8b50f91808e9d338e862ae209ef9f7b1442d3e0e9cb8",
+      "generation_request_sha256": [
+        "06f5e15819af05d779b7e50c5ae3217c220859af551ef2875cf57b82f3ae1838",
+        "99c3f0bb72c14aa6c60e3fedd583a79eba37d24212a1c85db9516bfa3a080f65"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1090.266,
+      "completed_at": "2026-10-27T05:07:59.611448+00:00",
+      "answer_contexts": [
+        "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+        "The current sample design note, dated 2026-09-01, sets retrieval-cache TTL to 90 seconds. Cache keys include workspace, query, embedding revision, retrieval mode and corpus generation. Ingestion publication and deletion increment the corpus generation to invalidate prior entries.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "ce5dc123ac054b61a77145852e107380",
+            "3a1be040d41b494697371e6ac08bd43c",
+            "25bbc90988c04993abcebd3104717f53",
+            "02834f40144c4ace8bec0d79431940e3",
+            "7ec06288215e4c12b436af95a313f1f6"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "ce5dc123ac054b61a77145852e107380",
+              "request_sha256": "ec59af80bd7a82e8dcfdf42705bbd796d318df784873b5c4e34d35b78052f6d2"
+            },
+            {
+              "run_id": "3a1be040d41b494697371e6ac08bd43c",
+              "request_sha256": "524249e14d08efe08af7a3376c0c11ee14044377de73e9dffe8af5d120732764"
+            },
+            {
+              "run_id": "25bbc90988c04993abcebd3104717f53",
+              "request_sha256": "643ecb1f4c0e5e70fca678282806b34ff589498dc29c0889a6791104718a9c1a"
+            },
+            {
+              "run_id": "02834f40144c4ace8bec0d79431940e3",
+              "request_sha256": "d7f5752b3010090fcc14d5ff15f7171669d2fdd3e381ca7a72b34abc0aae52f8"
+            },
+            {
+              "run_id": "7ec06288215e4c12b436af95a313f1f6",
+              "request_sha256": "9159b5792ea39f25546cccd6baea7fcce3ad7e6e1f88bbc4c94f707cc78db473"
+            }
+          ],
+          "arguments_sha256": "ad32fb3cef44a7787dbb74fc9f574c6926395af1b895a3a4dd0c3ad745f715dc"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "0149cb292552437198832333b368e52d"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "0149cb292552437198832333b368e52d",
+              "request_sha256": "5d6e9b996225547846cf2505e9a44c1ac497bcdd35006c58379bec642c2c5efa"
+            }
+          ],
+          "arguments_sha256": "ad32fb3cef44a7787dbb74fc9f574c6926395af1b895a3a4dd0c3ad745f715dc"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "dbed6b96419f416d992a17b432a8e4c4",
+            "972b3efe37b34d5f8c38ef5c93d36bf6"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "dbed6b96419f416d992a17b432a8e4c4",
+              "request_sha256": "384489e5f8ff01700e38b05e3f1d8575ead10d26b5a94d29cd9689eb0936c599"
+            },
+            {
+              "run_id": "972b3efe37b34d5f8c38ef5c93d36bf6",
+              "request_sha256": "1f5c98a030755a16585162cbf71b30558c9880532912a7fd2123f7b83b3c1038"
+            }
+          ],
+          "arguments_sha256": "5d4487af9214113e92e5d2bd2d6e69810588494df12c7f7f7955a452c4ffd583"
+        }
+      }
+    },
+    {
+      "case_id": "q018",
+      "run_id": "1e719f6148114e0baedcb0b2641b7497",
+      "response": "**Engineering Decision Brief \u2013 Favoring a Rare Error Identifier Without Calling an Embedding API**\n\n**Context & Goal**  \nThe system must increase the likelihood that a rare error identifier (e.g., a low\u2011frequency exception code) is selected for downstream handling or reporting, but it cannot rely on an external embedding service to compute similarity scores.\n\n**Key Evidence**  \n\n- **Idempotent, deterministic identifiers** \u2013 External vector upserts can use deterministic point identifiers to make repeated indexing idempotent, avoiding ambiguous requests that would otherwise consume budget\u202f[E2].  \n- **Local dense embeddings** \u2013 Embedding generation can be performed locally; the model is version\u2011specific and must be managed as a separate collection when geometry changes\u202f[E3][E4].  \n- **Passage length & token budgeting** \u2013 Small chunks preserve identifier context; large chunks dilute evidence and increase generation cost\u202f[E5].\n\n**Alternatives**\n\n| Option | Description | Trade\u2011offs | Uncertainties |\n|--------|-------------|------------|---------------|\n| **A. Deterministic local embedding of identifiers** | Load a lightweight local embedding model (e.g., a frozen transformer) and compute a vector for each error identifier at startup. Store vectors in a local collection; use deterministic point IDs for idempotent upserts\u202f[E2][E3]. | \u2022 No external API cost.<br>\u2022 Requires memory for model and vector store.<br>\u2022 Must manage version\u2011specific geometry; reindex needed on model change\u202f[E4]. | \u2022 Impact of model size on cold\u2011start latency.<br>\u2022 Accuracy of similarity for rare identifiers. |\n| **B. Hash\u2011based similarity proxy** | Compute a stable hash (e.g., SHA\u2011256) of the identifier string and use Hamming distance or bucketed hash prefixes as a cheap similarity proxy. | \u2022 Extremely low compute and storage overhead.<br>\u2022 No need for embedding model or vector store.<br>\u2022 Coarse similarity; may not capture semantic closeness. | \u2022 How well hash proximity correlates with actual error similarity is unknown. |\n| **C. Rule\u2011based weighting** | Maintain a hand\u2011crafted priority table that boosts the selection probability of rare identifiers when they appear in a small passage (\u2264 token window)\u202f[E5]. | \u2022 No ML or embedding required.<br>\u2022 Simple to audit and version\u2011control.<br>\u2022 Requires manual updates as new rare identifiers emerge. | \u2022 Scalability as the identifier set grows.<br>\u2022 Potential for missed edge cases. |\n\n**Recommended Approach**  \n\n1. **Adopt Option A with deterministic local embeddings**:  \n   - Load a modest\u2011size model locally to avoid external API calls.  \n   - Use deterministic point identifiers for each error code to ensure idempotent upserts, preventing ambiguous budget charges\u202f[E2].  \n   - Keep the embedding collection version\u2011locked; if the model is upgraded, re\u2011create the collection per the guidance on geometry changes\u202f[E4].  \n\n2. **Mitigate token\u2011budget impact**:  \n   - Encode identifiers in small, self\u2011contained passages (\u2264 token window) to preserve context and avoid truncation\u202f[E5].  \n\n3. **Fallback**: If memory or latency constraints prohibit a local model, switch to Option B (hash proxy) as a lightweight interim solution, acknowledging its reduced semantic fidelity.\n\n**Contradictions & Gaps**  \n\n- The evidence describes local embeddings and deterministic identifiers but does not quantify the similarity quality of hash\u2011based proxies versus true embeddings, leaving a gap in evaluating Option B.  \n- No direct guidance is provided on how to \u201cfavor\u201d a rare identifier beyond idempotent upserts; the decision relies on inference from deterministic storage practices.\n\n**Conclusion**  \nUsing a local embedding model with deterministic point IDs satisfies the requirement to avoid external embedding APIs while enabling controlled, idempotent similarity queries for rare error identifiers. This approach balances cost, performance, and maintainability, with clear fallback paths if resource constraints arise.",
+      "contexts": [
+        "# Payload-bound request idempotency",
+        "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.",
+        "# Local dense embeddings",
+        "Embedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.",
+        "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none."
+      ],
+      "metrics": {
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "faithfulness": 0.35294117647058826
+      },
+      "latency_ms": 3455.8,
+      "tokens": 1630,
+      "question": "How can we favor a rare error identifier without calling an embedding API?",
+      "reference": "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+      "conversation_id": "f7efb41fdc1f46e99aa6fb7a094f0247",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "f78384f1-3cad-5ed5-8a07-9da41676e454",
+          "document_id": "8294a51296ab422d8a9442abda426bae",
+          "title": "Payload-bound request idempotency",
+          "text": "# Payload-bound request idempotency",
+          "page": 1,
+          "section": "Payload-bound request idempotency",
+          "source_url": "",
+          "content_hash": "db4fd1d0c70b56fc44a77b09034afcba9cc0a6fc9cbabdbd85561e488f25e613",
+          "score": 0.3330062,
+          "retrieval_score": 0.3330062,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793077734.4268305
+        },
+        {
+          "chunk_id": "4c927395-4f1b-595c-9936-d905bf69c54c",
+          "document_id": "453194d8309c4cd3a8fc55e8d4ae72a1",
+          "title": "Leased workers and fencing tokens",
+          "text": "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "5481b5dcea7bb4aedd7c831d22ca110d6af3ca9db2c8dbd3045451670ae0b5dd",
+          "score": 0.3115254,
+          "retrieval_score": 0.3115254,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793077734.4268332
+        },
+        {
+          "chunk_id": "6107f1f8-03f9-5bef-8066-5c6e9b3d3b9f",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "# Local dense embeddings",
+          "page": 1,
+          "section": "Local dense embeddings",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.30565864,
+          "retrieval_score": 0.30565864,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793077734.4268343
+        },
+        {
+          "chunk_id": "5ff3a743-12e6-5f18-a12d-7c3d3dbe744f",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "Embedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.3004772,
+          "retrieval_score": 0.3004772,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793077734.4268355
+        },
+        {
+          "chunk_id": "81d7df13-7715-5f27-b7f0-4e71fd8ff9a8",
+          "document_id": "2cc51d1ed2a74b9ab41739af54234fd0",
+          "title": "Passage boundaries and source provenance",
+          "text": "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "44d0a907fb855580388007dbaecc3bb2483bc7aae7293f3c8e485e0708ba9674",
+          "score": 0.28914222,
+          "retrieval_score": 0.28914222,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793077734.4268365
+        }
+      ],
+      "response_sha256": "852e1f3de9f3006b9a32dd51b9bb9f9c8ec3c6e85fa3ce76d856ef7ffc27d732",
+      "generation_request_sha256": [
+        "b39c0942be04e1b4f1bf6b5ceff4d8881c22b2b2e02ba8aa07e102fea99aa3d1",
+        "ebc1403fb7466e553efed7ac35f393519e8c54eddfabbb606280614c4400dc16"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 942.71,
+      "completed_at": "2026-10-27T05:08:57.003670+00:00",
+      "answer_contexts": [
+        "# Payload-bound request idempotency",
+        "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.",
+        "# Local dense embeddings",
+        "Embedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.",
+        "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "05b9ff53c08843fc9b7211cad539766a",
+            "3734e42a958c44789071f1d433786c47",
+            "71d0c1ff3f3c4a1581ed561ed9a7ceaf",
+            "8da84ee179334614a5be072ad8db913e",
+            "2e1358bd30624cce8fde97d3af66a27a"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "05b9ff53c08843fc9b7211cad539766a",
+              "request_sha256": "1d864d2719ab0b205b1f519b1b81a94a92bd86755bbce1fed48348b9ec965923"
+            },
+            {
+              "run_id": "3734e42a958c44789071f1d433786c47",
+              "request_sha256": "474666a5a62873779fa895eb6298cfc551a9e592c85545f40db2aaec1e97d539"
+            },
+            {
+              "run_id": "71d0c1ff3f3c4a1581ed561ed9a7ceaf",
+              "request_sha256": "1b11eb0cd9a0ac76c568a17781e8924240cd1c2f0616a1ba508e34ba5f911d93"
+            },
+            {
+              "run_id": "8da84ee179334614a5be072ad8db913e",
+              "request_sha256": "6a693745a4bef3b35213dc28e3283a9325eb2635821e6a5d29bf5385f14070ac"
+            },
+            {
+              "run_id": "2e1358bd30624cce8fde97d3af66a27a",
+              "request_sha256": "b6893a7ea726c62529d237a45e507b955720744602b89fe6f6e6e70945a26082"
+            }
+          ],
+          "arguments_sha256": "a6b57900e5251eff36cd990d160eedf4b0dead1478483ee45c0714951df96477"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "c9a075747fbb4c79a27c3caacd7e73e5"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "c9a075747fbb4c79a27c3caacd7e73e5",
+              "request_sha256": "22a406c88b4005d7a96e98d5c2e9508947d40370331c65c1f1cf154b99b073dc"
+            }
+          ],
+          "arguments_sha256": "a6b57900e5251eff36cd990d160eedf4b0dead1478483ee45c0714951df96477"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "8a9d7246bda84307ac32f8e7b14d03e1",
+            "7b2137a0df0546a2b1d8add5e6f43bae"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "8a9d7246bda84307ac32f8e7b14d03e1",
+              "request_sha256": "8423eef5bb2643272b41a391e021e0b44c5645a33c4e9c89cacf90a91c5a722e"
+            },
+            {
+              "run_id": "7b2137a0df0546a2b1d8add5e6f43bae",
+              "request_sha256": "e4e772dee0defa36863ac60c0d51b1101c82d6396c788ce213a3d08171356b8b"
+            }
+          ],
+          "arguments_sha256": "b91757891272cb76e1a1073fb00c4283bcfac11319ec15bd578733088dc5e59a"
+        }
+      }
+    },
+    {
+      "case_id": "q019",
+      "run_id": "bd2af80accc44fe68b19209aaa7f50e4",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Local dense embeddings\n\nThe local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.\n\n[E2] Cross-encoder reranking\n\n# Cross-encoder reranking\n\n[E3] Cross-encoder reranking\n\nThe ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.\n\n[E4] Local dense embeddings\n\n# Local dense embeddings\n\n[E5] Reciprocal rank fusion for hybrid retrieval\n\nDense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+        "# Cross-encoder reranking",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "# Local dense embeddings",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker."
+      ],
+      "metrics": {
+        "context_precision": 0.9999999999,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 2448.41,
+      "tokens": 1137,
+      "question": "What is the vector dimension of the local MiniLM encoder?",
+      "reference": "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+      "conversation_id": "cfb57a4ad3314f358e600de31392ffa9",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "a70101fe-d627-5162-a9c1-f666389da02d",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.531726,
+          "retrieval_score": 0.531726,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793077853.2320828
+        },
+        {
+          "chunk_id": "a8b2212b-d9a9-545c-a391-74cfd6c3cae1",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "# Cross-encoder reranking",
+          "page": 1,
+          "section": "Cross-encoder reranking",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.4601674,
+          "retrieval_score": 0.4601674,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793077853.2320857
+        },
+        {
+          "chunk_id": "63ee6dac-4253-55e6-9eaa-1a6e8f714e6d",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.32200742,
+          "retrieval_score": 0.32200742,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793077853.232087
+        },
+        {
+          "chunk_id": "6107f1f8-03f9-5bef-8066-5c6e9b3d3b9f",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "# Local dense embeddings",
+          "page": 1,
+          "section": "Local dense embeddings",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.27873498,
+          "retrieval_score": 0.27873498,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793077853.2320879
+        },
+        {
+          "chunk_id": "9e10a095-8eeb-599c-b6b3-fc2e52f6e30b",
+          "document_id": "6272447af2434ede82a52037b1031a4e",
+          "title": "Reciprocal rank fusion for hybrid retrieval",
+          "text": "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "a47c6cfa52877bcc03bb50299e9cf06c32703fd9cd1a4919ee4b1d4496ca2353",
+          "score": 0.21665318,
+          "retrieval_score": 0.21665318,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793077853.2320883
+        }
+      ],
+      "response_sha256": "82864c7a3044a0067fae233c7a36fa50bcc92c2ef53c6f07dab89bded71cc08f",
+      "generation_request_sha256": [
+        "6651ad6058a64b008e7a7dc810076774643adcd7a42a7464381dc4acbb913dcf",
+        "31192f62f5c45442dbfd6e74ef4bedd89249977c099efc49cac3cf64dd77f1e0"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 927.382,
+      "completed_at": "2026-10-27T05:10:54.823811+00:00",
+      "answer_contexts": [
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+        "# Cross-encoder reranking",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "# Local dense embeddings",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker."
+      ],
+      "answer_kind": "citation_fallback",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "4a14c8452ab24e06949db0081023099f",
+            "958f0a746f324ea29513c8c5c0e7976b",
+            "7bd42e2f43e14d40bd5d41738d20751b",
+            "fdaacc43d61643c4be01df15341fac1f",
+            "f93ebf7697a74cbbbca7f0c7aec30981"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "4a14c8452ab24e06949db0081023099f",
+              "request_sha256": "c57db46e7c53c604f6b4d2a5db0044fbde90d4c9c0aff42068d2d2760d62a3ac"
+            },
+            {
+              "run_id": "958f0a746f324ea29513c8c5c0e7976b",
+              "request_sha256": "21c59baef79e5e636f9808b6eabf9ca5da982f3d4f0a571fc6d71f0bc2f013ca"
+            },
+            {
+              "run_id": "7bd42e2f43e14d40bd5d41738d20751b",
+              "request_sha256": "640dedf821fedf9ac9f1a27a3f062b01a307c2933f5f8c2375ec57d1a39801aa"
+            },
+            {
+              "run_id": "fdaacc43d61643c4be01df15341fac1f",
+              "request_sha256": "36bbeeca8019de69d07e53a7183c339f8a6f83e219c74223e8b519d43fbde11c"
+            },
+            {
+              "run_id": "f93ebf7697a74cbbbca7f0c7aec30981",
+              "request_sha256": "656eff1de8b5e15a58701e78695f590b831bf329a0ed14cc8e809e324eb5b578"
+            }
+          ],
+          "arguments_sha256": "8e16481b1c7ce6b0d4979d4195b2c9eb8f183a005ab89edbfa520ff01db0930c"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "ed11e2e5a11146da96a0a126998256cc"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "ed11e2e5a11146da96a0a126998256cc",
+              "request_sha256": "daf519d20f632e4ae90706a5040bb7a45a95d39b989bb9b0ec9f6b6763e61fda"
+            }
+          ],
+          "arguments_sha256": "8e16481b1c7ce6b0d4979d4195b2c9eb8f183a005ab89edbfa520ff01db0930c"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "007a92f540f04aeb8811deb2f7570f16",
+            "9465be776e0344d499040eca41cd62d1"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "007a92f540f04aeb8811deb2f7570f16",
+              "request_sha256": "46eca0da5be470a6058fbe9c08caf1e14f604157798e8609374999b3758d9de0"
+            },
+            {
+              "run_id": "9465be776e0344d499040eca41cd62d1",
+              "request_sha256": "24d6bfdd5db385b579c0b7087e063d8540edae2c237ce8f0dd075428af3b4d46"
+            }
+          ],
+          "arguments_sha256": "09c7102519c5d5b606cd0a53d544f29be0715916eb99644c3911f65408803b88"
+        }
+      }
+    },
+    {
+      "case_id": "q020",
+      "run_id": "fcc027e4777545c69a3ab477e2c40a04",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Local dense embeddings\n\nEmbedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.\n\n[E2] Cross-encoder reranking\n\n# Cross-encoder reranking\n\n[E3] Local dense embeddings\n\nThe local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.\n\n[E4] Local dense embeddings\n\n# Local dense embeddings\n\n[E5] Leased workers and fencing tokens\n\nUse fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "Embedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.",
+        "# Cross-encoder reranking",
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+        "# Local dense embeddings",
+        "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget."
+      ],
+      "metrics": {
+        "context_precision": 0.8333333332916666,
+        "context_recall": 1.0,
+        "faithfulness": 0.7272727272727273
+      },
+      "latency_ms": 3405.17,
+      "tokens": 1391,
+      "question": "Why does changing an embedding model require reindexing?",
+      "reference": "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+      "conversation_id": "a9d6362fe0ae4f13bf62b9f981be3ac4",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "5ff3a743-12e6-5f18-a12d-7c3d3dbe744f",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "Embedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.65182793,
+          "retrieval_score": 0.65182793,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793077919.2443154
+        },
+        {
+          "chunk_id": "a8b2212b-d9a9-545c-a391-74cfd6c3cae1",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "# Cross-encoder reranking",
+          "page": 1,
+          "section": "Cross-encoder reranking",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.35072005,
+          "retrieval_score": 0.35072005,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793077919.2443194
+        },
+        {
+          "chunk_id": "a70101fe-d627-5162-a9c1-f666389da02d",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.33568078,
+          "retrieval_score": 0.33568078,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793077919.2443213
+        },
+        {
+          "chunk_id": "6107f1f8-03f9-5bef-8066-5c6e9b3d3b9f",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "# Local dense embeddings",
+          "page": 1,
+          "section": "Local dense embeddings",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.3281345,
+          "retrieval_score": 0.3281345,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793077919.244323
+        },
+        {
+          "chunk_id": "4c927395-4f1b-595c-9936-d905bf69c54c",
+          "document_id": "453194d8309c4cd3a8fc55e8d4ae72a1",
+          "title": "Leased workers and fencing tokens",
+          "text": "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "5481b5dcea7bb4aedd7c831d22ca110d6af3ca9db2c8dbd3045451670ae0b5dd",
+          "score": 0.31872582,
+          "retrieval_score": 0.31872582,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793077919.244325
+        }
+      ],
+      "response_sha256": "dd9ea2886ece8eca63ebdff16e4897d2f80c723638bdcb47378c8015b807188a",
+      "generation_request_sha256": [
+        "fea074c837a9f64d36b80bfe40d2b3b30aa08544a5ff2f08532f020f4cd06feb",
+        "c8bb7664e7854bbd8646d0b791a8cba01de612be57292356cc6036760172840f"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1321.741,
+      "completed_at": "2026-10-27T05:12:01.398789+00:00",
+      "answer_contexts": [
+        "Embedding changes require a new collection or a controlled reindex because vector geometry is version-specific. Bound passage length before encoding. Benchmark cold model initialization separately from warmed retrieval. Public model downloads do not incur inference API charges.",
+        "# Cross-encoder reranking",
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+        "# Local dense embeddings",
+        "Use fencing for every durable result, not just a heartbeat. External vector upserts use deterministic point identifiers, making repeated indexing idempotent. Provider calls are not exactly-once: a crash can leave an ambiguous request, which is conservatively charged against the workspace budget."
+      ],
+      "answer_kind": "citation_fallback",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "9ba1ddb09fd14d10b1cfb367d0026ca9",
+            "c1a3474ff51b4afab4d4d9df9da316c4",
+            "acaa7a134b33400199e485f09f560c38",
+            "475b8dde73dc4d869f99f40aa6740022",
+            "c453e84afb20416ab9230584e6878a1e"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "9ba1ddb09fd14d10b1cfb367d0026ca9",
+              "request_sha256": "f003370b04c48149cbfa867142457f52ddef79b7164ff2202ce0801ba35659bf"
+            },
+            {
+              "run_id": "c1a3474ff51b4afab4d4d9df9da316c4",
+              "request_sha256": "b5fdd8a3f80874faac256a535ddf97c9c784dbcc8a625aba9185cc762353bca0"
+            },
+            {
+              "run_id": "acaa7a134b33400199e485f09f560c38",
+              "request_sha256": "db4edca991f9aeced75525d7f0bf709fda6fb4ba8515da8b31430b87572aa7e6"
+            },
+            {
+              "run_id": "475b8dde73dc4d869f99f40aa6740022",
+              "request_sha256": "7a1f4b5327575759c88a2dd89f19615e240b6833677151d57679ee6b4d1af5b3"
+            },
+            {
+              "run_id": "c453e84afb20416ab9230584e6878a1e",
+              "request_sha256": "b9ba422dc9f930167904527e6f267722ea2953ad2afa71617f72b18fe5a51c65"
+            }
+          ],
+          "arguments_sha256": "1bd2ea30296586e854cd9355bdd01d375f3e1db74f3893cffad2fb6932018b0d"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "bd2278c7416743bf8cdb30cd22b51042"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "bd2278c7416743bf8cdb30cd22b51042",
+              "request_sha256": "9c2fb5cd11fbed88eb1ae67f5c39c65a32a61fb8ac09f23c095bbad284f3793a"
+            }
+          ],
+          "arguments_sha256": "1bd2ea30296586e854cd9355bdd01d375f3e1db74f3893cffad2fb6932018b0d"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "2a5702e5b5a2492e91a542a9f4b9e03f",
+            "e217402f9be34f00a49d57590d40e999"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "2a5702e5b5a2492e91a542a9f4b9e03f",
+              "request_sha256": "2c81fac270e90de4eff478196032cb3c2834a6fcf91fee494adaf0c8e0b3c45e"
+            },
+            {
+              "run_id": "e217402f9be34f00a49d57590d40e999",
+              "request_sha256": "cd0cfee482e1494c83855a4e05c2f9008ddfa5ed344e2c81df9f84e417fdd641"
+            }
+          ],
+          "arguments_sha256": "43591470191433cd3f65bb6c5b805f17a2fdc0d05ec3396412382516477ea508"
+        }
+      }
+    },
+    {
+      "case_id": "q021",
+      "run_id": "d0dc290fd7724224b1f5939622bbf840",
+      "response": "**Engineering Decision Brief \u2013 Retrieving Concepts When Question and Document Use Different Wording**\n\n**Problem**  \nUsers often phrase a query with synonyms or paraphrases that do not match the exact lexical tokens in the target documents. A retrieval system must therefore surface the relevant concept despite this wording mismatch.\n\n**Evidence\u2011Based Options**\n\n| Option | Description (Evidence) | Trade\u2011offs | Uncertainties |\n|--------|------------------------|------------|---------------|\n| **1. Pure lexical (BM25) retrieval** | Uses term occurrence, inverse\u2011document\u2011frequency (IDF) and document length to rank results. Qdrant can compute IDF via its sparse\u2011vector modifier. | \u2022 Fast, deterministic scoring.<br>\u2022 Works well for exact identifiers and strong lexical matches. | \u2022 Misses paraphrased concepts because it relies on exact term overlap. |\n| **2. Add dense semantic embeddings** | Dense embeddings complement lexical matching when users paraphrase terminology. | \u2022 Captures semantic similarity beyond exact words.<br>\u2022 Improves recall for paraphrased queries. | \u2022 Requires additional model inference cost.<br>\u2022 May retrieve irrelevant passages if embeddings are noisy. |\n| **3. Hybrid retrieval (BM25\u202f+\u202fdense) with Reciprocal Rank Fusion (RRF)** | Hybrid retrieval addresses both semantic paraphrases and exact identifiers. RRF combines the two ranked lists while keeping the fusion configuration fixed for fair comparison. | \u2022 Balances precision of lexical matches with recall of semantic matches.<br>\u2022 Simple to implement by merging two independent pipelines. | \u2022 A reranker cannot recover a relevant passage that is absent from *both* shortlists; thus recall of the hybrid stage is critical. |\n| **4. Retrieval cache (legacy policy)** | Historical cache used a 30\u2011second TTL and omitted corpus\u2011generation keys; retained only for testing conflicting\u2011document handling. | \u2022 May speed up repeated queries in a controlled test environment. | \u2022 Not a production design; using it could hide recent updates to the corpus and affect recall for paraphrased queries. |\n\n**Recommended Approach**  \nAdopt **Option\u202f3**: run a **hybrid pipeline** that (a) performs BM25 sparse retrieval with IDF enabled (per\u202f[E1],\u202f[E2]) and (b) generates dense embeddings for the query and documents, then **merge the two result lists using Reciprocal Rank Fusion** (per\u202f[E3]). This directly addresses wording differences by leveraging both lexical rarity signals and semantic similarity.\n\n**Implementation Sketch**\n1. **Lexical stage** \u2013 Enable Qdrant\u2019s IDF modifier for BM25 vectors (E1, E2).  \n2. **Semantic stage** \u2013 Compute dense embeddings locally (e.g., FastEmbed) for query and documents.  \n3. **Fusion** \u2013 Apply RRF with a fixed configuration to combine rankings (E3).  \n4. **Evaluation** \u2013 Measure candidate recall before any downstream reranking, because a reranker cannot recover missing passages (E3).  \n\n**Risks & Open Questions**\n- **Recall Dependency** \u2013 If neither BM25 nor dense stage returns the target passage, the hybrid list will lack it, and a reranker cannot compensate (E3). Continuous monitoring of recall is required.  \n- **Cache Interference** \u2013 Using the legacy 30\u2011second cache (E5) could mask changes in the corpus that affect paraphrase handling; it should be disabled in production.  \n- **Chunk Size Effects** \u2013 Passage window sizing influences token coverage; overly small chunks may lose context needed for semantic matching (E4). Selecting an appropriate window size remains an open tuning parameter.  \n\n**Conclusion**  \nA hybrid BM25\u202f+\u202fdense retrieval with Reciprocal Rank Fusion offers the most evidence\u2011backed path to retrieve concepts despite divergent wording, balancing lexical precision and semantic recall while acknowledging the need for careful recall monitoring and appropriate chunk sizing.",
+      "contexts": [
+        "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+        "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none.",
+        "The legacy sample note, dated 2024-04-10, used a 30-second retrieval-cache TTL and no corpus-generation component in cache keys. This historical policy is retained solely to test conflicting-document handling. It must not be presented as the current production design."
+      ],
+      "metrics": {
+        "context_precision": 0.0,
+        "context_recall": 0.25,
+        "faithfulness": 0.90625
+      },
+      "latency_ms": 3831.79,
+      "tokens": 1798,
+      "question": "How do we retrieve a concept when the question and document use different wording?",
+      "reference": "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+      "conversation_id": "6e4502a165c144beb9b81e4a3464b2ba",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "a7fbe7ab-dc9d-5769-ad59-77dae1afcbbc",
+          "document_id": "5d20acb559c24e2ba530af041ae313cf",
+          "title": "BM25 sparse retrieval and IDF",
+          "text": "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "074aa1117b5eaae65b34d5ec20b48fdc9e5f10e2d34d4ed8b99d82cd746fbea0",
+          "score": 0.4169756,
+          "retrieval_score": 0.4169756,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078017.1785936
+        },
+        {
+          "chunk_id": "9e42bf4c-496b-5a54-95bc-ad0479c848cd",
+          "document_id": "5d20acb559c24e2ba530af041ae313cf",
+          "title": "BM25 sparse retrieval and IDF",
+          "text": "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "074aa1117b5eaae65b34d5ec20b48fdc9e5f10e2d34d4ed8b99d82cd746fbea0",
+          "score": 0.38253972,
+          "retrieval_score": 0.38253972,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078017.178597
+        },
+        {
+          "chunk_id": "5ad88682-4cc1-52ad-9b3a-8280b33f18c1",
+          "document_id": "6272447af2434ede82a52037b1031a4e",
+          "title": "Reciprocal rank fusion for hybrid retrieval",
+          "text": "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "a47c6cfa52877bcc03bb50299e9cf06c32703fd9cd1a4919ee4b1d4496ca2353",
+          "score": 0.38151693,
+          "retrieval_score": 0.38151693,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078017.1785982
+        },
+        {
+          "chunk_id": "81d7df13-7715-5f27-b7f0-4e71fd8ff9a8",
+          "document_id": "2cc51d1ed2a74b9ab41739af54234fd0",
+          "title": "Passage boundaries and source provenance",
+          "text": "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "44d0a907fb855580388007dbaecc3bb2483bc7aae7293f3c8e485e0708ba9674",
+          "score": 0.32061607,
+          "retrieval_score": 0.32061607,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078017.178599
+        },
+        {
+          "chunk_id": "7cd3e319-b863-5027-8e7f-d2b049de9d67",
+          "document_id": "3e115ee0c58c44049ca156175b0862e3",
+          "title": "Retrieval cache policy, legacy revision",
+          "text": "The legacy sample note, dated 2024-04-10, used a 30-second retrieval-cache TTL and no corpus-generation component in cache keys. This historical policy is retained solely to test conflicting-document handling. It must not be presented as the current production design.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "30858466a72ed88cfcf0fa27cd3c6ab5ef44c2d3a7997181b01f5679950a1c2c",
+          "score": 0.29796147,
+          "retrieval_score": 0.29796147,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078017.1786
+        }
+      ],
+      "response_sha256": "b6e062f9d96e6aa389d85cd919b62af84db76e04837778b466c3f662d38140ae",
+      "generation_request_sha256": [
+        "1a241f9350e1d05c20d42d965a05ac98f5b821790fea13483d8a66d6cc9a21e2",
+        "fc7cc3996f5b5e23a3bd07eeb70768ffbddb195b5ef0d887b6fa09ded901c23a"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1268.509,
+      "completed_at": "2026-10-27T05:13:39.823576+00:00",
+      "answer_contexts": [
+        "Enable the IDF modifier when using Qdrant/bm25 vectors. Dense embeddings complement lexical matching when users paraphrase terminology. Filtering a workspace is mandatory for access control; global corpus statistics are a ranking concern and are not an authorization mechanism.",
+        "BM25 rewards query term occurrence while accounting for term rarity and document length. Qdrant computes inverse document frequency using its sparse-vector IDF modifier. FastEmbed produces sparse term vectors locally. Exact error codes, configuration keys and product identifiers are strong lexical retrieval cases.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+        "Word windows approximate tokenizer length and are not an exact token guarantee. Inspect truncation when evaluating technical identifiers. Small chunks can lose context; large chunks dilute evidence and consume generation budget. Never invent a page number for a source that has none.",
+        "The legacy sample note, dated 2024-04-10, used a 30-second retrieval-cache TTL and no corpus-generation component in cache keys. This historical policy is retained solely to test conflicting-document handling. It must not be presented as the current production design."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "f53a45e166794aba9b9bc46202d76f99",
+            "34e655cc8b3d4cefb828884080c3273f",
+            "8a07869280e348c7a0f2891804666aef",
+            "feecbc8e1d8c4a6e99628bc36a1d11c0",
+            "18f04af25a7e4ab298cd9fca35487d0c"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "f53a45e166794aba9b9bc46202d76f99",
+              "request_sha256": "02be9704679863431e1959bd911f45524e08b7c9b53387def7206f06c1772e37"
+            },
+            {
+              "run_id": "34e655cc8b3d4cefb828884080c3273f",
+              "request_sha256": "26d05aadf61cc81d0f99efb7bb432df0f3287f5397a476017b91dd741b5551a3"
+            },
+            {
+              "run_id": "8a07869280e348c7a0f2891804666aef",
+              "request_sha256": "c7ba0231895dc7dc8a050640dd6d03f5c2fb0e5959069dac5d48f4eb7bb39f0f"
+            },
+            {
+              "run_id": "feecbc8e1d8c4a6e99628bc36a1d11c0",
+              "request_sha256": "952c0f4a991942cfc6049faf642613d3903df9f8519df878f47ddffc6ea4282f"
+            },
+            {
+              "run_id": "18f04af25a7e4ab298cd9fca35487d0c",
+              "request_sha256": "fca62579a5c7c5b42eb639c9d08e104c03dd5fb94a7d76a45c5fb8f54b4ccfd1"
+            }
+          ],
+          "arguments_sha256": "b28ee34328e1580c9d0f67984321866fedda019feb6dcb205a4e63260465fc6f"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "4913d3eb68ee4147b585f1b1c9ee3596"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "4913d3eb68ee4147b585f1b1c9ee3596",
+              "request_sha256": "b8ed0260d4a4375af902fb52eff3abe1d2284064dc12668ca5c30d7e173899b6"
+            }
+          ],
+          "arguments_sha256": "b28ee34328e1580c9d0f67984321866fedda019feb6dcb205a4e63260465fc6f"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "c3fe1e80f23d4a8ea2bab78227bc6416",
+            "44bbb09aa91a4835b1bed58669a94d0c"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "c3fe1e80f23d4a8ea2bab78227bc6416",
+              "request_sha256": "e334727c1c43353073fbda9c07d7e0b6c422c4f00bbf4605b01c8db883af5ff1"
+            },
+            {
+              "run_id": "44bbb09aa91a4835b1bed58669a94d0c",
+              "request_sha256": "9cc2eee17e18f0a95ca1912823bcb9a75359cc1996759492fa7730ec42e0951f"
+            }
+          ],
+          "arguments_sha256": "6cdc3c0c7071f73e1e01aa7dfe2d7e73427de5e51b50975901b2b8f6844f0ecf"
+        }
+      }
+    },
+    {
+      "case_id": "q022",
+      "run_id": "fa0b4b96eefd4d82b8e2789e06a9c718",
+      "response": "**Engineering Decision Brief \u2013 Using a Cross\u2011Encoder to Rerank a Shortlist Rather Than the Full Corpus**\n\n---\n\n### Question  \nWhy should a cross\u2011encoder rerank only a shortlist of candidates instead of the entire document corpus?\n\n### Evidence\u2011Based Answer  \n\n| Claim | Evidence |\n|------|----------|\n| A cross\u2011encoder reads the query **jointly** with each candidate, enabling richer token\u2011level interactions that improve ranking quality. | \u201cThe ms\u2011marco\u2011MiniLM\u2011L\u20116\u2011v2 cross\u2011encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus.\u201d \u2013\u202f[E2] |\n| The computational cost of a cross\u2011encoder grows **linearly with the number of candidates** because it must process each (query, candidate) pair separately. | \u201c\u2026at the cost of CPU work proportional to candidate count.\u201d \u2013\u202f[E2] |\n| Reranking a shortlist keeps the **latency** manageable and allows the system to run locally (e.g., via ONNX Runtime). | \u201cIt executes locally through ONNX Runtime.\u201d \u2013\u202f[E2] |\n| The shortlist is typically produced by fast, **recall\u2011oriented** first\u2011stage retrievers (dense, BM25, or hybrid fusion). | \u201cDense and BM25 retrieval each return a shortlist of 40 passages\u2026The fused shortlist is then eligible for a cross\u2011encoder reranker.\u201d \u2013\u202f[E3] |\n| A cross\u2011encoder **cannot recover** relevant documents that never appear in the shortlist; its role is to reorder, not to increase recall. | \u201cA reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.\u201d \u2013\u202f[E5] |\n| Evaluation must consider both **nDCG gains** and the **additional latency** introduced by reranking. | \u201cReport additional latency along with any nDCG improvement.\u201d \u2013\u202f[E4] |\n\n### Alternatives  \n\n| Option | Description | Trade\u2011offs |\n|--------|-------------|------------|\n| **Rerank the full corpus** | Apply the cross\u2011encoder to every document. | *Pros*: Potentially highest ordering quality if recall is perfect.<br>*Cons*: CPU work scales with corpus size (millions of candidates), leading to prohibitive latency and resource usage; infeasible for real\u2011time systems. |\n| **Rerank a modest shortlist (e.g., 40\u2013200 items)** | Use fast first\u2011stage retrievers to produce a candidate set, then apply the cross\u2011encoder. | *Pros*: Keeps latency low, leverages strong recall from first stage, yields measurable nDCG improvements.<br>*Cons*: Upper bound limited by recall of the shortlist; relevant items absent cannot be rescued. |\n| **Hybrid approach with multiple shortlists** | Generate several shortlists (e.g., from BM25, dense, and hybrid fusion) and merge them before reranking. | *Pros*: Increases chance that relevant items appear in the combined set.<br>*Cons*: Slightly larger candidate set raises CPU cost; still bounded by combined recall. |\n\n### Uncertainties & Risks  \n\n1. **Recall of the first\u2011stage shortlist** \u2013 If the initial retrievers miss many relevant documents, the cross\u2011encoder cannot improve overall performance. This must be measured before investing in reranking (see [E5]).  \n2. **Latency budget** \u2013 The exact CPU cost per candidate is not quantified in the evidence; system\u2011specific profiling is required to confirm that a shortlist of the chosen size meets response\u2011time targets.  \n3. **Domain variability** \u2013 Not every domain benefits from reranking; gains should be validated on the target data (see [E4]).  \n\n### Recommendation  \n\nBased on the supplied evidence, the prudent engineering choice is to **rerank a shortlist** generated by fast recall\u2011oriented retrievers rather than the entire corpus. This balances the cross\u2011encoder\u2019s superior ordering capability with realistic computational resources and latency constraints, while acknowledging that recall of the shortlist is a prerequisite for overall effectiveness.",
+      "contexts": [
+        "# Cross-encoder reranking",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "Measure gains against dense, BM25 and hybrid baselines on the same frozen corpus. Do not assume that every domain benefits from reranking. A reranker changes ranking, not the candidate recall ceiling. Report additional latency along with any nDCG improvement.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering."
+      ],
+      "metrics": {
+        "context_precision": 0.6388888888675925,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 4220.23,
+      "tokens": 1769,
+      "question": "Why should a cross-encoder rerank a shortlist instead of the entire corpus?",
+      "reference": "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+      "conversation_id": "545d169c30da4b04b53c0c038752dfa3",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "a8b2212b-d9a9-545c-a391-74cfd6c3cae1",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "# Cross-encoder reranking",
+          "page": 1,
+          "section": "Cross-encoder reranking",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.7314006,
+          "retrieval_score": 0.7314006,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078138.2040222
+        },
+        {
+          "chunk_id": "63ee6dac-4253-55e6-9eaa-1a6e8f714e6d",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.63473606,
+          "retrieval_score": 0.63473606,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078138.2040255
+        },
+        {
+          "chunk_id": "9e10a095-8eeb-599c-b6b3-fc2e52f6e30b",
+          "document_id": "6272447af2434ede82a52037b1031a4e",
+          "title": "Reciprocal rank fusion for hybrid retrieval",
+          "text": "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "a47c6cfa52877bcc03bb50299e9cf06c32703fd9cd1a4919ee4b1d4496ca2353",
+          "score": 0.6262109,
+          "retrieval_score": 0.6262109,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078138.2040272
+        },
+        {
+          "chunk_id": "c1215597-7e47-5ad1-a9a3-c2f37965ef43",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "Measure gains against dense, BM25 and hybrid baselines on the same frozen corpus. Do not assume that every domain benefits from reranking. A reranker changes ranking, not the candidate recall ceiling. Report additional latency along with any nDCG improvement.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.52266467,
+          "retrieval_score": 0.52266467,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078138.204028
+        },
+        {
+          "chunk_id": "5ad88682-4cc1-52ad-9b3a-8280b33f18c1",
+          "document_id": "6272447af2434ede82a52037b1031a4e",
+          "title": "Reciprocal rank fusion for hybrid retrieval",
+          "text": "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "a47c6cfa52877bcc03bb50299e9cf06c32703fd9cd1a4919ee4b1d4496ca2353",
+          "score": 0.5080985,
+          "retrieval_score": 0.5080985,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078138.2040286
+        }
+      ],
+      "response_sha256": "feac86415b6eaa78c1e4db83dfe3f19713473e02754064d5d0347cdce617721e",
+      "generation_request_sha256": [
+        "d1d3e1d3cfd7d14a9625fbe89a2f083402d71355b548c9eb454de702382ca332",
+        "02dbb341c411dd017df031e7d45a3acbab6124c0888dd76f0870ba1853a74938"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1610.687,
+      "completed_at": "2026-10-27T05:15:40.881300+00:00",
+      "answer_contexts": [
+        "# Cross-encoder reranking",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "Measure gains against dense, BM25 and hybrid baselines on the same frozen corpus. Do not assume that every domain benefits from reranking. A reranker changes ranking, not the candidate recall ceiling. Report additional latency along with any nDCG improvement.",
+        "Hybrid retrieval addresses both semantic paraphrases and exact identifiers. Keep the fusion configuration fixed while comparing baselines. A reranker cannot recover a relevant passage missing from both shortlists. Evaluate candidate recall before spending effort tuning the final ordering."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "1fdaa5971fb14bab8d3ad94699453c82",
+            "cd1e0ed6c2a041a38ad9cd7fb7dde185",
+            "b02fb6d45f9e4f64b26f937ef51a6dce",
+            "06c0487bbfad42b4a80c181079a0b975",
+            "e8affd5077e540a1ad048f3f9142a30a"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "1fdaa5971fb14bab8d3ad94699453c82",
+              "request_sha256": "573f61c9680efc160e5b83444d14b341a0e2913b25a99679ef99380a18bddd3d"
+            },
+            {
+              "run_id": "cd1e0ed6c2a041a38ad9cd7fb7dde185",
+              "request_sha256": "881ddccb4ea0fc33dd94df1b317700bf1471c1f6ee80373eaa0a21443b66931f"
+            },
+            {
+              "run_id": "b02fb6d45f9e4f64b26f937ef51a6dce",
+              "request_sha256": "8e9ebd23f3c8111ded8b582c5617170d744f34afee4f0e9800b11679ca06cea3"
+            },
+            {
+              "run_id": "06c0487bbfad42b4a80c181079a0b975",
+              "request_sha256": "412505b98a0da6f664db4acdde3af1179cbd3dd66b7a39d2f83d5451d2b15801"
+            },
+            {
+              "run_id": "e8affd5077e540a1ad048f3f9142a30a",
+              "request_sha256": "98fd4f0d5cbad20262ec28c06156815ceab366cda9a039eb516851afc91ec526"
+            }
+          ],
+          "arguments_sha256": "916e549ff21a91ff117d9c20292a7197e202bb127fe44a2eace82d8686e90cfa"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "99d1c07663324873ad73bb245cbc7964"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "99d1c07663324873ad73bb245cbc7964",
+              "request_sha256": "211039791c33ea30f3b340b9c3dd39f2bf41b22dec81ce734fb8eb1878c0ef30"
+            }
+          ],
+          "arguments_sha256": "916e549ff21a91ff117d9c20292a7197e202bb127fe44a2eace82d8686e90cfa"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "df719c63c44a4d05a7fbe1b5a373072a",
+            "9772e657a5a8492daba7727704982d7e"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "df719c63c44a4d05a7fbe1b5a373072a",
+              "request_sha256": "e759c20376feb575489ad85fc4a48e1ef4b50b1e9ab28ba93ba0dd2b002168db"
+            },
+            {
+              "run_id": "9772e657a5a8492daba7727704982d7e",
+              "request_sha256": "210f87425197c1a87fcf70ffa731a22998a710b94cfc0822ebcdd7f8981cb039"
+            }
+          ],
+          "arguments_sha256": "5f792260562711fcbd7fdb94122b10cf0387c26919730899059012fda6396b7c"
+        }
+      }
+    },
+    {
+      "case_id": "q023",
+      "run_id": "dfa98f5012ed48dbae1e912da5c709a0",
+      "response": "**Trade\u2011off of cross\u2011encoder reranking**\n\nCross\u2011encoder reranking can improve the ordering of retrieved passages because the model jointly reads the query and each candidate, allowing rich token\u2011level interactions.\u202fHowever, this gain comes at the cost of additional compute and latency: the reranker must run a separate inference for every candidate in the shortlist, so CPU work (and thus response time) grows linearly with the number of candidates\u202f[E3]. Consequently, any nDCG improvement must be weighed against the extra latency introduced by the reranking step\u202f[E4].",
+      "contexts": [
+        "# Cross-encoder reranking",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "Measure gains against dense, BM25 and hybrid baselines on the same frozen corpus. Do not assume that every domain benefits from reranking. A reranker changes ranking, not the candidate recall ceiling. Report additional latency along with any nDCG improvement.",
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement."
+      ],
+      "metrics": {
+        "context_precision": 0.4166666666458333,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 2014.48,
+      "tokens": 1016,
+      "question": "Which tradeoff accompanies cross-encoder reranking?",
+      "reference": "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+      "conversation_id": "76fe1ab33270466280391b9e3478441c",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "a8b2212b-d9a9-545c-a391-74cfd6c3cae1",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "# Cross-encoder reranking",
+          "page": 1,
+          "section": "Cross-encoder reranking",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.83966243,
+          "retrieval_score": 0.83966243,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078188.9493036
+        },
+        {
+          "chunk_id": "9e10a095-8eeb-599c-b6b3-fc2e52f6e30b",
+          "document_id": "6272447af2434ede82a52037b1031a4e",
+          "title": "Reciprocal rank fusion for hybrid retrieval",
+          "text": "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "a47c6cfa52877bcc03bb50299e9cf06c32703fd9cd1a4919ee4b1d4496ca2353",
+          "score": 0.60982835,
+          "retrieval_score": 0.60982835,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078188.9493062
+        },
+        {
+          "chunk_id": "63ee6dac-4253-55e6-9eaa-1a6e8f714e6d",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.5831195,
+          "retrieval_score": 0.5831195,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078188.9493074
+        },
+        {
+          "chunk_id": "c1215597-7e47-5ad1-a9a3-c2f37965ef43",
+          "document_id": "e139357ccaf440e4a69f1ff4b117ae5e",
+          "title": "Cross-encoder reranking",
+          "text": "Measure gains against dense, BM25 and hybrid baselines on the same frozen corpus. Do not assume that every domain benefits from reranking. A reranker changes ranking, not the candidate recall ceiling. Report additional latency along with any nDCG improvement.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "63d1c9933a2f1ac952b8a4cf2ed119862cd762650d2e4de264dd15cd7347a247",
+          "score": 0.5101071,
+          "retrieval_score": 0.5101071,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078188.9493082
+        },
+        {
+          "chunk_id": "a70101fe-d627-5162-a9c1-f666389da02d",
+          "document_id": "351ede56f05d4c92995a0bd83518707d",
+          "title": "Local dense embeddings",
+          "text": "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "615cdbdf8da77f47bdf70b9dd3ee28359794bf6c15f376f6ea6e5641453299da",
+          "score": 0.4757808,
+          "retrieval_score": 0.4757808,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078188.9493089
+        }
+      ],
+      "response_sha256": "94f7df8f73f60b22a7371828a8a16db6c626f67e49b1a805b6258d97c8d9cd10",
+      "generation_request_sha256": [
+        "9090784d6d92ff0c978b462ed6e73d8e0e09f3a1015f125cf78fb59c186051bf",
+        "655834ec8ec0ccff46270321c7932e995c36780df2bc4e0b35a80ac7b93f147e"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1053.372,
+      "completed_at": "2026-10-27T05:16:29.975674+00:00",
+      "answer_contexts": [
+        "# Cross-encoder reranking",
+        "Dense and BM25 retrieval each return a shortlist of 40 passages. Reciprocal rank fusion combines ranking positions rather than directly adding incompatible similarity scores. Documents that rank well in both lists tend to rise. The fused shortlist is then eligible for a cross-encoder reranker.",
+        "The ms-marco-MiniLM-L-6-v2 cross-encoder jointly reads a query and each candidate passage. It reranks a shortlist rather than the full corpus. Joint token interactions can improve ordering, at the cost of CPU work proportional to candidate count. It executes locally through ONNX Runtime.",
+        "Measure gains against dense, BM25 and hybrid baselines on the same frozen corpus. Do not assume that every domain benefits from reranking. A reranker changes ranking, not the candidate recall ceiling. Report additional latency along with any nDCG improvement.",
+        "The local all-MiniLM-L6-v2 ONNX encoder produces 384-dimensional vectors and truncates inputs at 256 tokens. Dense search compares semantic representations rather than exact words. Pin the model revision and record asset hashes. A persistent model volume avoids repeated downloads after container replacement."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "da37908d714848fe953b8bf0203b482d",
+            "d9fbdd31e4c24c33939f67f31cc1a611",
+            "555b0a20f8bb4a0297d42f4ffa91d509",
+            "673fb8bd3c0748efb96dfc0bb798e65f",
+            "f01449e983c342dea09ff4eee517d559"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "da37908d714848fe953b8bf0203b482d",
+              "request_sha256": "7202a1a4804efc1a554b2a99215d484df4015879e949c083688d27199c986aac"
+            },
+            {
+              "run_id": "d9fbdd31e4c24c33939f67f31cc1a611",
+              "request_sha256": "bedb08258d4ac8333bfc72aba8c75bbdc57fe2a3b8500aca334f2ea07d5f9c16"
+            },
+            {
+              "run_id": "555b0a20f8bb4a0297d42f4ffa91d509",
+              "request_sha256": "75382ba0280c95e7e7c6ace8ff8f03889cd3da1b04dfeb1d2bfee8c72482b385"
+            },
+            {
+              "run_id": "673fb8bd3c0748efb96dfc0bb798e65f",
+              "request_sha256": "416e4deaed3b9b6505ded82f2682f24bf5f3557aa6ce8bf331f25a25190da836"
+            },
+            {
+              "run_id": "f01449e983c342dea09ff4eee517d559",
+              "request_sha256": "da92fa3943552fe7d63c1fff050be4dfdbd8a1653dec62a410ba0bb8923a29ae"
+            }
+          ],
+          "arguments_sha256": "8e690682d92c175b8f6d5a0c97c7ddd12670b6ab1a7226a91d57980db9af2c89"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "bbc4839cdfc6478faecebfdd42ed1b7b"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "bbc4839cdfc6478faecebfdd42ed1b7b",
+              "request_sha256": "e311c524d1f43fd33c48f3b97c3a96b76a9f73bd5c6342f092444c06f951f7fb"
+            }
+          ],
+          "arguments_sha256": "8e690682d92c175b8f6d5a0c97c7ddd12670b6ab1a7226a91d57980db9af2c89"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "f3dd561989fc4d248e728f447211b016",
+            "7dc82cfa00944dbf9ced715ba4eed209"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "f3dd561989fc4d248e728f447211b016",
+              "request_sha256": "e6c528d22e78f301286f5afa87dc4ce47c705ab1ecce91203eb0f420806af6de"
+            },
+            {
+              "run_id": "7dc82cfa00944dbf9ced715ba4eed209",
+              "request_sha256": "a88121b67b02e3fbbc1b9511179eb3dc8b227d333dfad84a32a984407fb14664"
+            }
+          ],
+          "arguments_sha256": "a76f9a5fececcdad3dde48b7bfcb950b502ef3595bff4449699bd1fdb2fe4e50"
+        }
+      }
+    },
+    {
+      "case_id": "q025",
+      "run_id": "d5b1d987f5394673a5c73fcd1ef3692e",
+      "response": "## Evidence brief\n\nExtractive mode \u00b7 passages are quoted, not synthesized by a language model. Search matches alone do not establish that the question is answerable.\n\n[E1] Canary rollout and rollback\n\nThe sample rollout routes 5 percent of traffic to a candidate for 15 minutes before expansion. Abort when the candidate error rate exceeds the stable version by one percentage point or its P95 latency increases by more than 20 percent. Keep database changes compatible with both application versions.\n\n[E2] Passage boundaries and source provenance\n\nThe sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.\n\n[E3] Passage boundaries and source provenance\n\n# Passage boundaries and source provenance\n\n[E4] Retention, deletion and source lifecycles\n\nThe sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.\n\n[E5] Timeouts, bounded retries and circuit breaking\n\nThe sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.\n\n## Decision considerations\n\nCompare the cited passages and their source dates before making a decision. Conflicting passages are not automatically reconciled in extractive mode.",
+      "contexts": [
+        "The sample rollout routes 5 percent of traffic to a candidate for 15 minutes before expansion. Abort when the candidate error rate exceeds the stable version by one percentage point or its P95 latency increases by more than 20 percent. Keep database changes compatible with both application versions.",
+        "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+        "# Passage boundaries and source provenance",
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely."
+      ],
+      "metrics": {
+        "context_precision": 0.49999999995,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 2009.49,
+      "tokens": 895,
+      "question": "How much overlap does the sample passage policy retain?",
+      "reference": "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+      "conversation_id": "a2ec5a99009f46c09d6583f25c1bd1cb",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "f2c614fd-ca3d-5267-94ad-c72729ea0b0c",
+          "document_id": "84c134ed8d3644a5ab290053d3f2ce93",
+          "title": "Canary rollout and rollback",
+          "text": "The sample rollout routes 5 percent of traffic to a candidate for 15 minutes before expansion. Abort when the candidate error rate exceeds the stable version by one percentage point or its P95 latency increases by more than 20 percent. Keep database changes compatible with both application versions.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "b97fe2b9d2b6a636abcf427bb933d0219fe1e576080104efd01bd0d06c3607c1",
+          "score": 0.42757627,
+          "retrieval_score": 0.42757627,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078262.9361622
+        },
+        {
+          "chunk_id": "fea04d56-1c39-5708-a3a2-0f296d7abc2b",
+          "document_id": "2cc51d1ed2a74b9ab41739af54234fd0",
+          "title": "Passage boundaries and source provenance",
+          "text": "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "44d0a907fb855580388007dbaecc3bb2483bc7aae7293f3c8e485e0708ba9674",
+          "score": 0.4223851,
+          "retrieval_score": 0.4223851,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078262.9361656
+        },
+        {
+          "chunk_id": "65bf0b4e-0972-5a91-9776-ae341dd6decc",
+          "document_id": "2cc51d1ed2a74b9ab41739af54234fd0",
+          "title": "Passage boundaries and source provenance",
+          "text": "# Passage boundaries and source provenance",
+          "page": 1,
+          "section": "Passage boundaries and source provenance",
+          "source_url": "",
+          "content_hash": "44d0a907fb855580388007dbaecc3bb2483bc7aae7293f3c8e485e0708ba9674",
+          "score": 0.33969805,
+          "retrieval_score": 0.33969805,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078262.9361672
+        },
+        {
+          "chunk_id": "167f6e6a-9ef5-533b-b3ac-22e9bfbbcc6b",
+          "document_id": "e58159f8b0fa401f81e1932af6255a50",
+          "title": "Retention, deletion and source lifecycles",
+          "text": "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "3791d1fb00ca4ae8f6c9a0bef817adf5c67573d603bcb27a543f3dabee1d1574",
+          "score": 0.33933043,
+          "retrieval_score": 0.33933043,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078262.9361684
+        },
+        {
+          "chunk_id": "a23b78a7-f274-5311-80a9-904346638a07",
+          "document_id": "5c483e09577543df906bf3778aa8470f",
+          "title": "Timeouts, bounded retries and circuit breaking",
+          "text": "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "e06285b5136781bab777104e2c16e786010af77be45124c28808422f126b8066",
+          "score": 0.33058378,
+          "retrieval_score": 0.33058378,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078262.9361696
+        }
+      ],
+      "response_sha256": "24b57d545a5e8101856949eaa479b199791ecce17fcfbb35ad3c64da8a7e68ab",
+      "generation_request_sha256": [
+        "89e3dca9f83af1f16e6d2da62d7e619132272f3c69e005a4de4dcf0b3fe07c00",
+        "fd3b1c9aad5eba82e063c2fd6ded81c8dd3ee1e3ce703be9c0c276e9d0b39194"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1060.255,
+      "completed_at": "2026-10-27T05:17:43.956953+00:00",
+      "answer_contexts": [
+        "The sample rollout routes 5 percent of traffic to a candidate for 15 minutes before expansion. Abort when the candidate error rate exceeds the stable version by one percentage point or its P95 latency increases by more than 20 percent. Keep database changes compatible with both application versions.",
+        "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+        "# Passage boundaries and source provenance",
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely."
+      ],
+      "answer_kind": "citation_fallback",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "47a38c2f9e4d4d898bdbd23d697efa9b",
+            "2f6b5fd735e0410cb046f656e7638ce5",
+            "b45ce421c3894a49b87c0f15606e37f3",
+            "af4deb5db0cb45279858f3464f9dcf0a",
+            "334feaaef2aa4321a3be8e6d6ae42a08"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "47a38c2f9e4d4d898bdbd23d697efa9b",
+              "request_sha256": "8e56abe49cf99843b7e08bb7ad6f0aeeb49c255e51fef5c4923e40383f821743"
+            },
+            {
+              "run_id": "2f6b5fd735e0410cb046f656e7638ce5",
+              "request_sha256": "48e01c8c2f11643fc6a56929f9a14f7127c11aa09f01f6c23813879f91571a82"
+            },
+            {
+              "run_id": "b45ce421c3894a49b87c0f15606e37f3",
+              "request_sha256": "275d7583e1c1affd695e8300b95361409837bca20ca1f5dc3b00e2b2cf10e14e"
+            },
+            {
+              "run_id": "af4deb5db0cb45279858f3464f9dcf0a",
+              "request_sha256": "7e524801828eb0dc7d701907f453715f4c799e1f675ef476c7b6f9d79ba02449"
+            },
+            {
+              "run_id": "334feaaef2aa4321a3be8e6d6ae42a08",
+              "request_sha256": "5877fe1f707ff7385cc17c6883664af53cc05c19d20d4a80917a3c83037fe873"
+            }
+          ],
+          "arguments_sha256": "b32706f97509c6d2e0560b7b0ee58197b07e2f66a499434b532b65c77a09d100"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "afb94045f3504b04aff8b8bf969e9169"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "afb94045f3504b04aff8b8bf969e9169",
+              "request_sha256": "2229c7eac2b1ebf3120945cb7a86dfee662d3aa96fe6664e556f0cf2417569e2"
+            }
+          ],
+          "arguments_sha256": "b32706f97509c6d2e0560b7b0ee58197b07e2f66a499434b532b65c77a09d100"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "2f4ac1ed706045909151e958b956b5bc",
+            "6ca64f02b2aa49368d55599354518fae"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "2f4ac1ed706045909151e958b956b5bc",
+              "request_sha256": "031b06e73cbe44c96249909cf668bb680d72c495299da892d92f56ef83946edb"
+            },
+            {
+              "run_id": "6ca64f02b2aa49368d55599354518fae",
+              "request_sha256": "33367006dce4582b404a8d12d7405a28d13b45aba3f5a9eb8061445672d7af31"
+            }
+          ],
+          "arguments_sha256": "5291d5d5a9a443cf2f8f50f25668c9bda4073b4503241b102b2f098de33881b6"
+        }
+      }
+    },
+    {
+      "case_id": "q027",
+      "run_id": "2bf0752d1e1d4893958a47ae99a4402c",
+      "response": "**Decision Brief \u2013 Preserving Original PDF Page Information in Citations after Document Splitting**\n\n**Context**  \nWhen a PDF is ingested and split into smaller chunks for downstream processing, citations must still point to the exact original page that a fragment came from. The evidence provides guidance on how the ingestion pipeline can retain this provenance.\n\n**Evidence\u2011Based Solution**  \n\n| Step | Evidence | How it supports the step |\n|------|----------|--------------------------|\n| 1. Use a chunking policy that respects PDF page boundaries. | The ingestion policy \u201cPDF page boundaries are preserved\u201d\u202f[E2]. | Guarantees that no chunk straddles two pages, so each chunk can be unambiguously linked to a single source page. |\n| 2. Attach page\u2011level metadata to each chunk. | Each chunk receives a deterministic UUID derived from *document version and position*\u202f[E2]. | The \u201cposition\u201d component can encode the page number (or offset) within the original PDF, enabling a citation to reconstruct the page reference. |\n| 3. Store the source content hash together with the UUID. | The chunk also includes \u201cthe source content hash\u201d\u202f[E2]. | Provides a tamper\u2011evident link back to the exact PDF content that generated the chunk, reinforcing the page\u2011level reference. |\n| 4. When generating a citation, include the UUID (or its decoded page component) and optionally the page number explicitly. | The deterministic UUID is derived from version and position\u202f[E2]; this can be decoded by the citation system to retrieve the original page. | Allows downstream consumers to resolve the citation to the exact PDF page without additional lookup tables. |\n\n**Alternatives**  \n\n| Alternative | Trade\u2011offs | Uncertainties |\n|-------------|------------|---------------|\n| **A. Store explicit page numbers as separate fields** | Simpler to read, but requires an extra storage column and may duplicate information already encoded in the UUID. | Whether the downstream citation renderer can consume custom fields. |\n| **B. Embed page numbers in the chunk text (e.g., as a header)** | No extra metadata needed; visible in the chunk. | May interfere with downstream NLP models or text\u2011based similarity searches. |\n| **C. Rely on external index mapping (chunk \u2192 page)** | Keeps chunk schema unchanged. | Introduces a separate lookup service that must stay in sync; adds latency and failure surface. |\n\n**Recommended Approach**  \nAdopt the policy described in **E2**: preserve page boundaries during splitting and encode the page position into the deterministic UUID for each chunk. This method leverages existing provenance mechanisms (UUID, content hash) without adding separate storage or processing steps, and it aligns with the system\u2019s design for deterministic chunk identification.\n\n**Risks & Open Questions**  \n\n* No direct evidence describes how the UUID is decoded; implementation must ensure the \u201cposition\u201d component reliably maps to a page number.  \n* If future ingestion policies change window sizes or overlap, the guarantee of page\u2011boundary preservation must be re\u2011validated.  \n\n**Conclusion**  \nBy using a chunking policy that preserves PDF page boundaries and by encoding page position into each chunk\u2019s deterministic UUID (as per\u202f[E2]), citations can retain a reliable reference to the original PDF page after the document is split. This approach balances simplicity, provenance integrity, and minimal additional metadata overhead.",
+      "contexts": [
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+        "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+        "# Retention, deletion and source lifecycles",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "Idempotency is scoped to the workspace and checked before queue capacity. Clients retain their key after a timeout. Do not infer request identity from the question alone: users may intentionally repeat an experiment under a new key. Keep receipts through the run retention period."
+      ],
+      "metrics": {
+        "context_precision": 0.49999999995,
+        "context_recall": 1.0,
+        "faithfulness": 0.1875
+      },
+      "latency_ms": 4099.35,
+      "tokens": 1757,
+      "question": "How can a citation retain the original PDF page after splitting a document?",
+      "reference": "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+      "conversation_id": "24ffe03efc2f4d2f9ec091cb9a4143d3",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "167f6e6a-9ef5-533b-b3ac-22e9bfbbcc6b",
+          "document_id": "e58159f8b0fa401f81e1932af6255a50",
+          "title": "Retention, deletion and source lifecycles",
+          "text": "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "3791d1fb00ca4ae8f6c9a0bef817adf5c67573d603bcb27a543f3dabee1d1574",
+          "score": 0.3567418,
+          "retrieval_score": 0.3567418,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078343.3758664
+        },
+        {
+          "chunk_id": "fea04d56-1c39-5708-a3a2-0f296d7abc2b",
+          "document_id": "2cc51d1ed2a74b9ab41739af54234fd0",
+          "title": "Passage boundaries and source provenance",
+          "text": "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "44d0a907fb855580388007dbaecc3bb2483bc7aae7293f3c8e485e0708ba9674",
+          "score": 0.2735206,
+          "retrieval_score": 0.2735206,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078343.3758707
+        },
+        {
+          "chunk_id": "da34a095-f157-53d3-a445-bfbfd0ce649a",
+          "document_id": "e58159f8b0fa401f81e1932af6255a50",
+          "title": "Retention, deletion and source lifecycles",
+          "text": "# Retention, deletion and source lifecycles",
+          "page": 1,
+          "section": "Retention, deletion and source lifecycles",
+          "source_url": "",
+          "content_hash": "3791d1fb00ca4ae8f6c9a0bef817adf5c67573d603bcb27a543f3dabee1d1574",
+          "score": 0.27223825,
+          "retrieval_score": 0.27223825,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078343.3758733
+        },
+        {
+          "chunk_id": "55be7c97-4e15-5ff7-981d-9a59b3ff1a45",
+          "document_id": "8294a51296ab422d8a9442abda426bae",
+          "title": "Payload-bound request idempotency",
+          "text": "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "db4fd1d0c70b56fc44a77b09034afcba9cc0a6fc9cbabdbd85561e488f25e613",
+          "score": 0.2636903,
+          "retrieval_score": 0.2636903,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078343.3758748
+        },
+        {
+          "chunk_id": "c58b9b89-0360-53a4-8261-88c9771fbea0",
+          "document_id": "8294a51296ab422d8a9442abda426bae",
+          "title": "Payload-bound request idempotency",
+          "text": "Idempotency is scoped to the workspace and checked before queue capacity. Clients retain their key after a timeout. Do not infer request identity from the question alone: users may intentionally repeat an experiment under a new key. Keep receipts through the run retention period.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "db4fd1d0c70b56fc44a77b09034afcba9cc0a6fc9cbabdbd85561e488f25e613",
+          "score": 0.25818428,
+          "retrieval_score": 0.25818428,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078343.3758762
+        }
+      ],
+      "response_sha256": "f351498e5a136e2d1b68cd2143d101b18723fee66828794f1c577ca89afeea59",
+      "generation_request_sha256": [
+        "8aa584238c2afa5430942f7eba40519e62d13e3614df1ec84ed242651e215660",
+        "df81242ed3eb1957c8f8e907a354888a313ff8f4b8eb6218b212a82740fecf51"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1515.759,
+      "completed_at": "2026-10-27T05:19:06.046590+00:00",
+      "answer_contexts": [
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+        "The sample ingestion policy uses windows of up to 160 whitespace-delimited words with 24-word overlap. PDF page boundaries are preserved. Markdown headings provide section names. Each chunk receives a deterministic UUID derived from document version and position, plus the source content hash.",
+        "# Retention, deletion and source lifecycles",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "Idempotency is scoped to the workspace and checked before queue capacity. Clients retain their key after a timeout. Do not infer request identity from the question alone: users may intentionally repeat an experiment under a new key. Keep receipts through the run retention period."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "1f75f661da5c4f96b7d2320b1652db82",
+            "ddd385e8fac644d587dc261408cbe81a",
+            "0637ae5c01b2403495d0766106c2fd72",
+            "31f8389c2fcc4826979a29182c999308",
+            "142826e067384a1582eac529411d4d8c"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "1f75f661da5c4f96b7d2320b1652db82",
+              "request_sha256": "98d47ddc4f458bd0eddf8b0e1f42c114738ece428ff23cc496d52c224cf9abc6"
+            },
+            {
+              "run_id": "ddd385e8fac644d587dc261408cbe81a",
+              "request_sha256": "095aae4088eedef53880daac3127a51ffc4cc87c15151a8cbc1be13ec2a9bae5"
+            },
+            {
+              "run_id": "0637ae5c01b2403495d0766106c2fd72",
+              "request_sha256": "be36b21b6b4c7da20c23966d8527f33c5b2b9253d628737c257401b2f43aac0e"
+            },
+            {
+              "run_id": "31f8389c2fcc4826979a29182c999308",
+              "request_sha256": "c1f9c0aa148fd91f8fb7dfa132e3166864142150259590ed9a5177e9e53f4fc1"
+            },
+            {
+              "run_id": "142826e067384a1582eac529411d4d8c",
+              "request_sha256": "2257e06069326d3223a04b9507ce770899abf0bd20a053992c17f079143ad02c"
+            }
+          ],
+          "arguments_sha256": "d082e0733af0b47d9c43eea638fdff88c62d1243b460c9a185fb36a2af220201"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "9fac6518cec44aaab87806cf6aa8b46d"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "9fac6518cec44aaab87806cf6aa8b46d",
+              "request_sha256": "04d5c857564d21fb3e2d6b34721df8fd5d3f3a5f12b9950cd9230ca3b7070147"
+            }
+          ],
+          "arguments_sha256": "d082e0733af0b47d9c43eea638fdff88c62d1243b460c9a185fb36a2af220201"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "4d506bb8df44498d9a4a179b7a48cd10",
+            "5b6df070afdb44afbfece1c3c23bb9e5"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "4d506bb8df44498d9a4a179b7a48cd10",
+              "request_sha256": "178cb2facb6233f4616707639bf63e3067a5004cf96dc813976e770e04119827"
+            },
+            {
+              "run_id": "5b6df070afdb44afbfece1c3c23bb9e5",
+              "request_sha256": "63fc2bc48b117bc59773d997195fef4d367aeb9febc13a173d946f45463b445a"
+            }
+          ],
+          "arguments_sha256": "ded9cc5d9fee93831d8e1fee4b81720e5135c37bd636538820f7e66e6439dc80"
+        }
+      }
+    },
+    {
+      "case_id": "q029",
+      "run_id": "fc1c4bcfc98947588baa1edf3fe48dd9",
+      "response": "**Engineering Decision Brief \u2013 Persistence of Research Execution Events**\n\n**Question**  \nWhere are research execution events persisted?\n\n**Answer (based on supplied evidence)**  \nResearch execution events are persisted in **PostgreSQL**. Each event is written to a PostgreSQL table with a monotonically increasing identifier, enabling ordered replay for reconnecting clients\u202f[E1]. The creation of a research run, its initial audit event, and the associated queue job are all committed together in a single PostgreSQL transaction, ensuring that the event record and its related work are atomically stored\u202f[E2].\n\n**Key Supporting Evidence**  \n- **E1** \u2013 \u201cEach research event is stored in PostgreSQL with a monotonically increasing event identifier\u2026 The API replays later events in order\u2026\u201d  \n- **E2** \u2013 \u201cA research run, its initial audit event and its queue job commit in one PostgreSQL transaction\u2026 Workers claim committed rows afterward.\u201d\n\n**Alternatives Considered**  \n- **External Message Broker** \u2013 The system could have used a distributed log (e.g., Kafka) for event durability. However, E2 explicitly states there is *no distributed commit* between PostgreSQL and an external broker, ruling this out for primary persistence.  \n- **File\u2011system or Object\u2011store Backups** \u2013 While backups exist (see E5), they are secondary and not the source of truth for live event replay.\n\n**Trade\u2011offs**  \n| Option | Durability | Complexity | Consistency Guarantees |\n|--------|------------|------------|------------------------|\n| PostgreSQL (current) | Strong ACID guarantees; single\u2011node or replicated DB provides durability. | Low \u2013 leverages existing relational store. | Event order guaranteed by monotonic IDs; atomic commit with related work. |\n| External broker (e.g., Kafka) | High durability, but requires additional infrastructure and coordination. | High \u2013 needs distributed transaction or outbox pattern. | Potential for split\u2011brain if commit not atomic (contradicts E2). |\n\n**Uncertainties / Open Issues**  \n- **Retention & Deletion**: While events are stored in PostgreSQL, the long\u2011term retention policy for audit events is described elsewhere (30\u2011day run retention, 90\u2011day audit retention)\u202f[E5]. The impact of cleanup jobs on event availability for replay is not detailed.  \n- **Backup Restoration**: Backups have separate expiry policies\u202f[E5]; the process for restoring events from backup in case of catastrophic failure is not covered in the evidence.\n\n**Contradictions**  \nNo contradictions were found among the supplied passages regarding the persistence location of research execution events.\n\n**Conclusion**  \nThe authoritative source of truth for research execution events is the PostgreSQL database, where events are written atomically with related run and queue data. No alternative persistence mechanism is indicated in the provided evidence.",
+      "contexts": [
+        "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+        "A research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "Run evidence snapshots can contain quoted source text; deletion policy must explicitly cover these snapshots and checkpoints. Test whether a resumed run can access a deleted passage. Separate logical exclusion from eventual physical cleanup and surface failed cleanup jobs to operators.",
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion."
+      ],
+      "metrics": {
+        "context_precision": 0.99999999995,
+        "context_recall": 1.0,
+        "faithfulness": 1.0
+      },
+      "latency_ms": 3337.93,
+      "tokens": 1540,
+      "question": "Where are research execution events persisted?",
+      "reference": "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+      "conversation_id": "2d55b9b758b244c883f190c4d77c234b",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "04becf45-e342-5480-92d4-7ea7df209e43",
+          "document_id": "77a82f3c1bb74d338952f3011f0d3421",
+          "title": "Durable SSE event replay",
+          "text": "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "dcc9f3e6c20f059379804a845734704b8a2b2f2fb8315536c2ad9ef4809f6d52",
+          "score": 0.5242425,
+          "retrieval_score": 0.5242425,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078429.427494
+        },
+        {
+          "chunk_id": "d0665135-5fea-5aef-9783-a881dbe5c6d8",
+          "document_id": "63c5719115094e488753f4c193678aa8",
+          "title": "Transactional work creation and outbox reasoning",
+          "text": "A research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "2010c6bbd0d6c59cdffb8dd058c16bbee5bcd28b7fb984f8d3e748bf5c5ccd28",
+          "score": 0.4718795,
+          "retrieval_score": 0.4718795,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078429.4274974
+        },
+        {
+          "chunk_id": "55be7c97-4e15-5ff7-981d-9a59b3ff1a45",
+          "document_id": "8294a51296ab422d8a9442abda426bae",
+          "title": "Payload-bound request idempotency",
+          "text": "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "db4fd1d0c70b56fc44a77b09034afcba9cc0a6fc9cbabdbd85561e488f25e613",
+          "score": 0.4207675,
+          "retrieval_score": 0.4207675,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078429.4274986
+        },
+        {
+          "chunk_id": "fbe59de6-8cb1-5e92-99f0-0397985999cc",
+          "document_id": "e58159f8b0fa401f81e1932af6255a50",
+          "title": "Retention, deletion and source lifecycles",
+          "text": "Run evidence snapshots can contain quoted source text; deletion policy must explicitly cover these snapshots and checkpoints. Test whether a resumed run can access a deleted passage. Separate logical exclusion from eventual physical cleanup and surface failed cleanup jobs to operators.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "3791d1fb00ca4ae8f6c9a0bef817adf5c67573d603bcb27a543f3dabee1d1574",
+          "score": 0.40477315,
+          "retrieval_score": 0.40477315,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078429.4274993
+        },
+        {
+          "chunk_id": "167f6e6a-9ef5-533b-b3ac-22e9bfbbcc6b",
+          "document_id": "e58159f8b0fa401f81e1932af6255a50",
+          "title": "Retention, deletion and source lifecycles",
+          "text": "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "3791d1fb00ca4ae8f6c9a0bef817adf5c67573d603bcb27a543f3dabee1d1574",
+          "score": 0.36699983,
+          "retrieval_score": 0.36699983,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078429.4275002
+        }
+      ],
+      "response_sha256": "c21e2afcdc71a4c3e4865cb68c7357b6e8bbfb5ac969f590d59591c79a88b56a",
+      "generation_request_sha256": [
+        "c2f2ecf2c5ddeb9239b7d936c72ff8aedaa0386ce91d02ebd5661b28bb2cf833",
+        "69211f3c2ba95e58b49ed5633d54cbd391dbaa0f33cc0df8ca9b3ed68ffd6c84"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 1209.044,
+      "completed_at": "2026-10-27T05:20:31.624661+00:00",
+      "answer_contexts": [
+        "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+        "A research run, its initial audit event and its queue job commit in one PostgreSQL transaction. There is no distributed commit between PostgreSQL and an external message broker. A failed transaction leaves neither a run without work nor a job without its run. Workers claim committed rows afterward.",
+        "Research submission requires an Idempotency-Key. The workspace, key and SHA-256 request digest form a durable receipt. Repeating the same key and payload returns the original run. Reusing the key with a different question or provider returns HTTP 409. Queue insertion and run creation commit in one transaction.",
+        "Run evidence snapshots can contain quoted source text; deletion policy must explicitly cover these snapshots and checkpoints. Test whether a resumed run can access a deleted passage. Separate logical exclusion from eventual physical cleanup and surface failed cleanup jobs to operators.",
+        "The sample retention policy keeps completed runs for 30 days and audit events for 90 days. Document deletion immediately removes the source from eligible retrieval. A cleanup job removes vectors and the source object. Backups follow their own documented expiry and are not silently rewritten by live deletion."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "f87713dc3f6242ed9c7be7fd1002bc51",
+            "990c72fd51944b17ad931bca8718ca13",
+            "487276a17b20499ebaa65b90fc8f8706",
+            "8a7025261a6f4e7dac380747f6170edc",
+            "199243a2cdb646509f8dfae645065492"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "f87713dc3f6242ed9c7be7fd1002bc51",
+              "request_sha256": "97c3a43732e4d992296bc8d3f5a28dc9ef135bbacfc3b598f989c39b431cecc6"
+            },
+            {
+              "run_id": "990c72fd51944b17ad931bca8718ca13",
+              "request_sha256": "bc77300366f04e729a9d3d08edd3b6454c981588ce2c8d501c42227d91e9ffca"
+            },
+            {
+              "run_id": "487276a17b20499ebaa65b90fc8f8706",
+              "request_sha256": "d36de0334c121416cc9ad64447629647215e64687660d1bc9e240b2ba7bf3b2f"
+            },
+            {
+              "run_id": "8a7025261a6f4e7dac380747f6170edc",
+              "request_sha256": "735e7e6a2adb3f76f212921af95835a36a582bd57e88f4123cee7fe31eb5884f"
+            },
+            {
+              "run_id": "199243a2cdb646509f8dfae645065492",
+              "request_sha256": "b40eb81a9fd97111797386eaf08efaa95ecdfedb44f19d9bf5de8026dd85589a"
+            }
+          ],
+          "arguments_sha256": "61cea1848cd9e813f65a83f0213541725c2e853308763ff477938d9cc4867995"
+        },
+        "context_recall": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "7cc32da7235d44d3a0ad77ba5b2ca345"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "7cc32da7235d44d3a0ad77ba5b2ca345",
+              "request_sha256": "0ee9da8c4d3359a3c740f25453b013d9cd81b806870da39cd577b764c5349980"
+            }
+          ],
+          "arguments_sha256": "61cea1848cd9e813f65a83f0213541725c2e853308763ff477938d9cc4867995"
+        },
+        "faithfulness": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "833312397a724a5d8bc0aa795a903932",
+            "35624b44369f4d889e20b7e7eab1550e"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "833312397a724a5d8bc0aa795a903932",
+              "request_sha256": "6c97b777151d4574d0b82e40574c0267b1a5184c7af5422dc322cff2fa7308c5"
+            },
+            {
+              "run_id": "35624b44369f4d889e20b7e7eab1550e",
+              "request_sha256": "cb1db5043bd5bb7328f725bd8c783aff4b3c3cfe33259ecd5a76483abae12539"
+            }
+          ],
+          "arguments_sha256": "cdeb19b14a62451aebd4d0363a7c059c72e546cc37cb957725d600180fa16b02"
+        }
+      }
+    },
+    {
+      "case_id": "q030",
+      "run_id": "12d81aa28f284cd9b285f5576464b28e",
+      "response": "**Engineering Decision Brief \u2013 Ensuring Progress survives browser disconnects or API restarts**\n\n**Question**  \nHow can a system guarantee that client\u2011side progress (e.g., streamed research events) is not lost when the browser loses its SSE connection or when the API process is restarted?\n\n**Evidence\u2011based Solution**  \n\n| Component | Evidence | How it addresses the problem |\n|-----------|----------|------------------------------|\n| **Durable event log** |\u202f[E1] \u201cthe durable database log, rather than a process\u2011local buffer, prevents lost progress after an API restart.\u201d | Persists every event in a central store (PostgreSQL) so that progress is independent of any single API instance. |\n| **Monotonic event IDs & cursor replay** |\u202f[E2] \u201cEach research event is stored in PostgreSQL with a monotonically increasing event identifier\u2026 A reconnecting client supplies Last\u2011Event\u2011ID or an after cursor. The API replays later events in order.\u201d | Clients can resume from the exact point they left off by sending the last received ID; the server re\u2011streams any missed events before continuing. |\n| **Periodic session validation** |\u202f[E1] \u201cA stream periodically rechecks session validity. Terminal run state ends the stream after pending events are delivered.\u201d | Guarantees that a client will not be left hanging indefinitely; once all pending events are flushed, the stream can close cleanly. |\n| **Heartbeat messages** |\u202f[E2] \u201cHeartbeat comments keep the connection active without fabricating progress.\u201d | Detects silent disconnections early, prompting a reconnect before the client times out. |\n| **Timeouts & bounded retries** |\u202f[E3],\u202f[E4] \u201cTimeouts, bounded retries and circuit breaking\u2026 Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit.\u201d | Limits the impact of transient network failures; retries are capped so that a permanently failed request does not block progress indefinitely. |\n| **Operational telemetry** |\u202f[E5] \u201cReport full\u2011agent latency, retrieval latency\u2026 Observe queue age, worker attempts, provider failures\u2026\u201d | Provides visibility into replay latency and failure modes, enabling operators to tune timeout/retry parameters and verify that replay works as intended. |\n\n**Alternatives Considered**\n\n| Alternative | Trade\u2011offs | Evidence |\n|-------------|------------|----------|\n| **In\u2011process buffer only** | Simpler implementation but loses all progress on API restart; no durability guarantee. | Contradicted by [E1] which states that a process\u2011local buffer would *not* prevent lost progress. |\n| **Stateless client\u2011side checkpointing** | Shifts storage burden to the browser; vulnerable to client crashes and harder to coordinate across multiple tabs. | No supporting evidence; not covered by supplied passages. |\n| **Polling instead of SSE** | Avoids persistent connections but adds latency and load; does not inherently provide ordered replay. | Not addressed in evidence. |\n\n**Uncertainties & Open Questions**\n\n* **Cursor granularity** \u2013 The evidence confirms existence of a monotonic ID but does not specify the size of the replay window (e.g., how far back a client can request).  \n* **Retention policy** \u2013 How long events are kept in PostgreSQL is not described; if the log is truncated, replay may fail for long\u2011disconnected clients.  \n* **Impact of bounded retries** \u2013 While [E4] defines retry limits, the optimal values for this specific streaming use\u2011case are not provided and may require empirical tuning.  \n\n**Conclusion**  \nPersisting events to a durable database with monotonic identifiers, combined with client\u2011supplied cursors, periodic session checks, heartbeat comments, and bounded retry logic, provides a robust mechanism for preserving progress across browser disconnects and API restarts. Operational telemetry should be used to monitor replay latency and adjust timeout/retry parameters. No evidence supports alternatives that rely solely on in\u2011process buffers or client\u2011side state.",
+      "contexts": [
+        "A stream periodically rechecks session validity. Terminal run state ends the stream after pending events are delivered. Slow clients reconnect using their last cursor; the durable database log, rather than a process-local buffer, prevents lost progress after an API restart.",
+        "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+        "# Timeouts, bounded retries and circuit breaking",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.",
+        "Report full-agent latency, retrieval latency and time to first response as different measurements. Publish P50 and P95 with sample count, hardware, corpus hash, model revisions and warm or cold conditions. Observe queue age, worker attempts, provider failures and token use in addition to HTTP response time."
+      ],
+      "metrics": {
+        "context_precision": 0.99999999995
+      },
+      "latency_ms": 13546.61,
+      "tokens": 1879,
+      "question": "How can progress survive losing a browser connection or restarting an API process?",
+      "reference": "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+      "conversation_id": "f4125663619f4be0b0e6089cf0b06ae1",
+      "mode": "dense",
+      "evidence": [
+        {
+          "chunk_id": "209e7ed3-ecc8-59dc-a870-ff9898cb77ac",
+          "document_id": "77a82f3c1bb74d338952f3011f0d3421",
+          "title": "Durable SSE event replay",
+          "text": "A stream periodically rechecks session validity. Terminal run state ends the stream after pending events are delivered. Slow clients reconnect using their last cursor; the durable database log, rather than a process-local buffer, prevents lost progress after an API restart.",
+          "page": 1,
+          "section": "Tradeoffs and verification",
+          "source_url": "",
+          "content_hash": "dcc9f3e6c20f059379804a845734704b8a2b2f2fb8315536c2ad9ef4809f6d52",
+          "score": 0.5385537,
+          "retrieval_score": 0.5385537,
+          "kind": "document",
+          "citation": "E1",
+          "retrieved_at": 1793078539.9057806
+        },
+        {
+          "chunk_id": "04becf45-e342-5480-92d4-7ea7df209e43",
+          "document_id": "77a82f3c1bb74d338952f3011f0d3421",
+          "title": "Durable SSE event replay",
+          "text": "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "dcc9f3e6c20f059379804a845734704b8a2b2f2fb8315536c2ad9ef4809f6d52",
+          "score": 0.3581639,
+          "retrieval_score": 0.3581639,
+          "kind": "document",
+          "citation": "E2",
+          "retrieved_at": 1793078539.9057834
+        },
+        {
+          "chunk_id": "b07cdc0a-2b23-5754-a04d-0e433d89a403",
+          "document_id": "5c483e09577543df906bf3778aa8470f",
+          "title": "Timeouts, bounded retries and circuit breaking",
+          "text": "# Timeouts, bounded retries and circuit breaking",
+          "page": 1,
+          "section": "Timeouts, bounded retries and circuit breaking",
+          "source_url": "",
+          "content_hash": "e06285b5136781bab777104e2c16e786010af77be45124c28808422f126b8066",
+          "score": 0.3231649,
+          "retrieval_score": 0.3231649,
+          "kind": "document",
+          "citation": "E3",
+          "retrieved_at": 1793078539.9057846
+        },
+        {
+          "chunk_id": "a23b78a7-f274-5311-80a9-904346638a07",
+          "document_id": "5c483e09577543df906bf3778aa8470f",
+          "title": "Timeouts, bounded retries and circuit breaking",
+          "text": "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "e06285b5136781bab777104e2c16e786010af77be45124c28808422f126b8066",
+          "score": 0.3113215,
+          "retrieval_score": 0.3113215,
+          "kind": "document",
+          "citation": "E4",
+          "retrieved_at": 1793078539.9057856
+        },
+        {
+          "chunk_id": "bfa95e78-6209-5e4f-b7e6-09e1eac64243",
+          "document_id": "9c5476d10b3e447bb4b16e36dbc750e5",
+          "title": "Latency measurement and operational telemetry",
+          "text": "Report full-agent latency, retrieval latency and time to first response as different measurements. Publish P50 and P95 with sample count, hardware, corpus hash, model revisions and warm or cold conditions. Observe queue age, worker attempts, provider failures and token use in addition to HTTP response time.",
+          "page": 1,
+          "section": "Decision and operating policy",
+          "source_url": "",
+          "content_hash": "1a286cfb4cbfa583b1701345797a07bbf260794038c37c4832158e7d52eec017",
+          "score": 0.2884192,
+          "retrieval_score": 0.2884192,
+          "kind": "document",
+          "citation": "E5",
+          "retrieved_at": 1793078539.9057863
+        }
+      ],
+      "response_sha256": "3f0944cb67a6a48c4fa1e241994b9ee9d22e21484abdb108f272ed4cf6c4c87c",
+      "generation_request_sha256": [
+        "afc3b1f925935f4158de7f1b5af0a7bbe4866de2f6b62fc218d1f20cf9bc2d57",
+        "2879d2efbfe45dfcc886eeed18409b12aab9e784242d1c7913f060af983f224d"
+      ],
+      "model_calls": 2,
+      "history_run_ids": [],
+      "first_evidence_ms": 10843.814,
+      "completed_at": "2026-10-27T05:22:22.690053+00:00",
+      "answer_contexts": [
+        "A stream periodically rechecks session validity. Terminal run state ends the stream after pending events are delivered. Slow clients reconnect using their last cursor; the durable database log, rather than a process-local buffer, prevents lost progress after an API restart.",
+        "Each research event is stored in PostgreSQL with a monotonically increasing event identifier. A reconnecting client supplies Last-Event-ID or an after cursor. The API replays later events in order and then continues streaming. Heartbeat comments keep the connection active without fabricating progress.",
+        "# Timeouts, bounded retries and circuit breaking",
+        "The sample connector allows an 8-second connect timeout and a 45-second response timeout for a model request. Retry delay uses exponential backoff with full or bounded jitter and a finite attempt limit. Distinguish rate limits from authentication and validation failures; permanent errors should not be retried indefinitely.",
+        "Report full-agent latency, retrieval latency and time to first response as different measurements. Publish P50 and P95 with sample count, hardware, corpus hash, model revisions and warm or cold conditions. Observe queue age, worker attempts, provider failures and token use in addition to HTTP response time."
+      ],
+      "answer_kind": "generated",
+      "metric_configuration": {
+        "context_precision": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "reasoning_effort": "low",
+          "reasoning_format": "hidden",
+          "max_completion_tokens": 2000,
+          "judge_run_ids": [
+            "42a229d7011040de90706c6fd8cfba07",
+            "97438b7226a8404cb8f3760b3541f1ab",
+            "49dab193812b42c0ab0a83382fee1046",
+            "e25133fb59bb4a848b5d05cae1581833",
+            "4fceab4cd3e24d5b8441c56b6233a644"
+          ],
+          "judge_requests": [
+            {
+              "run_id": "42a229d7011040de90706c6fd8cfba07",
+              "request_sha256": "ff05ac31a22b9e8b65a15c6727fc8210e8f9148aa51d403d61ac437f05bcdeba"
+            },
+            {
+              "run_id": "97438b7226a8404cb8f3760b3541f1ab",
+              "request_sha256": "bbb47d6cadfd8446e9255872edc8425d2b17c56ece280374878dd32afc7e64e4"
+            },
+            {
+              "run_id": "49dab193812b42c0ab0a83382fee1046",
+              "request_sha256": "e7172d9848eef7b4d223867a35f2b5d0f3a20587564fd2f52aeca3661d0783d5"
+            },
+            {
+              "run_id": "e25133fb59bb4a848b5d05cae1581833",
+              "request_sha256": "32c22da6e23de0c9f73f2dd43ea7c3639f10f6cb565343c6cf67dba3e0c3dd52"
+            },
+            {
+              "run_id": "4fceab4cd3e24d5b8441c56b6233a644",
+              "request_sha256": "ca5b11c6194ab0f10278b264e4160fcddd4c1b2c0bad9c9fe4ab7077c5938986"
+            }
+          ],
+          "arguments_sha256": "3c8330dfbec42a5ede2064a870d979f40899e414114d4bda3b5362e00ed13442"
+        }
+      }
     }
   ],
   "status": "quota_wait",
@@ -2475,11 +4579,57 @@
       "logical_cpus": 12,
       "warmup_ms": 1040.271,
       "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-26T16:57:11.640515+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 6542.953,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-27T05:04:39.171221+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 2240.903,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-27T05:05:08.886728+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 2342.014,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-27T05:05:23.401989+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 1326.702,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-27T05:05:38.556974+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 997.898,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-27T05:07:56.465243+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 877.037,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
     }
   ],
-  "pending_case_runs": {
-    "q017": "9aad901d2ee742acaa833bb21fc3d685"
-  },
+  "pending_case_runs": {},
   "case_conversations": {
     "q001": "7c1262e6df544c4bbb2c49721c5c7980",
     "q002": "9e7cfcb816ec46829437952bb2da1100",
@@ -2493,17 +4643,29 @@
     "q014": "5d9e6d7ac8f5414396360ad45d667074",
     "q015": "9e79f2c75e4e447888db312b531f6afd",
     "q016": "b8370a16ddd44c5aab10fddab03924bf",
-    "q017": "31d54d263c394bd484cee4b46553f81a"
+    "q017": "46d5a50e03bf42f5a3639a7a72cac636",
+    "q018": "f7efb41fdc1f46e99aa6fb7a094f0247",
+    "q019": "cfb57a4ad3314f358e600de31392ffa9",
+    "q020": "a9d6362fe0ae4f13bf62b9f981be3ac4",
+    "q021": "6e4502a165c144beb9b81e4a3464b2ba",
+    "q022": "545d169c30da4b04b53c0c038752dfa3",
+    "q023": "76fe1ab33270466280391b9e3478441c",
+    "q025": "a2ec5a99009f46c09d6583f25c1bd1cb",
+    "q027": "24ffe03efc2f4d2f9ec091cb9a4143d3",
+    "q029": "2d55b9b758b244c883f190c4d77c234b",
+    "q030": "f4125663619f4be0b0e6089cf0b06ae1"
   },
   "judge_transport": {
     "cache_hits": 31,
-    "requests": 65
+    "requests": 55
   },
-  "stopped_reason": "quota_exhausted",
+  "stopped_reason": "InstructorRetryException",
   "quota": {
+    "message": "Shared deployment token budget exhausted; no provider switch was attempted",
+    "type": "quota_exhausted",
     "scope": "deployment",
     "retry_after": 3600,
-    "run_id": "9aad901d2ee742acaa833bb21fc3d685"
+    "run_id": "84d041e15bd54d2a876670a2dcadf33b"
   },
-  "next_retry_at": "2026-10-27T00:00:59.146405+00:00"
+  "next_retry_at": "2026-10-28T00:00:59.125824+00:00"
 }

@@ -2,7 +2,7 @@
 
 Status: **incomplete**. Source: `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`.
 
-Legacy campaign: **37/37**. Isolated paired comparisons: **12/148**. Successful backend cases with current JUnit evidence: **224**.
+Legacy campaign: **37/37**. Isolated paired comparisons: **22/148**. Successful backend cases with current JUnit evidence: **224**.
 
 | Requirement | Acceptance | Evidence |
 |---|---|---|

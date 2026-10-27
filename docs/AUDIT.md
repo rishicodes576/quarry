@@ -1,16 +1,26 @@
+# Free campaign progress and evidence refresh — 27 October 2026
+
+The frozen isolated comparison advanced from 12 to **22/148 fully scored cases**, all in dense mode. One additional generated answer has context precision only; its pending recall/faithfulness are not counted or inferred. Eleven completed answers are generated and eleven are citation fallbacks. The original historical 37/37 artifact and all twelve previously completed isolated rows were checked unchanged against the prior Git commit. All protocol, model, prompt and implementation bindings remain frozen; no test-set tuning or paid/provider switching occurred.
+
+Four research provider failures with unknown usage exhausted the configured bounded restarts before this follow-up. The retained generic errors do not identify the underlying network/response cause. An unauthenticated DNS/HTTPS probe then succeeded, and the existing runner resumed. Unknown usage remains conservatively accounted as 68,000 local-ledger tokens; it was not refunded or bypassed. At the stable checkpoint the deployment ledger records 183,942 used and zero reserved against its unchanged 200,000 daily cap. The next conservative reservation is 17,000, so execution correctly waits until about **05:31 IST on 28 October**. This is local quota accounting, not a provider invoice.
+
+Independent arithmetic/provenance checks passed: 67 saved isolated metric values were recomputed from actual exported verdicts, plus 92 historical scores. All 293 available decomposed claims and all 23 available complete answer texts received explicit attributed assistant review, including unlisted claims and cases whose model judgments overstate support. Low and zero scores remain unchanged. Examples include an unsupported hash-similarity recommendation, invented reversible UUID page metadata, and unmeasured latency/recall guarantees. Model scores, assistant judgments and independent human validation remain distinct; human fields are blank. Full 148-case acceptance remains incomplete.
+
+The latest observed hosted workflow for commit `0ce83122fd93389faece6add0e0a5c2ee3de83fe` passed with zero annotations: https://github.com/rishicodes576/quarry/actions/runs/40371948715. Executable fingerprint remains `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`; this checkpoint changes reports and documentation only. Functional/security/recovery results remain bound to that same source. The refreshed raw reports, review worksheets and release-readiness checklist accompany this snapshot.
+
 # Hosted verification closure — 26 October 2026
 
 The real hosted verification at https://github.com/rishicodes576/quarry/actions/runs/40337592192 passed startup, functional/browser and security steps with zero GitHub annotations. Final builder functional, security, scaling, startup/restart, restore, local transport and scoped independent AI-review reports bind to executable fingerprint `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`.
 
 Linux report write errors were resolved with access/default ACLs for the two non-root tool UIDs on public artifact directories. Cold initialization was reproduced failing at `/.cache/huggingface` as UID 10001; setting `HF_HOME=/tmp/quarry-huggingface` fixed Xet cache writes. The corrected disposable cold probe matched every pinned model file hash. Runtime and parser isolation/model pins remain intact. Node 24 checkout is pinned to its verified official commit and the runner major version is explicit. Initial failures and the probe harness correction remain documented, not represented as passing runs.
 
-Actual assistant support review is complete for all 12 available isolated answers and 169 decomposed claims, including full-answer text and claims omitted or distorted by the model decomposition. Unsupported/uncertain judgments remain visible. Original scores and blank human-review fields were not rewritten. Remaining isolated evaluations still require free quota resets and remain unfinished acceptance work.
+At the 26 October checkpoint, assistant support review was complete for all 12 available isolated answers and 169 decomposed claims, including full-answer text and claims omitted or distorted by the model decomposition. Unsupported/uncertain judgments remain visible. Original scores and blank human-review fields were not rewritten. Remaining isolated evaluations still require free quota resets and remain unfinished acceptance work.
 
 # Implementation and verification audit
 
 Evidence is recorded by the command that actually executes a check. Source changes can make a prior report historical; publication requires fresh matching source hashes. Mock transports, unit callbacks and unexecuted configurations are never treated as live integration evidence. The final source ZIP must exclude credentials, backups, account mail, raw private attachments and browser traces.
 
-## Current local release status
+## Previous local release status (historical)
 
 Source `82956962a7257027ac4bcc7387356be3fe2cf9f7b0443d17cd8eb9197f675bba` passed 193 backend tests, eight browser workflows, 90.647% aggregate critical branch coverage and the complete free security gate. Live judging is 35/37 fully scored. Independent arithmetic/identity checks passed for the saved retrieval, agent, throughput and available judge-verdict artifacts. Public deployment and Gmail setup are explicitly deferred in `DEPLOYMENT_LATER.md`.
 

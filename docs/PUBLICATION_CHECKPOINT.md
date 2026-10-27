@@ -11,12 +11,12 @@ Publication scope authorized on 26 October 2026: publish the implemented project
 | Retrieval comparisons | Four modes, 120 frozen authored synthetic cases and 480 timed queries; source-level relevance labels are not independently human validated |
 | Security | Current local scans and scoped independent AI code review passed; known evaluator metadata advisories and exact tested mitigations remain disclosed |
 | Historical live quality campaign | 37/37 completed; arithmetic audit passed, with 92 verdict-derived scores recomputed and 19 historical scores explicitly lacking original judge RPC provenance |
-| Isolated primary comparison | 12/148 completed, all in dense mode; the other modes and the remaining cases are unfinished |
-| Answer support review | All 12 completed answers and 169 decomposed claims reviewed with explicit assistant attribution; remaining cases await execution. No human validation is claimed |
+| Isolated primary comparison | 22/148 completed, all in dense mode; the other modes and the remaining cases are unfinished |
+| Answer support review | All 23 available answers (22 fully scored, one partly scored) and 293 available decomposed claims reviewed with explicit assistant attribution; remaining cases/claims await execution. No human validation is claimed |
 | Hosted installation | Operator-supplied infrastructure, HTTPS origin and mail transport configuration are required; local transport rehearsals are verified separately |
 | GitHub CI | Actual hosted startup, 224 backend tests, nine browser workflows and complete security scans passed with zero GitHub annotations. See `evaluation/results/github-ci.json` |
 
-The twelve completed isolated cases contain four generated answers and eight citation-fallback answers. Those answer kinds are recorded individually. Their partial averages are not a complete four-mode comparison or a general answer-quality claim. Finite checks, model judgments and assistant review do not establish perfect security or perfect factual accuracy.
+The 22 completed isolated cases contain eleven generated answers and eleven citation-fallback answers. One further generated answer has only its context-precision metric completed and is excluded from complete-case averages. Those answer kinds are recorded individually. Their partial averages are not a complete four-mode comparison or a general answer-quality claim. Finite checks, model judgments and assistant review do not establish perfect security or perfect factual accuracy.
 
 The free-only evaluation campaign keeps its original provider, frozen protocol and quotas. It retains checkpoints through free-budget waits. No paid provider has been used or enabled as an automatic fallback.
 

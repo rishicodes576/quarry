@@ -1,6 +1,6 @@
 {
   "status": "incomplete",
-  "created_at": "2026-10-26T16:41:37.700604+00:00",
+  "created_at": "2026-10-27T05:27:09.750689+00:00",
   "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
   "checks": [
     {
@@ -472,7 +472,7 @@
   ],
   "backend_cases_passed": 224,
   "legacy_completed": 37,
-  "isolated_completed": 12,
+  "isolated_completed": 22,
   "provider_calls": 0,
   "limitations": "Finite local verification and assistant review; no human certification or vulnerability-free claim"
 }

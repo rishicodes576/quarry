@@ -1,11 +1,13 @@
 {
-  "created_at": "2026-10-25T07:54:44.696644+00:00",
-  "day_utc": "2026-10-25",
-  "used_tokens": 183294,
+  "created_at": "2026-10-27T05:25:17.634554+00:00",
+  "day_utc": "2026-10-27",
+  "used_tokens": 183942,
   "reserved_tokens": 0,
   "daily_cap": 200000,
   "next_call_conservative_reservation": 17000,
   "paid_adapters_enabled": false,
   "free_plan_owner_attested": true,
-  "scope": "Read-only local ledger snapshot; key billing status cannot be inferred"
+  "unknown_usage_runs": 4,
+  "unknown_usage_conservative_tokens": 68000,
+  "scope": "Read-only local deployment ledger snapshot; conservative unknown-usage accounting is not a provider invoice. Key billing status cannot be inferred."
 }
