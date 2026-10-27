@@ -13,7 +13,7 @@ Publication scope authorized on 26 October 2026: publish the implemented project
 | Historical live quality campaign | 37/37 completed; arithmetic audit passed, with 92 verdict-derived scores recomputed and 19 historical scores explicitly lacking original judge RPC provenance |
 | Isolated primary comparison | 22/148 completed, all in dense mode; the other modes and the remaining cases are unfinished |
 | Answer support review | All 23 available answers (22 fully scored, one partly scored) and 293 available decomposed claims reviewed with explicit assistant attribution; remaining cases/claims await execution. No human validation is claimed |
-| Hosted installation | Operator-supplied infrastructure, HTTPS origin and mail transport configuration are required; local transport rehearsals are verified separately |
+| Hosted installation | Infrastructure and public HTTPS origin remain prerequisites. Private sender configuration passed live TLS/authentication and one same-account inbox test; public signup/recovery and deployed outbox acceptance remain pending |
 | GitHub CI | Actual hosted startup, 224 backend tests, nine browser workflows and complete security scans passed with zero GitHub annotations. See `evaluation/results/github-ci.json` |
 
 The 22 completed isolated cases contain eleven generated answers and eleven citation-fallback answers. One further generated answer has only its context-precision metric completed and is excluded from complete-case averages. Those answer kinds are recorded individually. Their partial averages are not a complete four-mode comparison or a general answer-quality claim. Finite checks, model judgments and assistant review do not establish perfect security or perfect factual accuracy.

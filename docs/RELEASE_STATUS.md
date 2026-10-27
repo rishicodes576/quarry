@@ -53,4 +53,6 @@ Legacy campaign: **37/37**. Isolated paired comparisons: **22/148**. Successful 
 | All four modes and 148 isolated evaluations with audited provenance | incomplete | release-readiness.json |
 | Attributed claim and complete-answer support review, including claims omitted by model decomposition | incomplete | release-readiness.json |
 
+Mail progress after the generated checklist snapshot: private sender credentials are configured; live certificate-verified SMTP authentication and one authorized same-account inbox receipt passed (`smtp-delivery.json`). This completes credential preparation and the transport smoke, while public-origin signup/recovery and deployed-outbox acceptance remain pending. Earlier credential-deferral wording is retained as the checklist snapshot, not a claim that credentials are still missing.
+
 Only owner-dependent provisioning/mail/DNS is deferred. Free quota waits remain unfinished work. Historical reports are retained; they do not override this current status. Known evaluator advisories and tested mitigations remain disclosed. No public deployment or human certification is implied.

@@ -1,3 +1,9 @@
+# Dedicated sender transport verification — 27 October 2026
+
+The owner configured a dedicated free personal Gmail sender in ignored operator configuration and explicitly authorized one test email to the same account. A Docker-network probe passed certificate-verified STARTTLS (TLS 1.3) and SMTP authentication. Exactly one message was submitted; Google accepted it, and a read-only IMAP search for its exact generated Message-ID found it in that account's inbox. No other mail body was fetched. There was no automatic send retry, paid fallback or model request.
+
+The sanitized evidence is `evaluation/results/smtp-delivery.json`; account identity, app password, raw message identifier and private configuration are excluded from public source and ZIP. Application source and frozen evaluation protocols are unchanged. The deployment profile is prepared privately, not activated as the local stack's mail transport. This smoke test does not establish the application's durable outbox, external-recipient delivery, public HTTPS verification/reset links or native-host acceptance. Those checks remain required after hosting and public-origin configuration. Earlier generated checklist credential-deferral wording predates this owner setup; actual deployment/mail acceptance remains incomplete.
+
 # Free campaign progress and evidence refresh — 27 October 2026
 
 The frozen isolated comparison advanced from 12 to **22/148 fully scored cases**, all in dense mode. One additional generated answer has context precision only; its pending recall/faithfulness are not counted or inferred. Eleven completed answers are generated and eleven are citation fallbacks. The original historical 37/37 artifact and all twelve previously completed isolated rows were checked unchanged against the prior Git commit. All protocol, model, prompt and implementation bindings remain frozen; no test-set tuning or paid/provider switching occurred.

@@ -1,6 +1,6 @@
 # Free Oracle deployment acceptance
 
-Status on 24 October 2026: the owner has not created or verified an Oracle account. No cloud instance, public hostname, Internet SMTP delivery or native-host acceptance is claimed. Local production-mode TLS/STARTTLS and ARM64-emulated model checks have separate evidence.
+Status on 27 October 2026: no Oracle host, public hostname or native-host acceptance is established. The private dedicated free sender passed live certificate-verified Gmail SMTP authentication and one authorized same-account inbox-delivery test from the Docker application network. Public signup/recovery and the deployed application outbox still require acceptance. See `evaluation/results/smtp-delivery.json`. Local production-mode TLS/STARTTLS and ARM64-emulated model checks have separate evidence.
 
 ## Owner prerequisites
 

@@ -58,7 +58,7 @@ The full local integration runtime was verified on Linux amd64. Architecture-neu
 
 The default stack builds patched free supporting images from pinned upstream inputs. See `THIRD_PARTY.md` and the Dockerfiles for archive hashes, upstream versions, Go module changes, and license records. Scan all eight image families after changing them. Qdrant is an API-only runtime; its optional dashboard and shell-based OOM recovery mode are not included. Compose restart policy restarts a terminated server, and application indexing/retrieval readiness is checked independently. Update the pinned inputs deliberately and repeat integration, restore and image checks. The retained legacy MinIO profile is for the already documented rollback only; it is stopped and is not an approved public deployment option.
 
-The supplied GitHub Actions workflow is configured but has not been executed on GitHub. Source builds can require substantially more disk than the final runtime images; verify runner memory/disk capacity before interpreting CI readiness. A free self-hosted runner with the tested local capacity is an option. Local passing reports do not establish that a hosted CI run has passed.
+The supplied GitHub Actions workflow has passed actual hosted startup, 224 backend tests, nine browser workflows and full security scans; the observed run and source binding are in `evaluation/results/github-ci.json`. Source builds can require substantially more disk than the final runtime images; verify runner memory/disk capacity before interpreting CI readiness. A free self-hosted runner with the tested local capacity is an option. Local passing reports do not establish that a hosted CI run has passed.
 
 ## Parser, metadata ceilings and reconciliation
 
@@ -90,7 +90,7 @@ Referenced objects are protected, including retained deleted/superseded rows. Ob
 
 ## Public Oracle handoff
 
-Follow [Oracle deployment acceptance](ORACLE_DEPLOYMENT.md). The owner must create/verify the free account and privately configure an eligible free mail sender. No public host is currently provisioned. The private deployment-mail template is separate from the local Mailpit configuration. The local campaign selects 200,000 daily tokens and 15-second spacing; defaults remain 100,000 and 60 seconds. Provider backoff and both daily ledgers are retained; consult the campaign budget artifact before changing these finite limits.
+Follow [Oracle deployment acceptance](ORACLE_DEPLOYMENT.md). The owner must create/verify the free hosting account. The dedicated free mail sender is privately configured and passed one live SMTP/authentication and same-account inbox smoke test; public-origin account delivery remains unverified. No public host is currently provisioned. The private deployment-mail template is separate from the local Mailpit configuration. The local campaign selects 200,000 daily tokens and 15-second spacing; defaults remain 100,000 and 60 seconds. Provider backoff and both daily ledgers are retained; consult the campaign budget artifact before changing these finite limits.
 
 
 ## Daily-budget waits after host suspension

@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-10-27T11:45:58.449937+00:00",
+  "status": "passed",
+  "tls_validated": true,
+  "tls_version": "TLSv1.3",
+  "authenticated": true,
+  "send_attempts": 1,
+  "smtp_accepted": true,
+  "inbox_verified": true,
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "transport": "Gmail SMTP submission on port 587 with certificate-verified STARTTLS; IMAP over TLS read-only exact Message-ID inbox search",
+  "free_personal_account_owner_attested": true,
+  "paid_fallback_used": false,
+  "credentials_included": false,
+  "mailbox_identity_included": false,
+  "model_calls": 0,
+  "scope": "One explicitly owner-authorized message from the private dedicated sender to itself, checked from the Docker application network. This is a transport smoke test using the same standard-library SMTP/TLS mechanism as the application; the application outbox, Internet signup/recovery links and public deployment are not accepted by this test.",
+  "limitations": [
+    "Sender credentials remain in ignored operator configuration and are not active production configuration.",
+    "Same-account inbox receipt does not prove delivery to other email providers.",
+    "Public HTTPS-origin signup and password recovery require separate deployed acceptance."
+  ]
+}
