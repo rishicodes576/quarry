@@ -2,7 +2,7 @@
 
 Status: **incomplete**. Source: `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`.
 
-Legacy campaign: **37/37**. Isolated paired comparisons: **22/148**. Successful backend cases with current JUnit evidence: **224**.
+Legacy campaign: **37/37**. Isolated paired comparisons: **36/148**. Successful backend cases with current JUnit evidence: **224**.
 
 | Requirement | Acceptance | Evidence |
 |---|---|---|
@@ -53,6 +53,6 @@ Legacy campaign: **37/37**. Isolated paired comparisons: **22/148**. Successful 
 | All four modes and 148 isolated evaluations with audited provenance | incomplete | release-readiness.json |
 | Attributed claim and complete-answer support review, including claims omitted by model decomposition | incomplete | release-readiness.json |
 
-Mail progress after the generated checklist snapshot: private sender credentials are configured; live certificate-verified SMTP authentication and one authorized same-account inbox receipt passed (`smtp-delivery.json`). This completes credential preparation and the transport smoke, while public-origin signup/recovery and deployed-outbox acceptance remain pending. Earlier credential-deferral wording is retained as the checklist snapshot, not a claim that credentials are still missing.
+Mail progress: private sender credentials are configured; live certificate-verified SMTP authentication and one authorized same-account inbox receipt passed (`smtp-delivery.json`). Public-origin signup/recovery and deployed-outbox acceptance remain pending. The generated checklist's earlier credential-deferral wording predates this owner setup; it must not be read as a claim that sender credentials are still missing.
 
 Only owner-dependent provisioning/mail/DNS is deferred. Free quota waits remain unfinished work. Historical reports are retained; they do not override this current status. Known evaluator advisories and tested mitigations remain disclosed. No public deployment or human certification is implied.
