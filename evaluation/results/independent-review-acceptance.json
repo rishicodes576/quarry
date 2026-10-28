@@ -1,37 +1,67 @@
 {
   "status": "passed",
-  "created_at": "2026-10-26T14:15:52.182481+00:00",
-  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
-  "review_type": "Independent AI code inspection of the explicitly reviewed source deltas",
-  "scope": "Campaign registry/isolation/free-provider protocol, provenance arithmetic, finalizer/publication guards, secret-safe candidate/tree audit, canonical source fingerprints and XML declaration rejection",
+  "created_at": "2026-10-28T12:57:10.561671+00:00",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453",
+  "reviewer": "Independent AI review agent /root/independent_security_review",
+  "review_type": "Scoped independent AI source inspection; not external human certification",
+  "scope": "Eleven-file JOSE/backport/security-evidence/checklist delta, combined with preserved prior review of unchanged application security code",
   "review_report": "docs/INDEPENDENT_SECURITY_REVIEW.md",
-  "review_report_sha256": "067ee77e94c840dcd6c4f774c8764b37da56c3ebc3d52a8cbab8022ba94bea56",
+  "review_report_sha256": "afb8677b4135da437ef938edb4f2fbd7116e4f2c47a4cfa194329562e318b1e2",
   "reviewed_source_manifest": "evaluation/results/independent-review-source.json",
-  "reviewed_source_manifest_sha256": "828ed3f3ed4c203ffabd3c88f4d23aef07804b4f61238c03e8a3998be19ab022",
-  "conclusion": "No further concrete blocker identified within the inspected scope; prior release/provenance findings have source-level corrections.",
-  "executed_in_this_acceptance": {
-    "source_inspection_and_fingerprinting": true,
-    "pytest_or_browser_tests": false,
-    "vulnerability_or_secret_scanners": false,
-    "model_provider_calls": false,
-    "database_exports_or_primary_writes": false,
-    "packaging_commit_or_publication": false,
-    "secret_configuration_read": false,
-    "billing_verification": false,
-    "deployment_verification": false
-  },
-  "historical_checks": "Earlier isolated component probes and read-only parser-runtime metadata inspection are documented separately and are not claimed as executed under this final source fingerprint.",
+  "reviewed_source_manifest_sha256": "a938446972205b485d1ea9f6ba94a27b90aa79152fea6f3a2da3f3e2caad4edd",
+  "reviewed_delta_files": [
+    "infra/harden_jose.go",
+    "infra/jose_regression_test.go",
+    "infra/caddy.Dockerfile",
+    "infra/seaweedfs.Dockerfile",
+    "security/jose-v3-backport.json",
+    "security/JOSE_BACKPORT.md",
+    "scripts/jose_gate.py",
+    "scripts/security_scan.py",
+    "backend/tests/test_jose_gate.py",
+    "evaluation/requirements.json",
+    "scripts/finalize.py"
+  ],
+  "findings": [
+    {
+      "id": "ISR-JOSE-01",
+      "status": "source_fix_reviewed",
+      "finding": "Missing actual JWE private-header error-path regression"
+    },
+    {
+      "id": "ISR-JOSE-02",
+      "status": "source_fix_reviewed",
+      "finding": "Lazy import-graph inclusion could hide truncated trailing records"
+    }
+  ],
+  "conclusion": "No further concrete blocker identified within the inspected scope; executed acceptance remains the separate builder gates.",
+  "executed_by_reviewer": [
+    "Source inspection",
+    "In-memory patch/hash reconstruction",
+    "Independent fingerprint and file hashes"
+  ],
+  "not_executed_by_reviewer": [
+    "Builds",
+    "Go/pytest/browser tests",
+    "Runtime probes",
+    "Vulnerability/secret scanners",
+    "Provider/mail calls",
+    "Database mutations",
+    "Secret reads",
+    "Public deployment verification"
+  ],
   "conditions": [
-    "Fresh complete functional/browser/coverage and security gates remain required.",
-    "Legacy 37 and isolated 148 completion, current audit input hashes and attributed factual reviews must satisfy their separate release gates.",
-    "Any later executable-source change requires renewed review/acceptance for its fingerprint."
+    "Fresh complete source-bound functional/security/recovery gates remain required",
+    "Historical 37 and isolated 148 require separate measurements, provenance audits and attributed support reviews",
+    "Any later executable-source change requires renewed scoped acceptance"
   ],
   "limitations": [
-    "Not an external human audit or certification.",
-    "Not a vulnerability-free or arbitrary-file confidentiality guarantee.",
-    "No Groq account billing/free-plan status was independently verified by this reviewer.",
-    "No actual campaign completion or factual-support judgment is established by code inspection."
+    "Not a human audit or certification",
+    "Not a vulnerability-free guarantee",
+    "Not a blanket scanner waiver",
+    "No billing/free-plan status independently inferred"
   ],
-  "previous_acceptance_source_sha256": "0b33fbb4372d0c2d8a85692e73ddb9de78a36d255bcec0c54f0ea7f07a906a19",
-  "narrow_refresh": "Runner label explicitly ubuntu-24.04 and checkout immutable commit pin updated; official exact-commit action metadata confirms Node24 and retained credential-persistence control. No new workflow/tests/scanners/model execution; scoped code-inspection limits unchanged."
+  "previous_acceptance": "evaluation/results/historical/independent-review-acceptance-ba20.json",
+  "previous_scoped_source_sha256": "8d245c1cac11eed9b3419c7da652371332d71c720b22115bccc42c74ff619d85",
+  "narrow_refresh": "Exact reviewed two-executable JOSE finding disposition, with positive probe/both cases. Prior findings, review limits and mandatory separate execution gates retained."
 }

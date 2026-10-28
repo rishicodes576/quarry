@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "created_at": "2026-10-28T05:41:37.548349+00:00",
+  "created_at": "2026-10-28T13:41:35.602530+00:00",
   "scope": "Arithmetic/integrity audit; not independent factual-support or label validation",
   "retrieval": [
     {
@@ -118,9 +118,9 @@
     "results/retrieval-dev.json": "a954713068bbfac69001de85ca614546a4328c6ad324ea0681beb0e5474d7642",
     "results/latest.json": "6a45cf7ed36d4223e2c0defac02a4009729507d9868fe24ddaa2c0535f48033b",
     "results/agent-local.json": "9c338e6c3e00f278894658c8c6dc84065d0f401c1284ac98983f7cd6bf253926",
-    "results/load-1.json": "02b08a9d6111abc01458dcf76151294af8840ac46eeb588644537fba5cf79c22",
-    "results/load-2.json": "8b3dd2454491c457fb240168da2b20362e33ab75cdad812331fe2bc9ebddc962",
-    "results/load-4.json": "8fbe78caf56f7a9e55e41a03e8f6402fc0bf69b00e91e308fab31ff185a860a6",
+    "results/load-1.json": "071d17e1b4ff67a93f4dce2db6fa758eb55cae9ffa927feb22b63e4b31dac770",
+    "results/load-2.json": "6397e01db4e2ea6c23457debc3bcbc3db4bd6129c993f6085a3796e557bb38f9",
+    "results/load-4.json": "4d3b3cccff2f99a211785e93809cbf2ec603f48b7ef27d2ae3a6a8d9b9fa8843",
     "results/live-ragas.json": "5f8670e2047af876438b94d47cd95591ad193503359fbf91a32beb25a3eac7af",
     "results/judge-verdicts.json": "1d99dc84eb7570bccdc70feb94f62666142842f72e9e5e7079c9a1bd2751fa57"
   },

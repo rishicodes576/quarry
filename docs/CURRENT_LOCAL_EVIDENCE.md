@@ -1,12 +1,12 @@
 # Current local measurements
 
-Snapshot: 2026-10-26T14:44:49.591247+00:00. Executable source SHA-256: `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`. The current acceptance checklist and campaign progress are in [RELEASE_STATUS.md](RELEASE_STATUS.md). This dated snapshot is not final release acceptance.
+Snapshot: 2026-10-28T13:44:33.401177+00:00. Current executable source SHA-256: `81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453`. See [the acceptance checklist](RELEASE_STATUS.md); this is an audited local checkpoint, not final 148-case or public-host acceptance.
 
-These are finite Docker Desktop experiments on the documented laptop, with warm local ONNX models. They use the frozen authored synthetic corpus, not an independently labeled generalization benchmark. Generation measurements are separate from these no-generation timings. No paid external service was used.
+These are finite Docker Desktop CPU experiments. The authored synthetic corpus is not an independently human-labeled generalization benchmark. No paid external service was used. Raw reports retain hardware, configuration, model/corpus hashes, dates and sample counts.
 
-## Retrieval
+## Retrieval and inline graph snapshot
 
-Measured at 2026-10-26T14:14:19.835004+00:00. Each mode timed 120 cases; source-level quality aggregates cover the 100 relevance-labeled cases. Source-unique top five are formed from 20 passages. Model and corpus hashes and per-case ranks remain in `evaluation/results/latest.json` and `retrieval-all.json`.
+The retained retrieval experiment was measured at 2026-10-26T14:14:19.835004+00:00. Retrieval, encoder, scorer and frozen corpus bindings are unchanged by the gateway/storage/security-gate fixes. These 480 queries were not rerun in the security check. Each mode timed 120 cases; source-level quality covers 100 relevance-labeled cases, with unique top-five sources from 20 passages.
 
 | Mode | Recall@5 | MRR | nDCG@5 | ID precision@5 | P50 ms | P95 ms |
 |---|---:|---:|---:|---:|---:|---:|
@@ -15,38 +15,40 @@ Measured at 2026-10-26T14:14:19.835004+00:00. Each mode timed 120 cases; source-
 | hybrid | 0.9800 | 0.8817 | 0.9060 | 0.2360 | 34.125 | 47.926 |
 | hybrid_rerank | 0.9900 | 0.9025 | 0.9245 | 0.2380 | 917.605 | 1116.678 |
 
-ID precision/recall do not use an LLM judge and are not Ragas model-judged context quality. Approximate/tied ranks may vary; no test-set tuning or target-score substitution is claimed.
+ID metrics do not use an LLM judge and are not Ragas model-judged context quality. No test-set tuning or target-score substitution is claimed.
 
-## Extractive execution and capacity
+The retained sequential inline durable graph completed 120/120 cases: worker P50/P95 1327.49/1573.98 ms; first durable evidence P50/P95 1119.96/1384.65 ms. Eight arithmetic-labeled cases selected the expected tool. This is operational completion, not semantic answer accuracy; HTTP admission and queueing are excluded and generation usage is zero.
 
-The sequential inline durable graph completed 120/120 cases. Worker P50/P95: 1327.49/1573.98 ms; first durable evidence P50/P95: 1119.96/1384.65 ms. Eight arithmetic tool cases matched the expected tool. This is operational completion, not independently reviewed answer accuracy. It excludes HTTP admission and queueing, and uses no generation tokens.
+## Fresh extractive scale experiment
 
-The load probe used two API replicas, five sample workspaces, ten submission threads and 100 requests per worker configuration. Latency includes server queueing. Measurement workloads ran separately from scans and model judging.
+Two API replicas, one/two/four workers, five isolated sample workspaces, ten submission threads and 100 requests per configuration. The asset cache was already populated; fixture ingestion precedes measurement, and fresh worker processes may incur model warmup. Latency includes server queueing. Scans, restore/rehearsal stacks and model judging were stopped before this experiment.
 
 | Workers | Completed | Runs/s | End-to-end P50 ms | End-to-end P95 ms | Queue P50 ms |
 |---|---:|---:|---:|---:|---:|
-| 1 | 100/100 | 2.053 | 22456.8 | 41264.2 | 22052.0 |
-| 2 | 100/100 | 3.523 | 11332.9 | 21784.7 | 10865.5 |
-| 4 | 100/100 | 5.137 | 7484.9 | 12253.2 | 6870.3 |
+| 1 | 100/100 | 2.244 | 20749.3 | 37738.6 | 20393.9 |
+| 2 | 100/100 | 3.762 | 12443.8 | 20881.3 | 11958.0 |
+| 4 | 100/100 | 5.403 | 7318.9 | 11427.1 | 6774.2 |
 
 | Workers observed | Snapshots | Sampled max total CPU | Sampled max total RAM GiB |
 |---|---:|---:|---:|
-| 1 | 21 | 371.0% | 2.30 |
-| 2 | 9 | 532.5% | 2.68 |
-| 4 | 8 | 724.1% | 3.37 |
+| 1 | 20 | 374.0% | 2.06 |
+| 2 | 8 | 444.4% | 2.43 |
+| 4 | 7 | 831.4% | 3.21 |
 
-CPU 100% represents one logical CPU. Samples include startup/idle intervals and are not instantaneous peaks. Queueing dominates this burst; CPU/memory rise with replicas and throughput is sublinear. Scheduler lock wait, connection-pool wait and reranker CPU profiling would distinguish causes; these observations do not establish sustained Internet capacity or an SLA.
+CPU 100% is one logical CPU. Samples include startup/idle and are not instantaneous peaks. Queueing dominates this burst; throughput is sublinear and CPU/memory rise with workers. Scheduler/connection-pool wait and reranker profiling would distinguish causes. These results are not public capacity, sustained Internet throughput or an SLA.
 
-## Recovery and release checks
+An additional read-only arithmetic audit recomputed the published server P50/P95, queue median, throughput and zero model/token usage from all 300 actual run records. Raw timestamps and input hashes are in [load-timing-audit.json](../evaluation/results/load-timing-audit.json). The runner-reported submission median has no retained per-submission samples and is explicitly outside that independent recomputation. Prior source-bound scale results remain in `evaluation/results/historical/*-ba20.json`.
 
-Fresh isolated startup and persistent stop/start passed in 133.67 seconds with the shared verified model cache. Isolated backup restoration passed in 141.25 seconds, verified 149 source hashes and completed a research query with 1 cited passages. Primary data was preserved. Rehearsal stacks were stopped with volumes retained.
+## Fresh recovery and security gates
 
-The complete functional gate passed: 224 backend tests, nine Playwright workflows, generated API type/contract checks, BFF probes and parser isolation. Critical aggregate branch coverage is 528/582 = 90.722%; this is not per-file or whole-repository coverage. Full security scanning, all eight runtime images, local OWASP checks and the scoped independent AI code review passed for this source. Known optional evaluator metadata advisories retain exact tested mitigations; see `security/EVALUATOR_MITIGATIONS.md`.
+Clean isolated startup and persistent stop/start passed in 133.14s. Isolated backup restoration passed in 137.56s, verified 149 source hashes and completed a query with 1 cited passage. The private-CA/local-STARTTLS production-mode signup/session rehearsal passed in 94.15s. Primary data was preserved; disposable stacks were stopped with their volumes retained.
 
-The PostgreSQL scan first failed for CVE-2026-92392 in libcurl 8.22.0-r0. The image now pins 8.23.0-r0 and its fresh scan passed. Failed evidence remains in `evaluation/results/historical`; no suppression was introduced.
+Final-source functional checks passed: **240 backend tests**, **nine Playwright workflows**, generated API contracts/types, BFF and parser-boundary probes. Aggregate critical branch coverage is **528/582 = 90.722%**, not per-file or whole-repository coverage.
 
-The production-mode HTTPS/STARTTLS rehearsal uses a private test CA and local mail sink. Hosted installation requires its own transport/origin configuration and host acceptance. Scanner/reviewer success is finite evidence, not a vulnerability-free claim or human certification. The 37-case historical quality campaign and 148 isolated comparisons are separate acceptance gates and remain unfinished until their actual reports and attributed support reviews are complete.
+All 14 full security gate steps passed: Semgrep, Trivy source/secret/config analysis, locked dependency audits, OWASP ZAP and eight runtime-image gates. Raw optional evaluator advisories and the locally backported legacy JOSE finding remain disclosed and require their exact executed mitigations; see [evaluator controls](../security/EVALUATOR_MITIGATIONS.md) and [JOSE controls](../security/JOSE_BACKPORT.md). Independent AI source review passed separately; its reviewer did not execute builder tests or scans. No human certification or vulnerability-free claim is made.
 
-## Hosted verification
+## Quality and hosted verification
 
-The real [GitHub Actions verification run](https://github.com/rishicodes576/quarry/actions/runs/40337592192) passed startup, 224 backend cases, nine browser workflows and all security/image gates on the same executable fingerprint. It completed with zero GitHub annotations. The initial failure was fixed with targeted non-root report ACLs and a writable temporary Hugging Face/Xet cache. Immutable Node 24 checkout and an explicit Ubuntu 24.04 runner address the deprecation/moving-label annotations. Original failed evidence is preserved. See `evaluation/results/github-ci.json` and `cold-model-bootstrap.json`.
+Historical live quality is 37/37, with 19 historical RPC-provenance gaps preserved. The frozen isolated comparison remains 36/148 at its free quota gate; the 37 available answer texts and 559 claim records have attributed assistant review. Low and zero model scores remain unchanged; no independent human answer validation is claimed.
+
+The prior hosted run failed on the newly disclosed JOSE dependency issue. Failed reports remain in history. The corrected local source is now fully gated; its fresh hosted verification is checked separately on publication. Inspect [github-ci.json](../evaluation/results/github-ci.json) and the live Actions run before claiming a hosted pass. Public/native-host acceptance remains a separate installation step; local private-CA/mail rehearsal does not establish public ACME or external application email delivery.

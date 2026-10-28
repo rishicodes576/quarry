@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a178a0-b02f-7880-a44d-7a7fbbc1d4d8",
-  "CreatedAt": "2026-10-26T14:32:39.215563382Z",
-  "ArtifactID": "sha256:ba7efe72a4258253a9b202e603d8578e931d3c45b7d130285b91f61c9d6f1c7b",
+  "ReportID": "01a182ae-d263-722d-9fab-0cd864ce39f2",
+  "CreatedAt": "2026-10-28T13:24:17.635146298Z",
+  "ArtifactID": "sha256:90f25a3abda4a6121cb6358a12ade012177fa93dab739ab7dea59e6ceb2ee6c9",
   "ArtifactName": "/images/postgres.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -30,10 +30,6 @@
       "sha256:b531906c3d9001ffe305efad8b83ba0d7343084f1bcfab6098a08c21656f6e5d",
       "sha256:9f781305be2a2311da94b3843da0ea6d18ea852d43347ce5dbd907437947c54f"
     ],
-    "RepoTags": [
-      "quarry-postgres:local"
-    ],
-    "Reference": "quarry-postgres:local",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-10-26T08:29:13.264091489Z",

@@ -1,7 +1,7 @@
 {
   "status": "incomplete",
-  "created_at": "2026-10-28T05:43:36.265605+00:00",
-  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "created_at": "2026-10-28T13:50:35.659059+00:00",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453",
   "checks": [
     {
       "id": "compose-postgres",
@@ -412,6 +412,31 @@
       "acceptance": "independent-review-acceptance.json"
     },
     {
+      "id": "jose-backport-proof",
+      "requirement": "Exact-image JOSE backport source/dependency proof and bounded cryptographic regressions",
+      "implementation": [
+        "infra/caddy.Dockerfile",
+        "security/JOSE_BACKPORT.md",
+        "scripts/jose_gate.py"
+      ],
+      "artifact": "security/jose-mitigations.json",
+      "source_bound": true,
+      "status": "passed",
+      "acceptance": "security/jose-mitigations.json"
+    },
+    {
+      "id": "security-report-fail-closed",
+      "requirement": "Unrelated findings, stale image identities and interrupted security rechecks cannot pass",
+      "implementation": "scripts/security_scan.py; scripts/jose_gate.py",
+      "tests": [
+        "*test_jose_gate.test_jose_disposition*",
+        "*test_jose_gate.test_security_recheck_invalidates_old_success",
+        "*test_jose_gate.test_module_graph_json_stream_and_truncation"
+      ],
+      "status": "passed",
+      "acceptance": "16 matching successful JUnit executions; current source required"
+    },
+    {
       "id": "oracle",
       "requirement": "Public Oracle infrastructure",
       "owner_dependency": "Owner account creation/identity verification is deferred",
@@ -424,14 +449,15 @@
     },
     {
       "id": "smtp",
-      "requirement": "Real free personal Gmail sender",
-      "owner_dependency": "Owner app password and private free-plan confirmation are deferred",
+      "requirement": "Dedicated free Gmail SMTP transport: authorized self-send and INBOX verification",
+      "artifact": "smtp-delivery.json",
+      "source_bound": false,
       "implementation": [
         "docs/DEPLOYMENT_LATER.md",
         "docs/ORACLE_DEPLOYMENT.md"
       ],
-      "status": "deferred_owner",
-      "acceptance": "Owner app password and private free-plan confirmation are deferred"
+      "status": "passed",
+      "acceptance": "smtp-delivery.json"
     },
     {
       "id": "public-dns",
@@ -470,7 +496,7 @@
       "status": "incomplete"
     }
   ],
-  "backend_cases_passed": 224,
+  "backend_cases_passed": 240,
   "legacy_completed": 37,
   "isolated_completed": 36,
   "provider_calls": 0,

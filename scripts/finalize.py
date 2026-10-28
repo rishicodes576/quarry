@@ -167,11 +167,11 @@ def render(result):
     rows = ["# Current audited release status", "", f"Status: **{result['status']}**. Source: `{result['source_sha256']}`.", "", f"Legacy campaign: **{result['legacy_completed']}/37**. Isolated paired comparisons: **{result['isolated_completed']}/148**. Successful backend cases with current JUnit evidence: **{result['backend_cases_passed']}**.", "", "| Requirement | Acceptance | Evidence |", "|---|---|---|"]
     for item in result["checks"]:
         rows.append(f"| {item['requirement']} | {item['status']} | {item.get('acceptance', 'release-readiness.json')} |")
-    rows += ["", "Only owner-dependent provisioning/mail/DNS is deferred. Free quota waits remain unfinished work. Historical reports are retained; they do not override this current status. Known evaluator advisories and tested mitigations remain disclosed. No public deployment or human certification is implied.", ""]
+    rows += ["", "Installation prerequisites are recorded in operational guidance; verified mail transport and public application acceptance are separate checks. Free quota waits remain unfinished work. Historical reports are retained; they do not override this current status. Known evaluator advisories and tested mitigations remain disclosed. No public deployment or human certification is implied.", ""]
     (ROOT / "docs/RELEASE_STATUS.md").write_text("\n".join(rows), encoding="utf-8", newline="\n")
     path = ROOT / "README.md"
     text = path.read_text(encoding="utf-8")
-    replacement = f"**Current release status: {result['status']}.** Legacy campaign {result['legacy_completed']}/37; isolated comparisons {result['isolated_completed']}/148. See [the requirement-by-requirement acceptance report](docs/RELEASE_STATUS.md). Public deployment and Gmail setup remain owner-deferred."
+    replacement = f"**Current release status: {result['status']}.** Legacy campaign {result['legacy_completed']}/37; isolated comparisons {result['isolated_completed']}/148. See [the requirement-by-requirement acceptance report](docs/RELEASE_STATUS.md). Installation requirements and verification limits are recorded in the operational guidance."
     text = re.sub(r"^\*\*(?:Historical local release checks passed:|Local release checks passed:|Current release status:).*?$", lambda _: replacement, text, flags=re.M)
     path.write_text(text, encoding="utf-8", newline="\n")
 

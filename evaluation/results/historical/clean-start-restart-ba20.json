@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "project": "quarry-clean-55f746c8da0f",
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "method": "Fresh isolated project volumes with shared read-only verified model cache. Clean startup, durable PostgreSQL marker, stop/start, marker and readiness verification. Primary data untouched.",
+  "paid_calls": 0,
+  "first_services": [
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "mailpit",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "object-gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "objectstore",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "parser",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "qdrant",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "searxng",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "web",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "worker",
+      "state": "running",
+      "health": ""
+    }
+  ],
+  "restarted_services": [
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "mailpit",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "object-gateway",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "objectstore",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "parser",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "qdrant",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "searxng",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "web",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "worker",
+      "state": "running",
+      "health": ""
+    }
+  ],
+  "persistent_marker_verified": true,
+  "seconds": 133.67
+}

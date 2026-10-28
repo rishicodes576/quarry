@@ -52,8 +52,8 @@ These are executed Docker Desktop CPU experiments, with the hardware, conditions
 |---|---|---|
 | Retrieval comparison | Four modes × 120 cases = **480 timed queries** | [Per-case results](evaluation/results/latest.json) |
 | Hybrid reranking | **0.990 Recall@5**, **0.925 nDCG@5** on 100 relevance-labeled cases | [Measurement scope](docs/CURRENT_LOCAL_EVIDENCE.md) |
-| Worker scaling | **2.05 → 5.14 extractive runs/s**, one → four workers behind two APIs; 100 requests per configuration | [Scaling records](evaluation/results/scaling.json) |
-| Functional verification | **224 backend tests**, **9 Playwright workflows** | [Verification report](evaluation/results/verification.json) |
+| Worker scaling | **2.24 → 5.40 extractive runs/s**, one → four workers behind two APIs; 100 requests per configuration | [Scaling records](evaluation/results/scaling.json) |
+| Functional verification | **240 backend tests**, **9 Playwright workflows** | [Verification report](evaluation/results/verification.json) |
 | Critical branch coverage | **90.722% aggregate**, 528/582 branches across explicitly listed critical modules | [Coverage scope](evaluation/results/critical-coverage.json) |
 | Recovery | Clean startup, persistent restart, interrupted work and isolated backup restoration exercised | [Acceptance checklist](docs/RELEASE_STATUS.md) |
 

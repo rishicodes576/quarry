@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": {
+    "trusted_https_ready": true,
+    "demo_disabled": true,
+    "public_signup_accepted": true,
+    "no_session_before_verification": true,
+    "starttls_email_delivered": true,
+    "verification_single_use": true,
+    "secure_http_only_session": true,
+    "authenticated_https_request": true,
+    "csrf_rejected": true,
+    "production_openapi_private": true,
+    "session_revoked": true
+  },
+  "paid_calls": 0,
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "scope": "Isolated loopback production-mode HTTPS and STARTTLS with a private test CA. No public ACME, Internet SMTP or cloud deployment claim.",
+  "seconds": 91.24
+}

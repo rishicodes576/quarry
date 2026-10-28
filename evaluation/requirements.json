@@ -332,6 +332,19 @@
     "source_bound": true
   },
   {
+    "id": "jose-backport-proof",
+    "requirement": "Exact-image JOSE backport source/dependency proof and bounded cryptographic regressions",
+    "implementation": ["infra/caddy.Dockerfile", "security/JOSE_BACKPORT.md", "scripts/jose_gate.py"],
+    "artifact": "security/jose-mitigations.json",
+    "source_bound": true
+  },
+  {
+    "id": "security-report-fail-closed",
+    "requirement": "Unrelated findings, stale image identities and interrupted security rechecks cannot pass",
+    "implementation": "scripts/security_scan.py; scripts/jose_gate.py",
+    "tests": ["*test_jose_gate.test_jose_disposition*", "*test_jose_gate.test_security_recheck_invalidates_old_success", "*test_jose_gate.test_module_graph_json_stream_and_truncation"]
+  },
+  {
     "id": "oracle",
     "requirement": "Public Oracle infrastructure",
     "owner_dependency": "Owner account creation/identity verification is deferred",
@@ -342,8 +355,9 @@
   },
   {
     "id": "smtp",
-    "requirement": "Real free personal Gmail sender",
-    "owner_dependency": "Owner app password and private free-plan confirmation are deferred",
+    "requirement": "Dedicated free Gmail SMTP transport: authorized self-send and INBOX verification",
+    "artifact": "smtp-delivery.json",
+    "source_bound": false,
     "implementation": [
       "docs/DEPLOYMENT_LATER.md",
       "docs/ORACLE_DEPLOYMENT.md"

@@ -3,13 +3,26 @@ import argparse
 import hashlib
 import json
 import os
+import subprocess
 import tarfile
 import time
 import uuid
 from pathlib import Path
 
+from jose_gate import finding_disposition
+from jose_gate import verify as verify_jose
 from manage import ROOT, compose, docker, redact, run, scan
 from release import fingerprint
+
+
+def invalidate_previous_gate(output, source):
+    """An interrupted or partial recheck cannot leave an old success current."""
+    output.mkdir(parents=True, exist_ok=True)
+    (output/'summary.json').write_text(json.dumps({
+        'status':'incomplete', 'source_sha256':source,
+        'created_at':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
+        'reason':'Security recheck started. A complete successful scan is required; partial or interrupted checks do not renew the release gate.'
+    },indent=2),encoding='utf-8')
 
 
 def source_snapshot(folder, output):
@@ -51,10 +64,10 @@ def main():
     parser.add_argument('--images', action='store_true')
     parser.add_argument('--only', nargs='+', choices=['semgrep','trivy-filesystem','pip-audit','zap-baseline'])
     args = parser.parse_args()
+    output = ROOT/'evaluation/results/security'
+    invalidate_previous_gate(output, fingerprint())
     scan()
     images = json.loads((ROOT/'security/scanners.json').read_text(encoding='utf-8'))
-    output = ROOT/'evaluation/results/security'
-    output.mkdir(parents=True, exist_ok=True)
     folder=ROOT/'.runtime/scanner-input'
     folder.mkdir(parents=True,exist_ok=True)
     archive,manifest=source_snapshot(folder,output)
@@ -65,7 +78,7 @@ def main():
     steps = [
         ('semgrep', ['run','--rm',*mount,'--env','SEMGREP_SEND_METRICS=off',*wrapper,images['semgrep'],*extract,'semgrep','scan','--config','p/owasp-top-ten','--config','p/python','--config','p/javascript','--config','p/typescript','--metrics','off','--disable-version-check','--no-git-ignore','--exclude','.git','--error','--json','--output','/reports/semgrep.json','--exclude','.env','--exclude','evaluation/results','--exclude','frontend/node_modules','--exclude','frontend/.next','--exclude','.runtime','--exclude','backend/tests','.']),
         ('trivy-filesystem', ['run','--rm',*mount,*cache,*wrapper,images['trivy'],*extract,'trivy','fs','--scanners','vuln,secret,misconfig','--severity','HIGH,CRITICAL','--exit-code','1','--format','json','--output','/reports/trivy-filesystem.json','--skip-files','.env','.']),
-        ('pip-audit', ['compose','--profile','test','run','--rm','--no-deps','tests','pip-audit','--disable-pip','--no-deps','-r','/tmp/requirements.lock','--format','json','--output','/app/evaluation/results/security/pip-audit.json']),
+        ('pip-audit', ['compose','--profile','test','run','--rm','--no-deps','tests','pip-audit','--disable-pip','--no-deps','-r','/tmp/requirements.lock','--format','json','--output','/app/evaluation/results/security/pip-audit.json']),  # noqa: S108 -- immutable image lockfile, not host temporary storage
         ('pip-audit-dev', ['compose','--profile','test','run','--rm','--no-deps','tests','pip-audit','--disable-pip','--no-deps','-r','/app/requirements-dev.lock','--format','json','--output','/app/evaluation/results/security/pip-audit-dev.json']),
         ('pip-audit-eval', ['compose','--profile','test','run','--rm','--no-deps','tests','pip-audit','--disable-pip','--no-deps','-r','/app/requirements-eval.lock','--format','json','--output','/app/evaluation/results/security/pip-audit-eval.json']),
     ]
@@ -113,18 +126,45 @@ def main():
             scanner_name='quarry-image-audit-'+uuid.uuid4().hex
             temporary=output/('.image-'+name+'-'+uuid.uuid4().hex+'.json')
             print(f'Scanning built image {image}…',flush=True)
-            run([docker(),'image','save','--output',str(archive),image])
+            image_id=run([docker(),'image','inspect','--format','{{.Id}}',image],capture=True).stdout.strip()
+            run([docker(),'image','save','--output',str(archive),image_id])
             try:
+                with tarfile.open(archive) as saved:
+                    entries=json.load(saved.extractfile('manifest.json'))
+                    if len(entries)!=1:
+                        raise ValueError('Expected exactly one saved runtime image')
+                    config=saved.extractfile(entries[0]['Config']).read()
+                    config_id='sha256:'+hashlib.sha256(config).hexdigest()
                 # Write on native container storage. Direct overwrite of a Windows
                 # bind-mounted report can fail with EINVAL despite a completed scan.
-                command = [docker(),'run','--name',scanner_name,*cache,'--mount',f'type=bind,source={folder},target=/images,readonly',images['trivy'],'image','--input',f'/images/{name}.tar','--scanners','vuln','--severity','HIGH,CRITICAL','--exit-code','1','--format','json','--output','/tmp/quarry-image.json']
+                command = [docker(),'run','--name',scanner_name,*cache,'--mount',f'type=bind,source={folder},target=/images,readonly',images['trivy'],'image','--input',f'/images/{name}.tar','--scanners','vuln','--severity','HIGH,CRITICAL','--exit-code','1','--format','json','--output','/tmp/quarry-image.json']  # noqa: S108 -- private filesystem in the uniquely named scanner container
                 result = run(command,capture=True,check=False)
                 copied=run([docker(),'cp',scanner_name+':/tmp/quarry-image.json',str(temporary)],capture=True,check=False)
                 if copied.returncode==0:
                     temporary.replace(output/f'image-{name}.json')
                 (output/f'image-{name}.log').write_text(redact(result.stdout+result.stderr+copied.stderr),encoding='utf-8')
-                report['steps'].append({'name':f'image-{name}','exit_code':result.returncode,'image':image,'report_copied':copied.returncode==0,'gate_passed':result.returncode==0 and copied.returncode==0})
+                step={'name':f'image-{name}','exit_code':result.returncode,'image':image,'image_id':image_id,'image_config_id':config_id,'report_copied':copied.returncode==0,'gate_passed':result.returncode==0 and copied.returncode==0}
+                if name=='gateway':
+                    # Always execute the local-backport proof, even if a scanner
+                    # cannot identify the replaced module's upstream version.
+                    step['gate_passed']=False
+                    try:
+                        evidence=verify_jose(image_id)
+                        evidence['source_sha256']=report['source_sha256']
+                        (output/'jose-mitigations.json').write_text(json.dumps(evidence,indent=2),encoding='utf-8')
+                        raw=json.loads((output/'image-gateway.json').read_text(encoding='utf-8')) if copied.returncode==0 else {}
+                        step['gate_passed']=copied.returncode==0 and finding_disposition(raw,result.returncode,config_id)
+                        step['disposition']='Exact-image upstream JOSE v3 security backport verified; raw scanner findings retained. See security/JOSE_BACKPORT.md.'
+                    except (ValueError, OSError, subprocess.TimeoutExpired) as error:
+                        step['mitigation_error']=str(error)[:1500]
+                report['steps'].append(step)
                 print(f'Image {name}: exit {result.returncode}',flush=True)
+                if copied.returncode==0 and not step['gate_passed']:
+                    details=json.loads((output/f'image-{name}.json').read_text(encoding='utf-8'))
+                    findings=[{key:item.get(key,'') for key in ('VulnerabilityID','PkgName','InstalledVersion','FixedVersion','Severity')}
+                              for row in details.get('Results',[]) for item in row.get('Vulnerabilities',[])]
+                    print(redact(json.dumps({'image':name,'findings':findings[:20],
+                                             'finding_count':len(findings),'mitigation_error':step.get('mitigation_error','')})),flush=True)
             finally:
                 run([docker(),'rm','--force',scanner_name],capture=True,check=False)
                 temporary.unlink(missing_ok=True)

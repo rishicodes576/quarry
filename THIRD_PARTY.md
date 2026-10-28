@@ -12,7 +12,7 @@ Quarry's original application code uses the root MIT license. Independently dist
 | PostgreSQL | PostgreSQL License |
 | SeaweedFS 4.48 | Apache-2.0; source [release 4.48](https://github.com/seaweedfs/seaweedfs/tree/4.48), [license copy](docs/licenses/seaweedfs-LICENSE); a checksum-pinned source rebuild updates `golang.org/x/net` to v0.60.0 and uses Go 1.26.10 in a separate local container; the modified go.mod/go.sum are retained in its image |
 | SearXNG | AGPL-3.0; separate container, public upstream source [searxng/searxng](https://github.com/searxng/searxng); preserve its image/source notices and obligations when distributing or modifying |
-| Caddy | Apache-2.0 |
+| Caddy | Apache-2.0; checksum-pinned upstream source with JOSE v4.1.6 and a hash-checked upstream security backport to its JOSE v3 dependency; [patch provenance and verification](security/JOSE_BACKPORT.md). Original JOSE [Apache-2.0 license](docs/licenses/go-jose-LICENSE) is retained in this source distribution and the image; modified files retain upstream copyright headers. |
 | Mailpit | MIT |
 | MinIO (legacy migration profile only) | AGPL-3.0; final public source release `RELEASE.2025-10-15T17-29-55Z`; [license](docs/licenses/minio-LICENSE) and [notice](docs/licenses/minio-NOTICE) retained. Archived vulnerable storage is not the new runtime default. Keep license/source obligations if redistributing the legacy image. |
 | Python and OS runtime libraries | PSF and individual package licenses; `/usr/share/doc` and shared-library package provenance retained in the backend image |

@@ -14,8 +14,8 @@
     "root_write_denied": true,
     "private_volumes_absent": true
   },
-  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
-  "image_id": "sha256:3c01a160a81e6412a5c3a43a21a0752f35fd08b281abea526058211da5349aa1",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453",
+  "image_id": "sha256:6065fba9746ed2bdc73966c1828eedb9d6af96175c0ff5b6734ab6be13dcdb68",
   "paid_calls": 0,
   "scope": "Local container configuration and inert negative probes; not a parser RCE or kernel escape test."
 }

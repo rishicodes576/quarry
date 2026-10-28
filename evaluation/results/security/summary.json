@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-10-26T14:27:24Z",
-  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "created_at": "2026-10-28T13:19:14Z",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453",
   "images": {
     "semgrep": "semgrep/semgrep@sha256:3db5c7af55eb1f512eac0abf0ab69a97b52c74b5e9a27314c221aee1a78d7ab2",
     "trivy": "ghcr.io/aquasecurity/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
@@ -10,50 +10,52 @@
     {
       "name": "semgrep",
       "exit_code": 0,
-      "seconds": 28.25,
-      "log_sha256": "9952a0780235da97e02ce98c595f4483ffe04b9ea03f3939b1d7499ba7cf5fe1",
+      "seconds": 21.46,
+      "log_sha256": "d274e150b93a5129a4d5beeaa5fd4f0d946c89b718c8e626af35d1b8691631b5",
       "gate_passed": true
     },
     {
       "name": "trivy-filesystem",
       "exit_code": 0,
-      "seconds": 4.81,
-      "log_sha256": "5ce6d93f90c8e71c339afcc47396d7f11bd0dfa41f2a77a7f30725831fe1cc92",
+      "seconds": 4.22,
+      "log_sha256": "9d4e675d1c106e754fa3606f66949900b7e40825a89c01d1bd7182bd11553699",
       "gate_passed": true
     },
     {
       "name": "pip-audit",
       "exit_code": 0,
-      "seconds": 13.31,
-      "log_sha256": "1aa0cb456fb2b354e8b39d807b0d53af05fce077224cef9b5c6d9ec3a23e5540",
+      "seconds": 10.17,
+      "log_sha256": "e6332b2f978bbd106e1ecb5a75a9321e43b516173d8085dc0b248a2efa14c60c",
       "gate_passed": true
     },
     {
       "name": "pip-audit-dev",
       "exit_code": 0,
-      "seconds": 10.43,
-      "log_sha256": "e75482a2683d929bdba1a5f4901d5eecd3482d7c56d47cae0d140b25ec2f9a86",
+      "seconds": 9.9,
+      "log_sha256": "d5f70372064660c60159c2d2f7a83587a1408b1c73138f138e3e883922c3e983",
       "gate_passed": true
     },
     {
       "name": "pip-audit-eval",
       "exit_code": 1,
-      "seconds": 14.38,
-      "log_sha256": "b0ab91e2a9e75860180aec2deb694ff6f7b93951f6300393014f084cfde471eb",
+      "seconds": 12.02,
+      "log_sha256": "3341564bc83bcaba99d3efa937a1085b05a38f3cf076be2415b73a3f8cf2f59f",
       "gate_passed": true,
       "disposition": "Locally patched optional components; vulnerable capabilities removed and exploit-negative checks passed. Raw package findings remain present. See security/EVALUATOR_MITIGATIONS.md."
     },
     {
       "name": "zap-baseline",
       "exit_code": 0,
-      "seconds": 112.73,
-      "log_sha256": "7a6e929880cf1f7ebc23992940cb3a5780a67a3e1026b55b449f751065358d8e",
+      "seconds": 82.19,
+      "log_sha256": "4f20ea2976a05534bb7ff99eb822e6efeb2406036d6f073d0bcbfb5ef8e22e3d",
       "gate_passed": true
     },
     {
       "name": "image-backend",
       "exit_code": 0,
       "image": "quarry-backend:local",
+      "image_id": "sha256:6065fba9746ed2bdc73966c1828eedb9d6af96175c0ff5b6734ab6be13dcdb68",
+      "image_config_id": "sha256:aed088d548c6fc133c7626e1486349e86dc07df931b588ec4c814892f28279e9",
       "report_copied": true,
       "gate_passed": true
     },
@@ -61,6 +63,8 @@
       "name": "image-web",
       "exit_code": 0,
       "image": "quarry-web:local",
+      "image_id": "sha256:fbbe9c5cf56211c007fa220490b801cd44538a812d44d237fd3c7061c1be88bc",
+      "image_config_id": "sha256:d0cd4e6101603e43dd3e392967c3bb8292401ac250e2afcc4b7c886433af0526",
       "report_copied": true,
       "gate_passed": true
     },
@@ -68,20 +72,27 @@
       "name": "image-objectstore",
       "exit_code": 0,
       "image": "quarry-objectstore:local",
+      "image_id": "sha256:b4ea18f2a6dcfaca5c847879e279c405107208c8e2aac0ce8da1e4e61ddea305",
+      "image_config_id": "sha256:ca25dedb35957aa79f6a232fcf0d35d83f3da647e3ca2552499f5dbae3d2bf74",
       "report_copied": true,
       "gate_passed": true
     },
     {
       "name": "image-gateway",
-      "exit_code": 0,
+      "exit_code": 1,
       "image": "quarry-gateway:local",
+      "image_id": "sha256:ae455439f7cdc234180dc809ee1c927d6caabc5abf91c66011e5d7eb9fe81a0d",
+      "image_config_id": "sha256:e5c2ef304ef18100508c7798b074a78f0c9d613739435c687eefb66c1d2a2b82",
       "report_copied": true,
-      "gate_passed": true
+      "gate_passed": true,
+      "disposition": "Exact-image upstream JOSE v3 security backport verified; raw scanner findings retained. See security/JOSE_BACKPORT.md."
     },
     {
       "name": "image-postgres",
       "exit_code": 0,
       "image": "quarry-postgres:local",
+      "image_id": "sha256:964a909b6a0884c78f3f20194eec3d111e9eaa5dfbbce1bd2a105f037835d874",
+      "image_config_id": "sha256:90f25a3abda4a6121cb6358a12ade012177fa93dab739ab7dea59e6ceb2ee6c9",
       "report_copied": true,
       "gate_passed": true
     },
@@ -89,6 +100,8 @@
       "name": "image-qdrant",
       "exit_code": 0,
       "image": "quarry-qdrant:local",
+      "image_id": "sha256:55cbd070f28443e9cecefeebeb3a4011062949c833fe44973d9b5f6c21f65664",
+      "image_config_id": "sha256:1912b171dc9a2c95afb497dd5f0e4b5ea466d2608235f52e312d3fbba451ccf3",
       "report_copied": true,
       "gate_passed": true
     },
@@ -96,6 +109,8 @@
       "name": "image-searxng",
       "exit_code": 0,
       "image": "quarry-searxng:local",
+      "image_id": "sha256:f98af49b67bfae75f50612c600d2d6b4e874a4f2a7cdc13617633b8061d9417f",
+      "image_config_id": "sha256:4d55893f956d7c824d7a5f90c32886dca41206c226ac9f5a269e4ed92329e3f8",
       "report_copied": true,
       "gate_passed": true
     },
@@ -103,12 +118,14 @@
       "name": "image-mailpit",
       "exit_code": 0,
       "image": "quarry-mailpit:local",
+      "image_id": "sha256:70be9a016c209e0009b73308863d3f7bdc1f89b9f4809ccbd4f6f13ff7dfa115",
+      "image_config_id": "sha256:37748a7a90b19aae6070195fec51ecc7e2226d42d4d288c27e57aa7321ad6331",
       "report_copied": true,
       "gate_passed": true
     }
   ],
-  "source_snapshot": "0ba0b590029171e0ccc454f1645dd73f83d3ed3acea2a365f3429924ea5901fc",
-  "source_file_count": 162,
+  "source_snapshot": "6a08fa62359795770e57aa90452ec74eef5172d2add81e0e0be2cfdee9223ca0",
+  "source_file_count": 169,
   "scope": "Local source and optional unauthenticated loopback deployment. No model provider calls.",
   "rules": "Public Semgrep community packs and Trivy databases retrieved at run time; reports preserve tool/rule metadata.",
   "status": "passed",

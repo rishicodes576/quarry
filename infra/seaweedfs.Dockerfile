@@ -5,7 +5,7 @@ ADD --checksum=sha256:93199495e93a981451d1fefecb5aa71e12aa1692093eed2338bbfe7f08
 WORKDIR /src
 RUN tar -xzf /tmp/seaweed.tar.gz --strip-components=1 -C /src
 RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
-    go get golang.org/x/net@v0.60.0 && go build -p 2 -trimpath -ldflags="-s -w" -o /out/weed ./weed
+    go get golang.org/x/net@v0.60.0 github.com/go-jose/go-jose/v4@v4.1.6 && go build -p 2 -trimpath -ldflags="-s -w" -o /out/weed ./weed
 FROM alpine:3.22@sha256:d406446bc05b82480756ce8f1287964d28768c23955fa9480d2a74a2eae7a654
 RUN apk add --no-cache ca-certificates && addgroup -g 10001 -S quarry && adduser -S quarry -u 10001 -G quarry
 COPY --from=build /out/weed /usr/bin/weed

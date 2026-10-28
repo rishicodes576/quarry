@@ -7391,6 +7391,14 @@
       "logical_cpus": 12,
       "warmup_ms": 5240.364,
       "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
+    },
+    {
+      "at": "2026-10-28T13:42:44.072159+00:00",
+      "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+      "python": "3.12.15",
+      "logical_cpus": 12,
+      "warmup_ms": 1055.658,
+      "conditions": "Warm local ONNX models; live provider; sequential inline worker. Graph latency excludes judge time and HTTP/browser delivery; first evidence is a durable event, not a generation token."
     }
   ],
   "pending_case_runs": {},
@@ -7434,8 +7442,8 @@
     "q050": "5912a63dce9a4c278a9e2375d4053649"
   },
   "judge_transport": {
-    "cache_hits": 38,
-    "requests": 76
+    "cache_hits": 0,
+    "requests": 1
   },
   "stopped_reason": "InstructorRetryException",
   "quota": {
@@ -7443,7 +7451,7 @@
     "type": "quota_exhausted",
     "scope": "deployment",
     "retry_after": 3600,
-    "run_id": "d63ab811cb89427fbca12cdfc910d1ab"
+    "run_id": "016ece471a444eb7aaaae90e106e4cc7"
   },
-  "next_retry_at": "2026-10-29T00:00:59.223478+00:00"
+  "next_retry_at": "2026-10-29T00:00:59.491469+00:00"
 }

@@ -58,7 +58,7 @@ The full local integration runtime was verified on Linux amd64. Architecture-neu
 
 The default stack builds patched free supporting images from pinned upstream inputs. See `THIRD_PARTY.md` and the Dockerfiles for archive hashes, upstream versions, Go module changes, and license records. Scan all eight image families after changing them. Qdrant is an API-only runtime; its optional dashboard and shell-based OOM recovery mode are not included. Compose restart policy restarts a terminated server, and application indexing/retrieval readiness is checked independently. Update the pinned inputs deliberately and repeat integration, restore and image checks. The retained legacy MinIO profile is for the already documented rollback only; it is stopped and is not an approved public deployment option.
 
-The supplied GitHub Actions workflow has passed actual hosted startup, 224 backend tests, nine browser workflows and full security scans; the observed run and source binding are in `evaluation/results/github-ci.json`. Source builds can require substantially more disk than the final runtime images; verify runner memory/disk capacity before interpreting CI readiness. A free self-hosted runner with the tested local capacity is an option. Local passing reports do not establish that a hosted CI run has passed.
+The supplied GitHub Actions workflow performs hosted startup, backend tests, nine browser workflows and full security scans. The observed current run, outcome and source binding are in `evaluation/results/github-ci.json`; historical failures are retained. Source builds can require substantially more disk than the final runtime images; verify runner memory/disk capacity before interpreting CI readiness. A free self-hosted runner with the tested local capacity is an option. Local passing reports do not establish that a hosted CI run has passed.
 
 ## Parser, metadata ceilings and reconciliation
 
@@ -100,3 +100,10 @@ The campaign records an absolute UTC resume time. Daily workspace/deployment wai
 If an older campaign image remains asleep after its recorded reset, inspect running jobs/reservations first. At an idle quota-wait boundary, restart the evaluation service; completed answers, metric checkpoints and prompt/configuration-bound judge responses remain stored. Avoid interrupting a live request merely to refresh progress. Rebuild/update a stopped campaign before the next run to pick up fixes.
 
 Public-host provisioning and the owner's Gmail sender configuration are explicitly deferred; see `DEPLOYMENT_LATER.md`. The GitHub source release and local audit do not depend on an Internet SMTP account.
+
+
+## Rechecking the JOSE backport and security evidence
+
+Run `python scripts/security_scan.py --dynamic --images` with the application ready. It uses only the pinned free local scanners and verifies the exact gateway image's backport and bounded cryptographic probe. A selected-only or interrupted scan invalidates the old full success; repeat the complete command before release acceptance. Raw version findings for the locally patched legacy dependency remain inspectable. Do not add broad CVE ignores or change package version labels to hide them.
+
+Follow [the backport provenance and replacement policy](../security/JOSE_BACKPORT.md), retain upstream licenses, and replace the local legacy patch when a maintained upstream dependency permits it. New executable-source changes require fresh source-bound gates and scoped review. The local HTTPS/STARTTLS rehearsal proves its private-CA/local-mail scope; it does not establish public ACME or native-host email delivery.

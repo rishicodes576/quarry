@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a1789f-c68c-7466-bcd6-c247fecc8ad8",
-  "CreatedAt": "2026-10-26T14:31:39.404292978Z",
-  "ArtifactID": "sha256:a9d78bfa4bc008b3f20044261385c07d7ececb84984e3d1b524d8b9e9a6007f8",
+  "ReportID": "01a182ad-9fb0-706a-a78c-217c0b65a0e3",
+  "CreatedAt": "2026-10-28T13:22:59.120031097Z",
+  "ArtifactID": "sha256:d0cd4e6101603e43dd3e392967c3bb8292401ac250e2afcc4b7c886433af0526",
   "ArtifactName": "/images/web.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -25,10 +25,6 @@
       "sha256:9169eeb9af250fa82697e91cd94fead152a0cd69fcc5021ccd44115b36ef82e6",
       "sha256:59f3c59ea389b502d6c23c1fd8a0b6b2a1098548947ba077b17bc981eb245521"
     ],
-    "RepoTags": [
-      "quarry-web:local"
-    ],
-    "Reference": "quarry-web:local",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-10-25T15:30:40.637923745Z",

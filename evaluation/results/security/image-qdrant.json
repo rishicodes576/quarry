@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a178a0-e985-75e7-9045-94990fc05700",
-  "CreatedAt": "2026-10-26T14:32:53.893390326Z",
-  "ArtifactID": "sha256:72b0f631ef9649c0bbdbea699b60876e4cc2420f1b13cbefd13fbe46e312f4e4",
+  "ReportID": "01a182af-039d-7959-9289-d2869cc3714a",
+  "CreatedAt": "2026-10-28T13:24:30.237615809Z",
+  "ArtifactID": "sha256:1912b171dc9a2c95afb497dd5f0e4b5ea466d2608235f52e312d3fbba451ccf3",
   "ArtifactName": "/images/qdrant.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -22,10 +22,6 @@
       "sha256:997618c298d25db43fc1eedc1fda819581c543c71e665aab3ea200435ab51721",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
     ],
-    "RepoTags": [
-      "quarry-qdrant:local"
-    ],
-    "Reference": "quarry-qdrant:local",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-10-23T08:27:48.95532683Z",

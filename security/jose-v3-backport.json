@@ -1,0 +1,86 @@
+{
+  "policy": "jose-v3-upstream-security-backport-v1",
+  "module": "github.com/go-jose/go-jose/v3",
+  "version": "v3.0.5",
+  "advisory": "CVE-2026-116587",
+  "upstream_commit": "a0111f82742fa92bceec9ede40845e73319e6230",
+  "notice": "// Quarry security backport of go-jose a0111f82742fa92bceec9ede40845e73319e6230; see JOSE_BACKPORT.md.\n",
+  "files": [
+    {
+      "path": "jwk.go",
+      "original_sha256": "79f510a4b97fa2e34ec37932cab57e64dfdc9fa6c314654d1ccc2dd93898a532",
+      "patched_sha256": "dd85fba61f6ca571880def1e0aa809c7cb9acd08db7dac5794a3d3fa479d45ab",
+      "replacements": [
+        {
+          "old": "func (k *JSONWebKey) UnmarshalJSON(data []byte) (err error) {",
+          "new": "func (k *JSONWebKey) UnmarshalJSON(data []byte) error {\n\treturn k.unmarshalJSON(data, true)\n}\n\n// Embedded keys reject private material before any private-key validation.\nfunc (k *JSONWebKey) unmarshalJSON(data []byte, allowPrivate bool) (err error) {"
+        },
+        {
+          "old": "\tcerts, err := parseCertificateChain(raw.X5c)",
+          "new": "\tif !allowPrivate &&\n\t\t(raw.K != nil || raw.D != nil || raw.P != nil || raw.Q != nil ||\n\t\t\traw.Dp != nil || raw.Dq != nil || raw.Qi != nil) {\n\t\treturn errors.New(\"go-jose/go-jose: JWK contains private parameters\")\n\t}\n\n\tcerts, err := parseCertificateChain(raw.X5c)"
+        },
+        {
+          "old": "func (key rawJSONWebKey) rsaPublicKey() (*rsa.PublicKey, error) {",
+          "new": "// MaxRSAModulusBits bounds RSA JWK parsing. Set only before parsing begins.\nvar MaxRSAModulusBits = 4096\n\nfunc (key rawJSONWebKey) rsaPublicKey() (*rsa.PublicKey, error) {"
+        },
+        {
+          "old": "\treturn &rsa.PublicKey{\n\t\tN: key.N.bigInt(),",
+          "new": "\tn := key.N.bigInt()\n\tif n.BitLen() > MaxRSAModulusBits {\n\t\treturn nil, fmt.Errorf(\"go-jose/go-jose: invalid RSA key, modulus too large\")\n\t}\n\n\treturn &rsa.PublicKey{\n\t\tN: n,"
+        },
+        {
+          "old": "\trv := &rsa.PrivateKey{\n\t\tPublicKey: rsa.PublicKey{\n\t\t\tN: key.N.bigInt(),\n\t\t\tE: key.E.toInt(),\n\t\t},\n\t\tD: key.D.bigInt(),\n\t\tPrimes: []*big.Int{\n\t\t\tkey.P.bigInt(),\n\t\t\tkey.Q.bigInt(),\n\t\t},\n\t}",
+          "new": "\tn := key.N.bigInt()\n\tif n.BitLen() > MaxRSAModulusBits {\n\t\treturn nil, fmt.Errorf(\"go-jose/go-jose: invalid RSA key, modulus too large\")\n\t}\n\n\tp, q := key.P.bigInt(), key.Q.bigInt()\n\tif p.BitLen()+q.BitLen() > n.BitLen()+1 || new(big.Int).Mul(p, q).Cmp(n) != 0 {\n\t\treturn nil, errors.New(\"go-jose/go-jose: invalid RSA private key, p * q != n\")\n\t}\n\n\trv := &rsa.PrivateKey{\n\t\tPublicKey: rsa.PublicKey{N: n, E: key.E.toInt()},\n\t\tD: key.D.bigInt(),\n\t\tPrimes: []*big.Int{p, q},\n\t}"
+        }
+      ]
+    },
+    {
+      "path": "shared.go",
+      "original_sha256": "3802ca5b8f811f72d33eb662cbbdf53d3b7aa4bcbb6b6c6ddd7695a54e3a3d40",
+      "patched_sha256": "b6bdc1109862dd97378baec517f8e1c08871632bb6bd5c53bc30ad5bf75bb225",
+      "replacements": [
+        {
+          "old": "\tvar epk *JSONWebKey\n\terr := json.Unmarshal(*v, &epk)\n\tif err != nil {",
+          "new": "\tepk := new(JSONWebKey)\n\tif err := epk.unmarshalJSON(*v, false); err != nil {"
+        },
+        {
+          "old": "\tvar jwk *JSONWebKey\n\terr := json.Unmarshal(*v, &jwk)\n\tif err != nil {",
+          "new": "\tjwk := new(JSONWebKey)\n\tif err := jwk.unmarshalJSON(*v, false); err != nil {"
+        },
+        {
+          "old": "\t\t\tvar jwk *JSONWebKey\n\t\t\terr = json.Unmarshal(*v, &jwk)",
+          "new": "\t\t\tjwk := new(JSONWebKey)\n\t\t\terr = jwk.unmarshalJSON(*v, false)"
+        },
+        {
+          "old": "fmt.Errorf(\"failed to unmarshal JWK: %v: %#v\", err, string(*v))",
+          "new": "fmt.Errorf(\"failed to unmarshal JWK: %w\", err)"
+        }
+      ]
+    },
+    {
+      "path": "jws.go",
+      "original_sha256": "6cc24876cea42cf11503f87ac68456d9169d5e6fec757efaf9e4fd46bc74fb0b",
+      "patched_sha256": "79635c86062e8d98c5a70f473d2452d2c0b127d237ad273aeb3a41842920d967",
+      "replacements": [
+        {
+          "old": "\t\tvar err error\n\t\tobj.Signatures[i].Header, err = obj.Signatures[i].mergedHeaders().sanitized()",
+          "new": "\t\tobj.Signatures[i].header = sig.Header\n\t\tvar err error\n\t\tobj.Signatures[i].Header, err = obj.Signatures[i].mergedHeaders().sanitized()"
+        },
+        {
+          "old": "\t\tobj.Signatures[i].header = sig.Header\n\t\tobj.Signatures[i].original = &original",
+          "new": "\t\tobj.Signatures[i].original = &original"
+        }
+      ]
+    },
+    {
+      "path": "jwe.go",
+      "original_sha256": "904beb59428b5bd472debed7bc9c799b7cffeb426fc4395ee78973b88597f8a8",
+      "patched_sha256": "c220b4454693fac184a7a384aeea815e903baf4c75285f43c8f8e9e804da8b37",
+      "replacements": [
+        {
+          "old": "fmt.Errorf(\"go-jose/go-jose: cannot sanitize merged headers: %v (%v)\", err, mergedHeaders)",
+          "new": "fmt.Errorf(\"go-jose/go-jose: cannot sanitize merged headers: %w\", err)"
+        }
+      ]
+    }
+  ]
+}

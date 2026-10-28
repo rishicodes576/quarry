@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a178a1-55df-7353-968d-7b607eb876a0",
-  "CreatedAt": "2026-10-26T14:33:21.631223387Z",
-  "ArtifactID": "sha256:71598fb116c19e1dee3bb7b18a4bb10a3f3ad806d0c3ae014e2e255b7ef0a2a3",
+  "ReportID": "01a182af-62f4-7958-9c78-25f32d0c82b5",
+  "CreatedAt": "2026-10-28T13:24:54.644616897Z",
+  "ArtifactID": "sha256:4d55893f956d7c824d7a5f90c32886dca41206c226ac9f5a269e4ed92329e3f8",
   "ArtifactName": "/images/searxng.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -20,10 +20,6 @@
       "sha256:a3701b713d9585b33ff57a7f73c8d31b6066f0701c851e1d8b23870111e050f5",
       "sha256:f9e4bc5dce306235e56be58dfb8321e6f7077f32553df112aaea9544077f0a5f"
     ],
-    "RepoTags": [
-      "quarry-searxng:local"
-    ],
-    "Reference": "quarry-searxng:local",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-10-22T11:48:55.215829328Z",

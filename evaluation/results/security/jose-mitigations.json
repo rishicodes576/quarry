@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "image_id": "sha256:ae455439f7cdc234180dc809ee1c927d6caabc5abf91c66011e5d7eb9fe81a0d",
+  "policy": "jose-v3-upstream-security-backport-v1",
+  "advisory": "CVE-2026-116587",
+  "source_files": [
+    {
+      "path": "jwk.go",
+      "sha256": "dd85fba61f6ca571880def1e0aa809c7cb9acd08db7dac5794a3d3fa479d45ab"
+    },
+    {
+      "path": "shared.go",
+      "sha256": "b6bdc1109862dd97378baec517f8e1c08871632bb6bd5c53bc30ad5bf75bb225"
+    },
+    {
+      "path": "jws.go",
+      "sha256": "79635c86062e8d98c5a70f473d2452d2c0b127d237ad273aeb3a41842920d967"
+    },
+    {
+      "path": "jwe.go",
+      "sha256": "c220b4454693fac184a7a384aeea815e903baf4c75285f43c8f8e9e804da8b37"
+    }
+  ],
+  "manifest_sha256": "c1315c929d4a6f976e6f218fa54612bb0623b245fe98fe0f4c92f1d46f985a69",
+  "selected_module_versions": {
+    "github.com/go-jose/go-jose/v3": "v3.0.5",
+    "github.com/go-jose/go-jose/v4": "v4.1.6",
+    "golang.org/x/crypto": "v0.57.0",
+    "gopkg.in/yaml.v3": "v3.0.1"
+  },
+  "selected_module_graph_sha256": "521a49980f59b9bee8efd891722899c34e2afe7825e9445b29db75e8b7f55b84",
+  "test_import_graph_sha256": "a76d85a1747059f634afc878faf8607c19d0bf2f35391ae4400c10998d289b41",
+  "upstream_tests_log_sha256": "7fd8ec54fb2aad7ae05e636981f0e37129a020800db4b802d86e115509caa40d",
+  "regression_output_sha256": "5e0e5d77f31a15f20f823f6b7b8c26701f5d84852f438b569bfd44915a085d10",
+  "regression_output": "=== RUN   TestQuarryRSABounds\n=== RUN   TestQuarryRSABounds/valid\n=== RUN   TestQuarryRSABounds/large-modulus\n=== RUN   TestQuarryRSABounds/large-prime\n=== RUN   TestQuarryRSABounds/mismatch\n=== RUN   TestQuarryRSABounds/equal\n=== RUN   TestQuarryRSABounds/zero\n=== RUN   TestQuarryRSABounds/one\n--- PASS: TestQuarryRSABounds (0.01s)\n    --- PASS: TestQuarryRSABounds/valid (0.00s)\n    --- PASS: TestQuarryRSABounds/large-modulus (0.00s)\n    --- PASS: TestQuarryRSABounds/large-prime (0.00s)\n    --- PASS: TestQuarryRSABounds/mismatch (0.00s)\n    --- PASS: TestQuarryRSABounds/equal (0.00s)\n    --- PASS: TestQuarryRSABounds/zero (0.00s)\n    --- PASS: TestQuarryRSABounds/one (0.00s)\n=== RUN   TestQuarryStandaloneKeys\n--- PASS: TestQuarryStandaloneKeys (0.01s)\n=== RUN   TestQuarryEmbeddedPrivateKeys\n=== RUN   TestQuarryEmbeddedPrivateKeys/k/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/k/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/k/conflicting-headers\n=== RUN   TestQuarryEmbeddedPrivateKeys/d/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/d/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/d/conflicting-headers\n=== RUN   TestQuarryEmbeddedPrivateKeys/p/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/p/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/p/conflicting-headers\n=== RUN   TestQuarryEmbeddedPrivateKeys/q/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/q/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/q/conflicting-headers\n=== RUN   TestQuarryEmbeddedPrivateKeys/dp/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/dp/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/dp/conflicting-headers\n=== RUN   TestQuarryEmbeddedPrivateKeys/dq/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/dq/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/dq/conflicting-headers\n=== RUN   TestQuarryEmbeddedPrivateKeys/qi/protected\n=== RUN   TestQuarryEmbeddedPrivateKeys/qi/unprotected\n=== RUN   TestQuarryEmbeddedPrivateKeys/qi/conflicting-headers\n--- PASS: TestQuarryEmbeddedPrivateKeys (0.01s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/k/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/k/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/k/conflicting-headers (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/d/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/d/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/d/conflicting-headers (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/p/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/p/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/p/conflicting-headers (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/q/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/q/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/q/conflicting-headers (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/dp/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/dp/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/dp/conflicting-headers (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/dq/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/dq/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/dq/conflicting-headers (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/qi/protected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/qi/unprotected (0.00s)\n    --- PASS: TestQuarryEmbeddedPrivateKeys/qi/conflicting-headers (0.00s)\n=== RUN   TestQuarryGeneralUnprotectedHeader\n--- PASS: TestQuarryGeneralUnprotectedHeader (0.00s)\n=== RUN   TestQuarryEncryptedPrivateHeaders\n--- PASS: TestQuarryEncryptedPrivateHeaders (0.00s)\n=== RUN   TestQuarryCryptoRoundTrips\n--- PASS: TestQuarryCryptoRoundTrips (0.00s)\nPASS\n",
+  "regression_seconds": 1.259,
+  "scope": "Exact image, module graph, patched source hashes, build-time full module tests and current sandboxed executable regressions. Local v3 backport, not an upstream release.",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453"
+}

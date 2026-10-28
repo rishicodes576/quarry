@@ -1,6 +1,6 @@
 {
   "baseline_commit": "9e7833d6ae90c27c0d5338da22855524bc4047bd",
-  "snapshot": "Reviewed source deltas on 23-26 October 2026; each listed LF-normalized file hash identifies its latest reviewed version. The baseline commit identifies the initial review, not subsequent uncommitted fixes.",
+  "snapshot": "Prior 23-26 October review retained, plus scoped 28 October 2026 JOSE/backport/security-evidence/checklist delta review; source inspection by independent AI agent. No reviewer-executed tests or scans for this delta.",
   "files": {
     "backend/quarry/security.py": "fdcaf732498ea976b6c45efe05f27067fb0c83417a7e80e929f5ac9184bccc84",
     "backend/quarry/accounts.py": "ab3d8afd0923daf3e1c5029a51d931d2f2a48ea08de733bd317912543f363d8a",
@@ -24,8 +24,8 @@
     "frontend/src/proxy.ts": "d975a012c69c75fdf1a4921c74e7a5dfb64b8109fbac5abb33f117beaec1a902",
     "infra/S3.Caddyfile": "7679a9e63538c2a4961882c4e051ce95f5daecc010f8b7e857669e75f65b6b7d",
     "backend/quarry/admin.py": "8908755f4151f4988619a773ec30b960390b49d92ed10eea8c9bfb1655ebe392",
-    "scripts/security_scan.py": "2f9e1d430bbc8c744b5b77fd0991a9386da4f4f12ff20d410595f02d1ebf1c0d",
-    "infra/caddy.Dockerfile": "2e199b77cb42667e89a0d5fa164f53000ca7165ff93802721d55768c685fe3f4",
+    "scripts/security_scan.py": "9b592ebc372a18426cd12c7c5f90408ba7b0257ab49e1cb25875eaae02eb4e49",
+    "infra/caddy.Dockerfile": "9cad79f7226e73e8c60f1d26d458c6feda4121a993546912e47fc8c4d724fd7d",
     "infra/postgres.Dockerfile": "fa6c04256a7b8feeb6f3ff674fb80e07a3656444066e44ca99527b47bb1f9e46",
     "backend/tests/test_accounts.py": "04cd7ab6863e189f440f83f2d2c2073d27b8fc9162ab62d4b3a5fd14097cfd79",
     "scripts/backup.py": "476ac8f3c12a213f79ec237df943e057cf772c859792763d43917edeb05ceb06",
@@ -42,16 +42,23 @@
     "frontend/Dockerfile": "0c83a63126ba04677a7b62b3606c97eeb151610fbcee7d71fd4156c198282605",
     "frontend/src/components/campaign-results.tsx": "8b43022e8722ba6bb081d4db65acd63f9ea980e31c59ebd059d3bb8ff7dcf9cd",
     "frontend/scripts/check-api.cjs": "e3e9afe7e690502c6f8ebae448d53d461fd59ebb46e10061eb3a0454cfd133a0",
-    "scripts/finalize.py": "11dade57f1648da2ae1f49c7c413f747ff1a4dbce14e0993ec9c47d8ff3268b2",
+    "scripts/finalize.py": "15f913c44648fdb1832d58eb2632de2abefd9255913c433d3dc86ac6d31e71b6",
     "scripts/release.py": "03ba522024a5c262faffd93a72cc2db115a02cef1f3a858a64887992d5d3cac3",
     "scripts/manage.py": "11e9868387d56f49f8c21d0be4ad5ca173f95927b474e2a4e52dad488deabd62",
-    "evaluation/requirements.json": "91ed7d208d0acc3678691abe87b6c246c9d3bf82e51142895d04172214c510fe",
+    "evaluation/requirements.json": "70677fc7f24ee8a0f75375e26a46580e196fd60d8023cf8ab006f958a0d129d7",
     "backend/tests/test_campaigns.py": "e09e4c29ebca4b11c57f0c63a42fc0422bf12d9fc67ab19bee55b2dba79d3003",
     "backend/tests/test_campaign_audit.py": "34c34c08172dda2eb74836a86b669a649ef4c3754e307adaac37f92bcc3f16f1",
     "backend/tests/test_release_readiness.py": "0115e7b4e71140d9fbe38d8b0eb8bdafe97df42a240791e5d1a31717707806fe",
     "frontend/src/app/globals.css": "7a7d171d43544375d9f89b4b5b4e608b7bc4be437974debc4cdd6bc56b085724",
     "frontend/tests/workspace.spec.ts": "fde61ff44b31ff9197bbc985f8ba5fd710c4b22f2b3a93b291c265467a835362",
-    ".github/workflows/security.yml": "4909ec699883fbe06217093303dcd52dfa4f536425e69d8e4535e6c0122bc194"
+    ".github/workflows/security.yml": "4909ec699883fbe06217093303dcd52dfa4f536425e69d8e4535e6c0122bc194",
+    "infra/harden_jose.go": "02f1b786ba0135f7250a0fcc186f1514ad9b992a701382e7c743535ca791b24e",
+    "infra/jose_regression_test.go": "e225ebd0928b17a25f3490849c3db1934ef66081f885975039f692c4698318c2",
+    "infra/seaweedfs.Dockerfile": "6b862b6316b99c22c90e0101c103a5413e49ee9eb1cd377e300afb1db9c140e7",
+    "security/jose-v3-backport.json": "c1315c929d4a6f976e6f218fa54612bb0623b245fe98fe0f4c92f1d46f985a69",
+    "security/JOSE_BACKPORT.md": "856dac22d0df0783c5443fa7ce99ee2b05447f2aab14dd33b1cc2c2357c7fedc",
+    "scripts/jose_gate.py": "dde99127e8717b0ef30e22410410bf03f04204941e23d9d5976d4df62d6c275f",
+    "backend/tests/test_jose_gate.py": "5424db2af2f72ea366f87ec31f3b2c2dceac2bfe0d42570b28cd413e41b32682"
   },
   "storage_reconciliation_followup": "24 October 2026: source-only inspection of explicit-workspace orphan reconciliation; no apply/deletion or pytest run",
   "scanner_runtime_followup": "24 October 2026: read-only source snapshot/shell argument/image Dockerfile review; no scans, builds, tests or live provider calls started",
@@ -96,5 +103,6 @@
     "official_metadata_read": "https://raw.githubusercontent.com/actions/checkout/3d3c42e5aac5ba805825da76410c181273ba90b1/action.yml",
     "official_metadata_confirmed": "runs.using node24 and persist-credentials input present; not a complete audit of bundled action implementation.",
     "not_executed": "No workflow, tests, scanners, provider calls, downloads of models or actual secret configuration reads by reviewer."
-  }
+  },
+  "latest_source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453"
 }

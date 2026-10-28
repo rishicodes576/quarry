@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a178a1-76f0-75a1-8fcf-f768b5273563",
-  "CreatedAt": "2026-10-26T14:33:30.09637274Z",
-  "ArtifactID": "sha256:ae0dc8434d29f4c189fec0ffaf6cf62a8c67341822e96417d1a52f5a1696567d",
+  "ReportID": "01a182af-83c4-7cbc-ba5e-2b69dae59ee6",
+  "CreatedAt": "2026-10-28T13:25:03.044837188Z",
+  "ArtifactID": "sha256:37748a7a90b19aae6070195fec51ecc7e2226d42d4d288c27e57aa7321ad6331",
   "ArtifactName": "/images/mailpit.tar",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -23,10 +23,6 @@
       "sha256:555d2e812e19680c418e6f1bdcd1fbcb43c5c9313f982982a5063e2f2920eac1",
       "sha256:20a78eff67a92ee2db30892c0dadd67aaa5f139ed65d267108d713084c95ce86"
     ],
-    "RepoTags": [
-      "quarry-mailpit:local"
-    ],
-    "Reference": "quarry-mailpit:local",
     "ImageConfig": {
       "architecture": "amd64",
       "created": "2026-10-22T11:51:33.040673484Z",

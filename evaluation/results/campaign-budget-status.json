@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-10-28T05:41:52.868020+00:00",
+  "created_at": "2026-10-28T13:52:49.199926+00:00",
   "day_utc": "2026-10-28",
   "used_tokens": 183908,
   "reserved_tokens": 0,
@@ -9,5 +9,7 @@
   "free_plan_owner_attested": true,
   "unknown_usage_runs": 1,
   "unknown_usage_conservative_tokens": 17000,
-  "scope": "Read-only local deployment ledger snapshot; conservative unknown-usage accounting is not a provider invoice. Key billing status cannot be inferred."
+  "model_calls_since_security_recheck": 0,
+  "tokens_since_security_recheck": 0,
+  "scope": "Read-only deployment ledger snapshot; conservative unknown-usage accounting is not a provider invoice. Key billing status cannot be inferred. Recheck calls count only runs created since 2026-10-28T12:16:29.922Z."
 }

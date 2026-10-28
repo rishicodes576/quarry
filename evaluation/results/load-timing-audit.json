@@ -1,0 +1,3057 @@
+{
+  "status": "passed",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453",
+  "created_at": "2026-10-28T13:41:34.197849+00:00",
+  "input_sha256": {
+    "load-1.json": "071d17e1b4ff67a93f4dce2db6fa758eb55cae9ffa927feb22b63e4b31dac770",
+    "load-2.json": "6397e01db4e2ea6c23457debc3bcbc3db4bd6129c993f6085a3796e557bb38f9",
+    "load-4.json": "4d3b3cccff2f99a211785e93809cbf2ec603f48b7ef27d2ae3a6a8d9b9fa8843"
+  },
+  "checks": [
+    {
+      "workers": 1,
+      "rows_checked": 100,
+      "recomputed": {
+        "end_to_end_p50_ms": 20749.273657798767,
+        "end_to_end_p95_ms": 37738.605988025665,
+        "queue_p50_ms": 20393.903613090515,
+        "completed_per_second": 2.2440644495309905
+      },
+      "raw_server_rows": [
+        {
+          "id": "0b8360e800bf426bb8444685fc321c9e",
+          "status": "completed",
+          "created_at": 1793194608.576206,
+          "started_at": 1793194609.267484,
+          "finished_at": 1793194609.9749014,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "0d55d5e985cc4f7cacd39e2301a70752",
+          "status": "completed",
+          "created_at": 1793194610.8571794,
+          "started_at": 1793194632.9294932,
+          "finished_at": 1793194633.3214967,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "cfe0f07c184345da857b9dfbad7b17ce",
+          "status": "completed",
+          "created_at": 1793194612.2340257,
+          "started_at": 1793194646.0268686,
+          "finished_at": 1793194646.397959,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d43d14c82579476b88e4f26b40c29459",
+          "status": "completed",
+          "created_at": 1793194612.5181093,
+          "started_at": 1793194649.8421664,
+          "finished_at": 1793194650.238592,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b4a911c610994fb2856c5184ae8ad477",
+          "status": "completed",
+          "created_at": 1793194612.4427595,
+          "started_at": 1793194648.6284204,
+          "finished_at": 1793194649.0410433,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3793c8c0a3ee489ca27ca6e36af47c3e",
+          "status": "completed",
+          "created_at": 1793194612.6480958,
+          "started_at": 1793194651.916818,
+          "finished_at": 1793194652.2992563,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "96d97b3be8f94b748f733f98b8d9b901",
+          "status": "completed",
+          "created_at": 1793194608.636682,
+          "started_at": 1793194610.0540535,
+          "finished_at": 1793194610.491443,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "089307a11a1941b3a69f42dc45434f4c",
+          "status": "completed",
+          "created_at": 1793194608.6897326,
+          "started_at": 1793194610.5560987,
+          "finished_at": 1793194611.0127203,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "93770f254af149a5984d53d3da94c5ab",
+          "status": "completed",
+          "created_at": 1793194608.8910062,
+          "started_at": 1793194611.0624254,
+          "finished_at": 1793194611.4950979,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e7e7bdabc6ae40cf8aed367a9f7c8f5b",
+          "status": "completed",
+          "created_at": 1793194608.9460108,
+          "started_at": 1793194611.5444713,
+          "finished_at": 1793194611.9762785,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d3658ca1adf4481e9520354ac8f64fe4",
+          "status": "completed",
+          "created_at": 1793194608.7698026,
+          "started_at": 1793194612.016822,
+          "finished_at": 1793194612.4572222,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c6f58715bb4645669a4b3ebae36e5a1f",
+          "status": "completed",
+          "created_at": 1793194608.8372722,
+          "started_at": 1793194612.5010533,
+          "finished_at": 1793194612.9102366,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "30f26812807a414293e0aa9db5ae2b85",
+          "status": "completed",
+          "created_at": 1793194609.0035906,
+          "started_at": 1793194612.9480326,
+          "finished_at": 1793194613.3408241,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9341257b3f9a448298d612b9c5dd464d",
+          "status": "completed",
+          "created_at": 1793194609.0701282,
+          "started_at": 1793194613.378512,
+          "finished_at": 1793194613.7323847,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "dd4c76e093484e9aad5eff39b5821936",
+          "status": "completed",
+          "created_at": 1793194609.127439,
+          "started_at": 1793194613.7678728,
+          "finished_at": 1793194614.1211412,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "8dbe86bf29e94e30bbcc47fae1314fae",
+          "status": "completed",
+          "created_at": 1793194609.4133003,
+          "started_at": 1793194617.1625328,
+          "finished_at": 1793194617.5879369,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "925cf5e45df34b7caf3aae25c16c7efa",
+          "status": "completed",
+          "created_at": 1793194609.4484878,
+          "started_at": 1793194617.623679,
+          "finished_at": 1793194618.022101,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "70839860d4fc4c4c8659d7c4789d81ea",
+          "status": "completed",
+          "created_at": 1793194609.482376,
+          "started_at": 1793194618.0693488,
+          "finished_at": 1793194618.4800658,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b3176baa1de84296ac4e9ab49767a2dc",
+          "status": "completed",
+          "created_at": 1793194609.1623144,
+          "started_at": 1793194614.158647,
+          "finished_at": 1793194614.5832894,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "54e9791514954594a6b6297afe90f87a",
+          "status": "completed",
+          "created_at": 1793194609.2011483,
+          "started_at": 1793194614.6243575,
+          "finished_at": 1793194615.0007339,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "bd5a5184192040cab724134b72207ab3",
+          "status": "completed",
+          "created_at": 1793194609.2362783,
+          "started_at": 1793194615.0386744,
+          "finished_at": 1793194615.4000432,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9fa84bf0febb4289ae9016ce901af3c5",
+          "status": "completed",
+          "created_at": 1793194609.2739427,
+          "started_at": 1793194615.4359896,
+          "finished_at": 1793194615.8009586,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4b8a5d3ab26c4221916487e1ba9be861",
+          "status": "completed",
+          "created_at": 1793194609.3124957,
+          "started_at": 1793194615.8380299,
+          "finished_at": 1793194616.213713,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7ac64ac4f1d143e8bdc8cc7cbd10d70d",
+          "status": "completed",
+          "created_at": 1793194609.3442266,
+          "started_at": 1793194616.2512686,
+          "finished_at": 1793194616.678616,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "caea04e1ffab4de19022ee9e30740f54",
+          "status": "completed",
+          "created_at": 1793194609.378623,
+          "started_at": 1793194616.721153,
+          "finished_at": 1793194617.118982,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1554d2228d12428eb2a06ef69dcfa980",
+          "status": "completed",
+          "created_at": 1793194609.7307458,
+          "started_at": 1793194621.0660064,
+          "finished_at": 1793194621.4472518,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "51c80a7e35c048d3b1e8fc1aecf480db",
+          "status": "completed",
+          "created_at": 1793194609.5201297,
+          "started_at": 1793194618.5151389,
+          "finished_at": 1793194618.9600935,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d7d4f06244764cb583f7bbe1bab3df46",
+          "status": "completed",
+          "created_at": 1793194609.7970197,
+          "started_at": 1793194621.9068582,
+          "finished_at": 1793194622.2801816,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "89c59f7699c74c4bba30e90b69b38ed4",
+          "status": "completed",
+          "created_at": 1793194609.8369217,
+          "started_at": 1793194622.316033,
+          "finished_at": 1793194622.6862533,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b594ff25340d437eaa081ab49161307d",
+          "status": "completed",
+          "created_at": 1793194609.5537608,
+          "started_at": 1793194619.0226817,
+          "finished_at": 1793194619.4032927,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1e851c3eecf84567954984a18118423c",
+          "status": "completed",
+          "created_at": 1793194612.2020817,
+          "started_at": 1793194645.6287756,
+          "finished_at": 1793194645.9920394,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "cb905c67e3c34b6d968a9db0774cb6e7",
+          "status": "completed",
+          "created_at": 1793194612.1499236,
+          "started_at": 1793194645.0278378,
+          "finished_at": 1793194645.5743446,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "392aded63b454860a59d86c47d1765b9",
+          "status": "completed",
+          "created_at": 1793194612.3062043,
+          "started_at": 1793194646.8849695,
+          "finished_at": 1793194647.2925327,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "23ba4e1d01104ee3b34e04c9d5665d38",
+          "status": "completed",
+          "created_at": 1793194609.6289506,
+          "started_at": 1793194619.8475168,
+          "finished_at": 1793194620.203021,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6e6b9c7853584c6d9e6d5dfeb4cfb6df",
+          "status": "completed",
+          "created_at": 1793194609.5906615,
+          "started_at": 1793194619.4380329,
+          "finished_at": 1793194619.8126695,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "20487a1a6ce146ff8a16301925e14b2b",
+          "status": "completed",
+          "created_at": 1793194609.7624354,
+          "started_at": 1793194621.4852986,
+          "finished_at": 1793194621.872933,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "30894742242f4d999cc717dea7f8710d",
+          "status": "completed",
+          "created_at": 1793194609.6622334,
+          "started_at": 1793194620.2383032,
+          "finished_at": 1793194620.6058369,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b5216f8164b94c55a74395fd5d5b30e3",
+          "status": "completed",
+          "created_at": 1793194609.6968646,
+          "started_at": 1793194620.6402652,
+          "finished_at": 1793194621.027447,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7ccd5469c67341559cdb30e5e0edaa53",
+          "status": "completed",
+          "created_at": 1793194609.8752408,
+          "started_at": 1793194622.721367,
+          "finished_at": 1793194623.0958526,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "71a38f6bbd28490c95a81c37aa99f981",
+          "status": "completed",
+          "created_at": 1793194610.100169,
+          "started_at": 1793194624.7899945,
+          "finished_at": 1793194625.1630502,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1620d06367ee4a0eb4e1ddcd287c7899",
+          "status": "completed",
+          "created_at": 1793194609.919786,
+          "started_at": 1793194623.1394558,
+          "finished_at": 1793194623.5361454,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b39472ac4d8747ca9ca31de385838f7d",
+          "status": "completed",
+          "created_at": 1793194610.2873943,
+          "started_at": 1793194626.8952384,
+          "finished_at": 1793194627.3433487,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d9057b0a860c4315bca5971de516ab67",
+          "status": "completed",
+          "created_at": 1793194610.3236864,
+          "started_at": 1793194627.3852556,
+          "finished_at": 1793194627.9462137,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "af70c56a99684e6199663203bee1fca7",
+          "status": "completed",
+          "created_at": 1793194610.0160818,
+          "started_at": 1793194623.9704018,
+          "finished_at": 1793194624.3538568,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "bd8d7fa07b2b4b02883ff79a35e9cb75",
+          "status": "completed",
+          "created_at": 1793194609.967811,
+          "started_at": 1793194623.5719304,
+          "finished_at": 1793194623.9326968,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6da604c8d198422daab62e10c1866a0f",
+          "status": "completed",
+          "created_at": 1793194610.0640588,
+          "started_at": 1793194624.3917391,
+          "finished_at": 1793194624.7545528,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "f145aa4b4a354c3c8f023aeeae581a2e",
+          "status": "completed",
+          "created_at": 1793194610.1451252,
+          "started_at": 1793194625.1982522,
+          "finished_at": 1793194625.590016,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "85bbf231607b4aaf8f646ad73da0dcf1",
+          "status": "completed",
+          "created_at": 1793194610.1781182,
+          "started_at": 1793194625.6298125,
+          "finished_at": 1793194626.0128279,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a89f8b7489934c5cb6f6eaede9e94dab",
+          "status": "completed",
+          "created_at": 1793194610.213465,
+          "started_at": 1793194626.047083,
+          "finished_at": 1793194626.4053466,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "329fe725e7124188a6d97bebea319196",
+          "status": "completed",
+          "created_at": 1793194610.2481673,
+          "started_at": 1793194626.4439325,
+          "finished_at": 1793194626.859989,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d94cacce7e3b433c9bd537b14caf5c47",
+          "status": "completed",
+          "created_at": 1793194610.3645058,
+          "started_at": 1793194627.98206,
+          "finished_at": 1793194628.3382847,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "85bb4a491c0f4219ba7a38502973c4b6",
+          "status": "completed",
+          "created_at": 1793194610.434908,
+          "started_at": 1793194628.7703521,
+          "finished_at": 1793194629.1358247,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "fd97047656324dfe88f4dd10c67cc29d",
+          "status": "completed",
+          "created_at": 1793194610.4794765,
+          "started_at": 1793194629.1703956,
+          "finished_at": 1793194629.530228,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ace742268f5c41da9e9724ada5587b30",
+          "status": "completed",
+          "created_at": 1793194610.4000607,
+          "started_at": 1793194628.3728182,
+          "finished_at": 1793194628.717699,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9a2d87df1499472e84da860bca501346",
+          "status": "completed",
+          "created_at": 1793194610.6108947,
+          "started_at": 1793194630.4666593,
+          "finished_at": 1793194630.8354337,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "8dd5b7593fec4792bbf063f5f28bc6da",
+          "status": "completed",
+          "created_at": 1793194610.7767863,
+          "started_at": 1793194632.0808263,
+          "finished_at": 1793194632.503747,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e9eaddc7e1ef44d4895c26ab1c9d12ab",
+          "status": "completed",
+          "created_at": 1793194610.5682158,
+          "started_at": 1793194629.9962158,
+          "finished_at": 1793194630.4290144,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "155128c1017144faae9bf90181abf149",
+          "status": "completed",
+          "created_at": 1793194610.650731,
+          "started_at": 1793194630.8715243,
+          "finished_at": 1793194631.2280004,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4d6ede1c175b4e898a1de29c3f518c08",
+          "status": "completed",
+          "created_at": 1793194610.5202742,
+          "started_at": 1793194629.5656953,
+          "finished_at": 1793194629.9561477,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "85134c12a56747049e4d5f9d0455d166",
+          "status": "completed",
+          "created_at": 1793194610.6959465,
+          "started_at": 1793194631.2629604,
+          "finished_at": 1793194631.6172245,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1680bbdd2e05487dad8080e68e57cde6",
+          "status": "completed",
+          "created_at": 1793194610.8262885,
+          "started_at": 1793194632.5399086,
+          "finished_at": 1793194632.8934026,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a91108c99c144b3794b84a362ef27f66",
+          "status": "completed",
+          "created_at": 1793194610.7371855,
+          "started_at": 1793194631.651477,
+          "finished_at": 1793194632.03896,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c20d135b54d148a1bad9abafb9ab4acd",
+          "status": "completed",
+          "created_at": 1793194610.9072652,
+          "started_at": 1793194633.3578498,
+          "finished_at": 1793194633.7165854,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "60f2b2061cad40dca04b2ae0073cdecb",
+          "status": "completed",
+          "created_at": 1793194611.0623071,
+          "started_at": 1793194634.9494505,
+          "finished_at": 1793194635.3015022,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "8bbe4e848e8541b1865a95390af1d846",
+          "status": "completed",
+          "created_at": 1793194610.9400556,
+          "started_at": 1793194633.753488,
+          "finished_at": 1793194634.1225667,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "341342df62104a3bb4d0e35ae1e419ed",
+          "status": "completed",
+          "created_at": 1793194611.1141813,
+          "started_at": 1793194635.3360627,
+          "finished_at": 1793194635.694361,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d114b4d28bf3454a9cc27e6bee00e5e8",
+          "status": "completed",
+          "created_at": 1793194611.1921675,
+          "started_at": 1793194636.140112,
+          "finished_at": 1793194636.5593145,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "95763da2141b43b4b1dafc0e339478ee",
+          "status": "completed",
+          "created_at": 1793194611.0210128,
+          "started_at": 1793194634.565658,
+          "finished_at": 1793194634.9144278,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "923811e615184afe86768ed6d8d44a66",
+          "status": "completed",
+          "created_at": 1793194610.9875488,
+          "started_at": 1793194634.1614177,
+          "finished_at": 1793194634.531247,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "64e6c7bc0d6542329f4c240a6f783da6",
+          "status": "completed",
+          "created_at": 1793194611.1526318,
+          "started_at": 1793194635.7289858,
+          "finished_at": 1793194636.1053367,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "86e323ac5091488d917bfce80cc11cb2",
+          "status": "completed",
+          "created_at": 1793194611.2161026,
+          "started_at": 1793194636.6154096,
+          "finished_at": 1793194637.034165,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ada722c52b854469afc8b33cf53e559f",
+          "status": "completed",
+          "created_at": 1793194611.372585,
+          "started_at": 1793194638.3503683,
+          "finished_at": 1793194638.702214,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "78a77eced2204aeb93ecfa94ad61037a",
+          "status": "completed",
+          "created_at": 1793194611.2664297,
+          "started_at": 1793194637.080307,
+          "finished_at": 1793194637.5147252,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e0f8f6cde87e47db92fda959708512bd",
+          "status": "completed",
+          "created_at": 1793194611.3014264,
+          "started_at": 1793194637.5495248,
+          "finished_at": 1793194637.9017003,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "0c17667ad90a426e86827034c9c29d03",
+          "status": "completed",
+          "created_at": 1793194611.4017937,
+          "started_at": 1793194638.739411,
+          "finished_at": 1793194639.1174512,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b9f1da7753e04ac7993902923acea867",
+          "status": "completed",
+          "created_at": 1793194611.336988,
+          "started_at": 1793194637.9367485,
+          "finished_at": 1793194638.3093204,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2a435df6498b4ac9a7111edb142a398b",
+          "status": "completed",
+          "created_at": 1793194611.505024,
+          "started_at": 1793194639.9280093,
+          "finished_at": 1793194640.2960062,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "59e5195befe949e7995ef88f28780445",
+          "status": "completed",
+          "created_at": 1793194611.5461466,
+          "started_at": 1793194640.3300734,
+          "finished_at": 1793194640.7158618,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "38c7434fe05a4ba583dc8c7f95d4f992",
+          "status": "completed",
+          "created_at": 1793194611.4714081,
+          "started_at": 1793194639.545561,
+          "finished_at": 1793194639.8932393,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "073ae29e9caa41fc904c58171495968f",
+          "status": "completed",
+          "created_at": 1793194611.4356809,
+          "started_at": 1793194639.1529703,
+          "finished_at": 1793194639.5123208,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3702b5e2069441a887cc92b97ac47e0d",
+          "status": "completed",
+          "created_at": 1793194611.8523254,
+          "started_at": 1793194641.5957701,
+          "finished_at": 1793194641.9655643,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9610d76ab1af4ebb958c66ea7c6dad49",
+          "status": "completed",
+          "created_at": 1793194611.923806,
+          "started_at": 1793194642.4580135,
+          "finished_at": 1793194642.9106002,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "bb9126b563e6454192633d7016fce09c",
+          "status": "completed",
+          "created_at": 1793194611.6345015,
+          "started_at": 1793194641.1898632,
+          "finished_at": 1793194641.5604372,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3b4611820131473384fef67e27abb96b",
+          "status": "completed",
+          "created_at": 1793194611.5895154,
+          "started_at": 1793194640.7512822,
+          "finished_at": 1793194641.150674,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "21404310d58a491991a4991777e94d3b",
+          "status": "completed",
+          "created_at": 1793194611.8827581,
+          "started_at": 1793194642.000491,
+          "finished_at": 1793194642.4115794,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b8957fa05b0045999ea772531e4d880f",
+          "status": "completed",
+          "created_at": 1793194611.9580576,
+          "started_at": 1793194642.950103,
+          "finished_at": 1793194643.3667598,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "bae8066a56d4438db34357ccf042dfec",
+          "status": "completed",
+          "created_at": 1793194611.9938812,
+          "started_at": 1793194643.4054167,
+          "finished_at": 1793194643.8094118,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "92d8c95b49ba47b29ace3b397797aa0a",
+          "status": "completed",
+          "created_at": 1793194612.0288448,
+          "started_at": 1793194643.845193,
+          "finished_at": 1793194644.2131474,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "892be8be4f43451f9415fef61d0dbd64",
+          "status": "completed",
+          "created_at": 1793194612.0574422,
+          "started_at": 1793194644.2498422,
+          "finished_at": 1793194644.6050806,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b7fe58e89e834813b1083d228b44d04b",
+          "status": "completed",
+          "created_at": 1793194612.1077776,
+          "started_at": 1793194644.6401057,
+          "finished_at": 1793194644.992455,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b40acdc78901456f8fd51d2371bdac31",
+          "status": "completed",
+          "created_at": 1793194612.2701902,
+          "started_at": 1793194646.4361393,
+          "finished_at": 1793194646.850084,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a9594098f8f5459bb64d31f2d3f990b1",
+          "status": "completed",
+          "created_at": 1793194612.3442693,
+          "started_at": 1793194647.343437,
+          "finished_at": 1793194647.744603,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ee31a83f0cc74933882d6b6400a7b6b3",
+          "status": "completed",
+          "created_at": 1793194612.3750215,
+          "started_at": 1793194647.7802732,
+          "finished_at": 1793194648.1510515,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6c29709257e749479af018aa6a367f39",
+          "status": "completed",
+          "created_at": 1793194612.4078152,
+          "started_at": 1793194648.1908638,
+          "finished_at": 1793194648.5917814,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "971fc28034c24dcc9bbda816ff2c44ef",
+          "status": "completed",
+          "created_at": 1793194612.466369,
+          "started_at": 1793194649.0764134,
+          "finished_at": 1793194649.425802,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "eb8ed7c133074b549c9f9fbac8d22f52",
+          "status": "completed",
+          "created_at": 1793194612.5695171,
+          "started_at": 1793194650.6632664,
+          "finished_at": 1793194651.034829,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "5748d179de1e492fb5a6c29aaa9a34a1",
+          "status": "completed",
+          "created_at": 1793194612.5443113,
+          "started_at": 1793194650.273698,
+          "finished_at": 1793194650.6272619,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "babbb9a62d694689bbf375064b4ce1b8",
+          "status": "completed",
+          "created_at": 1793194612.4914978,
+          "started_at": 1793194649.460111,
+          "finished_at": 1793194649.8073652,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6546df6746134c20ae52e366c163363d",
+          "status": "completed",
+          "created_at": 1793194612.5942566,
+          "started_at": 1793194651.0718029,
+          "finished_at": 1793194651.4479916,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3878ff6010094fdbbec6bc7c6f6dcb66",
+          "status": "completed",
+          "created_at": 1793194612.6199994,
+          "started_at": 1793194651.4847553,
+          "finished_at": 1793194651.880945,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        }
+      ]
+    },
+    {
+      "workers": 2,
+      "rows_checked": 100,
+      "recomputed": {
+        "end_to_end_p50_ms": 12443.809151649475,
+        "end_to_end_p95_ms": 20881.330049037933,
+        "queue_p50_ms": 11957.961320877075,
+        "completed_per_second": 3.7622272385252074
+      },
+      "raw_server_rows": [
+        {
+          "id": "193b990eb0b245c6a24f31a12df4cc9a",
+          "status": "completed",
+          "created_at": 1793194683.6649063,
+          "started_at": 1793194683.745581,
+          "finished_at": 1793194684.237981,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4f8c89ec13444cd3a5ed59a81c224972",
+          "status": "completed",
+          "created_at": 1793194683.749729,
+          "started_at": 1793194684.2804399,
+          "finished_at": 1793194684.7923696,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "289782c8aa464273939d0ac623cd040b",
+          "status": "completed",
+          "created_at": 1793194683.7068882,
+          "started_at": 1793194684.3253753,
+          "finished_at": 1793194684.90234,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "24ef8c653bf94468a7b79a52d883c6c8",
+          "status": "completed",
+          "created_at": 1793194683.8731384,
+          "started_at": 1793194684.8387616,
+          "finished_at": 1793194685.3897955,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d2084a3eaf49473b88afc07ffd8a4244",
+          "status": "completed",
+          "created_at": 1793194685.604851,
+          "started_at": 1793194696.657841,
+          "finished_at": 1793194697.2941108,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ab86e367f3884983ae24f17ecde92693",
+          "status": "completed",
+          "created_at": 1793194683.9169846,
+          "started_at": 1793194684.95672,
+          "finished_at": 1793194685.5044978,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ea3755c251a546d7a17d98201d4ed11d",
+          "status": "completed",
+          "created_at": 1793194687.672024,
+          "started_at": 1793194708.0910168,
+          "finished_at": 1793194708.538243,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "b3fe3b5b812c40c8a4c1a3df332710b8",
+          "status": "completed",
+          "created_at": 1793194683.7849064,
+          "started_at": 1793194685.4431136,
+          "finished_at": 1793194686.0798924,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7fcf995e394d43288ec53bb99a6b1843",
+          "status": "completed",
+          "created_at": 1793194683.8310246,
+          "started_at": 1793194685.5633469,
+          "finished_at": 1793194686.1808062,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "44f7b1a2ea0b459b8b2d846c0001bc66",
+          "status": "completed",
+          "created_at": 1793194684.8919196,
+          "started_at": 1793194692.201011,
+          "finished_at": 1793194692.6644099,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "73ec7ec4524648cca717876e0184e02f",
+          "status": "completed",
+          "created_at": 1793194683.9677358,
+          "started_at": 1793194686.1222582,
+          "finished_at": 1793194686.643693,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6d7dc416ee6940e1a2ac951db8a79b9d",
+          "status": "completed",
+          "created_at": 1793194684.0223458,
+          "started_at": 1793194686.2288425,
+          "finished_at": 1793194686.7904453,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "deb81d941cd54fcc812e018bd1efc9c8",
+          "status": "completed",
+          "created_at": 1793194684.936796,
+          "started_at": 1793194692.643563,
+          "finished_at": 1793194693.092112,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "26a1a36ffcd1428eb01fd61198d41f4a",
+          "status": "completed",
+          "created_at": 1793194685.012446,
+          "started_at": 1793194693.1349068,
+          "finished_at": 1793194693.5977592,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4b1b14ba6be3436c8303eecf41a1d775",
+          "status": "completed",
+          "created_at": 1793194687.5262566,
+          "started_at": 1793194706.9470608,
+          "finished_at": 1793194707.4212914,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "de38050a17d640fbba64bd0183cc21c0",
+          "status": "completed",
+          "created_at": 1793194687.7805426,
+          "started_at": 1793194709.0609915,
+          "finished_at": 1793194709.4605455,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ef4f649c457b4733865fb70f6f548f33",
+          "status": "completed",
+          "created_at": 1793194684.2472053,
+          "started_at": 1793194688.0342658,
+          "finished_at": 1793194688.4801917,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "05cdb7f5f77d4de89367c42636a32a41",
+          "status": "completed",
+          "created_at": 1793194684.0695086,
+          "started_at": 1793194686.7070909,
+          "finished_at": 1793194687.2867193,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "380c2140543d4c37ac9f71e08a74c1f9",
+          "status": "completed",
+          "created_at": 1793194684.208707,
+          "started_at": 1793194687.9133599,
+          "finished_at": 1793194688.4293263,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "0a7be2c0664c4744b224d2dad44f30a9",
+          "status": "completed",
+          "created_at": 1793194687.2570963,
+          "started_at": 1793194705.5510912,
+          "finished_at": 1793194705.9435287,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d1b3fce9f4e141df868e801197efa651",
+          "status": "completed",
+          "created_at": 1793194687.6190605,
+          "started_at": 1793194707.6161652,
+          "finished_at": 1793194708.048765,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d98bec5755a14fd1bbb0baebceabd708",
+          "status": "completed",
+          "created_at": 1793194684.1001477,
+          "started_at": 1793194686.8560886,
+          "finished_at": 1793194687.4190903,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "db742baea9f44fe5bf6a76f3ffdc435a",
+          "status": "completed",
+          "created_at": 1793194684.1747684,
+          "started_at": 1793194687.4793296,
+          "finished_at": 1793194687.9764738,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "8665808464774c32800d2cab265464d6",
+          "status": "completed",
+          "created_at": 1793194684.3265748,
+          "started_at": 1793194688.5202553,
+          "finished_at": 1793194688.9697843,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9f9e0b0c5a234999a52929c9229a9600",
+          "status": "completed",
+          "created_at": 1793194684.1432037,
+          "started_at": 1793194687.3467164,
+          "finished_at": 1793194687.8666196,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4de00b63e92e4700a0c5383b62f37023",
+          "status": "completed",
+          "created_at": 1793194684.4465938,
+          "started_at": 1793194689.4832428,
+          "finished_at": 1793194689.9343917,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2c255146adcd49d7a7529cba81f61576",
+          "status": "completed",
+          "created_at": 1793194684.5382185,
+          "started_at": 1793194689.9833791,
+          "finished_at": 1793194690.5277662,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "efbc0e4aa54d4020adb5e661017c12cb",
+          "status": "completed",
+          "created_at": 1793194684.2843788,
+          "started_at": 1793194688.469397,
+          "finished_at": 1793194688.91659,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c720d2fb330148bbad70eea85d99563e",
+          "status": "completed",
+          "created_at": 1793194684.3590815,
+          "started_at": 1793194688.9569597,
+          "finished_at": 1793194689.4429538,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "5eec572963b549529b67d2c5522a1f85",
+          "status": "completed",
+          "created_at": 1793194684.696418,
+          "started_at": 1793194691.1060705,
+          "finished_at": 1793194691.5875802,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1c49dd4b2c2a4139b4d10b4c538c79e8",
+          "status": "completed",
+          "created_at": 1793194684.3948133,
+          "started_at": 1793194689.0259905,
+          "finished_at": 1793194689.5233924,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1f1394d7e4114044bd6a522a9706c54f",
+          "status": "completed",
+          "created_at": 1793194684.4870813,
+          "started_at": 1793194689.5647876,
+          "finished_at": 1793194690.042006,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2509919ffcfc453589c1ec93c2fe8981",
+          "status": "completed",
+          "created_at": 1793194684.5730507,
+          "started_at": 1793194690.0852196,
+          "finished_at": 1793194690.6100223,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ead5fa3733164ef086ecd9da57afce81",
+          "status": "completed",
+          "created_at": 1793194684.734741,
+          "started_at": 1793194691.1925597,
+          "finished_at": 1793194691.6611805,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "52d911080bb74a3a8c648331c8de56ff",
+          "status": "completed",
+          "created_at": 1793194684.6575816,
+          "started_at": 1793194690.6575453,
+          "finished_at": 1793194691.1475549,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ad45f08dcd26446d9044ebdadb4124de",
+          "status": "completed",
+          "created_at": 1793194684.6137745,
+          "started_at": 1793194690.5755637,
+          "finished_at": 1793194691.0619605,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "82f7219087454f37aae51741b57c2877",
+          "status": "completed",
+          "created_at": 1793194684.8090591,
+          "started_at": 1793194691.703964,
+          "finished_at": 1793194692.1573067,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "710fa142fa1545ba9a4ea8956f859594",
+          "status": "completed",
+          "created_at": 1793194684.7744145,
+          "started_at": 1793194691.636751,
+          "finished_at": 1793194692.0920064,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3384dcf3d95d4f199f5878f9e16a9a76",
+          "status": "completed",
+          "created_at": 1793194684.85424,
+          "started_at": 1793194692.1392858,
+          "finished_at": 1793194692.6036787,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "384686b9320647568181b971f4710eec",
+          "status": "completed",
+          "created_at": 1793194684.9778068,
+          "started_at": 1793194692.7033231,
+          "finished_at": 1793194693.155368,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "25fd6482fa8d48b9a5da1a24b95f469f",
+          "status": "completed",
+          "created_at": 1793194685.0546021,
+          "started_at": 1793194693.1983783,
+          "finished_at": 1793194693.658508,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3d003cefd9554534971e408bf13d2ec9",
+          "status": "completed",
+          "created_at": 1793194685.102555,
+          "started_at": 1793194693.639395,
+          "finished_at": 1793194694.1000936,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "546fb71512d94342843733e1d38f10f6",
+          "status": "completed",
+          "created_at": 1793194685.2732604,
+          "started_at": 1793194694.6534038,
+          "finished_at": 1793194695.1706378,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d3321427d1b24a53b9ac2ac376e1dfd7",
+          "status": "completed",
+          "created_at": 1793194685.1917005,
+          "started_at": 1793194694.1436698,
+          "finished_at": 1793194694.61092,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d68b33b9db46443b86a2c7518cd1cda3",
+          "status": "completed",
+          "created_at": 1793194685.5372334,
+          "started_at": 1793194696.3196743,
+          "finished_at": 1793194696.9224098,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "167963c29c034b8f99204f41da05a6d4",
+          "status": "completed",
+          "created_at": 1793194685.1542842,
+          "started_at": 1793194693.6978943,
+          "finished_at": 1793194694.166707,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "69691cefa2c145bfa5c072da095d140a",
+          "status": "completed",
+          "created_at": 1793194685.2322097,
+          "started_at": 1793194694.2074704,
+          "finished_at": 1793194694.665463,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c9d10f1770074276bd913e20f5ef2c0a",
+          "status": "completed",
+          "created_at": 1793194685.3186471,
+          "started_at": 1793194694.7081366,
+          "finished_at": 1793194695.2429056,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a38942f91bd549fcaaa54e4318e0acae",
+          "status": "completed",
+          "created_at": 1793194685.4071212,
+          "started_at": 1793194695.2842155,
+          "finished_at": 1793194695.9520066,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d09499974bbf4ac7a2c9cf440f925fe1",
+          "status": "completed",
+          "created_at": 1793194685.494163,
+          "started_at": 1793194696.0077403,
+          "finished_at": 1793194696.5871649,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3cb1caa045a4454591e3bf3f99904acc",
+          "status": "completed",
+          "created_at": 1793194685.7130885,
+          "started_at": 1793194697.3683608,
+          "finished_at": 1793194697.860777,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "be6da1d86c974db8bc1274dc193bb72b",
+          "status": "completed",
+          "created_at": 1793194685.365428,
+          "started_at": 1793194695.2204309,
+          "finished_at": 1793194695.6583188,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ad92f4e5efc44d2d9cd395b3f5cacf55",
+          "status": "completed",
+          "created_at": 1793194685.455144,
+          "started_at": 1793194695.703999,
+          "finished_at": 1793194696.2647238,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "69414466bbae4b05aa4f60cbe2f47eea",
+          "status": "completed",
+          "created_at": 1793194685.6548145,
+          "started_at": 1793194696.9887784,
+          "finished_at": 1793194697.5871642,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d23839ccf7a54ea6bfdd0b54d853c61d",
+          "status": "completed",
+          "created_at": 1793194686.0821404,
+          "started_at": 1793194699.1160038,
+          "finished_at": 1793194699.6006856,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1a422279406d4c82ae9fc2c3298fe16e",
+          "status": "completed",
+          "created_at": 1793194685.7800887,
+          "started_at": 1793194697.6345189,
+          "finished_at": 1793194698.0744445,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ad055113169146a89f9dba6ba563ae04",
+          "status": "completed",
+          "created_at": 1793194685.9053025,
+          "started_at": 1793194698.1365254,
+          "finished_at": 1793194698.6101744,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4f3662f088a44a8ebf8ac4b605ce4382",
+          "status": "completed",
+          "created_at": 1793194685.8398821,
+          "started_at": 1793194697.9013746,
+          "finished_at": 1793194698.4331446,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2fe6f42464a54f3a868fafb35a78a406",
+          "status": "completed",
+          "created_at": 1793194685.9487674,
+          "started_at": 1793194698.4748025,
+          "finished_at": 1793194698.9172935,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4970441ba4c24dc0899e9e0f50381aa3",
+          "status": "completed",
+          "created_at": 1793194686.0433414,
+          "started_at": 1793194698.9623978,
+          "finished_at": 1793194699.4398465,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "21b3d01eb6964de6a386c21d0ffd5464",
+          "status": "completed",
+          "created_at": 1793194686.114425,
+          "started_at": 1793194699.4905157,
+          "finished_at": 1793194699.8976,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a211e9fa749c46139f0e7330d31fcfde",
+          "status": "completed",
+          "created_at": 1793194686.006553,
+          "started_at": 1793194698.652577,
+          "finished_at": 1793194699.0801506,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "21fa23f6c22943d4a424955a7306b57b",
+          "status": "completed",
+          "created_at": 1793194686.165748,
+          "started_at": 1793194699.6424794,
+          "finished_at": 1793194700.0349038,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "27498fc8a3f14de18290e2bceef1a25c",
+          "status": "completed",
+          "created_at": 1793194686.482176,
+          "started_at": 1793194701.3927424,
+          "finished_at": 1793194701.8174605,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a89488a9db204d86a6dfdfa9d2960040",
+          "status": "completed",
+          "created_at": 1793194686.6623793,
+          "started_at": 1793194702.2675078,
+          "finished_at": 1793194702.632992,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9e3f486722114f919fbcc227c8922e6a",
+          "status": "completed",
+          "created_at": 1793194686.19859,
+          "started_at": 1793194699.9330518,
+          "finished_at": 1793194700.313543,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "71e0a38945ee43bd99d4857e3a36cce1",
+          "status": "completed",
+          "created_at": 1793194686.276494,
+          "started_at": 1793194700.3497286,
+          "finished_at": 1793194700.7365015,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "0103f8ec033441ca8c0df52882b8f876",
+          "status": "completed",
+          "created_at": 1793194686.3514438,
+          "started_at": 1793194700.7752714,
+          "finished_at": 1793194701.1855342,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7b74d25c60434ac8a5dcd506b4fe0920",
+          "status": "completed",
+          "created_at": 1793194686.439655,
+          "started_at": 1793194701.2258375,
+          "finished_at": 1793194701.697471,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "65661604d3b6455db9c635ebd96f1e6e",
+          "status": "completed",
+          "created_at": 1793194686.233821,
+          "started_at": 1793194700.0727963,
+          "finished_at": 1793194700.448195,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1e3e60dddcef41b693836fe409b7a859",
+          "status": "completed",
+          "created_at": 1793194686.5609887,
+          "started_at": 1793194701.856623,
+          "finished_at": 1793194702.230845,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "443b887744c54be3801db60ab995c13f",
+          "status": "completed",
+          "created_at": 1793194686.3201585,
+          "started_at": 1793194700.4849885,
+          "finished_at": 1793194700.8799715,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "05cc3093cd9e475bb561260c7c1b04e0",
+          "status": "completed",
+          "created_at": 1793194686.3892064,
+          "started_at": 1793194700.918391,
+          "finished_at": 1793194701.3538344,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "edb7f71e981244d89633e067cf8aa94c",
+          "status": "completed",
+          "created_at": 1793194686.5242434,
+          "started_at": 1793194701.735223,
+          "finished_at": 1793194702.1133676,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "59f9444cec5349d3b09976aada87625c",
+          "status": "completed",
+          "created_at": 1793194686.6148052,
+          "started_at": 1793194702.1504083,
+          "finished_at": 1793194702.5178552,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "cfd4404c0134458f8d8528df243316fb",
+          "status": "completed",
+          "created_at": 1793194686.7084076,
+          "started_at": 1793194702.554297,
+          "finished_at": 1793194702.9389145,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7dc8e46ecf1b42bf936130a701206d6e",
+          "status": "completed",
+          "created_at": 1793194687.1314304,
+          "started_at": 1793194704.847864,
+          "finished_at": 1793194705.230171,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6808c9cf5d2e46d0bee74ce20e46ab9a",
+          "status": "completed",
+          "created_at": 1793194686.8043773,
+          "started_at": 1793194702.979283,
+          "finished_at": 1793194703.418971,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e5740de7c4744507bccedba7dc80788c",
+          "status": "completed",
+          "created_at": 1793194686.9730818,
+          "started_at": 1793194703.962496,
+          "finished_at": 1793194704.3699398,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3b1d0d8194364c1f9b1385ba6e417252",
+          "status": "completed",
+          "created_at": 1793194686.9352944,
+          "started_at": 1793194703.580064,
+          "finished_at": 1793194704.0280657,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "dc7c8755ef9244a2812b807385ae9357",
+          "status": "completed",
+          "created_at": 1793194686.755145,
+          "started_at": 1793194702.6705866,
+          "finished_at": 1793194703.0614824,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d29f133f7941484580a9bc6617ee3fd0",
+          "status": "completed",
+          "created_at": 1793194687.011681,
+          "started_at": 1793194704.0664601,
+          "finished_at": 1793194704.4584134,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ec576a97d5e44522a1311f6d6388a208",
+          "status": "completed",
+          "created_at": 1793194687.175508,
+          "started_at": 1793194705.1417315,
+          "finished_at": 1793194705.515989,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9d6603c98c874780b963cda2d1b2b519",
+          "status": "completed",
+          "created_at": 1793194687.3501692,
+          "started_at": 1793194705.9825025,
+          "finished_at": 1793194706.3895388,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "949534933e7a4d23af7504049848586f",
+          "status": "completed",
+          "created_at": 1793194686.8456783,
+          "started_at": 1793194703.1019979,
+          "finished_at": 1793194703.535978,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2822440b3556421baf6140b27eb1d1a1",
+          "status": "completed",
+          "created_at": 1793194687.0831726,
+          "started_at": 1793194704.4965029,
+          "finished_at": 1793194705.1053433,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "dad92528e6294d7a98b637c36a4a615b",
+          "status": "completed",
+          "created_at": 1793194687.448239,
+          "started_at": 1793194706.4274497,
+          "finished_at": 1793194706.9077191,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2c9fd51990af4cd885881bc54a6722a0",
+          "status": "completed",
+          "created_at": 1793194687.2137659,
+          "started_at": 1793194705.2678514,
+          "finished_at": 1793194705.6331265,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4c9e41f792624435babf8cc2669ba3e8",
+          "status": "completed",
+          "created_at": 1793194686.891552,
+          "started_at": 1793194703.460832,
+          "finished_at": 1793194703.9237008,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ac0c0652ae4a4ab697c08597073f4fae",
+          "status": "completed",
+          "created_at": 1793194687.04747,
+          "started_at": 1793194704.4071572,
+          "finished_at": 1793194704.811351,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "fe75243fa8ab4b76a4b88559174a80e7",
+          "status": "completed",
+          "created_at": 1793194687.5600853,
+          "started_at": 1793194707.0814157,
+          "finished_at": 1793194707.5769114,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "138d651010364e3589224944851cd683",
+          "status": "completed",
+          "created_at": 1793194687.3102062,
+          "started_at": 1793194705.6698074,
+          "finished_at": 1793194706.0738306,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ea917bf8df0a445d9b037367c47d4886",
+          "status": "completed",
+          "created_at": 1793194687.7273836,
+          "started_at": 1793194708.586679,
+          "finished_at": 1793194709.0021498,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "bae8be241bd34cc99206a4a6094c7078",
+          "status": "completed",
+          "created_at": 1793194687.3980598,
+          "started_at": 1793194706.111204,
+          "finished_at": 1793194706.524771,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "48a0a6d4ef9244d2abaa1cf1aa104840",
+          "status": "completed",
+          "created_at": 1793194687.4902468,
+          "started_at": 1793194706.5677707,
+          "finished_at": 1793194707.0410929,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a6dfd4b794994fbda58a90d8ad1caf89",
+          "status": "completed",
+          "created_at": 1793194687.592771,
+          "started_at": 1793194707.4762645,
+          "finished_at": 1793194707.9082408,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "63b02e0a2b9f423fbf905f939886733e",
+          "status": "completed",
+          "created_at": 1793194687.6443336,
+          "started_at": 1793194707.958916,
+          "finished_at": 1793194708.419365,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "be8523f9a99644bcb425341682dcf381",
+          "status": "completed",
+          "created_at": 1793194687.7546244,
+          "started_at": 1793194708.9047472,
+          "finished_at": 1793194709.3572495,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "edecf01fba1d4b3bab92397c646dfc37",
+          "status": "completed",
+          "created_at": 1793194687.8079226,
+          "started_at": 1793194709.3962426,
+          "finished_at": 1793194709.7762847,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e342470203e34b43b97cbbce25648089",
+          "status": "completed",
+          "created_at": 1793194687.6995485,
+          "started_at": 1793194708.4550216,
+          "finished_at": 1793194708.8679876,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        }
+      ]
+    },
+    {
+      "workers": 4,
+      "rows_checked": 100,
+      "recomputed": {
+        "end_to_end_p50_ms": 7318.852543830872,
+        "end_to_end_p95_ms": 11427.063286304474,
+        "queue_p50_ms": 6774.168610572815,
+        "completed_per_second": 5.403360890473874
+      },
+      "raw_server_rows": [
+        {
+          "id": "98b33e162b864786a9be1b9bd6315f8a",
+          "status": "completed",
+          "created_at": 1793194724.0218878,
+          "started_at": 1793194726.0858898,
+          "finished_at": 1793194726.8047454,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "01efebfa4e24413fb2029558c601188d",
+          "status": "completed",
+          "created_at": 1793194725.7830243,
+          "started_at": 1793194732.4654994,
+          "finished_at": 1793194733.0204551,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ff358844f0b14407aa838742e6354505",
+          "status": "completed",
+          "created_at": 1793194726.4350677,
+          "started_at": 1793194733.665958,
+          "finished_at": 1793194734.208243,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "5f38620d225c46de8a3ce9caa1afb609",
+          "status": "completed",
+          "created_at": 1793194726.280643,
+          "started_at": 1793194733.146505,
+          "finished_at": 1793194733.6809173,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "16e2f9f990794318b486f61b93a5b83f",
+          "status": "completed",
+          "created_at": 1793194723.5262861,
+          "started_at": 1793194724.156287,
+          "finished_at": 1793194724.7252984,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "be9b0da5b4eb4685b5365f8bd0fc5f29",
+          "status": "completed",
+          "created_at": 1793194724.0607316,
+          "started_at": 1793194726.1688204,
+          "finished_at": 1793194726.8827682,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a768f13b801c4e509adf7eb8038f7ad8",
+          "status": "completed",
+          "created_at": 1793194723.3178222,
+          "started_at": 1793194723.4009933,
+          "finished_at": 1793194724.0998292,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c177afd53a454079b49cf10cf433540a",
+          "status": "completed",
+          "created_at": 1793194723.3446543,
+          "started_at": 1793194723.6328933,
+          "finished_at": 1793194724.284281,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "84c944a6638e4d308b859b3ff4bff37b",
+          "status": "completed",
+          "created_at": 1793194723.59862,
+          "started_at": 1793194724.3494232,
+          "finished_at": 1793194724.931813,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ee31d91db6424db482c35984ae31f6be",
+          "status": "completed",
+          "created_at": 1793194724.155125,
+          "started_at": 1793194726.413301,
+          "finished_at": 1793194727.1458986,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6e65f7401bf044a384c9d295ac1b6304",
+          "status": "completed",
+          "created_at": 1793194723.4092681,
+          "started_at": 1793194724.5856059,
+          "finished_at": 1793194725.2623196,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9ea149823d70491b8ec77f1ea00d73cf",
+          "status": "completed",
+          "created_at": 1793194723.8172696,
+          "started_at": 1793194725.3262591,
+          "finished_at": 1793194725.9909847,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "aa5f73852f2c4d6fba8315fb0ad2c1f5",
+          "status": "completed",
+          "created_at": 1793194723.647756,
+          "started_at": 1793194724.7931404,
+          "finished_at": 1793194725.3710046,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d9db424b548449e28cae3fe889be3c18",
+          "status": "completed",
+          "created_at": 1793194723.7352862,
+          "started_at": 1793194724.9902227,
+          "finished_at": 1793194725.5919044,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "139d30d7a2dd45bbba955cf253b2fa27",
+          "status": "completed",
+          "created_at": 1793194723.9594812,
+          "started_at": 1793194725.6518126,
+          "finished_at": 1793194726.336104,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "cd2f7a19debc4b47badee28f99c41bff",
+          "status": "completed",
+          "created_at": 1793194723.4632342,
+          "started_at": 1793194725.2573407,
+          "finished_at": 1793194726.1483297,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d90dc6d1022446daab409dcd04e0620a",
+          "status": "completed",
+          "created_at": 1793194723.9112108,
+          "started_at": 1793194725.4489138,
+          "finished_at": 1793194726.1043751,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2fdee32f18f84c0096eb8214548a7b50",
+          "status": "completed",
+          "created_at": 1793194724.1052902,
+          "started_at": 1793194726.2498298,
+          "finished_at": 1793194727.01625,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "f95ee182409a41449008601e614213a7",
+          "status": "completed",
+          "created_at": 1793194724.8712397,
+          "started_at": 1793194729.4359717,
+          "finished_at": 1793194730.1767097,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "f8e83360b28948afb15b5f8b78dc273a",
+          "status": "completed",
+          "created_at": 1793194725.5005069,
+          "started_at": 1793194731.5223496,
+          "finished_at": 1793194731.9908826,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "03cf210383884909a21c413a18351f3d",
+          "status": "completed",
+          "created_at": 1793194726.9208457,
+          "started_at": 1793194734.3001745,
+          "finished_at": 1793194734.8087907,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "12ad54d067264c3abad0643eb21ed8d7",
+          "status": "completed",
+          "created_at": 1793194727.9766114,
+          "started_at": 1793194736.2147017,
+          "finished_at": 1793194736.8456235,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ee924881d1154ed7b9be8f571a648346",
+          "status": "completed",
+          "created_at": 1793194728.2394173,
+          "started_at": 1793194736.9281883,
+          "finished_at": 1793194737.6448479,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "23e356ead8574089a224161e998b6d0a",
+          "status": "completed",
+          "created_at": 1793194724.2008417,
+          "started_at": 1793194726.9032285,
+          "finished_at": 1793194727.6340551,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "deff9bf588c5454791e69cf4e1bc6b82",
+          "status": "completed",
+          "created_at": 1793194724.4229586,
+          "started_at": 1793194727.7059205,
+          "finished_at": 1793194728.407133,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "17ed94bd67ea43ba906e4ee27911385b",
+          "status": "completed",
+          "created_at": 1793194725.41093,
+          "started_at": 1793194731.425954,
+          "finished_at": 1793194731.900223,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7d5858afbbd748f391c1d384fca93486",
+          "status": "completed",
+          "created_at": 1793194726.752664,
+          "started_at": 1793194734.2592897,
+          "finished_at": 1793194734.7773275,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a80733a2a02445b383a16149deb61cf3",
+          "status": "completed",
+          "created_at": 1793194724.2568603,
+          "started_at": 1793194726.9658685,
+          "finished_at": 1793194727.7326984,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6431cc26d56c49fc9cdd3e7bbd07590d",
+          "status": "completed",
+          "created_at": 1793194724.3081965,
+          "started_at": 1793194727.0723066,
+          "finished_at": 1793194727.7894156,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "faf80639351e43318158c52ad2389414",
+          "status": "completed",
+          "created_at": 1793194725.9934077,
+          "started_at": 1793194732.544463,
+          "finished_at": 1793194733.0989573,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ee2bd72ceb7447e5b4f5ffad8d0c5bf9",
+          "status": "completed",
+          "created_at": 1793194725.3144739,
+          "started_at": 1793194730.9748983,
+          "finished_at": 1793194731.477467,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d4690dc22e6248feadcbed559507fcc6",
+          "status": "completed",
+          "created_at": 1793194724.3612046,
+          "started_at": 1793194727.3922458,
+          "finished_at": 1793194728.128363,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "2b82f175204742bc8db3580a860dc5ef",
+          "status": "completed",
+          "created_at": 1793194724.6333394,
+          "started_at": 1793194728.481925,
+          "finished_at": 1793194729.2554266,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "16f54966cb8444a88dffbc4c37ba136f",
+          "status": "completed",
+          "created_at": 1793194724.7774408,
+          "started_at": 1793194729.0555148,
+          "finished_at": 1793194729.8148735,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d985e7d432ff4cb7b99c3533029b53a9",
+          "status": "completed",
+          "created_at": 1793194725.3615754,
+          "started_at": 1793194731.217319,
+          "finished_at": 1793194731.8850608,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ae04782f37194e0287edb342bf1817d9",
+          "status": "completed",
+          "created_at": 1793194724.5318813,
+          "started_at": 1793194727.848009,
+          "finished_at": 1793194728.5666914,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "326618f6af9f4bbc8697d8b0a3dbedb8",
+          "status": "completed",
+          "created_at": 1793194724.7305067,
+          "started_at": 1793194728.6620288,
+          "finished_at": 1793194729.355145,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7227092a298c41b6be01fd2dfc2b79eb",
+          "status": "completed",
+          "created_at": 1793194726.5988455,
+          "started_at": 1793194733.7233994,
+          "finished_at": 1793194734.251809,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "8cb02c329559481cb0b2f514f4ae9a96",
+          "status": "completed",
+          "created_at": 1793194725.0664287,
+          "started_at": 1793194730.231543,
+          "finished_at": 1793194730.89603,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "65b4d0ab917a4f298f6434df51e775be",
+          "status": "completed",
+          "created_at": 1793194725.7219667,
+          "started_at": 1793194732.0322475,
+          "finished_at": 1793194732.5020885,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7b8963b658ed433aa8c359babffe0834",
+          "status": "completed",
+          "created_at": 1793194724.4761913,
+          "started_at": 1793194727.7949736,
+          "finished_at": 1793194728.492935,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "86cd0f3f5ce6454c94fce3c74c7142c1",
+          "status": "completed",
+          "created_at": 1793194725.163305,
+          "started_at": 1793194730.6208107,
+          "finished_at": 1793194731.1652637,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "dd49c68f801c4f8fbffe0409d04584f9",
+          "status": "completed",
+          "created_at": 1793194724.5821733,
+          "started_at": 1793194728.194569,
+          "finished_at": 1793194728.987432,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a5345635a5134a98a558fa3ba8037567",
+          "status": "completed",
+          "created_at": 1793194724.9666283,
+          "started_at": 1793194729.9108207,
+          "finished_at": 1793194730.562963,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "f25974d045d145b599383b1d42a2bba2",
+          "status": "completed",
+          "created_at": 1793194726.0545132,
+          "started_at": 1793194733.070718,
+          "finished_at": 1793194733.5901616,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d37763a0239342b98adf861a4a30e21b",
+          "status": "completed",
+          "created_at": 1793194725.4574149,
+          "started_at": 1793194731.489473,
+          "finished_at": 1793194731.9570255,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "68a2346c2c9747b2915a7f69129dc789",
+          "status": "completed",
+          "created_at": 1793194724.6845238,
+          "started_at": 1793194728.588059,
+          "finished_at": 1793194729.3568304,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "0ea21a5c557441d1906712354f453b14",
+          "status": "completed",
+          "created_at": 1793194726.217191,
+          "started_at": 1793194733.116962,
+          "finished_at": 1793194733.6337845,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "698c1bd3944d493fad4c33985abdec5f",
+          "status": "completed",
+          "created_at": 1793194725.936932,
+          "started_at": 1793194732.5156639,
+          "finished_at": 1793194733.051359,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9232c4d48fc447afbb56464cb90f9c71",
+          "status": "completed",
+          "created_at": 1793194724.824296,
+          "started_at": 1793194729.332685,
+          "finished_at": 1793194730.0750208,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "380c98ce5c5f4f97a1eb6f0406ea090c",
+          "status": "completed",
+          "created_at": 1793194725.010797,
+          "started_at": 1793194730.1347346,
+          "finished_at": 1793194730.8144226,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6d0a5e9e4db44f128c6871817bdbba46",
+          "status": "completed",
+          "created_at": 1793194725.213485,
+          "started_at": 1793194730.8692622,
+          "finished_at": 1793194731.378822,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "a1026324403e4e9a972180bcbb311266",
+          "status": "completed",
+          "created_at": 1793194725.614382,
+          "started_at": 1793194731.957191,
+          "finished_at": 1793194732.4477406,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "143019c3d6a74f43bce26b3718c78ddc",
+          "status": "completed",
+          "created_at": 1793194724.918781,
+          "started_at": 1793194729.5158136,
+          "finished_at": 1793194730.1871774,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d58b0c32b5d3428390b24e28e9bf91af",
+          "status": "completed",
+          "created_at": 1793194725.1184485,
+          "started_at": 1793194730.259093,
+          "finished_at": 1793194730.8830907,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "97f7fe0f1a374237b68065fb335cfd8c",
+          "status": "completed",
+          "created_at": 1793194725.2650898,
+          "started_at": 1793194730.943475,
+          "finished_at": 1793194731.4462988,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7add20526c6a4e44af17f4366de1611f",
+          "status": "completed",
+          "created_at": 1793194725.6742117,
+          "started_at": 1793194731.9992592,
+          "finished_at": 1793194732.4654508,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "740d0856f44949fa93c21c176aab6d4d",
+          "status": "completed",
+          "created_at": 1793194726.3717825,
+          "started_at": 1793194733.6359634,
+          "finished_at": 1793194734.1870549,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "704b8aae5beb47a1ac7c6dc0c70abb9e",
+          "status": "completed",
+          "created_at": 1793194725.5654776,
+          "started_at": 1793194731.9366019,
+          "finished_at": 1793194732.422852,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "3727355d5cad47d18d3992590abec547",
+          "status": "completed",
+          "created_at": 1793194726.6880364,
+          "started_at": 1793194734.2362053,
+          "finished_at": 1793194734.7560527,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6b4c0d6780344571879bb3c9cb469048",
+          "status": "completed",
+          "created_at": 1793194726.1427615,
+          "started_at": 1793194733.0950832,
+          "finished_at": 1793194733.6059265,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "32576e261115469a89d852cf8ef16c1f",
+          "status": "completed",
+          "created_at": 1793194725.8353684,
+          "started_at": 1793194732.4912202,
+          "finished_at": 1793194733.0418243,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e6d23d04114f423fb049dbed94772d63",
+          "status": "completed",
+          "created_at": 1793194726.8551989,
+          "started_at": 1793194734.280554,
+          "finished_at": 1793194734.7920017,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "82a32f0d43ae47909a98055f8a662eac",
+          "status": "completed",
+          "created_at": 1793194726.542222,
+          "started_at": 1793194733.6929183,
+          "finished_at": 1793194734.2172902,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "516ab10c216a488c82beb209c3c73b09",
+          "status": "completed",
+          "created_at": 1793194727.6863666,
+          "started_at": 1793194735.5483067,
+          "finished_at": 1793194736.1206486,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "581182d456654f15bcc264c38eaaba44",
+          "status": "completed",
+          "created_at": 1793194728.1794086,
+          "started_at": 1793194736.9034746,
+          "finished_at": 1793194737.5592551,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "65ba82325c154aceb36759dfc40b268d",
+          "status": "completed",
+          "created_at": 1793194728.5343091,
+          "started_at": 1793194737.718513,
+          "finished_at": 1793194738.3069167,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e458bcfda32f4db1833244ac83dbc4f7",
+          "status": "completed",
+          "created_at": 1793194727.3218975,
+          "started_at": 1793194734.8372893,
+          "finished_at": 1793194735.4608734,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "536539c955f84457bb121b86edf78196",
+          "status": "completed",
+          "created_at": 1793194729.152693,
+          "started_at": 1793194739.4511328,
+          "finished_at": 1793194740.0753634,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4234438212704700a886a373c0d426fa",
+          "status": "completed",
+          "created_at": 1793194728.9096127,
+          "started_at": 1793194738.8733528,
+          "finished_at": 1793194739.4055135,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "51df7e01f49d4c3693e5b5ecd3047283",
+          "status": "completed",
+          "created_at": 1793194727.4760036,
+          "started_at": 1793194734.8843853,
+          "finished_at": 1793194735.5259216,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c4bb1eac29fb47bb83431258c09c6b2c",
+          "status": "completed",
+          "created_at": 1793194727.7603028,
+          "started_at": 1793194736.1356833,
+          "finished_at": 1793194736.7168698,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "e1730c50fb32475c93a4e3b219a99d99",
+          "status": "completed",
+          "created_at": 1793194726.9827733,
+          "started_at": 1793194734.8086302,
+          "finished_at": 1793194735.432425,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "01801402776d4ac2a6e7ab26146d5bbd",
+          "status": "completed",
+          "created_at": 1793194728.5993521,
+          "started_at": 1793194738.1908317,
+          "finished_at": 1793194738.7288787,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "14d5a19fdab54bb0993430ce15c19b3c",
+          "status": "completed",
+          "created_at": 1793194729.1037264,
+          "started_at": 1793194739.3984556,
+          "finished_at": 1793194739.9818773,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "eb9db35355e440a7b353c457b0fc929b",
+          "status": "completed",
+          "created_at": 1793194727.4015074,
+          "started_at": 1793194734.8599792,
+          "finished_at": 1793194735.4915898,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "c1b0a7adb95a405fab40ce6dec27d2e2",
+          "status": "completed",
+          "created_at": 1793194727.9137077,
+          "started_at": 1793194736.1878386,
+          "finished_at": 1793194736.8155327,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "416717d46c32406786e0bc452a33b844",
+          "status": "completed",
+          "created_at": 1793194728.7400553,
+          "started_at": 1793194738.330642,
+          "finished_at": 1793194738.8230233,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "41c90ecdc3df4a9490c026f6182a4286",
+          "status": "completed",
+          "created_at": 1793194728.4846458,
+          "started_at": 1793194737.6622849,
+          "finished_at": 1793194738.2736573,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "d7579c693b5f46218529e0541b61424d",
+          "status": "completed",
+          "created_at": 1793194727.8061574,
+          "started_at": 1793194735.5737088,
+          "finished_at": 1793194736.1455104,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "ff3347955cd0440e82902479a2398980",
+          "status": "completed",
+          "created_at": 1793194728.0366585,
+          "started_at": 1793194736.7803836,
+          "finished_at": 1793194737.3920796,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "23cb9691756546abb89b3c763c980b7f",
+          "status": "completed",
+          "created_at": 1793194727.5333583,
+          "started_at": 1793194735.4985137,
+          "finished_at": 1793194736.0801754,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "01f6b9a2749a46b19b092757e26cab11",
+          "status": "completed",
+          "created_at": 1793194728.3231187,
+          "started_at": 1793194737.460167,
+          "finished_at": 1793194738.1395388,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "93403301993a497bbf2bde5d935e0aaf",
+          "status": "completed",
+          "created_at": 1793194727.6173322,
+          "started_at": 1793194735.5250297,
+          "finished_at": 1793194736.1138432,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6bd5f176354748889424ee6c4e2ae043",
+          "status": "completed",
+          "created_at": 1793194729.3074796,
+          "started_at": 1793194740.1490128,
+          "finished_at": 1793194740.7411125,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "7a1fd83f5bfe4476a3cebe76a3919730",
+          "status": "completed",
+          "created_at": 1793194729.5558388,
+          "started_at": 1793194740.8014631,
+          "finished_at": 1793194741.3314147,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "58cddf2d60434c94911f1008028c8928",
+          "status": "completed",
+          "created_at": 1793194728.104579,
+          "started_at": 1793194736.8518553,
+          "finished_at": 1793194737.4816725,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4205a10f7254442292650a518d08ba74",
+          "status": "completed",
+          "created_at": 1793194727.8574393,
+          "started_at": 1793194736.166465,
+          "finished_at": 1793194736.7762175,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "685082fcaf5546739078e0fb9d8c027b",
+          "status": "completed",
+          "created_at": 1793194728.4134398,
+          "started_at": 1793194737.566004,
+          "finished_at": 1793194738.2203887,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1075bd77a14a46a3bdc4137f0f884be1",
+          "status": "completed",
+          "created_at": 1793194728.8040555,
+          "started_at": 1793194738.3627794,
+          "finished_at": 1793194738.879321,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "77eb512be4584e73b6e7f22acd9bf24f",
+          "status": "completed",
+          "created_at": 1793194729.1870363,
+          "started_at": 1793194739.5230913,
+          "finished_at": 1793194740.4227784,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "9f5644a0f7784f85ab009cef31cf5e24",
+          "status": "completed",
+          "created_at": 1793194728.6806655,
+          "started_at": 1793194738.2733774,
+          "finished_at": 1793194739.0259776,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "02f04e024b3b43258e1c6c186378e99a",
+          "status": "completed",
+          "created_at": 1793194729.0484464,
+          "started_at": 1793194739.0768898,
+          "finished_at": 1793194739.5962367,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "fbb7a74df4c3469db0be5666facc9b41",
+          "status": "completed",
+          "created_at": 1793194729.2300174,
+          "started_at": 1793194739.6459694,
+          "finished_at": 1793194740.3490653,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "4d95aabad7bb42aeb27b10e9339b320a",
+          "status": "completed",
+          "created_at": 1793194728.9752073,
+          "started_at": 1793194738.9326205,
+          "finished_at": 1793194739.472754,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "6afbff6f5769492a920e0c5252627ca1",
+          "status": "completed",
+          "created_at": 1793194728.8555598,
+          "started_at": 1793194738.7865028,
+          "finished_at": 1793194739.3510919,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "1299529a268b4d8694cca12327d16a62",
+          "status": "completed",
+          "created_at": 1793194729.2666016,
+          "started_at": 1793194740.0796304,
+          "finished_at": 1793194740.693319,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "26120fdf6349450595a3fd60ffc9c70e",
+          "status": "completed",
+          "created_at": 1793194729.5115316,
+          "started_at": 1793194740.7474053,
+          "finished_at": 1793194741.2567294,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "319961e96ada4aaea20a41100ca630e2",
+          "status": "completed",
+          "created_at": 1793194729.3499556,
+          "started_at": 1793194740.4014392,
+          "finished_at": 1793194741.003079,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        },
+        {
+          "id": "8f22e11f43f045c48b0e89c842a01b7d",
+          "status": "completed",
+          "created_at": 1793194729.41454,
+          "started_at": 1793194740.489318,
+          "finished_at": 1793194741.0590997,
+          "provider": "extractive",
+          "model_calls": 0,
+          "token_usage": 0
+        }
+      ]
+    }
+  ],
+  "provider_calls": 0,
+  "model_calls_sum": 0,
+  "token_usage_sum": 0,
+  "method": "Separate read-only projection of actual run timestamps and usage. Sorted linear quantile at (n-1)*p; throughput is completed count / rounded reported duration. Comparison tolerance .0011 covers original rounding.",
+  "reviewer": "Builder assistant arithmetic check; not independent human validation",
+  "limitations": [
+    "Submission median is runner-reported; original per-submission client timing samples are not retained and are not independently recomputed here.",
+    "Finite local extractive workload, not public capacity or an SLA."
+  ]
+}

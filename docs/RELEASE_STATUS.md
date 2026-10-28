@@ -1,8 +1,8 @@
 # Current audited release status
 
-Status: **incomplete**. Source: `ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84`.
+Status: **incomplete**. Source: `81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453`.
 
-Legacy campaign: **37/37**. Isolated paired comparisons: **36/148**. Successful backend cases with current JUnit evidence: **224**.
+Legacy campaign: **37/37**. Isolated paired comparisons: **36/148**. Successful backend cases with current JUnit evidence: **240**.
 
 | Requirement | Acceptance | Evidence |
 |---|---|---|
@@ -44,8 +44,10 @@ Legacy campaign: **37/37**. Isolated paired comparisons: **36/148**. Successful 
 | 120 frozen cases, four modes, 480 retrieval rows | passed | mathematical-audit.json |
 | All eight frozen calculator expressions checked against exact values | passed | arithmetic-validation.json |
 | Independent AI security review of final source deltas | passed | independent-review-acceptance.json |
+| Exact-image JOSE backport source/dependency proof and bounded cryptographic regressions | passed | security/jose-mitigations.json |
+| Unrelated findings, stale image identities and interrupted security rechecks cannot pass | passed | 16 matching successful JUnit executions; current source required |
 | Public Oracle infrastructure | deferred_owner | Owner account creation/identity verification is deferred |
-| Real free personal Gmail sender | deferred_owner | Owner app password and private free-plan confirmation are deferred |
+| Dedicated free Gmail SMTP transport: authorized self-send and INBOX verification | passed | smtp-delivery.json |
 | Actual public hostname/HTTPS/native-host acceptance | deferred_owner | Requires owner-controlled infrastructure and hostname access |
 | Current complete functional/browser/coverage gate | passed | release-readiness.json |
 | Current complete security gate | passed | release-readiness.json |
@@ -53,6 +55,4 @@ Legacy campaign: **37/37**. Isolated paired comparisons: **36/148**. Successful 
 | All four modes and 148 isolated evaluations with audited provenance | incomplete | release-readiness.json |
 | Attributed claim and complete-answer support review, including claims omitted by model decomposition | incomplete | release-readiness.json |
 
-Mail progress: private sender credentials are configured; live certificate-verified SMTP authentication and one authorized same-account inbox receipt passed (`smtp-delivery.json`). Public-origin signup/recovery and deployed-outbox acceptance remain pending. The generated checklist's earlier credential-deferral wording predates this owner setup; it must not be read as a claim that sender credentials are still missing.
-
-Only owner-dependent provisioning/mail/DNS is deferred. Free quota waits remain unfinished work. Historical reports are retained; they do not override this current status. Known evaluator advisories and tested mitigations remain disclosed. No public deployment or human certification is implied.
+Installation prerequisites are recorded in operational guidance; verified mail transport and public application acceptance are separate checks. Free quota waits remain unfinished work. Historical reports are retained; they do not override this current status. Known evaluator advisories and tested mitigations remain disclosed. No public deployment or human certification is implied.

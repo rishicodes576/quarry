@@ -32,3 +32,12 @@ Report security issues privately to the repository maintainer. Include the affec
 ## Additional verified boundaries
 
 Production authentication rejects persisted demonstration accounts as well as preventing new demo seeding. Request body admission is bounded at both the Next.js proxy and API before buffering mutation bodies; saturation returns a retryable response. These bounds protect process memory and complement shared PostgreSQL admission quotas. Optional evaluation dependencies retain raw advisory findings but have the affected URL/file-loading and pickle-reading capabilities removed in the separate evaluator image; see `security/EVALUATOR_MITIGATIONS.md` and its exploit-negative checks. They are absent from the production backend.
+
+
+## JOSE parsing and evidence integrity (28 October 2026)
+
+Crafted RSA JWKs can exhaust CPU during private-key validation (CVE-2026-116587). Storage and gateway v4 dependencies are pinned to the upstream fixed release. The remaining gateway v3 dependency uses the exact source-hash-checked upstream security backport documented in [JOSE_BACKPORT.md](../security/JOSE_BACKPORT.md). Modulus/prime checks precede expensive validation; untrusted embedded private material rejects before private-key or certificate work, and errors do not echo private header contents. The original package version/finding remains disclosed.
+
+The diagnostic executable and gateway are compiled under the same read-only selected module graph. Full upstream tests, bounded positive/adversarial probes, exact saved-image configuration and patch/import/source hashes constrain the disposition to those two executables and this one advisory/package/version. Other findings fail. This is a maintained local backport, not an upstream v3 release or assurance against unknown native-code flaws.
+
+A failed, partial or interrupted security recheck must not leave an old success usable as current evidence. Scan startup marks the full gate incomplete, final full success requires every step, and truncated import-graph artifacts reject before inclusion checks. Independent AI review and builder-executed scans/tests are separately attributed; neither is human certification. Raw failed reports are retained for audit history.
