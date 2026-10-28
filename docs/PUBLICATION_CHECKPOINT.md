@@ -14,7 +14,7 @@ Publication scope authorized on 26 October 2026: publish the implemented project
 | Isolated primary comparison | 36/148 completed, all in dense mode; the other modes and the remaining cases are unfinished |
 | Answer support review | All 37 available answers (36 fully scored, one partly scored) and 559 exported decomposed claims reviewed with explicit assistant attribution; remaining cases/claims await execution. No human validation is claimed |
 | Hosted installation | Infrastructure and public HTTPS origin remain prerequisites. Private sender configuration passed live TLS/authentication and one same-account inbox test; public signup/recovery and deployed outbox acceptance remain pending |
-| GitHub CI | The previous hosted security failure is retained. Final-source local gates passed; a fresh hosted run is checked when this source checkpoint is pushed. See `evaluation/results/github-ci.json` |
+| GitHub CI | Actual hosted startup, 240 backend tests, nine browser workflows and complete security/image gates passed with zero annotations for `cf2e42e`, matching the current executable fingerprint. Prior failures and exact tested mitigations are retained. See `evaluation/results/github-ci.json` |
 
 The 36 completed isolated cases contain eighteen generated answers and eighteen citation-fallback answers. One further generated answer has context precision and recall completed, with faithfulness pending, and is excluded from complete-case averages. Those answer kinds are recorded individually. Their partial averages are not a complete four-mode comparison or a general answer-quality claim. Finite checks, model judgments and assistant review do not establish perfect security or perfect factual accuracy.
 

@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "tested_commit": "42c4be225f875fe3222e5aa73aed1929c6b5c3d8",
+  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
+  "url": "https://github.com/rishicodes576/quarry/actions/runs/40639841823",
+  "job_id": 122655170307,
+  "startup": "success",
+  "functional_browser": "success",
+  "backend_cases": 224,
+  "browser_workflows": 9,
+  "security": "failure",
+  "failed_image_scans": [
+    "objectstore",
+    "gateway"
+  ],
+  "advisory": "CVE-2026-116587",
+  "scope": "Current hosted run failed the security gate. Fresh local image scans reproduced the JOSE findings. Prior passing CI is retained as historical evidence; remediation requires new source-bound checks."
+}

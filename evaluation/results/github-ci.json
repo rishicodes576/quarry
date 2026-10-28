@@ -1,18 +1,20 @@
 {
-  "status": "failed",
-  "tested_commit": "42c4be225f875fe3222e5aa73aed1929c6b5c3d8",
-  "source_sha256": "ba20aa5db83300c72129c44a07dbf54972067b46c9b8c680b133c2a442dccd84",
-  "url": "https://github.com/rishicodes576/quarry/actions/runs/40639841823",
-  "job_id": 122655170307,
+  "status": "passed",
+  "recorded_at": "2026-10-28T14:13:09.016730+00:00",
+  "source_sha256": "81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453",
+  "tested_commit": "cf2e42e79123943862bfc41955aec25aaf8de476",
+  "url": "https://github.com/rishicodes576/quarry/actions/runs/40701137034",
+  "check_run_id": 122860949366,
+  "runner": "ubuntu-24.04",
+  "checkout": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+  "checkout_runtime": "node24",
+  "annotation_count": 0,
+  "backend_cases": 240,
+  "browser_workflows": 9,
   "startup": "success",
   "functional_browser": "success",
-  "backend_cases": 224,
-  "browser_workflows": 9,
-  "security": "failure",
-  "failed_image_scans": [
-    "objectstore",
-    "gateway"
-  ],
-  "advisory": "CVE-2026-116587",
-  "scope": "Current hosted run failed the security gate. Fresh local image scans reproduced the JOSE findings. Prior passing CI is retained as historical evidence; remediation requires new source-bound checks."
+  "security": "success",
+  "runtime_image_gates_passed": 8,
+  "version_based_mitigated_findings_retained": true,
+  "scope": "Observed actual hosted run, log case counts and check annotation API. The complete security command succeeded under the exact executable fingerprint and its strict tested JOSE/evaluator dispositions; raw version findings are not claimed absent. No live generation key was configured in CI. Report/document follow-ups may have this same fingerprint while tested_commit records the actual code commit. Not public deployment or human certification."
 }

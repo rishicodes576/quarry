@@ -1,3 +1,7 @@
+# Hosted confirmation — 28 October 2026
+
+[GitHub Actions run 40701137034](https://github.com/rishicodes576/quarry/actions/runs/40701137034) passed for security code commit `cf2e42e79123943862bfc41955aec25aaf8de476`, executable fingerprint `81d2eaabc9fbb66ef1db25f409497dc4ec7a061b11dd28e948946830370ae453`. Actual logs confirm 240 backend tests and nine browser workflows; startup and the complete security/image gate succeeded. The check annotation API returned zero annotations. This does not assert that raw locally backported/optional-package version findings are absent: exact source/image/graph/probe mitigations remain required and disclosed. The previous failed run and its raw CVE evidence remain in history. The matching source ZIP is audited separately for credentials, attribution and measurement-input hashes.
+
 # JOSE remediation and security recheck — 28 October 2026
 
 The hosted run [40639841823](https://github.com/rishicodes576/quarry/actions/runs/40639841823) for `42c4be2` passed startup and functional/browser checks but failed the security gate. A fresh local Trivy database reproduced **CVE-2026-116587 / GHSA-mgcc-cww5-fp2q** in object-store JOSE v4.1.4 and gateway JOSE v4.1.5/v3.0.5. The failed run, prior passing CI and raw vulnerable-image reports are retained; no finding was deleted or globally ignored.

@@ -63,5 +63,6 @@
   ],
   "previous_acceptance": "evaluation/results/historical/independent-review-acceptance-ba20.json",
   "previous_scoped_source_sha256": "8d245c1cac11eed9b3419c7da652371332d71c720b22115bccc42c74ff619d85",
-  "narrow_refresh": "Exact reviewed two-executable JOSE finding disposition, with positive probe/both cases. Prior findings, review limits and mandatory separate execution gates retained."
+  "narrow_refresh": "Exact reviewed two-executable JOSE finding disposition, with positive probe/both cases. Prior findings, review limits and mandatory separate execution gates retained.",
+  "record_updated_at": "2026-10-28T14:13:09.029586+00:00"
 }
