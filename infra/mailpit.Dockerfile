@@ -1,4 +1,4 @@
-FROM node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 AS assets
+FROM node:25-alpine@sha256:bdf2cca6fe3dabd014ea60163eca3f0f7015fbd5c7ee1b0e9ccb4ced6eb02ef4 AS assets
 ADD --checksum=sha256:85889973cedc04644e71cabdcdaf5d77cf428c785928936cc5ab554c0d6f0a66 https://codeload.github.com/axllent/mailpit/tar.gz/refs/tags/v1.31.6 /tmp/source.tar.gz
 WORKDIR /src
 RUN tar -xzf /tmp/source.tar.gz --strip-components=1 && npm ci --no-audit --no-fund && npm run package && rm -rf node_modules
