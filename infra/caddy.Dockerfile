@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache
     && go list -mod=readonly -m -json all > /out/jose-selected-modules.json \
     && go list -mod=readonly -deps -test -json github.com/go-jose/go-jose/v3 > /out/jose-test-deps.json \
     && go build -p 2 -trimpath -ldflags="-s -w" -o /out/caddy ./cmd/caddy
-FROM alpine:3.22@sha256:d406446bc05b82480756ce8f1287964d28768c23955fa9480d2a74a2eae7a654
+FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
 RUN apk add --no-cache ca-certificates && mkdir -p /etc/caddy /config /data \
     && chown -R 10001:10001 /config /data
 COPY --from=build /out/caddy /usr/bin/caddy
