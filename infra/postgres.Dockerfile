@@ -5,7 +5,7 @@ WORKDIR /src
 RUN tar -xzf /tmp/source.tar.gz --strip-components=1
 RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
     go build -p 2 -trimpath -ldflags="-w" -o /out/gosu .
-FROM postgres:18-alpine@sha256:83148c0bc09eac4d598b70a61e1404d0212b76c95c504bfd6c81a4c59ec91792
+FROM postgres:18-alpine@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5
 RUN apk add --no-cache 'brotli-libs=1.2.1-r0' 'libcurl=8.23.0-r0'
 COPY --from=build /out/gosu /usr/local/bin/gosu
 COPY --from=build /src/LICENSE /usr/share/licenses/gosu/LICENSE
