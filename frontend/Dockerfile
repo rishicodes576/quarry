@@ -18,7 +18,7 @@ USER 10001:10001
 EXPOSE 3000
 CMD ["node", "server.js"]
 
-FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf AS browser-tests
+FROM mcr.microsoft.com/playwright:v1.65.1-noble@sha256:1507cbfc550a63a6b7396791ca4f00df17beb56342d2447b3f106c306f525579 AS browser-tests
 WORKDIR /app
 ENV CI=1 NEXT_TELEMETRY_DISABLED=1
 COPY frontend/package*.json ./
