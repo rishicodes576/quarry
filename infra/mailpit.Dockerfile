@@ -8,7 +8,7 @@ WORKDIR /src
 COPY --from=assets /src ./
 RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
     go build -p 2 -trimpath -ldflags="-s -w -X github.com/axllent/mailpit/config.Version=v1.31.6-quarry" -o /out/mailpit .
-FROM axllent/mailpit@sha256:23fe39e81bde596a918000b3135c0f85dc8bb4c9ea6be274b051143f3e300387
+FROM axllent/mailpit@sha256:aef2aacc11f075ec0fb6874275ee4a421e688e11a96ebb296134d1735c7761ce
 COPY --from=build /out/mailpit /mailpit
 COPY --from=build /src/LICENSE /usr/share/licenses/mailpit/LICENSE
 COPY --from=build /src/go.mod /src/go.sum /usr/share/quarry/mailpit/
