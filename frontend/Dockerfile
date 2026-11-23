@@ -1,4 +1,4 @@
-FROM node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 AS dependencies
+FROM node:26-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS dependencies
 WORKDIR /app
 COPY frontend/package*.json ./
 RUN npm ci --no-audit --no-fund
@@ -6,7 +6,7 @@ FROM dependencies AS build
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY frontend ./
 RUN npm run format:check && npm run build
-FROM node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 AS runtime
+FROM node:26-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 HOSTNAME=0.0.0.0 PORT=3000
 RUN addgroup -g 10001 -S quarry && adduser -S quarry -u 10001 -G quarry \
