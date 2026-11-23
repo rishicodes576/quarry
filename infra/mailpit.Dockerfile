@@ -2,7 +2,7 @@ FROM node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf
 ADD --checksum=sha256:85889973cedc04644e71cabdcdaf5d77cf428c785928936cc5ab554c0d6f0a66 https://codeload.github.com/axllent/mailpit/tar.gz/refs/tags/v1.31.6 /tmp/source.tar.gz
 WORKDIR /src
 RUN tar -xzf /tmp/source.tar.gz --strip-components=1 && npm ci --no-audit --no-fund && npm run package && rm -rf node_modules
-FROM golang:1.26-alpine@sha256:5cb67f19c5e7994dcb80c074f7cfca8aeeada45bbdca035f73df269cefdcce61 AS build
+FROM golang:1.27-alpine@sha256:70bd7ddea8b6cbe5d6943cde279d6b67feb10cc924fb9100d1d8757c1575b280 AS build
 ENV CGO_ENABLED=0 GOMAXPROCS=2 GOTOOLCHAIN=local
 WORKDIR /src
 COPY --from=assets /src ./

@@ -1,5 +1,5 @@
 # Unmodified upstream 4.48 source, with an explicitly patched Go dependency/toolchain.
-FROM golang:1.26-alpine@sha256:5cb67f19c5e7994dcb80c074f7cfca8aeeada45bbdca035f73df269cefdcce61 AS build
+FROM golang:1.27-alpine@sha256:70bd7ddea8b6cbe5d6943cde279d6b67feb10cc924fb9100d1d8757c1575b280 AS build
 ENV CGO_ENABLED=0 GOMAXPROCS=2 GOTOOLCHAIN=local
 ADD --checksum=sha256:93199495e93a981451d1fefecb5aa71e12aa1692093eed2338bbfe7f08960bfb https://codeload.github.com/seaweedfs/seaweedfs/tar.gz/refs/tags/4.48 /tmp/seaweed.tar.gz
 WORKDIR /src
